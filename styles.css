@@ -1,0 +1,826 @@
+/*.contenedor-rectangulos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 50px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.rectangulo {
+  width: 400px;
+  height: 450px;
+  border: 2px solid black;
+  overflow: hidden;
+  position: relative;
+}
+
+.rectangulo img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+}
+  
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: contain;
+    background-position: center;
+    transition: background-image 1s ease-in-out;
+    object-fit: cover;
+    }*/
+#micursor:hover{
+  cursor: url('img/yogur2.cur'), auto;
+}
+section{
+  flex: none;
+  display: flex;
+  width: 600px;
+  height: 430px;
+}
+section img{
+  
+  width: 0;
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: .8;
+  transition: .5s ease;
+}
+section img:hover{
+  width: 300px;
+  opacity: 1;
+  filter: contrast(120%);
+}
+#particles-js{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: -1;
+}
+/* Estilos para la intro */
+#intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #92a6d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; /* Acomoda texto e imágenes */
+    z-index: 1000;
+    animation: hideIntro 1s forwards; /* Desaparece de golpe */
+    visibility: visible;
+    opacity: 1;
+}
+
+#introText {
+    font-size: 2rem;
+    font-weight: bold;
+    opacity: 1;
+}
+
+/* Animación para ocultar la intro */
+@keyframes hideIntro {
+    0% { opacity: 1; }
+    99% { opacity: 1; } /* Mantiene el texto visible hasta casi el final */
+    100% { opacity: 0; visibility: hidden; }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    width: 100%;
+    height: 3000px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    scroll-behavior: smooth;
+    scroll-padding: 5rem;
+    justify-content: flex-start;
+    overflow-x: hidden;
+  }
+  
+  body {
+    background-color: #92a6d8;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    min-height: 200vh;
+    justify-content: center;
+    flex-direction: column; 
+    font-family: "Afacad Flux", sans-serif;
+    justify-content: flex-start;
+    align-items: center;
+    visibility: hidden;
+    transition: opacity 1s ease-in-out;
+    position: relative;
+    margin: 0;
+    margin-top: 20%;
+  }
+    nav {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0px;
+      z-index: 10500;
+      gap: 20px;
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+      background-image: linear-gradient(-225deg, #92a6d8 0%, #92a6d8 100%);
+      animation: fadeIn 1s ease-in-out forwards;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Agrega esta línea */
+  
+}
+
+nav header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    /* Elimina o ajusta la opacidad y el retraso de la animación */
+    /* opacity: 0; */
+    animation: fadeIn 1s ease-in-out forwards;
+    /* animation-delay: 2s; */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+  
+  nav header .mobileHeader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 25px;
+    padding-right: 50px;
+  }
+  nav header .mobileHeader #toIndex {
+    width: 70px; /* Cambia el ancho a 100px */
+    height: auto; /* Mantén la altura automática para mantener la proporción */
+    cursor: pointer;
+}
+  nav header .mobileHeader #myLogo {
+    width: 10px;
+    height: auto;
+    cursor: pointer;
+  }
+  nav header .mobileHeader img {
+    width: 25px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  nav header .mobileHeader img:hover {
+    transform: scale(1.05);
+  }
+  nav header .mobileHeader ul {
+    width: 25%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+  nav header .mobileHeader ul li {
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    transition: all 0.3s ease;
+  }
+  nav header .mobileHeader ul li #catalogoImg:hover {
+    transform: none;
+  }
+  nav header .mobileHeader ul #catalogo:hover {
+    transform: scale(1.05);
+  }
+  
+  .burguerMenu {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    display: none;
+    z-index: 11000;
+    background-color: #e3e3e3;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0px 0px 50px 10px #414141;
+    overflow: hidden;
+    gap: 20px;
+    background-image: linear-gradient(-225deg, #e6e6e6 0%, #ffffff 100%);
+  }
+  .burguerMenu div {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    align-items: flex-end;
+    margin-top: 10px;
+  }
+  .burguerMenu div #adminAccess {
+    width: 40px;
+    height: auto;
+  }
+  .burguerMenu div img {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .burguerMenu div img:hover {
+    transform: scale(1.05);
+  }
+  .burguerMenu img {
+    width: 150px;
+    height: auto;
+  }
+  .burguerMenu ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .burguerMenu ul li {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    font-size: 23px;
+  }
+  .burguerMenu ul li img {
+    width: 30px;
+    height: auto;
+  }
+  .burguerMenu ul li:hover {
+    padding-right: 20px;
+    font-weight: 600;
+  }
+  .burguerMenu .socialMedia {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  .burguerMenu .socialMedia p {
+    color: linear-gradient(-225deg, #e6e6e6 0%, #ffffff 100%);
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 23px;
+    cursor: default;
+  }
+  .burguerMenu p {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: linear-gradient(-225deg, #e6e6e6 0%, #ffffff 100%);
+    color: #353535;
+    font-size: 14px;
+  }
+  .burguerMenu p a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #353535;
+    font-weight: 600;
+  }
+  
+  main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 50px;
+  }
+
+  main #firstContent {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    margin-top: 50px;
+  }
+  main #firstContent .slides div button {
+    width: 180px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    border: 0px;
+    border-radius: 5px;
+    background-color: #353535;
+    color: #e3e3e3;
+    font-weight: 600;
+    font-family: "Afacad Flux", sans-serif;
+    font-size: 23px;
+    margin-bottom: -100px;
+  }
+
+  main #presentation {
+    width: 100%;
+    height: 900px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    cursor: default;
+    margin-top: 50px;
+    color: #353535;
+  }
+  main #presentation .textPresentation {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  main #presentation .textPresentation img {
+    width: 50%;
+    height: auto;
+  }
+  main #presentation .textPresentation h1 {
+    width: 100%;
+    height: 40px;
+    font-weight: 600;
+    font-size: 23px;
+  }
+  main #presentation .textPresentation p {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+  }
+  main h4 {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    align-items: center;
+    margin-top: 50px;
+  }
+  main #categoriesSection {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  main #categoriesSection div {
+    width: 45%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  main #categoriesSection .secondCategory, main #categoriesSection .fourthCategory, main #categoriesSection .fifthCategory, main #categoriesSection .seventhCategory {
+    background-image: url(/public/imgs/categories/bolsosCategory.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: default;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  main #categoriesSection .secondCategory h3, main #categoriesSection .fourthCategory h3, main #categoriesSection .fifthCategory h3, main #categoriesSection .seventhCategory h3 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    font-size: 23px;
+    color: #e3e3e3;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  main #categoriesSection .secondCategory {
+    background-image: url(/public/imgs/categories/pantalonesJeansCategory.jpeg);
+  }
+  main #categoriesSection .fourthCategory {
+    background-image: url(/public/imgs/categories/tenisCategory.jpeg);
+  }
+  main #categoriesSection button {
+    width: 70%;
+    height: 50px;
+    font-family: "Afacad Flux", sans-serif;
+    outline: 0px;
+    border: 0px;
+    cursor: pointer;
+    font-size: 23px;
+    background-color: #353535 !important;
+    color: #e3e3e3;
+  }
+  main #categoriesSection .toBriefcaseSection {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10000;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 50%;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection h2 {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 28px;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 2px;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection div ul {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    align-items: flex-end;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection div ul li {
+    list-style: none;
+    color: #353535;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection div ul li img {
+    width: 40px;
+    height: auto;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection div ul li img:hover {
+    transform: scale(1.05);
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection .numeroCiudad {
+    height: 40px;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection .numeroCiudad ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+  }
+  main #categoriesSection .toBriefcaseSection .contactSection .numeroCiudad ul li {
+    justify-content: flex-start;
+    font-size: 19px;
+  }
+  main #categoriesSection .seventhCategory {
+    background-image: url(/public/imgs/categories/hoodiesSueterCategory.jpeg);
+  }
+  main #categoriesSection #buttonSection {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+  main #categoriesSection #buttonSection button {
+    padding: 5px;
+    border: 1px solid #353535;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-family: "Afacad Flux", sans-serif;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 23px;
+    color: #353535;
+    cursor: pointer;
+    background-image: linear-gradient(-225deg, #e6e6e6 0%, #ffffff 100%);
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin-top: 12px;
+    border-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 30px;
+    font-weight: 600;
+    font-size: 16px;
+    border: 0px;
+  }
+  main #categoriesSection #buttonSection button #moreImg {
+    width: 15px;
+    height: auto;
+  }
+  main #categoriesSection #buttonSection button:hover {
+    transform: scale(1.02);
+  }
+  main .sectionForm {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    z-index: 12000;
+    display: none;
+  }
+  main .sectionForm form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 300px;
+    border-radius: 20px;
+    border: 1px solid #414141;
+    background-image: linear-gradient(-225deg, #e6e6e6 0%, #ffffff 100%);
+    gap: 5px;
+  }
+  main .sectionForm form #errorMessage {
+    display: none;
+  }
+  main .sectionForm form p {
+    font-size: 23px;
+  }
+  main .sectionForm form input {
+    width: 90%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 23px;
+    font-family: "Afacad Flux", sans-serif;
+  }
+  main .sectionForm form button {
+    padding: 5px;
+    border: 1px solid #353535;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-family: "Afacad Flux", sans-serif;
+    width: 80%;
+    height: 50px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 23px;
+    color: #353535;
+    cursor: pointer;
+    background-image: linear-gradient(-225deg, #e6e6e6 0%, #ffffff 100%);
+    box-shadow: none;
+    margin-top: 0px;
+  }
+  main .sectionForm form button:hover {
+    background-image: linear-gradient(to top, #fcddd4 0%, #e8dad0 100%);
+  }
+  main .sectionForm button {
+    margin-top: -60px;
+    padding: 5px;
+    border: 1px solid #353535;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-family: "Afacad Flux", sans-serif;
+    width: 60%;
+    height: 50px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 23px;
+    color: #353535;
+    cursor: pointer;
+    background-image: linear-gradient(-225deg, #e6e6e6 0%, #ffffff 100%);
+  }
+  main .sectionForm button:hover {
+    background-image: linear-gradient(to top, #fcddd4 0%, #e8dad0 100%);
+  }
+  main #whatsapp {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    transition: all 0.3s ease;
+    z-index: 10998;
+  }
+  main #whatsapp:hover {
+    transform: scale(1.05);
+  }
+  
+  footer {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10999;
+    box-shadow: 0px 0px 20px 1px #414141;
+    /*background-image: linear-gradient(-225deg, #e6e6e6 0%, #ffffff 100%);*/
+    background-color: #92a6d8;
+  }
+  footer .footerTop {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+
+  }
+.footer-logo{
+    width: 100px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    
+  }
+  footer img {
+    width: 10px;
+    height: auto;
+  }
+  footer div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    cursor: default;
+  }
+  footer div ul {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-items: flex-start;
+    padding-left: 10px;
+  }
+  footer div ul span {
+    cursor: pointer;
+  }
+  footer div ul span:hover {
+    border-bottom: 1px solid #353535;
+  }
+  footer .footerBottom {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .footerBottom span {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+  footer .footerBottom span a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #85285e;
+    cursor: pointer;
+  }
+  
+  @keyframes zoomAnimation {
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes fadeIn {
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes carrouselControllers {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    49% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(-15deg) scale(1.02);
+    }
+    60% {
+      transform: rotate(15deg) scale(1.02);
+    }
+    70% {
+      transform: rotate(-15deg) scale(1.02);
+    }
+    100% {
+      transform: rotate(0deg) scale(1);
+    }
+  }/*# sourceMappingURL=styles.css.map */
