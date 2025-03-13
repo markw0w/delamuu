@@ -17,7 +17,7 @@
 // Body general
 body {
     font-family: $montserratFont;
-    background: $primary-Strong-BackgroundImage;
+    background: $light-BackgroundImage;
     background-size: cover;
     background-attachment: fixed; 
     color: $darkFontColor;
@@ -28,13 +28,17 @@ body {
 // ROOT del index.js
 #root{
     @include sizes();
-    //@include displayFlex(); // Lo dejo comentado por si falla el diseño a futuro
 }
 
 // Main general
 main {
-    @include sizes($height: 100vh);
+    @include sizes($height: 2700px);
     @include displayFlex();
     justify-content: flex-start;
-    padding: 10px;
+
+    .fatherContainer{
+        @include sizes();
+        @include displayFlex();
+        gap: 25px;
+    }
 }

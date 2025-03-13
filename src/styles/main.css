@@ -5,7 +5,8 @@
 }
 
 html {
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -26,8 +27,11 @@ header {
   align-items: center;
   width: 100%;
   height: 70px;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  background-image: linear-gradient(to top, #bccdf8 0%, #7e94ce 100%);
   padding: 10px;
+  z-index: 10000;
+  animation: slide-in-nav 1s ease forwards;
+  overflow: hidden;
 }
 header img {
   width: 60px;
@@ -65,9 +69,193 @@ header .rightNavContainer img {
   cursor: pointer;
 }
 
+@keyframes btn-move-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+@keyframes zoomContent {
+  0% {
+    opacity: 0;
+    scale: 25%;
+  }
+  100% {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+@keyframes slide-in-image {
+  0% {
+    transform: rotate(-55deg) translateX(-1500px);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0px);
+  }
+}
+@keyframes slide-in-text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slide-in-nav {
+  0% {
+    margin-top: -70px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+@keyframes background-effect {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(2750px);
+  }
+}
+.presentationContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.presentationContainer h1 {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+  z-index: 1000;
+  animation: slide-in-text 3s ease forwards;
+}
+.presentationContainer .principalIceCream {
+  width: 80%;
+  height: auto;
+  margin-top: -130px;
+  z-index: 999;
+  animation: slide-in-image 1.5s ease forwards;
+  filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.308));
+}
+.presentationContainer .backgroundEffect {
+  position: absolute;
+  width: 60px;
+  height: auto;
+  z-index: -100;
+  top: -250px;
+  animation: background-effect 100s ease infinite;
+  filter: blur(3px);
+}
+.presentationContainer .backgroundEffect-1 {
+  right: 10px;
+  top: -350px;
+  filter: blur(2px);
+}
+.presentationContainer .backgroundEffect-2 {
+  right: 70px;
+  top: -650px;
+  filter: blur(5px);
+}
+.presentationContainer .backgroundEffect-3 {
+  right: 150px;
+  top: -750px;
+}
+.presentationContainer .backgroundEffect-4 {
+  left: 10px;
+  top: -150px;
+}
+.presentationContainer .backgroundEffect-5 {
+  left: 50px;
+  top: -1050px;
+  filter: blur(1px);
+}
+.presentationContainer .backgroundEffect-6 {
+  top: -850px;
+  left: 100px;
+  filter: blur(4px);
+}
+
+section {
+  width: 100%;
+  height: 100%;
+}
+
+.productContainer {
+  view-timeline-name: --test;
+  view-timeline-axis: block;
+  background-color: azure;
+  animation-timeline: --test;
+  animation-name: zoomContent;
+  animation-range: entry 25% cover 50%;
+  animation-fill-mode: both;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+}
+.productContainer h2 {
+  z-index: 1000;
+}
+.productContainer img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+.productContainer .productLink {
+  z-index: 1000;
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.productContainer .productLink button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  width: 50%;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   background-size: cover;
   background-attachment: fixed;
   color: #2c2c2c;
@@ -86,11 +274,19 @@ body {
 
 main {
   width: 100%;
-  height: 100vh;
+  height: 2700px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 10px;
+}
+main .fatherContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
 }/*# sourceMappingURL=main.css.map */

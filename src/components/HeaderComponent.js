@@ -6,7 +6,7 @@ function HeaderComponent(){
     return(
         <header className="header">
             <Link className="navLinks" to="/">
-                <img src={logos.shortDark} alt="Logo/Inicio de Delamuu"/>
+                <img src={logos.shortLight} alt="Logo/Inicio de Delamuu"/>
             </Link>
 
             <div className="rightNavContainer">

@@ -2,7 +2,7 @@
 @use '../utils/mixins' as *;  
 
 html{
-    min-height: 100%;
+    @include sizes();
     @include displayFlex();
     scrollbar-width: none;
 }
