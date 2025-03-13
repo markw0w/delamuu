@@ -1,5 +1,6 @@
 // Imports
 @use './vars' as *;
+@use './typography' as *;
 
 //Mixins
 @mixin sizes($width: 100%, $height: 100%){
@@ -18,17 +19,21 @@
     color: $fontColor;
     text-align: $textAlign;
 }
-@mixin buttonDesign($width: 100%, $height: 100%){
-    padding: 5px;
+@mixin buttonDesign($p: 5px, $width: 100px, $height: 40px, $bR: 20px){
     border: 0px;
-    border-radius: 50px;
-    background-image: $degBlueColor;
-    transition: all 0.3s ease;
-    font-family: $afacadFont;
+    padding: $p;
+    border-radius: $bR;
+    background-image: $secondary-Normal-BackgroundImage;
     width: $width;
     height: $height;
-    font-size: $md;
+    font-family: $montserratFont;
     color: $lightFontColor;
+    font-weight: $bold;
     cursor: pointer;
     @include displayFlex();
+}
+@mixin imgAsButtons($w: 30px, $h: 30px){
+    width: $w;
+    height: $h;
+    cursor: pointer;
 }

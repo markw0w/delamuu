@@ -1,0 +1,27 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+
+header {
+    @include displayFlex($flexDirection:row, $justifyContent:space-between);
+    @include sizes($height: 70px);
+    background-image: $light-BackgroundImage;
+    padding: 10px;
+
+    img{
+        @include imgAsButtons($w: 60px, $h: auto);
+    }
+    .rightNavContainer{
+        @include sizes(60%);
+        @include displayFlex($justifyContent: flex-end, $flexDirection:row);
+        gap: 10px;
+
+        button{
+            @include buttonDesign($height: 30px);
+        }
+        img{
+            @include imgAsButtons($w: 30px, $h: auto);
+        }
+    }
+}
+
+

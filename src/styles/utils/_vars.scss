@@ -1,8 +1,9 @@
 // Variables: variables de colores, sombras, degrades, para utilizarlos en cada archivo de estilos
 // Página donde saco los colores en degrade: https://webgradients.com
 // Background Gradiant Colors
-$standar-Normal-BackgroundImage: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
-$standar-Dark-BackgroundImage: linear-gradient(60deg, #29323c 0%, #22282e 100%);
+$primary-Normal-BackgroundImage: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+$primary-Strong-BackgroundImage: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+$light-BackgroundImage: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 
 // Container Gradiant Colors
 // From blue to blue (Dark to Light & viceverse)
@@ -30,12 +31,8 @@ $darkPurple: #5207D9;
 $mediumPurple: #5A56DB;
 $lightPurple: #9707D9;
 
-// Font Colors
-$darkFontColor: #2c2c2c;
-$lightFontColor: #f1f1f1;
-
 // Buttons & Inputs
-$btnImageColor: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$secondary-Normal-BackgroundImage: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
 
 // Shadow
 $shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);

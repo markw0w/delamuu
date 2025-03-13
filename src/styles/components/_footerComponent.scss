@@ -1,0 +1,7 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+
+footer {
+    @include sizes($height: 100px);
+    background-color: #fff;
+}
