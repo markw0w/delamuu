@@ -1,0 +1,8 @@
+//
+// Es un parámetro general, que le aplica a todo un margen 0 y un padding 0, para evitar escribirlo en cada elemento
+//
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

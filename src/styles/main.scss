@@ -1,0 +1,20 @@
+// IMPORTAMOS TODOS LOS SCSS
+// Se importa con @use 'buscas la carpeta' y ';'
+@use './utils/vars' as *;       
+@use './utils/mixins' as *;
+@use './base/reset';
+
+
+body {
+    font-family: $jersey20Font;
+    background: $standar-Dark-BackgroundImage;
+    background-size: cover;
+    background-attachment: fixed; 
+    color: $lightFontColor;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    //justify-content: space-between;
+    min-height: 100%;
+    width: 100%;
+}
