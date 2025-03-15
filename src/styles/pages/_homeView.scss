@@ -7,6 +7,7 @@
     @include sizes();
     @include displayFlex($justifyContent: flex-start);
     position: relative;
+    margin-top: 70px;
 
     h1{
         @include sizes(100%,$height: 150px);
@@ -19,7 +20,7 @@
     }
     .principalIceCream{
         @include sizes(80%,auto);
-        margin-top: -130px;
+        margin-top: -100px;
         z-index: 999;
         animation: slide-in-image 1.5s ease forwards;
         filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.308));
@@ -62,9 +63,7 @@
         filter: blur(4px);
     }
 }
-section{
-    @include sizes();
-}
+
 .productContainer{
     view-timeline-name: --test;
     view-timeline-axis: block;
@@ -79,6 +78,7 @@ section{
     border-radius: 20px;
     overflow: hidden;
     box-shadow: $shadow;
+    margin-bottom: 25px;
 
     h2{
         z-index: 1000;
