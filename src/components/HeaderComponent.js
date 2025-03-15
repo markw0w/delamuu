@@ -10,7 +10,7 @@ function HeaderComponent(){
     return(
         <header className="header">
             <Link className="navLinks" to="/">
-                <img src={logos.shortLight} alt="Logo/Inicio de Delamuu"/>
+                <img src={logos.shortDark} alt="Logo/Inicio de Delamuu"/>
             </Link>
 
             <div className="rightNavContainer">
@@ -20,7 +20,7 @@ function HeaderComponent(){
                     alt="Menú Navegación"
                     onClick={() => setIsOpen(!isOpen)}
                 >
-                 {isOpen ? <X size={45} color="#fff"/> : <Menu size={45} color="#fff"/>}
+                 {isOpen ? <X size={45} color="#92a6d8"/> : <Menu size={45} color="#92a6d8"/>}
                 </button>
             </div>
             <MenuBurguer isOpen={isOpen}/>

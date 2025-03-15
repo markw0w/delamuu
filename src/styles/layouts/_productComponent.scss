@@ -1,0 +1,10 @@
+// Es el layout de todos los productos componentes
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+
+.productComponent{
+    margin-top: 70px;
+    @include sizes();
+    @include displayFlex();
+}

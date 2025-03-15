@@ -22,10 +22,10 @@ function HomeView() {
 
                 {/* EFECTOS FONDO */}
                 <img
-                className="backgroundEffect backgroundEffect-1"
-                src={logos.shortDark}
-                alt="Logo Delamuu"
-                style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+                    className="backgroundEffect backgroundEffect-1"
+                    src={logos.shortDark}
+                    alt="Logo Delamuu"
+                    style={{ transform: `translateY(${scrollY * 0.5}px)` }}
                 />
 
                 <img
