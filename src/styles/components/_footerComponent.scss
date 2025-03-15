@@ -1,7 +1,60 @@
 @use '../utils/vars' as *;       
 @use '../utils/mixins' as *;
+@use '../utils/typography' as *;
 
 footer {
-    @include sizes($height: 100px);
+    @include sizes($height: 150px);
+    @include displayFlex();
+    padding: 10px;
     background-color: #fff;
+    z-index: 10000;
+    background-image: $primary-Normal-BackgroundImage;
+
+    .topFooterContainer{
+        @include sizes();
+        @include displayFlex($flexDirection: row, $justifyContent: space-between);
+
+        ul{
+            @include displayFlex();
+            align-items: flex-end;
+            @include sizes();
+            gap: 2px;
+
+            li{
+                list-style: none;
+                cursor: pointer;
+                color: $lightFontColor;
+                font-size: $md;
+                font-weight: $superBold;
+                padding: 3px;
+                transition: all 0.5s ease;
+                border-radius: 5px;
+            }
+            li:hover{
+                background-image: $secondary-Normal-BackgroundImage;
+            }
+        }
+        img{
+            @include sizes(130px,auto);
+        }
+        .socialMedia{
+            @include sizes();
+            @include displayFlex($flexDirection:row);
+            gap: 5px;
+
+            li{
+                img{
+                    @include sizes(40px,auto);
+                }
+            }
+            li:hover{
+                background-image: none;
+                transform: scale(1.1);
+            }
+        }
+    }
+    span{
+        font-size: $sm;
+        font-weight: $bold;
+    }
 }

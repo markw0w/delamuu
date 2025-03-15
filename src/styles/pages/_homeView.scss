@@ -63,9 +63,7 @@
         filter: blur(4px);
     }
 }
-section{
-    @include sizes();
-}
+
 .productContainer{
     view-timeline-name: --test;
     view-timeline-axis: block;
@@ -80,6 +78,7 @@ section{
     border-radius: 20px;
     overflow: hidden;
     box-shadow: $shadow;
+    margin-bottom: 25px;
 
     h2{
         z-index: 1000;

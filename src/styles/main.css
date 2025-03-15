@@ -16,8 +16,71 @@ html {
 
 footer {
   width: 100%;
-  height: 100px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
   background-color: #fff;
+  z-index: 10000;
+  background-image: linear-gradient(to top, #bccdf8 0%, #7e94ce 100%);
+}
+footer .topFooterContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+footer .topFooterContainer ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  gap: 2px;
+}
+footer .topFooterContainer ul li {
+  list-style: none;
+  cursor: pointer;
+  color: #f1f1f1;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 3px;
+  transition: all 0.5s ease;
+  border-radius: 5px;
+}
+footer .topFooterContainer ul li:hover {
+  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+}
+footer .topFooterContainer img {
+  width: 130px;
+  height: auto;
+}
+footer .topFooterContainer .socialMedia {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+footer .topFooterContainer .socialMedia li img {
+  width: 40px;
+  height: auto;
+}
+footer .topFooterContainer .socialMedia li:hover {
+  background-image: none;
+  transform: scale(1.1);
+}
+footer span {
+  font-size: 14px;
+  font-weight: 600;
 }
 
 header {
@@ -265,11 +328,6 @@ header .rightNavContainer #burguerMenuIcon {
   filter: blur(4px);
 }
 
-section {
-  width: 100%;
-  height: 100%;
-}
-
 .productContainer {
   view-timeline-name: --test;
   view-timeline-axis: block;
@@ -288,6 +346,7 @@ section {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  margin-bottom: 25px;
 }
 .productContainer h2 {
   z-index: 1000;
