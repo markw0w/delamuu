@@ -1,0 +1,61 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/animations' as *;
+
+.base-burguerMenuContainer{
+    position: fixed;
+    top: 69px;
+    @include sizes($height:0px);
+    background-image: $light-BackgroundImage;
+    z-index: 9999;
+    left: 0px;
+    @include displayFlex();
+    overflow: hidden;
+    box-shadow: 0px 30px 30px 1px rgba(0, 0, 0, 0.295);
+
+    ul{
+        @include sizes();
+        @include displayFlex($justifyContent: flex-start);
+        align-items: flex-start;
+        gap: 5px;
+        position: relative;
+
+        li{
+            list-style: none;
+            color: $brandColor;
+            font-size: $lg;
+            font-weight: $superBold;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 2px solid white;
+            @include sizes();
+            @include displayFlex();
+            align-items: flex-start;
+        }
+        img{
+            position: absolute;
+            @include sizes(auto,130%);
+            right: 0px;
+            top: -30px;
+            filter: blur(3px);
+            animation: floating 10s ease-in-out infinite;
+        }
+    }
+    span{
+        font-size: 11px;
+        font-weight: $bold;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        color: $darkFontColor;
+    }
+}
+
+// Lógica apertura y cierre
+.open{
+    display: flex;
+    animation: open-burguer-menu 0.4s ease forwards;
+}
+.close{
+    display: none;
+}

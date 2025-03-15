@@ -2,11 +2,12 @@
 // Luego las llamamos desde el JSON
 // Importamos
 // Imports: UI Icons
-import BurguerMenu from '../assets/ui-icons/burguer-menu.png';
+
 
 // Imports: LOGO & Delamuu
 import LogoShortLight from '../assets/delamuu-logos/logo-short-light.png';
 import LogoShortDark from '../assets/delamuu-logos/logo-short-dark.png';
+import LogoLongTransparent from '../assets/delamuu-logos/logo-long-transparent.png';
 
 // Imports: Productos
 import HeladoPrincipal from '../assets/products/helado-principal.png';
@@ -22,14 +23,13 @@ import StrawberriesEffect from '../assets/others/frutillas.png';
 
 // JSON a exportar
 // UI Icons
-export const uiIcons = {
-    burguerMenuIcon: BurguerMenu,
-}
+
 
 // Logos
 export const logos = {
     shortLight: LogoShortLight,
     shortDark: LogoShortDark,
+    logoLogTrans: LogoLongTransparent,
 }
 
 // Productos
