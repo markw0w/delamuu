@@ -7,21 +7,23 @@ header {
     background-image: $primary-Normal-BackgroundImage;
     padding: 10px;
     z-index: 10000;
-    animation: slide-in-nav 1s ease forwards;
     overflow: hidden;
+    position: fixed;
+    top: 0px;
 
     img{
-        @include imgAsButtons($w: 60px, $h: auto);
+        @include imgAsButtons($w: 80px, $h: auto);
     }
     .rightNavContainer{
         @include sizes(60%);
         @include displayFlex($justifyContent: flex-end, $flexDirection:row);
-        gap: 10px;
+        gap: 25px;
+        padding-right: 25px;
 
         button{
             @include buttonDesign($height: 30px);
         }
-        img{
+        #burguerMenuIcon{
             @include imgAsButtons($w: 30px, $h: auto);
         }
     }
