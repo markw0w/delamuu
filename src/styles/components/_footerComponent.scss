@@ -16,16 +16,17 @@ footer {
 
         ul{
             @include displayFlex();
-            align-items: flex-end;
+            align-items: flex-start;
             @include sizes();
             gap: 2px;
+            padding: 10px;
 
             li{
                 list-style: none;
                 cursor: pointer;
                 color: $lightFontColor;
-                font-size: $md;
-                font-weight: $superBold;
+                font-size: $sm;
+                font-weight: $bold;
                 padding: 3px;
                 transition: all 0.5s ease;
                 border-radius: 5px;
@@ -54,7 +55,8 @@ footer {
         }
     }
     span{
-        font-size: $sm;
-        font-weight: $bold;
+        font-size: 11px;
+        font-weight: $superBold;
+        color: #375aca;
     }
 }

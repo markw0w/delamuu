@@ -1,5 +1,6 @@
 import React from "react";
-import { logos, socialMedia } from "../utils/Images";
+import { logos } from "../utils/Images";
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
 //import { Link } from 'react-router-dom';
 
 function FooterComponent(){
@@ -14,13 +15,13 @@ function FooterComponent(){
                 <img src={logos.logoLogTrans} alt="Logo Cuadrado Delamuu"/>
                 <ul className="socialMedia">
                     <li>
-                        <img src={socialMedia.ig} alt="Instagram Logo"/>
+                        <Facebook size={30}/>
                     </li>
                     <li>
-                        <img src={socialMedia.fb} alt="Facebook Logo"/>
+                        <Instagram size={30}/>
                     </li>
                     <li>
-                        <img src={socialMedia.wp} alt="Whatsapp Logo"/>
+                        <MessageCircle size={30}/>
                     </li>
                 </ul>
             </div>
