@@ -26,14 +26,14 @@ function HomeView() {
                 src={logos.shortDark}
                 alt="Logo Delamuu"
                 style={{ transform: `translateY(${scrollY * 0.5}px)` }}
-            />
+                />
 
-            <img
-                className="backgroundEffect backgroundEffect-6"
-                src={logos.shortDark}
-                alt="Logo Delamuu"
-                style={{ transform: `translateY(-${scrollY * 0.7}px)` }}
-            />
+                <img
+                    className="backgroundEffect backgroundEffect-6"
+                    src={logos.shortDark}
+                    alt="Logo Delamuu"
+                    style={{ transform: `translateY(-${scrollY * 0.7}px)` }}
+                />
             </section>
 
             <section className="productContainer">

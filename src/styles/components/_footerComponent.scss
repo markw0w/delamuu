@@ -36,12 +36,13 @@ footer {
             }
         }
         img{
-            @include sizes(130px,auto);
+            @include sizes(60px,auto);
         }
         .socialMedia{
             @include sizes();
             @include displayFlex($flexDirection:row);
             gap: 5px;
+            padding: 10px;
 
             li{
                 img{
@@ -55,7 +56,7 @@ footer {
         }
     }
     span{
-        font-size: 11px;
+        font-size: 10px;
         font-weight: $superBold;
         color: #375aca;
     }
