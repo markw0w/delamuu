@@ -26,42 +26,16 @@
         filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.308));
     }
 
-    .backgroundEffect{
+    .backgroundEffect {
         position: absolute;
-        @include sizes(60px,auto);
-        z-index: -100;
-        top: -250px;
-        animation: background-effect 100s ease infinite;
-        filter: blur(3px);
-    }
-    .backgroundEffect-1{
-        right: 10px;
-        top: -350px;
+        width: 160px; 
+        height: auto;
         filter: blur(2px);
-    } 
-    .backgroundEffect-2{
-        right: 70px;
-        top: -650px;
-        filter: blur(5px);
+        transition: transform 0.1s ease-out;
     }
-    .backgroundEffect-3{
-        right: 150px;
-        top: -750px;
-    } 
-    .backgroundEffect-4{
-        left: 10px;
-        top: -150px;
-    }
-    .backgroundEffect-5{
-        left: 50px;
-        top: -1050px;
-        filter: blur(1px);
-    } 
-    .backgroundEffect-6{
-        top: -850px;
-        left: 100px;
-        filter: blur(4px);
-    }
+    
+    .backgroundEffect-1 { top: 10%; left: 5%; }
+    .backgroundEffect-6 { top: 80%; right: 5%; }
 }
 
 .productContainer{
@@ -100,5 +74,18 @@
             @include buttonDesign($width: 50%);
             font-size: $lg;
         }
+    }
+}
+
+
+// Parallax en scroll
+@media (prefers-reduced-motion: no-preference) {
+    body {
+        perspective: 1px;
+        overflow-x: hidden;
+    }
+
+    .backgroundEffect {
+        transform: translateY(calc(var(--scroll, 0) * 10px));
     }
 }
