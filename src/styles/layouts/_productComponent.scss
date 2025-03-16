@@ -1,10 +1,38 @@
 // Es el layout de todos los productos componentes
 @use '../utils/vars' as *;       
 @use '../utils/mixins' as *;
+@use '../utils/animations' as *;
 @use '../utils/typography' as *;
 
 .productComponent{
     margin-top: 70px;
     @include sizes();
     @include displayFlex();
+
+    h2{
+        margin-bottom: 10px;
+        font-weight: $superBold;
+        font-size: $extraLg;
+        color: $brandColor;
+    }
+    h3{
+        margin-top: 10px;
+        font-size: $lg;
+        color: $brandColor;
+        padding: 5px;
+        border-radius: 5px;
+        @include displayFlex();
+
+        view-timeline-name: --effect;
+        view-timeline-axis: block;
+        animation-timeline: --effect;
+        animation-name: zoomContent-out;
+        animation-range: entry 0% cover 100%;
+        animation-fill-mode: both;
+        @include sizes(95%);
+        @include displayFlex();
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 25px;
+    }
 }
