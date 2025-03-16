@@ -1,6 +1,7 @@
 import React from "react";
 import { products } from "../../utils/Images"; 
 import CarouselComponent from "../CarouselComponent";
+import FormComponent from "../form/FormComponent";
 import { ChevronsDown } from "lucide-react";
 
 function YogurComponent() { 
@@ -18,6 +19,8 @@ function YogurComponent() {
                 <ChevronsDown size={35}/>
                 Desliza para comenzar
             </h3>
+
+            <FormComponent/>
         </section>
     );
 }
