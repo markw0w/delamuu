@@ -1,0 +1,17 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+
+.alertContainer{
+    background-color: #bcff9d;
+    padding: 5px;
+    border-radius: 5px;
+    @include displayFlex();
+    text-align: center;
+    position: fixed;
+    top: 10%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    font-weight: $bold;
+    animation: alert-slide-in 0.6s ease forwards;
+}

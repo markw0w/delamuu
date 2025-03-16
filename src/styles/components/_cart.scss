@@ -1,0 +1,75 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+
+.cart{
+    .cart-count {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: $brandColor;
+        color: $lightFontColor;
+        font-weight: $superBold;
+        border-radius: 50%;
+        @include sizes(25px,25px);
+        @include displayFlex();
+        font-size: $sm;
+      }
+}
+.cart-modal{
+    position: fixed;
+    bottom: 0px;
+    @include sizes($height:35%);
+    z-index: 1000000;
+    background-image: $light-BackgroundImage;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    box-shadow: $shadow;
+    @include displayFlex();
+    animation: cart-slide-in 1s ease forwards;
+
+    .cart-content{
+        @include sizes();
+        @include displayFlex();
+        position: relative;
+
+        .close-button{
+            @include buttonDesign($width: 40px);
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        h2{
+            position: absolute;
+            top: 20px;
+            color: $brandColor;
+            font-weight: $superBold;
+        }
+        ul{
+            @include sizes();
+            margin-top: 50px;
+            @include displayFlex();
+            padding: 5px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            display: block;
+
+            li{
+                list-style: none;
+                @include sizes($height:50px);
+                @include displayFlex($flexDirection:row, $justifyContent: space-between);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.322);
+
+                .order-summary{
+                    @include sizes();
+                    @include displayFlex();
+                    align-items: flex-start;
+                }
+                .delete-button{
+                    @include buttonDesign($width: 40px, $height: 40px);
+                    background-image: none;
+                }
+            }
+        }
+    }
+}

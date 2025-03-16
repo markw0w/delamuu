@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { CartProvider } from "./utils/CartContext";
 import HomeView from './views/HomeView';
 import OrderView from './views/OrderView';
 import ScrollToTop from "./utils/ScrollToTop";
@@ -9,18 +10,20 @@ import Cart from "./utils/Cart";
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop/>
-      <HeaderComponent />
-      <Cart/>
-        <main>
-          <Routes id="routes">
-            <Route id="route" path="/" element={<HomeView/>}/>
-            <Route path="/order/:product" element={<OrderView />} />
-          </Routes>
-        </main>
-      <FooterComponent />
-    </Router>
+    <CartProvider>
+      <Router>
+        <ScrollToTop/>
+        <HeaderComponent />
+        <Cart/>
+          <main>
+            <Routes id="routes">
+              <Route id="route" path="/" element={<HomeView/>}/>
+              <Route path="/order/:product" element={<OrderView />} />
+            </Routes>
+          </main>
+        <FooterComponent />
+      </Router>
+    </CartProvider>
   );
 }
 

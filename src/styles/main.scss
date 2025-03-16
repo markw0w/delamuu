@@ -14,6 +14,8 @@
 @use './components/products/yogurComponent';
 @use './components/carouselComponent';
 @use './components/form/formComponent';
+@use './components/cart';
+@use './components/alert';
 
 // Layouts
 @use './layouts/productComponent';
@@ -62,6 +64,7 @@ main {
     bottom: 20px;
     right: 10px;
     z-index: 20000;
+    cursor: pointer;
 }
 .cart.hidden {
     display: none; 
