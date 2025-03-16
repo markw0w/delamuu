@@ -6,7 +6,7 @@ function OrderView() {
     const { product } = useParams();
 
     return (
-        <section>
+        <section className="orderViewContainer">
             <ProductComponent activeModal={product} />
         </section>
     );

@@ -5,10 +5,11 @@ header {
     @include displayFlex($flexDirection:row, $justifyContent:space-between);
     @include sizes($height: 70px);
     padding: 10px;
-    z-index: 10000;
+    z-index: 50000;
     overflow: hidden;
     position: fixed;
     top: 0px;
+    background-image: $light-BackgroundImage;
 
     img{
         @include imgAsButtons($w: 70px, $h: auto);

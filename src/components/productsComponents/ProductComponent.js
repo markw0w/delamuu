@@ -6,7 +6,7 @@ import HeladoCombinadoComponent from './HeladoCombinadoComponent'
 
 function ProductComponent({ activeModal, setActiveModal }){
     return(
-        <section>
+        <section className="productComponentContainer">
             {activeModal === "yogur" && <YogurComponent onClose={() => setActiveModal("inicio")}/>}
             {activeModal === "helado" && <HeladoComponent onClose={() => setActiveModal("inicio")}/>}
             {activeModal === "azair" && <AzairComponent onClose={() => setActiveModal("inicio")}/>}

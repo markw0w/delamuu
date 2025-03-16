@@ -80,11 +80,6 @@
 
 // Parallax en scroll
 @media (prefers-reduced-motion: no-preference) {
-    body {
-        perspective: 1px;
-        overflow-x: hidden;
-    }
-
     .backgroundEffect {
         transform: translateY(calc(var(--scroll, 0) * 10px));
     }

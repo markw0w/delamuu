@@ -5,12 +5,14 @@ import OrderView from './views/OrderView';
 import ScrollToTop from "./utils/ScrollToTop";
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
+import Cart from "./utils/Cart";
 
 function App() {
   return (
-    <Router className="router">
+    <Router>
       <ScrollToTop/>
       <HeaderComponent />
+      <Cart/>
         <main>
           <Routes id="routes">
             <Route id="route" path="/" element={<HomeView/>}/>

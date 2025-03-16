@@ -20,7 +20,7 @@ function YogurComponent() {
                 Desliza para comenzar
             </h3>
 
-            <FormComponent/>
+            <FormComponent/>     
         </section>
     );
 }

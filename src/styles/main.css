@@ -12,7 +12,6 @@ html {
   flex-direction: column;
   align-items: center;
   scrollbar-width: none;
-  scroll-behavior: smooth;
 }
 
 footer {
@@ -95,10 +94,11 @@ header {
   width: 100%;
   height: 70px;
   padding: 10px;
-  z-index: 10000;
+  z-index: 50000;
   overflow: hidden;
   position: fixed;
   top: 0px;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 header img {
   width: 70px;
@@ -536,10 +536,6 @@ header .rightNavContainer #burguerMenuIcon {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  body {
-    perspective: 1px;
-    overflow-x: hidden;
-  }
   .backgroundEffect {
     transform: translateY(calc(var(--scroll, 0) * 10px));
   }
@@ -548,7 +544,7 @@ body {
   font-family: "Montserrat", sans-serif;
   background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: #2c2c2c;
   display: flex;
   justify-content: space-between;
@@ -580,4 +576,29 @@ main .fatherContainer {
   flex-direction: column;
   align-items: center;
   gap: 25px;
+}
+
+.cart {
+  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  position: fixed !important;
+  bottom: 20px;
+  right: 10px;
+  z-index: 20000;
+}
+
+.cart.hidden {
+  display: none;
+}
+
+.cart.visible {
+  display: block;
 }/*# sourceMappingURL=main.css.map */
