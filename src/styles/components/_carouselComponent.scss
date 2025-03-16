@@ -1,0 +1,51 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+
+.carousel {
+    @include sizes(95%); 
+    position: relative;
+
+    .carousel-wrapper {
+        @include sizes();
+        @include displayFlex();
+        overflow: hidden;
+        position: relative;
+
+        .carousel-images {
+            @include displayFlex($flexDirection:row);
+            justify-content: flex-start;
+            transition: transform 0.5s ease-in-out; 
+            @include sizes();
+        }
+
+        .carousel-image {
+            @include sizes($width: 100%);
+            object-fit: cover; 
+            flex-shrink: 0; 
+            border-radius: 10px;
+        }
+    }
+
+    button {
+        cursor: pointer;
+        border: 0px;
+        box-shadow: $shadow;
+        border-radius: 50%; 
+        background-image: $secondary-Normal-BackgroundImage; 
+        color: $lightFontColor; 
+        position: absolute;
+        top: 50%;
+        z-index: 10000;
+        font-size: 25px;
+        transform: translateY(-50%) rotate(0deg);
+        @include displayFlex();
+        @include sizes(50px,50px);
+    }
+    .prev-button {
+        left: -10px; 
+    }
+    .next-button {
+        right: -10px; 
+    }
+}

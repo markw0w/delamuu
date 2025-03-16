@@ -5,4 +5,5 @@ html{
     @include sizes();
     @include displayFlex();
     scrollbar-width: none;
+    scroll-behavior: smooth;
 }

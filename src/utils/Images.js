@@ -2,11 +2,12 @@
 // Luego las llamamos desde el JSON
 // Importamos
 // Imports: UI Icons
-import BurguerMenu from '../assets/ui-icons/burguer-menu.png';
+
 
 // Imports: LOGO & Delamuu
 import LogoShortLight from '../assets/delamuu-logos/logo-short-light.png';
 import LogoShortDark from '../assets/delamuu-logos/logo-short-dark.png';
+import LogoLongTransparent from '../assets/delamuu-logos/logo-long-transparent.png';
 
 // Imports: Productos
 import HeladoPrincipal from '../assets/products/helado-principal.png';
@@ -20,16 +21,20 @@ import YogurEffect from '../assets/others/yogur.png';
 import ArandanosEffect from '../assets/others/strawberries.png';
 import StrawberriesEffect from '../assets/others/frutillas.png';
 
+// Imports: Social Media
+import InstagramLogo from '../assets/social-media/ig.png'
+import WhatsappLogo from '../assets/social-media/wp.png'
+import FacebookLogo from '../assets/social-media/fb.png'
+
 // JSON a exportar
 // UI Icons
-export const uiIcons = {
-    burguerMenuIcon: BurguerMenu,
-}
+
 
 // Logos
 export const logos = {
     shortLight: LogoShortLight,
     shortDark: LogoShortDark,
+    logoLogTrans: LogoLongTransparent,
 }
 
 // Productos
@@ -46,5 +51,12 @@ export const effects = {
     arandanos: ArandanosEffect,
     strawberries: StrawberriesEffect,
     yogurEffect: YogurEffect,
+}
+
+// Redes sociales
+export const socialMedia = {
+    fb: FacebookLogo,
+    ig: InstagramLogo,
+    wp: WhatsappLogo,
 }
 

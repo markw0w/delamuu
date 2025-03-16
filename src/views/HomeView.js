@@ -1,8 +1,19 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import { products, effects } from "../utils/Images";
+import { products, logos } from "../utils/Images";
 
 function HomeView() {
+    const [scrollY, setScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <section className="fatherContainer">
             <section className="presentationContainer">
@@ -10,12 +21,19 @@ function HomeView() {
                 <img className="principalIceCream" src={products.heladoPrincipal} alt="Helado Principal" />
 
                 {/* EFECTOS FONDO */}
-                <img className="backgroundEffect backgroundEffect-1" src={effects.arandanos} alt="Frutilla y/o arándano flotando"/>
-                <img className="backgroundEffect backgroundEffect-2" src={effects.arandanos} alt="Frutilla y/o arándano flotando"/>
-                <img className="backgroundEffect backgroundEffect-3" src={effects.arandanos} alt="Frutilla y/o arándano flotando"/>
-                <img className="backgroundEffect backgroundEffect-4" src={effects.strawberries} alt="Frutilla y/o arándano flotando"/>
-                <img className="backgroundEffect backgroundEffect-5" src={effects.strawberries} alt="Frutilla y/o arándano flotando"/>
-                <img className="backgroundEffect backgroundEffect-6" src={effects.strawberries} alt="Frutilla y/o arándano flotando"/>
+                <img
+                    className="backgroundEffect backgroundEffect-1"
+                    src={logos.shortDark}
+                    alt="Logo Delamuu"
+                    style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+                />
+
+                <img
+                    className="backgroundEffect backgroundEffect-6"
+                    src={logos.shortDark}
+                    alt="Logo Delamuu"
+                    style={{ transform: `translateY(-${scrollY * 0.7}px)` }}
+                />
             </section>
 
             <section className="productContainer">

@@ -10,6 +10,12 @@
 // Componentes
 @use './components/footerComponent';
 @use './components/headerComponent';
+@use './components/menuBurguerComponent';
+@use './components/products/yogurComponent';
+@use './components/carouselComponent';
+
+// Layouts
+@use './layouts/productComponent';
 
 // Vistas
 @use './pages/homeView';
