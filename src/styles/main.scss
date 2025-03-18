@@ -4,7 +4,6 @@
 @use './utils/vars' as *;       
 @use './utils/mixins' as *;
 @use './utils/typography' as *;
-@use './base/reset';
 @use './base/base';
 
 // Componentes
@@ -23,32 +22,18 @@
 // Vistas
 @use './pages/homeView';
 
-// Body general
-body {
-    font-family: $montserratFont;
-    background: $light-BackgroundImage;
-    background-size: cover;
-    background-attachment: scroll; 
-    color: $darkFontColor;
-    @include displayFlex($justifyContent: space-between);
-    @include sizes();
-}
-
-// ROOT del index.js
-#root{
-    @include sizes();
-}
-
-// Main general
 main {
-    @include sizes($height: 2700px);
-    @include displayFlex();
-    justify-content: flex-start;
-
-    .fatherContainer{
-        @include sizes();
-        @include displayFlex();
-        gap: 25px;
+    width: 100%;
+    min-height: 100%;
+    flex-grow: 1;
+    margin-top: 65px;
+    @include displayFlex($justifyContent: flex-start);
+  
+    .fatherContainer {
+      width: 100%; 
+      flex-grow: 1;
+      @include displayFlex($justifyContent: flex-start);
+      gap: 25px;
     }
 }
 

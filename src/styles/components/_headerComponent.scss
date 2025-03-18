@@ -5,6 +5,7 @@ header {
     @include displayFlex($flexDirection:row, $justifyContent:space-between);
     @include sizes($height: 70px);
     padding: 10px;
+    padding-left: 25px;
     z-index: 50000;
     overflow: hidden;
     position: fixed;
@@ -12,7 +13,7 @@ header {
     background-image: $light-BackgroundImage;
 
     img{
-        @include imgAsButtons($w: 70px, $h: auto);
+        @include imgAsButtons($w: 40px, $h: auto);
     }
     .rightNavContainer{
         @include sizes(60%);

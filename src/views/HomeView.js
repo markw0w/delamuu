@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
-import { products, logos } from "../utils/Images";
+import { products, logos, effects } from "../utils/Images";
 
 function HomeView() {
     const [scrollY, setScrollY] = useState(0);
@@ -16,11 +16,87 @@ function HomeView() {
 
     return (
         <section className="fatherContainer">
-            <section className="presentationContainer">
-                <h1>Heladería y yogures en Junín, Bs. As.</h1>
-                <img className="principalIceCream" src={products.heladoPrincipal} alt="Helado Principal" />
+            <section className="introductionContainer">
+                    <h1>Helados artesanales, yogures, açaí (azaí) y helados combinados en Junín, Buenos Aires</h1>
+                    <h2><img src={logos.shortDark} alt="Helado Principal" />Delamuu</h2>
+            </section>
+            
+            <section className="animatedImgContainer">
+                <img className="animatedImg animatedImg1" src={effects.yogur} alt="Img1"/>
+                <img className="animatedImg animatedImg2" src={effects.iceCream} alt="Img1"/>
+                <img className="animatedImg animatedImg3" src={effects.azai} alt="Img1"/>
+                <img className="animatedImg animatedImg4" src={effects.candy} alt="Img1"/>
+            </section>
 
-                {/* EFECTOS FONDO */}
+            <section className="presentationContainer">
+                <article className="informationContainer">
+                    <div className="titleInformation">
+                        <h2>Helados, yogures, candy y açaí <br></br> Sabores artesanales únicos e irresistibles.</h2>
+                    </div>
+                    <div className="cardsContainer">
+                        <div>
+                            <span>
+                                +30
+                            </span>
+                            <span>
+                                Toppings
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                +20
+                            </span>
+                            <span>
+                                Salsas
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                +45
+                            </span>
+                            <span>
+                                Gustos
+                            </span>
+                        </div>
+                    </div>
+                </article>
+
+                <div className="allProductsContainer">
+                    <article className="productContainer">
+                        <h2>Yogures</h2>
+                        <img className="principalIceCream" src={products.yogur5} alt="Helado Principal" />
+                        <Link className="productLink" to="/order/yogur">
+                            <button>Quiero pedir</button>
+                        </Link>
+                    </article>
+
+                    <article className="productContainer">
+                        <h2>Helados Artesanales</h2>
+                        <img className="principalIceCream" src={products.yogur4} alt="Helado Principal" />
+                        <Link className="productLink" to="/order/helado">
+                            <button>Quiero pedir</button>
+                        </Link>
+                    </article>
+
+                    <article className="productContainer">
+                        <h2>Açaí</h2>
+                        <img className="principalIceCream" src={products.yogur1} alt="Helado Principal" />
+                        <Link className="productLink" to="/order/azai">
+                            <button>Quiero pedir</button>
+                        </Link>
+                    </article>
+
+                    <article className="productContainer">
+                        <h2>Candy</h2>
+                        <img className="principalIceCream" src={products.yogur6} alt="Helado Principal" />
+                        <Link className="productLink" to="/order/candy">
+                            <button>Quiero pedir</button>
+                        </Link>
+                    </article>
+                </div>
+
+
+                {/* PARALLAX FONDO */}
                 <img
                     className="backgroundEffect backgroundEffect-1"
                     src={logos.shortDark}
@@ -34,38 +110,6 @@ function HomeView() {
                     alt="Logo Delamuu"
                     style={{ transform: `translateY(-${scrollY * 0.7}px)` }}
                 />
-            </section>
-
-            <section className="productContainer">
-                <h2>Yogur</h2>
-                <img className="principalIceCream" src={products.yogur5} alt="Helado Principal" />
-                <Link className="productLink" to="/order/yogur">
-                    <button>Quiero pedir</button>
-                </Link>
-            </section>
-
-            <section className="productContainer">
-                <h2>Helado</h2>
-                <img className="principalIceCream" src={products.yogur4} alt="Helado Principal" />
-                <Link className="productLink" to="/order/helado">
-                    <button>Quiero pedir</button>
-                </Link>
-            </section>
-
-            <section className="productContainer">
-                <h2>Azair</h2>
-                <img className="principalIceCream" src={products.yogur1} alt="Helado Principal" />
-                <Link className="productLink" to="/order/azair">
-                    <button>Quiero pedir</button>
-                </Link>
-            </section>
-
-            <section className="productContainer">
-                <h2>Helado combinado</h2>
-                <img className="principalIceCream" src={products.yogur6} alt="Helado Principal" />
-                <Link className="productLink" to="/order/helado-combinado">
-                    <button>Quiero pedir</button>
-                </Link>
             </section>
         </section>
     );

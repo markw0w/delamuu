@@ -3,6 +3,9 @@
 // Importamos
 // Imports: UI Icons
 
+// Imports: Local
+import Local1 from '../assets/store/2.jpg' 
+import Local2 from '../assets/store/local.jpg' 
 
 // Imports: LOGO & Delamuu
 import LogoShortLight from '../assets/delamuu-logos/logo-short-light.png';
@@ -10,16 +13,18 @@ import LogoShortDark from '../assets/delamuu-logos/logo-short-dark.png';
 import LogoLongTransparent from '../assets/delamuu-logos/logo-long-transparent.png';
 
 // Imports: Productos
-import HeladoPrincipal from '../assets/products/helado-principal.png';
 import Yogur5 from '../assets/products/yogur-5.jpg';
 import Yogur4 from '../assets/products/yogur-4.jpg';
 import Yogur1 from '../assets/products/yogur-1.jpg';
 import Yogur6 from '../assets/products/yogur-6.jpg';
 
 // Imports: Efectos fondo
-import YogurEffect from '../assets/others/yogur.png';
 import ArandanosEffect from '../assets/others/strawberries.png';
 import StrawberriesEffect from '../assets/others/frutillas.png';
+import YogurEffect from '../assets/others/helado-principal.png';
+import AzaiEffect from '../assets/others/azai.png';
+import IceCreamEffect from '../assets/others/iceCream.png';
+import CandyEffect from '../assets/others/candy.png';
 
 // Imports: Social Media
 import InstagramLogo from '../assets/social-media/ig.png'
@@ -39,7 +44,6 @@ export const logos = {
 
 // Productos
 export const products = {
-    heladoPrincipal: HeladoPrincipal,
     yogur5: Yogur5,
     yogur4: Yogur4,
     yogur1: Yogur1,
@@ -50,7 +54,10 @@ export const products = {
 export const effects = {
     arandanos: ArandanosEffect,
     strawberries: StrawberriesEffect,
-    yogurEffect: YogurEffect,
+    yogur: YogurEffect,
+    candy: CandyEffect,
+    iceCream: IceCreamEffect,
+    azai: AzaiEffect,
 }
 
 // Redes sociales
@@ -58,5 +65,11 @@ export const socialMedia = {
     fb: FacebookLogo,
     ig: InstagramLogo,
     wp: WhatsappLogo,
+}
+
+// Local
+export const local = {
+    local1: Local1,
+    local2: Local2,
 }
 

@@ -1,18 +1,16 @@
 @charset "UTF-8";
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-html {
+html, body, #root {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: center;
-  scrollbar-width: none;
+  font-family: "Montserrat", sans-serif;
 }
 
 footer {
@@ -95,6 +93,7 @@ header {
   width: 100%;
   height: 70px;
   padding: 10px;
+  padding-left: 25px;
   z-index: 50000;
   overflow: hidden;
   position: fixed;
@@ -102,7 +101,7 @@ header {
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 header img {
-  width: 70px;
+  width: 40px;
   height: auto;
   cursor: pointer;
   background-color: transparent;
@@ -153,26 +152,6 @@ header .rightNavContainer #burguerMenuIcon {
     transform: translateY(0px);
   }
 }
-@keyframes zoomContent {
-  0% {
-    opacity: 0;
-    scale: 25%;
-  }
-  100% {
-    opacity: 1;
-    scale: 100%;
-  }
-}
-@keyframes zoomContent-out {
-  0% {
-    opacity: 1;
-    scale: 100%;
-  }
-  100% {
-    opacity: 0.7;
-    scale: 0%;
-  }
-}
 @keyframes slide-in-image {
   0% {
     transform: rotate(-55deg) translateX(-1500px);
@@ -219,6 +198,66 @@ header .rightNavContainer #burguerMenuIcon {
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+@keyframes animatedImg1 {
+  0% {
+    transform: translateX(-1300px) translateY(-400px) rotate(120deg);
+  }
+  100% {
+    transform: translateX(140px) translateY(0px) rotate(-5deg);
+  }
+}
+@keyframes animatedImg2 {
+  0% {
+    transform: translateX(1300px) translateY(-400px) rotate(-120deg);
+  }
+  100% {
+    transform: translateX(0px) translateY(-50px) rotate(0deg);
+  }
+}
+@keyframes animatedImg3 {
+  0% {
+    transform: translateX(-1300px) translateY(-400px) rotate(120deg);
+  }
+  100% {
+    transform: translateX(-80px) translateY(70px) rotate(0deg);
+  }
+}
+@keyframes animatedImg4 {
+  0% {
+    transform: translateX(1300px) translateY(-400px) rotate(-120deg);
+  }
+  100% {
+    transform: translateX(-200px) translateY(-40px) rotate(-10deg);
+  }
+}
+@keyframes text-entry {
+  0% {
+    transform: translateX(1300px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes zoomContent {
+  0% {
+    opacity: 0;
+    scale: 25%;
+  }
+  100% {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+@keyframes zoomContent-out {
+  0% {
+    opacity: 1;
+    scale: 100%;
+  }
+  100% {
+    opacity: 0.7;
+    scale: 0%;
   }
 }
 .base-burguerMenuContainer {
@@ -653,6 +692,97 @@ header .rightNavContainer #burguerMenuIcon {
   margin-bottom: 25px;
 }
 
+.introductionContainer {
+  background: url("../assets/store/local.jpg");
+  background-position: bottom center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.introductionContainer h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+.introductionContainer h2 {
+  width: 80%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+  z-index: 1000;
+  animation: slide-in-text 3s ease forwards;
+  border-radius: 10px;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  padding: 10px;
+  margin-bottom: 100px;
+  color: #92a6d8;
+  gap: 10px;
+}
+@media (min-width: 768px) {
+  .introductionContainer h2 {
+    width: 20%;
+  }
+}
+.introductionContainer h2 img {
+  width: auto;
+  height: 100%;
+}
+
+.animatedImgContainer {
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+.animatedImgContainer .animatedImg {
+  view-timeline-name: --imgEntry;
+  view-timeline-axis: block;
+  animation-timeline: --imgEntry;
+  animation-range: entry 5% cover 50%;
+  animation-fill-mode: both;
+  filter: drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.384));
+}
+.animatedImgContainer .animatedImg4 {
+  width: auto;
+  height: 70%;
+  animation-name: animatedImg4;
+  z-index: 9999;
+}
+.animatedImgContainer .animatedImg3 {
+  width: auto;
+  height: 60%;
+  animation-name: animatedImg3;
+  z-index: 10000;
+}
+.animatedImgContainer .animatedImg2 {
+  width: auto;
+  height: 80%;
+  animation-name: animatedImg2;
+  z-index: 9999;
+}
+.animatedImgContainer .animatedImg1 {
+  width: auto;
+  height: 150%;
+  animation-name: animatedImg1;
+  z-index: 10000;
+}
+
 .presentationContainer {
   width: 100%;
   height: 100%;
@@ -661,55 +791,114 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin-top: 70px;
 }
-.presentationContainer h1 {
-  width: 95%;
-  height: 150px;
+.presentationContainer .informationContainer {
+  width: 100%;
+  height: 250px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-size: 34px;
+}
+@media (min-width: 1024px) {
+  .presentationContainer .informationContainer {
+    width: 90%;
+    height: 250px;
+  }
+}
+.presentationContainer .informationContainer .titleInformation {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.presentationContainer .informationContainer .titleInformation h2 {
   font-weight: 800;
+  font-size: 24px;
+  color: #4b57f5;
+  width: 95%;
+  height: 150px;
   text-align: center;
-  z-index: 1000;
-  animation: slide-in-text 3s ease forwards;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  view-timeline-name: --txtEntry;
+  view-timeline-axis: block;
+  animation-timeline: --txtEntry;
+  animation-range: entry 0% cover 40%;
+  animation-fill-mode: both;
+  animation-name: text-entry;
 }
-.presentationContainer .principalIceCream {
-  width: 80%;
-  height: auto;
-  margin-top: -100px;
-  z-index: 999;
-  animation: slide-in-image 1.5s ease forwards;
-  filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.308));
+@media (min-width: 1024px) {
+  .presentationContainer .informationContainer .titleInformation h2 {
+    font-size: 45px;
+    width: 80%;
+  }
 }
-.presentationContainer .backgroundEffect {
-  position: absolute;
-  width: 160px;
-  height: auto;
-  filter: blur(2px);
-  transition: transform 0.1s ease-out;
+.presentationContainer .informationContainer .cardsContainer {
+  width: 90%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
 }
-.presentationContainer .backgroundEffect-1 {
-  top: 10%;
-  left: 5%;
+@media (min-width: 1024px) {
+  .presentationContainer .informationContainer .cardsContainer {
+    width: 50%;
+    height: 100px;
+    justify-content: space-between;
+  }
 }
-.presentationContainer .backgroundEffect-6 {
-  top: 80%;
-  right: 5%;
+.presentationContainer .informationContainer .cardsContainer div {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
-
-.productContainer {
-  view-timeline-name: --test;
+.presentationContainer .informationContainer .cardsContainer div span {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-weight: 800;
+  align-items: flex-start;
+  color: #2c2c2c;
+}
+.presentationContainer .informationContainer .cardsContainer div span:first-child {
+  color: #92a6d8;
+  font-size: 45px;
+}
+.presentationContainer .allProductsContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+.presentationContainer .allProductsContainer .productContainer {
+  view-timeline-name: --effect;
   view-timeline-axis: block;
   background-color: azure;
-  animation-timeline: --test;
+  animation-timeline: --effect;
   animation-name: zoomContent;
   animation-range: entry 25% cover 50%;
   animation-fill-mode: both;
-  width: 95%;
-  height: 100%;
+  width: 350px;
+  height: 400px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -720,16 +909,24 @@ header .rightNavContainer #burguerMenuIcon {
   box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
   margin-bottom: 25px;
 }
-.productContainer h2 {
+.presentationContainer .allProductsContainer .productContainer h2 {
   z-index: 1000;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #92a6d8;
+  position: absolute;
+  top: 25px;
 }
-.productContainer img {
+.presentationContainer .allProductsContainer .productContainer img {
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 999;
 }
-.productContainer .productLink {
+.presentationContainer .allProductsContainer .productContainer .productLink {
   z-index: 1000;
   text-decoration: none;
   position: absolute;
@@ -741,7 +938,7 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: column;
   align-items: center;
 }
-.productContainer .productLink button {
+.presentationContainer .allProductsContainer .productContainer .productLink button {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
@@ -758,45 +955,42 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
   font-size: 22px;
 }
+.presentationContainer .backgroundEffect {
+  position: absolute;
+  width: 70px;
+  height: auto;
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+}
+.presentationContainer .backgroundEffect-1 {
+  top: 10%;
+  left: 5%;
+}
+.presentationContainer .backgroundEffect-6 {
+  top: 80%;
+  right: 5%;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .backgroundEffect {
     transform: translateY(calc(var(--scroll, 0) * 10px));
   }
 }
-body {
-  font-family: "Montserrat", sans-serif;
-  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-  background-size: cover;
-  background-attachment: scroll;
-  color: #2c2c2c;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-#root {
-  width: 100%;
-  height: 100%;
-}
-
 main {
   width: 100%;
-  height: 2700px;
+  min-height: 100%;
+  flex-grow: 1;
+  margin-top: 65px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
 }
 main .fatherContainer {
   width: 100%;
-  height: 100%;
+  flex-grow: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   gap: 25px;

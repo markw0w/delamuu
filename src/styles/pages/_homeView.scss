@@ -2,79 +2,222 @@
 @use '../utils/mixins' as *;
 @use '../utils/typography' as *;
 @use '../utils/animations' as *;
+@use '../utils/breakpoints' as *;
+
+
+.introductionContainer{
+    background: url('../assets/store/local.jpg');
+    background-position: bottom center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 100vh;
+    @include displayFlex();
+    //justify-content: flex-end;
+
+    h1 {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+    }
+
+    h2{
+        @include sizes(80%,$height: 100px);
+        @include displayFlex($flexDirection:row);
+        font-size: 40px;
+        font-weight: $superBold;
+        text-align: center;
+        z-index: 1000;
+        animation: slide-in-text 3s ease forwards;
+        border-radius: 10px;
+        background-image: $light-BackgroundImage;
+        padding: 10px;
+        margin-bottom: 100px;
+        color: $brandColor;
+        gap: 10px;
+
+        @include breakpoint(small){
+            width: 20%;
+        }
+
+        img{
+            @include sizes(auto,100%);
+        }
+    }
+}
+
+.animatedImgContainer{
+    @include sizes($height: 250px);
+    @include displayFlex($flexDirection:row);
+    
+    .animatedImg{
+        view-timeline-name: --imgEntry;
+        view-timeline-axis: block;
+        animation-timeline: --imgEntry;
+        animation-range: entry 5% cover 50%;
+        animation-fill-mode: both;
+        filter: drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.384));
+    }
+    .animatedImg4{
+        @include sizes(auto,70%);
+        animation-name: animatedImg4;
+        z-index: 9999;
+    }
+    .animatedImg3{
+        @include sizes(auto,60%);
+        animation-name: animatedImg3;
+        z-index: 10000;
+    }
+    .animatedImg2{
+        @include sizes(auto,80%);
+        animation-name: animatedImg2;
+        z-index: 9999;
+    }
+    .animatedImg1{
+        @include sizes(auto,150%);
+        animation-name: animatedImg1;
+        z-index: 10000;
+    }
+}
 
 .presentationContainer{
     @include sizes();
     @include displayFlex($justifyContent: flex-start);
     position: relative;
-    margin-top: 70px;
 
-    h1{
-        @include sizes(95%,$height: 150px);
+    .informationContainer{
+        @include sizes(100%, 250px);
         @include displayFlex();
-        font-size: 34px;
-        font-weight: $superBold;
-        text-align: center;
-        z-index: 1000;
-        animation: slide-in-text 3s ease forwards;
+
+        @include breakpoint(medium){
+            @include sizes(90%, 250px);
+        }
+
+        .titleInformation{
+            @include sizes();
+            @include displayFlex();
+            
+            h2{
+                font-weight: $superBold;
+                font-size: 24px;
+                color: #4b57f5;
+                @include sizes(95%,150px);
+                text-align: center;
+                @include displayFlex();
+
+                view-timeline-name: --txtEntry;
+                view-timeline-axis: block;
+                animation-timeline: --txtEntry;
+                animation-range: entry 0% cover 40%;
+                animation-fill-mode: both;
+                animation-name: text-entry;
+
+                @include breakpoint(medium){
+                    font-size: $extraLg;
+                    width: 80%;
+                }
+            }
+        }
+        
+        .cardsContainer{
+            @include sizes(90%, 50%);
+            @include displayFlex($flexDirection:row);
+            flex-wrap: wrap;
+            gap: 25px;
+
+            @include breakpoint(medium){
+                @include sizes(50%, 100px);
+                justify-content: space-between;
+            }
+
+            div{
+                @include sizes(100px);
+                @include displayFlex();
+
+                span{
+                    @include sizes($height: 30px);
+                    @include displayFlex();
+                    gap: 5px;
+                    font-weight: $superBold;
+                    align-items: flex-start;
+                    color: $darkFontColor;
+                }
+                span:first-child{
+                    color: $brandColor;
+                    font-size: $extraLg;
+                }
+            }
+
+        }
     }
-    .principalIceCream{
-        @include sizes(80%,auto);
-        margin-top: -100px;
-        z-index: 999;
-        animation: slide-in-image 1.5s ease forwards;
-        filter: drop-shadow(0px 15px 10px rgba(0, 0, 0, 0.308));
+
+    .allProductsContainer{
+        @include sizes();
+        @include displayFlex($flexDirection:row);
+        flex-wrap: wrap;
+        gap: 25px;
+    
+        .productContainer{
+            view-timeline-name: --effect;
+            view-timeline-axis: block;
+            background-color: azure;
+            animation-timeline: --effect;
+            animation-name: zoomContent;
+            animation-range: entry 25% cover 50%;
+            animation-fill-mode: both;
+            @include sizes(350px,400px);
+            @include displayFlex();
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: $shadow;
+            margin-bottom: 25px;
+        
+            h2{
+                z-index: 1000;
+                background-image: $light-BackgroundImage;
+                padding: 5px;
+                border-radius: 5px;
+                font-size: $lg;
+                font-weight: $superBold;
+                color: $brandColor;
+                position: absolute;
+                top: 25px;
+            }
+            img{
+                position: absolute;
+                @include sizes();
+                z-index: 999;
+            }
+            .productLink{
+                z-index: 1000;
+                text-decoration: none;
+                position: absolute;
+                bottom: 10px;
+                @include sizes($height: 100px);
+                @include displayFlex();
+        
+                button{
+                    @include buttonDesign($width: 50%);
+                    font-size: $lg;
+                }
+            }
+        }
     }
 
     .backgroundEffect {
         position: absolute;
-        width: 160px; 
+        width: 70px; 
         height: auto;
-        filter: blur(2px);
         transition: transform 0.1s ease-out;
+        pointer-events: none;
     }
-    
     .backgroundEffect-1 { top: 10%; left: 5%; }
     .backgroundEffect-6 { top: 80%; right: 5%; }
-}
-
-.productContainer{
-    view-timeline-name: --test;
-    view-timeline-axis: block;
-    background-color: azure;
-    animation-timeline: --test;
-    animation-name: zoomContent;
-    animation-range: entry 25% cover 50%;
-    animation-fill-mode: both;
-    @include sizes(95%);
-    @include displayFlex();
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: $shadow;
-    margin-bottom: 25px;
-
-    h2{
-        z-index: 1000;
-    }
-    img{
-        position: absolute;
-        @include sizes();
-        z-index: 999;
-    }
-    .productLink{
-        z-index: 1000;
-        text-decoration: none;
-        position: absolute;
-        bottom: 10px;
-        @include sizes($height: 100px);
-        @include displayFlex();
-
-        button{
-            @include buttonDesign($width: 50%);
-            font-size: $lg;
-        }
-    }
 }
 
 

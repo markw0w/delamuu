@@ -1,21 +1,11 @@
 @use '../utils/vars' as *;
 @use '../utils/mixins' as *;
 
+// Efecto flotando
 @keyframes floating{
     0%{transform: translateY(0px);}
     50%{transform: translateY(20px);}
     100%{transform: translateY(0px);}
-}
-
-// Zoom contenido
-@keyframes zoomContent {
-    0%{opacity: 0; scale: 25%;}
-    100%{opacity: 1; scale: 100%;}
-}
-// Zoom contenido (reversa)
-@keyframes zoomContent-out {
-    0%{opacity: 1; scale: 100%;}
-    100%{opacity: 0.7; scale: 0%;}
 }
 
 // Deslizamiento de imagen y texto principal
@@ -50,6 +40,42 @@
 @keyframes alert-slide-in {
     0%{transform: translateX(100%);}
     100%{transform: translateX(-50%);}
+}
+
+// EFFECTS ENTRIES
+// Img Entry Effect
+@keyframes animatedImg1{
+    0%{transform: translateX(-1300px) translateY(-400px) rotate(120deg);}
+    100%{transform: translateX(140px) translateY(0px) rotate(-5deg);}
+}
+@keyframes animatedImg2{
+    0%{transform: translateX(1300px) translateY(-400px) rotate(-120deg);}
+    100%{transform: translateX(0px) translateY(-50px) rotate(0deg);}
+}
+@keyframes animatedImg3{
+    0%{transform: translateX(-1300px) translateY(-400px) rotate(120deg);}
+    100%{transform: translateX(-80px) translateY(70px) rotate(0deg);}
+}
+@keyframes animatedImg4{
+    0%{transform: translateX(1300px) translateY(-400px) rotate(-120deg);}
+    100%{transform: translateX(-200px) translateY(-40px) rotate(-10deg);}
+}
+
+// H2 Text Entry
+@keyframes text-entry{
+    0%{transform: translateX(1300px);}
+    100%{transform: translateX(0px);}
+}
+
+// Zoom contenido
+@keyframes zoomContent {
+    0%{opacity: 0; scale: 25%;}
+    100%{opacity: 1; scale: 100%;}
+}
+// Zoom contenido (reversa)
+@keyframes zoomContent-out {
+    0%{opacity: 1; scale: 100%;}
+    100%{opacity: 0.7; scale: 0%;}
 }
 
 
