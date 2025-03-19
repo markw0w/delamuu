@@ -3,7 +3,6 @@
 @use '../utils/typography' as *;
 
 .alertContainer{
-    background-color: #bcff9d;
     padding: 5px;
     border-radius: 5px;
     @include displayFlex();

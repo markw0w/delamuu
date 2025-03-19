@@ -112,9 +112,10 @@
                 view-timeline-name: --txtEntry;
                 view-timeline-axis: block;
                 animation-timeline: --txtEntry;
-                animation-range: entry 0% cover 40%;
-                animation-fill-mode: both;
+                animation-range: entry 0% cover 40% once;
+                animation-fill-mode:none;
                 animation-name: text-entry;
+                animation-play-state: running;
 
                 @include breakpoint(medium){
                     font-size: $extraLg;

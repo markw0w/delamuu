@@ -1,11 +1,18 @@
 import React from "react";
 
-function AlertComponent({message}){
-    return(
-        <div className="alertContainer">
-            <span>{message}</span>
-        </div>
-    )
-}
+const AlertComponent = ({ message }) => {
+  if (!message) return null;
+
+  const alertStyle =
+    message.type === "error"
+      ? { backgroundColor: "#ff9d9d", color: "black" } 
+      : { backgroundColor: "#bcff9d", color: "black" }; 
+
+  return (
+    <div className="alertContainer" style={{ ...alertStyle}}>
+      {message.text}
+    </div>
+  );
+};
 
 export default AlertComponent;

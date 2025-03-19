@@ -1,49 +1,35 @@
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { forwardRef, useImperativeHandle, useState, useEffect } from "react";
 
-const ChoosePackage = forwardRef(({ options }, ref) => {
-  const [gramaje, setGramaje] = useState(() => {
-    const storedOrder = JSON.parse(localStorage.getItem("currentOrder"));
-    return storedOrder?.gramaje || "";
-  });
+const ChoosePackage = forwardRef(({ options, onGramajeChange, selectedGramaje }, ref) => {
+  const [selected, setSelected] = useState(selectedGramaje || "1/4 kg");
 
-  const handleChange = (selectedGramaje) => {
-    setGramaje(selectedGramaje);
+  useEffect(() => {
+    setSelected(selectedGramaje); 
+  }, [selectedGramaje]);
 
-    const currentOrder = JSON.parse(localStorage.getItem("currentOrder")) || {};
-    currentOrder.gramaje = selectedGramaje;
-    localStorage.setItem("currentOrder", JSON.stringify(currentOrder));
+  const handleChange = (newGramaje) => {
+    setSelected(newGramaje);
+    onGramajeChange(newGramaje);
   };
 
-  // Define una función para reiniciar el estado desde el padre
   useImperativeHandle(ref, () => ({
-    resetSelection() {
-      setGramaje(""); // Reinicia el estado local
-      const currentOrder = JSON.parse(localStorage.getItem("currentOrder")) || {};
-      delete currentOrder.gramaje; // Elimina el gramaje del currentOrder
-      localStorage.setItem("currentOrder", JSON.stringify(currentOrder));
-    },
+    resetSelection: () => setSelected("1/4 kg"),
   }));
 
   return (
     <div className="choosePackageContainer">
-      <h3>Elige Gramaje</h3>
       {options.map((option) => (
         <label
           key={option.gramaje}
-          htmlFor={option.gramaje}
-          className={`packageOption ${
-            gramaje === option.gramaje ? "selected" : ""
-          }`}
+          className={`packageOption ${selected === option.gramaje ? "selected" : ""}`} 
+          onClick={() => handleChange(option.gramaje)}
         >
           <input
-            type="radio"
-            id={option.gramaje}
-            name="radioGroup"
-            value={option.gramaje}
-            checked={gramaje === option.gramaje}
-            onChange={() => handleChange(option.gramaje)}
+            type="checkbox"
+            checked={selected === option.gramaje}
+            readOnly 
           />
-          <span>{option.gramaje}</span>
+          {option.gramaje}
         </label>
       ))}
     </div>
