@@ -521,7 +521,7 @@ header .rightNavContainer #burguerMenuIcon {
   color: #f1f1f1;
 }
 .optionsContainer .optionsModal {
-  width: 320px;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -536,7 +536,6 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
 }
 .optionsContainer .optionsModal .optionsContent .categorySection {
   width: 100%;
@@ -546,6 +545,11 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: column;
   align-items: center;
   gap: 3px;
+  padding: 25px;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  padding-bottom: 80px;
 }
 .optionsContainer .optionsModal .optionsContent .categorySection h4 {
   font-size: 45px;
@@ -558,6 +562,22 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: flex-start;
   color: #f1f1f1;
   padding: 5px;
+}
+.optionsContainer .optionsModal .optionsContent .toppingsCategory {
+  background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  z-index: 10000;
+}
+.optionsContainer .optionsModal .optionsContent .saucesCategory {
+  background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+  z-index: 10001;
+  margin-top: -50px;
+}
+.optionsContainer .optionsModal .optionsContent .fruitsCategory {
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  z-index: 10002;
+  margin-top: -50px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
 }
 .optionsContainer .optionsModal .optionsContent label {
   width: 100%;
@@ -596,8 +616,8 @@ header .rightNavContainer #burguerMenuIcon {
 .optionsContainer .optionsModal .optionsContent input[type=checkbox]:checked::after {
   content: "";
   position: absolute;
-  top: -1px;
-  left: 4px;
+  top: 0px;
+  left: 5px;
   width: 6px;
   height: 12px;
   border: solid #f1f1f1;
@@ -614,6 +634,10 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: column;
   align-items: center;
   color: #4b57f5;
+  margin-top: 15px;
+}
+.optionsContainer .optionsModal .optionsContent .saveBtn {
+  margin-top: 15px;
 }
 
 .cart .cart-count {

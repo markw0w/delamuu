@@ -146,6 +146,7 @@ const CreateProduct = forwardRef(
               </div>
 
               <button
+                className="saveBtn"
                 type="button"
                 onClick={() => {
                   onSave(selectedToppings, selectedSauces, selectedFruits);
