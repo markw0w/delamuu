@@ -6,6 +6,7 @@
     padding: 5px;
     border-radius: 5px;
     @include displayFlex();
+    width: 300px;
     text-align: center;
     position: fixed;
     top: 10%; 

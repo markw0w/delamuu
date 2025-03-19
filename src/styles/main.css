@@ -740,6 +740,7 @@ header .rightNavContainer #burguerMenuIcon {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: 300px;
   text-align: center;
   position: fixed;
   top: 10%;
