@@ -11,6 +11,8 @@ function FormComponent() {
   const packageRef = useRef(null);
   const toppingsRef = useRef(null);
   const saucesRef = useRef(null);
+  const fruitsRef = useRef(null);
+  const priceRef = useRef(null);
 
   const [currentOrder, setCurrentOrder] = useState(() => {
     const storedOrder = JSON.parse(localStorage.getItem("currentOrder"));
@@ -20,16 +22,23 @@ function FormComponent() {
         toppings: [],
         sauces: [],
         fruits: [],
+        prices: [],
       }
     );
   });
 
-  // Separar opciones en categorías
   const GramajeOptions = [
     { gramaje: "1/4 kg" },
     { gramaje: "1/2 kg" },
     { gramaje: "3/4 kg" },
     { gramaje: "1 kg" },
+  ];
+
+  const packagePrices = [
+    { gramaje: "1/4 kg", price: "10000" },
+    { gramaje: "1/2 kg", price: "20000" },
+    { gramaje: "3/4 kg", price: "30000" },
+    { gramaje: "1 kg", price: "40000" },
   ];
 
   const toppingOptions = [
@@ -112,18 +121,26 @@ function FormComponent() {
     "1 kg": 5,
   };
 
-
-  const handleGramajeChange = (newGramaje) => {
+  const handleGramajeChange = (newGramaje,newPrice) => {
     setCurrentOrder((prevOrder) => ({
       ...prevOrder,
       gramaje: newGramaje,
       toppings: [],
-      sauce: [],
-      fruit: [],
+      sauces: [],
+      fruits: [],
     }));
 
     if (toppingsRef.current) toppingsRef.current.resetSelection();
     if (saucesRef.current) saucesRef.current.resetSelection();
+    if (fruitsRef.current) saucesRef.current.resetSelection();
+    if (priceRef.current) priceRef.current.resetSelection();
+  };
+
+  const handlePriceChange = (newPrice) => {
+    setCurrentOrder((prevOrder) => ({
+      ...prevOrder,
+      prices: [newPrice], 
+    }));
   };
 
   const handleSelectionChange = (newToppings, newSauces, newFruits) => {
@@ -157,34 +174,32 @@ function FormComponent() {
     const storedOrders = JSON.parse(localStorage.getItem("orders")) || [];
     const newOrder = { ...currentOrder };
 
-    // Validar que un gramaje esté seleccionado
     if (!currentOrder.gramaje) {
       showAlertMessage("Debes seleccionar un gramaje.", "error");
       return;
     }
 
-    // Validar que haya al menos un topping o salsa seleccionado
     const totalSelections =
-      currentOrder.toppings.length + currentOrder.sauces.length;
+      currentOrder.toppings.length + currentOrder.sauces.length + currentOrder.fruits.length;
     if (totalSelections === 0) {
       showAlertMessage(
-        "Debes seleccionar al menos un topping o salsa.",
+        "Debes seleccionar al menos un topping, salsa o fruta",
         "error"
       );
       return;
     }
 
-    // Agregar el pedido al carrito
     addOrder(newOrder);
     storedOrders.push(newOrder);
     localStorage.setItem("orders", JSON.stringify(storedOrders));
     showAlertMessage("Pedido agregado con éxito.", "success");
 
-    // Reiniciar el pedido
     const updatedOrder = {
       gramaje: "1/4 kg",
+      prices: [packagePrices[0]],
       toppings: [],
       sauces: [],
+      fruits: [],
     };
 
     localStorage.setItem("currentOrder", JSON.stringify(updatedOrder));
@@ -193,6 +208,8 @@ function FormComponent() {
     if (packageRef.current) packageRef.current.resetSelection();
     if (toppingsRef.current) toppingsRef.current.resetSelection();
     if (saucesRef.current) saucesRef.current.resetSelection();
+    if (fruitsRef.current) fruitsRef.current.resetSelection();
+    if (priceRef.current) priceRef.current.resetSelection();
   };
 
   useEffect(() => {
@@ -206,7 +223,10 @@ function FormComponent() {
         ref={packageRef}
         options={GramajeOptions}
         onGramajeChange={handleGramajeChange}
+        onPriceChange={handlePriceChange}
         selectedGramaje={currentOrder.gramaje}
+        selectedPrice={currentOrder.prices}
+        packagePrices={packagePrices}
       />
       <hr/>
       <h2 id="titleForm" className="titleStep-2">2. ¡Ármalo!</h2>

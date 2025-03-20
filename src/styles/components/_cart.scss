@@ -53,10 +53,12 @@
             overflow-y: scroll;
             overflow-x: hidden;
             display: block;
+            position: relative;
+            padding-bottom: 60px;
 
             li{
                 list-style: none;
-                @include sizes($height:50px);
+                @include sizes($height:120px);
                 @include displayFlex($flexDirection:row, $justifyContent: space-between);
                 border-bottom: 1px solid rgba(0, 0, 0, 0.322);
 
@@ -71,5 +73,22 @@
                 }
             }
         }
+    }
+    .totalCart{
+        @include sizes($height: 50px);
+        @include displayFlex($justifyContent: space-between, $flexDirection:row);
+        background-image: $secondary-Normal-BackgroundImage;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+        padding: 10px;
+        overflow: hidden;
+        color: $lightFontColor;
+        font-weight: $superBold;
+        font-size: $md;
+        padding-left: 25px;
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
     }
 }

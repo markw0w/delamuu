@@ -42,8 +42,11 @@
             border-radius: 5px;
             background-color: $lightFontColor; 
             cursor: pointer;
-            @include displayFlex(); 
+            @include displayFlex($justifyContent:space-between); 
             transition: background-color 0.3s ease; 
+            font-weight: $superBold;
+            font-family: $montserratFont;
+            font-size: $lg;
 
             &.selected {
             background-color: $brandColor;
@@ -51,6 +54,14 @@
 
             input {
             display: none; 
+            }
+
+            span{
+                font-size: $lg;
+                background-image: $secondary-Normal-BackgroundImage;
+                border-radius: 5px;
+                color: $lightFontColor;
+                padding: 3px;
             }
         }
     }
