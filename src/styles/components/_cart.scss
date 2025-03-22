@@ -90,5 +90,13 @@
         bottom: 0px;
         left: 0px;
         right: 0px;
+
+        .sendOrder{
+            @include buttonDesign($width: 40%, $height: 30px);
+            @include displayFlex($flexDirection:row);
+            background-image: $light-BackgroundImage;
+            color: $darkFontColor;
+            margin-right: 20px;
+        }
     }
 }

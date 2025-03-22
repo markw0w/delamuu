@@ -16,6 +16,7 @@
 @use './components/form/createProduct';
 @use './components/cart';
 @use './components/alert';
+@use './components/form/orderModal';
 
 // Layouts
 @use './layouts/productComponent';

@@ -22,7 +22,7 @@ function FormComponent() {
         toppings: [],
         sauces: [],
         fruits: [],
-        prices: [],
+        prices: "10000",
       }
     );
   });
@@ -125,6 +125,7 @@ function FormComponent() {
     setCurrentOrder((prevOrder) => ({
       ...prevOrder,
       gramaje: newGramaje,
+      prices: newPrice,
       toppings: [],
       sauces: [],
       fruits: [],
@@ -139,7 +140,7 @@ function FormComponent() {
   const handlePriceChange = (newPrice) => {
     setCurrentOrder((prevOrder) => ({
       ...prevOrder,
-      prices: [newPrice], 
+      prices: newPrice, 
     }));
   };
 
@@ -196,7 +197,7 @@ function FormComponent() {
 
     const updatedOrder = {
       gramaje: "1/4 kg",
-      prices: [packagePrices[0]],
+      prices: packagePrices[0].price,
       toppings: [],
       sauces: [],
       fruits: [],

@@ -5,8 +5,8 @@ const ChoosePackage = forwardRef(({ options, onGramajeChange, onPriceChange, sel
   const [priceSelected, setSelectedPrice] = useState(selectedPrice || packagePrices?.[0]?.price || "N/A");
 
   useEffect(() => {
-    // Verifica si el gramaje seleccionado tiene un precio, sino usa el primero de la lista
     const foundPrice = packagePrices?.find(pkg => pkg.gramaje === selectedGramaje)?.price || packagePrices?.[0]?.price || "N/A";
+
     setSelected(selectedGramaje || "1/4 kg");
     setSelectedPrice(foundPrice);
   }, [selectedGramaje, packagePrices]);
@@ -14,10 +14,10 @@ const ChoosePackage = forwardRef(({ options, onGramajeChange, onPriceChange, sel
   const handleChange = (newGramaje) => {
     setSelected(newGramaje);
 
-    // Buscar el precio correspondiente al gramaje seleccionado
-    const newPrice = packagePrices?.find(pkg => pkg.gramaje === newGramaje)?.price || "N/A";
+    const foundPackage = packagePrices?.find(pkg => pkg.gramaje === selectedGramaje);
+    const newPrice = foundPackage ? foundPackage.price : "N/A";
+  
     setSelectedPrice(newPrice);
-
     onGramajeChange(newGramaje);
     onPriceChange(newPrice);
   };
