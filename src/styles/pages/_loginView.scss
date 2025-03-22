@@ -1,0 +1,64 @@
+@use './../utils/vars' as *;       
+@use './../utils/mixins' as *;
+@use './../utils/typography' as *;
+
+.loginViewContainer {
+    top: 0;
+    left: 0;
+    @include sizes($height: 80vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999999;
+
+    .loginContent {
+        background-image: $light-BackgroundImage;
+        box-shadow: $shadow;
+        padding: 20px;
+        border-radius: 10px;
+        @include sizes(300px,280px);
+        text-align: center;
+        @include displayFlex($justifyContent: space-between);
+        gap: 5px;
+
+        h2{
+            font-size: 16px;
+            width: 100%;
+        }
+        label{
+            @include sizes($height:20px);
+            @include displayFlex();
+            align-items: flex-start;
+        }
+        input {
+            @include sizes($height:40px);
+            border-radius: 5px;
+            border: 1px solid black;
+            outline: none;
+            padding: 10px;
+            font-family: $montserratFont;
+        }
+        .modal-buttons {
+            width: 100%;
+            @include displayFlex($justifyContent: space-between, $flexDirection:row);
+            gap: 5px;
+        }
+    }
+    
+    .confirm, .cancel {
+        background: rgb(107, 204, 107);
+        color: white;
+        padding: 10px;
+        font-family: $montserratFont;
+        font-size: $sm;
+        border: none;
+        border-radius: 5px;
+        font-weight: $bold;
+        cursor: pointer;
+
+        &:disabled {
+            background-color: rgb(117, 117, 117);
+            cursor: not-allowed;
+        }
+    }
+}

@@ -292,9 +292,6 @@ header .rightNavContainer #burguerMenuIcon {
 }
 .base-burguerMenuContainer ul li {
   list-style: none;
-  color: #92a6d8;
-  font-size: 22px;
-  font-weight: 800;
   padding: 10px;
   cursor: pointer;
   border-bottom: 2px solid white;
@@ -305,6 +302,12 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: column;
   align-items: center;
   align-items: flex-start;
+}
+.base-burguerMenuContainer ul li .navLinks {
+  color: #92a6d8;
+  font-size: 22px;
+  font-weight: 800;
+  text-decoration: none;
 }
 .base-burguerMenuContainer ul img {
   position: absolute;
@@ -1230,6 +1233,76 @@ header .rightNavContainer #burguerMenuIcon {
     transform: translateY(calc(var(--scroll, 0) * 10px));
   }
 }
+.loginViewContainer {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999;
+}
+.loginViewContainer .loginContent {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  height: 280px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.loginViewContainer .loginContent h2 {
+  font-size: 16px;
+  width: 100%;
+}
+.loginViewContainer .loginContent label {
+  width: 100%;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+}
+.loginViewContainer .loginContent input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+.loginViewContainer .loginContent .modal-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.loginViewContainer .confirm, .loginViewContainer .cancel {
+  background: rgb(107, 204, 107);
+  color: white;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.loginViewContainer .confirm:disabled, .loginViewContainer .cancel:disabled {
+  background-color: rgb(117, 117, 117);
+  cursor: not-allowed;
+}
+
 main {
   width: 100%;
   min-height: 100%;

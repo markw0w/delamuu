@@ -38,17 +38,22 @@ const Cart = () => {
     }
     const phoneNumber = "5492364595877";
     let message = `🛒 *Pedido Nuevo* 🛒\n`;
-    message += `¡Hola! Quisiera solicitar el siguiente pedido:\n\n`
+    message += `¡Hola! Quisiera solicitar el siguiente pedido:\n\n`;
     message += `👤 *Cliente:* ${name}\n`;
     message += `📍 *Dirección:* ${address}\n\n`;
 
     cartItems.forEach((item, index) => {
       message += `*Pedido N°:${index + 1}*\n`;
       message += `🍦 *Envase:* ${item.gramaje}\n`;
-      if (item.toppings?.length) message += `🍒 *Toppings:* ${item.toppings.join(", ")}\n`;
-      if (item.sauces?.length) message += `🍯  *Salsas:* ${item.sauces.join(", ")}\n`;
-      if (item.fruits?.length) message += `🍓 *Frutas:* ${item.fruits.join(", ")}\n`;
-      message += `💰 *Precio:* $${Number(item.prices).toLocaleString("es-ES")}\n\n`;
+      if (item.toppings?.length)
+        message += `🍒 *Toppings:* ${item.toppings.join(", ")}\n`;
+      if (item.sauces?.length)
+        message += `🍯  *Salsas:* ${item.sauces.join(", ")}\n`;
+      if (item.fruits?.length)
+        message += `🍓 *Frutas:* ${item.fruits.join(", ")}\n`;
+      message += `💰 *Precio:* $${Number(item.prices).toLocaleString(
+        "es-ES"
+      )}\n\n`;
     });
 
     const total = cartItems.reduce((sum, item) => sum + Number(item.prices), 0);
@@ -56,7 +61,9 @@ const Cart = () => {
     message += `📅 Fecha: ${new Date().toLocaleDateString("es-ES")}\n\n`;
     message += `🛻 ¡Gracias por tu compra!`;
 
-    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
+      message
+    )}`;
     window.open(url, "_blank");
 
     closeOrderModal();

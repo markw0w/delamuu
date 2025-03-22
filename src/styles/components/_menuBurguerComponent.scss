@@ -22,16 +22,20 @@
         position: relative;
 
         li{
-            list-style: none;
-            color: $brandColor;
-            font-size: $lg;
-            font-weight: $superBold;
+            list-style: none;       
             padding: 10px;
             cursor: pointer;
             border-bottom: 2px solid white;
             @include sizes();
             @include displayFlex();
             align-items: flex-start;
+
+            .navLinks{
+                color: $brandColor;
+                font-size: $lg;
+                font-weight: $superBold;
+                text-decoration: none;
+            }
         }
         img{
             position: absolute;
@@ -51,7 +55,6 @@
     }
 }
 
-// Lógica apertura y cierre
 .open{
     display: flex;
     animation: open-burguer-menu 0.4s ease forwards;
