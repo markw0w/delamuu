@@ -11,6 +11,8 @@ const Cart = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const location = useLocation();
 
+  const API_URL = "http://localhost:3001/api/add-order";
+
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
@@ -31,7 +33,42 @@ const Cart = () => {
     return total + price;
   }, 0);
 
-  const sendOrderToWhatsApp = (name, address) => {
+  const saveOrderDatabase = async (name, address) => {
+    if (cartItems.length === 0) {
+      alert("El carrito está vacío.");
+      return;
+    }
+  
+    const pedido = {
+      nombre_cliente: name,
+      direccion: address,
+      pedidos: cartItems.map(item => ({
+        gramaje: item.gramaje,
+        producto: item.producto, 
+        toppings: item.toppings,
+        salsas: item.sauces,
+        frutas: item.fruits,
+        precio: Number(item.prices)
+      })),
+      total: totalCart,
+    };
+  
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(pedido)
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const sendOrderToWhatsApp = async (name, address) => {
+    await saveOrderDatabase(name, address);
+
     if (cartItems.length === 0) {
       alert("El carrito está vacío.");
       return;
