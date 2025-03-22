@@ -9,99 +9,81 @@ const Cart = () => {
   const { cartItems, removeOrder } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [customerName, setCustomerName] = useState("");
-  const [customerAddress, setCustomerAddress] = useState("");
   const location = useLocation();
 
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
+  const toggleCart = () => {
+    setIsCartOpen(!isCartOpen);
   };
 
-  const cartItemCount = cartItems.length;
-  const shouldShowCart =
-    cartItemCount > 0 ||
-    location.pathname === "/order" ||
-    location.pathname === "/producto";
+  const openOrderModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeOrderModal = () => {
+    setIsModalOpen(false);
+  };
 
   const totalCart = cartItems.reduce((total, order) => {
-    let price = 0;
-
-    if (Array.isArray(order.prices)) {
-      price = order.prices.reduce((acc, val) => acc + (parseFloat(val) || 0), 0);
-    } else {
-      price = parseFloat(order.prices) || 0;
-    }
+    let price = Array.isArray(order.prices)
+      ? order.prices.reduce((acc, val) => acc + (parseFloat(val) || 0), 0)
+      : parseFloat(order.prices) || 0;
 
     return total + price;
   }, 0);
 
   const sendOrderToWhatsApp = (name, address) => {
-    setCustomerName(name);
-    setCustomerAddress(address);
-
-    const phoneNumber = "5492364595877";
-    const order = JSON.parse(localStorage.getItem("orders")) || [];
-
-    if (order.length === 0) {
+    if (cartItems.length === 0) {
       alert("El carrito está vacío.");
       return;
     }
-
-    let message = `🛒 *Pedido Nuevo* 🛒\n\n`;
+    const phoneNumber = "5492364595877";
+    let message = `🛒 *Pedido Nuevo* 🛒\n`;
+    message += `¡Hola! Quisiera solicitar el siguiente pedido:\n\n`
     message += `👤 *Cliente:* ${name}\n`;
     message += `📍 *Dirección:* ${address}\n\n`;
 
-    order.forEach((item, index) => {
-      message += `*Pedido N°:${index + 1}*\n🍫 Envase: *${item.gramaje}*\n`;
-    
-      if (item.toppings?.length) {
-        message += `🍫 *Toppings:* ${item.toppings.join(", ")}\n`;
-      }
-      if (item.sauces?.length) {
-        message += `🍯 *Salsas:* ${item.sauces.join(", ")}\n`;
-      }
-      if (item.fruits?.length) {
-        message += `🍓 *Frutas:* ${item.fruits.join(", ")}\n`;
-      }
-
+    cartItems.forEach((item, index) => {
+      message += `*Pedido N°:${index + 1}*\n`;
+      message += `🍦 *Envase:* ${item.gramaje}\n`;
+      if (item.toppings?.length) message += `🍒 *Toppings:* ${item.toppings.join(", ")}\n`;
+      if (item.sauces?.length) message += `🍯  *Salsas:* ${item.sauces.join(", ")}\n`;
+      if (item.fruits?.length) message += `🍓 *Frutas:* ${item.fruits.join(", ")}\n`;
       message += `💰 *Precio:* $${Number(item.prices).toLocaleString("es-ES")}\n\n`;
     });
 
-    const total = order.reduce((sum, item) => sum + Number(item.prices), 0);
+    const total = cartItems.reduce((sum, item) => sum + Number(item.prices), 0);
     message += `💰 *Total a pagar:* $${total.toLocaleString("es-ES")}\n\n`;
     message += `📅 Fecha: ${new Date().toLocaleDateString("es-ES")}\n\n`;
     message += `🛻 ¡Gracias por tu compra!`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    
-    window.open(whatsappURL, "_blank");
-    setIsModalOpen(false);
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+
+    closeOrderModal();
   };
+
   return (
     <>
-      {shouldShowCart && (
-        <div
-          className="cart"
-          onClick={toggleModal}
-          style={{ cursor: "pointer" }}
-        >
-          <ShoppingCart
-            size={40}
-            color="#fff"
-          />
-          {cartItemCount > 0 && (
-            <span className="cart-count">{cartItemCount}</span>
-          )}
-        </div>
-      )}
+      <div
+        className="cart"
+        onClick={toggleCart}
+        style={{ cursor: "pointer" }}
+      >
+        <ShoppingCart
+          size={40}
+          color="#fff"
+        />
+        {cartItems.length > 0 && (
+          <span className="cart-count">{cartItems.length}</span>
+        )}
+      </div>
 
-      {isModalOpen && (
+      {isCartOpen && (
         <div className="cart-modal">
           <div className="cart-content">
             <button
               className="close-button"
-              onClick={toggleModal}
+              onClick={toggleCart}
             >
               <X size={24} />
             </button>
@@ -111,9 +93,16 @@ const Cart = () => {
                 {cartItems.map((order, index) => (
                   <li key={index}>
                     <span className="totalCart">
-                      Total: ${totalCart.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} 
-                      <button className="sendOrder"  onClick={() => setIsModalOpen(true)}>
-                        <MessageCircleHeart size={20}/> Enviar Pedido
+                      Total: $
+                      {totalCart.toLocaleString("es-ES", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      })}
+                      <button
+                        className="sendOrder"
+                        onClick={openOrderModal}
+                      >
+                        <MessageCircleHeart size={20} /> Enviar Pedido
                       </button>
                     </span>
                     <div className="order-summary">
@@ -139,10 +128,11 @@ const Cart = () => {
                           : "Sin frutas"}
                       </p>
                       <p>
-                        <strong>Precio:</strong> ${" "}
-                        {Array.isArray(order.prices)
-                          ? order.prices.map(price => Number(price).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })).join(", ")
-                          : Number(order.prices).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        <strong>Precio:</strong> $
+                        {Number(order.prices).toLocaleString("es-ES", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
                       </p>
                     </div>
                     <button
@@ -163,10 +153,11 @@ const Cart = () => {
           </div>
         </div>
       )}
-      <OrderModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        onConfirm={sendOrderToWhatsApp} 
+
+      <OrderModal
+        isOpen={isModalOpen}
+        onClose={closeOrderModal}
+        onConfirm={sendOrderToWhatsApp}
       />
     </>
   );

@@ -49,7 +49,7 @@ const ChoosePackage = forwardRef(({ options, onGramajeChange, onPriceChange, sel
             <span className="packagePrice">${currentPrice}</span>
           </label>
         );
-      })};
+      })}
     </article>
   );
 });

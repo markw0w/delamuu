@@ -893,9 +893,11 @@ header .rightNavContainer #burguerMenuIcon {
   border: none;
   border-radius: 5px;
   font-weight: 600;
+  cursor: pointer;
 }
-.modal-overlay .confirm.disabled {
-  background-color: black;
+.modal-overlay .confirm:disabled, .modal-overlay .cancel:disabled {
+  background-color: rgb(117, 117, 117);
+  cursor: not-allowed;
 }
 .modal-overlay .cancel {
   background: rgb(255, 113, 113);

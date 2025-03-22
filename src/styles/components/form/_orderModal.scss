@@ -54,9 +54,12 @@
         border: none;
         border-radius: 5px;
         font-weight: $bold;
-    }
-    .confirm.disabled{
-        background-color: black;
+        cursor: pointer;
+
+        &:disabled {
+            background-color: rgb(117, 117, 117);
+            cursor: not-allowed;
+        }
     }
     .cancel {
         background: rgb(255, 113, 113);
