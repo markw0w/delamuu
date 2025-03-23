@@ -27,6 +27,13 @@ function FormComponent() {
     );
   });
 
+  const productsOptions = [
+    {product: "Yogur"},
+    {product: "Helado"},
+    {product: "Candy"},
+    {product: "Azai"},
+  ]
+
   const GramajeOptions = [
     { gramaje: "1/4 kg" },
     { gramaje: "1/2 kg" },

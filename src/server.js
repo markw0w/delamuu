@@ -5,6 +5,11 @@ import sequelize from "./db/cnn.js";
 import { fileURLToPath } from "url";
 import loginRoutes from "./routes/login.js";
 import orderRoutes from "./routes/saveOrder.js";
+import toppingRoutes from "./routes/toppings.js";
+import sauceRoutes from "./routes/sauces.js";
+import fruitRoutes from "./routes/fruits.js";
+import productRoutes from "./routes/products.js";
+import gramajeRoutes from "./routes/gramajes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,6 +31,11 @@ sequelize.sync({ force: false })
 
 app.use("/api", loginRoutes);
 app.use("/api", orderRoutes);
+app.use("/toppings", toppingRoutes);
+app.use("/sauces", sauceRoutes);
+app.use("/fruits", fruitRoutes);
+app.use("/products", productRoutes);
+app.use("/gramajes", gramajeRoutes);
 
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "../", "index.html"));

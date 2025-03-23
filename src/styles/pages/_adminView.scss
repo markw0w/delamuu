@@ -1,0 +1,136 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/animations' as *;
+@use '../utils/breakpoints' as *;
+
+.adminContainer{
+    @include sizes();
+    @include displayFlex($justifyContent: flex-start);
+    min-height: 100vh;
+    gap: 20px;
+    padding: 10px;
+
+    h1{
+        @include sizes($height: 20px);
+        font-size: $lg;
+        text-align: center;
+        margin-top: 10px;
+    }
+    span{
+        @include sizes($height:20px);
+        font-size: $sm;
+        text-align: center;
+    }
+
+    .actionsContainer{
+        @include sizes();
+        border-radius: 20px;
+        box-shadow: $shadow;
+        @include displayFlex();
+        gap: 20px;
+        padding: 5px;
+
+        div{
+            @include sizes($height:200px);
+            @include displayFlex($flexDirection:row);
+            align-items: flex-start;
+            gap: 10px;
+            flex-wrap: wrap;
+
+            button{
+                @include buttonDesign($width: 100px, $height: 80px);
+                border-radius: 10px;
+                font-size: 13px;
+            }
+            button:hover{
+                opacity: 80%;
+            }
+        }
+    }
+
+    // TOOPINGS, SALSAS, FRUTAS & OTROS FORMS
+    .admin-detail-container {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 20px;
+        text-align: center;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        .admin-detail-title {
+          font-size: $lg;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        
+        .admin-input-container {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 10px;
+        }
+        
+        .admin-input {
+          flex: 1;
+          outline: none;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-family: $montserratFont;
+        }
+        
+        .admin-add-btn {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background-color: #4CAF50;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-family: $montserratFont;
+        }
+        
+        .admin-add-btn:hover {
+          background-color: #45a049;
+        }
+        
+        .admin-list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          max-height: 400px; 
+          overflow-y: auto;  
+        }
+        
+        .admin-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          background-color: #f9f9f9;
+        }
+        
+        .admin-delete-btn {
+          background-color: red;
+          color: white;
+          border: none;
+          padding: 6px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        
+        .admin-delete-btn:hover {
+          background-color: darkred;
+        }
+        
+        .admin-empty {
+          font-style: italic;
+          color: #777;
+        }
+      }
+}
