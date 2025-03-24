@@ -1,5 +1,5 @@
 // Cart.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ShoppingCart, X, Trash2, MessageCircleHeart } from "lucide-react";
 import { useCart } from "./CartContext";
 import { useLocation } from "react-router-dom";
@@ -9,9 +9,20 @@ const Cart = () => {
   const { cartItems, removeOrder } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [deliveryCost, setDeliveryCost] = useState(0);
   const location = useLocation();
 
   const API_URL = "http://localhost:3001/api/add-order";
+  const API_URL_GET_DELIVERY = "http://localhost:3001/delivery/get-delivery";
+
+  useEffect(() => {
+    fetch(API_URL_GET_DELIVERY)
+      .then((res) => res.json())
+      .then((data) => {
+        setDeliveryCost(Number(data.price) || 0);
+      })
+      .catch((error) => console.error("Error al obtener costo de envío:", error));
+  }, []);
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
@@ -33,7 +44,7 @@ const Cart = () => {
     return total + price;
   }, 0);
 
-  const saveOrderDatabase = async (name, address) => {
+  const saveOrderDatabase = async (name, address, delivery, payment, finalTotal) => {
     if (cartItems.length === 0) {
       alert("El carrito está vacío.");
       return;
@@ -50,7 +61,9 @@ const Cart = () => {
         frutas: item.fruits,
         precio: Number(item.prices)
       })),
-      total: totalCart,
+      total: finalTotal,
+      forma_retiro: delivery, 
+      forma_pago: payment,        
     };
   
     try {
@@ -66,8 +79,11 @@ const Cart = () => {
     }
   };
 
-  const sendOrderToWhatsApp = async (name, address) => {
-    await saveOrderDatabase(name, address);
+  const sendOrderToWhatsApp = async (name, address, delivery, payment) => {
+    const shippingCost = delivery === "Entregar en domicilio" ? deliveryCost : 0;
+    const finalTotal = totalCart + shippingCost;
+    
+    await saveOrderDatabase(name, address, delivery, payment, finalTotal);
 
     if (cartItems.length === 0) {
       alert("El carrito está vacío.");
@@ -77,7 +93,9 @@ const Cart = () => {
     let message = `🛒 *Pedido Nuevo* 🛒\n`;
     message += `¡Hola! Quisiera solicitar el siguiente pedido:\n\n`;
     message += `👤 *Cliente:* ${name}\n`;
-    message += `📍 *Dirección:* ${address}\n\n`;
+    message += `📍 *Dirección:* ${address}\n`;
+    message += `🚦 *Entrega:* ${delivery}\n`;
+    message += `💳 *Forma de pago:* ${payment}\n\n`;
 
     cartItems.forEach((item, index) => {
       message += `*Pedido N°:${index + 1}*\n`;
@@ -93,8 +111,12 @@ const Cart = () => {
       )}\n\n`;
     });
 
-    const total = cartItems.reduce((sum, item) => sum + Number(item.prices), 0);
-    message += `💰 *Total a pagar:* $${total.toLocaleString("es-ES")}\n\n`;
+    if (shippingCost > 0) {
+      message += `🚚 *Costo de envío:* $${shippingCost.toLocaleString("es-ES")}\n`;
+    }
+
+    //const total = cartItems.reduce((sum, item) => sum + Number(item.prices), 0);
+    message += `💰 *Total a pagar:* $${finalTotal.toLocaleString("es-ES")}\n\n`;
     message += `📅 Fecha: ${new Date().toLocaleDateString("es-ES")}\n\n`;
     message += `🛻 ¡Gracias por tu compra!`;
 
@@ -202,6 +224,7 @@ const Cart = () => {
         isOpen={isModalOpen}
         onClose={closeOrderModal}
         onConfirm={sendOrderToWhatsApp}
+        deliveryPrice={deliveryCost} 
       />
     </>
   );
