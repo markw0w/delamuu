@@ -6,9 +6,9 @@ function FruitsManager() {
   const [fruits, setFruits] = useState([]);
   const [newFruit, setNewFruit] = useState("");
 
-  const API_URL_GET_SAUCES = "http://localhost:3001/fruits/get-fruits";
-  const API_URL_ADD_SAUCES = "http://localhost:3001/fruits/add-fruit";
-  const API_URL_DEL_SAUCES = "http://localhost:3001/fruits/delete-fruit";
+  const API_URL_GET_FRUITS = "http://localhost:3001/fruits/get-fruits";
+  const API_URL_ADD_FRUITS = "http://localhost:3001/fruits/add-fruit";
+  const API_URL_DEL_FRUITS = "http://localhost:3001/fruits/delete-fruit";
 
   useEffect(() => {
     fetchFruits();
@@ -16,7 +16,7 @@ function FruitsManager() {
 
   const fetchFruits = async () => {
     try {
-      const response = await axios.get(API_URL_GET_SAUCES);
+      const response = await axios.get(API_URL_GET_FRUITS);
       setFruits(response.data);
     } catch (error) {
       console.error("Error al obtener las frutas:", error);
@@ -26,7 +26,7 @@ function FruitsManager() {
   const addFruit = async () => {
     if (!newFruit.trim()) return;
     try {
-      await axios.post(API_URL_ADD_SAUCES, { nombre: newFruit });
+      await axios.post(API_URL_ADD_FRUITS, { nombre: newFruit });
       setNewFruit("");
       fetchFruits();
     } catch (error) {
@@ -36,7 +36,7 @@ function FruitsManager() {
 
   const deleteFruit = async (id) => {
     try {
-      await axios.delete(`${API_URL_DEL_SAUCES}/${id}`);
+      await axios.delete(`${API_URL_DEL_FRUITS}/${id}`);
       fetchFruits();
     } catch (error) {
       console.error("Error al eliminar la fruta:", error);

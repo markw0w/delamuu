@@ -6,9 +6,9 @@ function ProductsManager() {
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState("");
 
-  const API_URL_GET_SAUCES = "http://localhost:3001/products/get-products";
-  const API_URL_ADD_SAUCES = "http://localhost:3001/products/add-product";
-  const API_URL_DEL_SAUCES = "http://localhost:3001/products/delete-product";
+  const API_URL_GET_PRODUCTS = "http://localhost:3001/products/get-products";
+  const API_URL_ADD_PRODUCTS = "http://localhost:3001/products/add-product";
+  const API_URL_DEL_PRODUCTS = "http://localhost:3001/products/delete-product";
 
   useEffect(() => {
     fetchProducts();
@@ -16,7 +16,7 @@ function ProductsManager() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(API_URL_GET_SAUCES);
+      const response = await axios.get(API_URL_GET_PRODUCTS);
       setProducts(response.data);
     } catch (error) {
       console.error("Error al obtener las productos:", error);
@@ -26,7 +26,7 @@ function ProductsManager() {
   const addProduct = async () => {
     if (!newProduct.trim()) return;
     try {
-      await axios.post(API_URL_ADD_SAUCES, { nombre: newProduct });
+      await axios.post(API_URL_ADD_PRODUCTS, { nombre: newProduct });
       setNewProduct("");
       fetchProducts();
     } catch (error) {
@@ -36,7 +36,7 @@ function ProductsManager() {
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(`${API_URL_DEL_SAUCES}/${id}`);
+      await axios.delete(`${API_URL_DEL_PRODUCTS}/${id}`);
       fetchProducts();
     } catch (error) {
       console.error("Error al eliminar la producto:", error);

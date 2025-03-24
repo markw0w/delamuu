@@ -1409,7 +1409,7 @@ header .rightNavContainer #burguerMenuIcon {
   gap: 20px;
   padding: 5px;
 }
-.adminContainer .actionsContainer div {
+.adminContainer .actionsContainer ul {
   width: 100%;
   height: 200px;
   display: flex;
@@ -1420,7 +1420,7 @@ header .rightNavContainer #burguerMenuIcon {
   gap: 10px;
   flex-wrap: wrap;
 }
-.adminContainer .actionsContainer div button {
+.adminContainer .actionsContainer ul button {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
@@ -1438,7 +1438,7 @@ header .rightNavContainer #burguerMenuIcon {
   border-radius: 10px;
   font-size: 13px;
 }
-.adminContainer .actionsContainer div button:hover {
+.adminContainer .actionsContainer ul button:hover {
   opacity: 80%;
 }
 .adminContainer .admin-detail-container {

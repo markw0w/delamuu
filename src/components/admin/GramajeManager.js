@@ -6,9 +6,9 @@ function GramajesManager() {
   const [gramajes, setGramajes] = useState([]);
   const [newGramaje, setNewGramaje] = useState("");
 
-  const API_URL_GET_SAUCES = "http://localhost:3001/gramajes/get-gramajes";
-  const API_URL_ADD_SAUCES = "http://localhost:3001/gramajes/add-gramaje";
-  const API_URL_DEL_SAUCES = "http://localhost:3001/gramajes/delete-gramaje";
+  const API_URL_GET_GRAMAJES = "http://localhost:3001/gramajes/get-gramajes";
+  const API_URL_ADD_GRAMAJES = "http://localhost:3001/gramajes/add-gramaje";
+  const API_URL_DEL_GRAMAJES = "http://localhost:3001/gramajes/delete-gramaje";
 
   useEffect(() => {
     fetchGramajes();
@@ -16,7 +16,7 @@ function GramajesManager() {
 
   const fetchGramajes = async () => {
     try {
-      const response = await axios.get(API_URL_GET_SAUCES);
+      const response = await axios.get(API_URL_GET_GRAMAJES);
       setGramajes(response.data);
     } catch (error) {
       console.error("Error al obtener las gramajes:", error);
@@ -26,7 +26,7 @@ function GramajesManager() {
   const addGramaje = async () => {
     if (!newGramaje.trim()) return;
     try {
-      await axios.post(API_URL_ADD_SAUCES, { nombre: newGramaje });
+      await axios.post(API_URL_ADD_GRAMAJES, { nombre: newGramaje });
       setNewGramaje("");
       fetchGramajes();
     } catch (error) {
@@ -36,7 +36,7 @@ function GramajesManager() {
 
   const deleteGramaje = async (id) => {
     try {
-      await axios.delete(`${API_URL_DEL_SAUCES}/${id}`);
+      await axios.delete(`${API_URL_DEL_GRAMAJES}/${id}`);
       fetchGramajes();
     } catch (error) {
       console.error("Error al eliminar la gramaje:", error);

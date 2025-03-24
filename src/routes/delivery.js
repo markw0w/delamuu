@@ -9,29 +9,32 @@ router.get("/get-delivery", async (req, res) => {
     const [results] = await sequelize.query(
       "SELECT price FROM delivery LIMIT 1"
     );
-    res.json(results[0]);
+    res.json([results[0]]);
   } catch (error) {
     console.error("❌ Error al obtener el costo de envío:", error);
     res.status(500).json({ error: error.message });
   }
 });
 
-/* router.post("/update-delivery-price", async (req, res) => {
-  const { nombre } = req.body;
-  if (!nombre) {
-    return res.status(400).json({ error: "El nombre es obligatorio" });
+router.post("/update-price", async (req, res) => {
+  const { newDeliveryPrice } = req.body;
+  if (!newDeliveryPrice) {
+    return res.status(400).json({ error: "El precio es obligatorio" });
   }
 
   try {
-    await sequelize.query("INSERT INTO frutas (nombre) VALUES (:nombre)", {
-      replacements: { nombre },
-      type: QueryTypes.INSERT,
-    });
-    res.status(201).json({ message: "✅ Fruta agregada con éxito" });
+    await sequelize.query(
+      "UPDATE delivery SET price = :newDeliveryPrice",
+      {
+        replacements: { newDeliveryPrice },
+        type: sequelize.QueryTypes.UPDATE,
+      }
+    );
+    res.status(201).json({ message: "✅ Precio actualizado con éxito" });
   } catch (error) {
-    console.error("❌ Error al agregar la fruta:", error);
+    console.error("❌ Error al actualizar el precio:", error);
     res.status(500).json({ error: error.message });
   }
-}); */
+});
 
 export default router;

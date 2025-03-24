@@ -13,7 +13,7 @@ import FruitsManager from './components/admin/FruitsManager';
 import GramajeManager from './components/admin/GramajeManager';
 import ProductsManager from './components/admin/ProductsManager';
 import SaucesManager from './components/admin/SaucesManager';
-import ConfigurationManager from './components/admin/ConfigurationManager';
+import PricesManager from './components/admin/PricesManager';
 import Cart from "./utils/Cart";
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
               <Route path="/admin/gramaje" element={<GramajeManager />} />
               <Route path="/admin/productos" element={<ProductsManager />} />
               <Route path="/admin/salsas" element={<SaucesManager />} />
-              <Route path="/admin/configuracion" element={<ConfigurationManager />} />
+              <Route path="/admin/precios" element={<PricesManager />} />
             </Routes>
           </main>
         <FooterComponent />
