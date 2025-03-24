@@ -6,8 +6,10 @@ function PricesManager() {
   const [deliveryPrice, setDeliveryPrice] = useState([]);
   const [newDeliveryPrice, setNewDeliveryPrice] = useState("");
 
-  const API_URL_GET_DELIVERY_PRICE = "http://localhost:3001/delivery/get-delivery";
-  const API_URL_UPDATE_DELIVERY_PRICE = "http://localhost:3001/delivery/update-price";
+  const API_URL_GET_DELIVERY_PRICE =
+    "http://localhost:3001/delivery/get-delivery";
+  const API_URL_UPDATE_DELIVERY_PRICE =
+    "http://localhost:3001/delivery/update-price";
 
   useEffect(() => {
     fetchDeliveryPrice();
@@ -25,7 +27,9 @@ function PricesManager() {
   const updateDeliveryPrice = async () => {
     if (!newDeliveryPrice.trim()) return;
     try {
-      await axios.post(API_URL_UPDATE_DELIVERY_PRICE, { newDeliveryPrice: newDeliveryPrice });
+      await axios.post(API_URL_UPDATE_DELIVERY_PRICE, {
+        newDeliveryPrice: newDeliveryPrice,
+      });
       setNewDeliveryPrice("");
       fetchDeliveryPrice();
     } catch (error) {
@@ -45,20 +49,24 @@ function PricesManager() {
           onChange={(e) => setNewDeliveryPrice(e.target.value)}
           className="admin-input"
         />
-        <button onClick={updateDeliveryPrice} className="admin-add-btn">
+        <button
+          onClick={updateDeliveryPrice}
+          className="admin-add-btn"
+        >
           <PlusCircle size={18} /> Editar
         </button>
       </div>
 
       <div className="admin-list">
-        {deliveryPrice.length === 0 ? (
-          <p className="admin-empty">No hay precio de envío.</p>
+        {deliveryPrice && deliveryPrice.price ? (
+          <div className="admin-item">
+            <span>
+              Precio de envío: $
+              {Number(deliveryPrice.price).toLocaleString("es-ES")}
+            </span>
+          </div>
         ) : (
-          deliveryPrice.map((price, index) => (
-            <div key={index} className="admin-item">
-              <span>Costo de envío: ${price.price}</span>
-            </div>
-          ))
+          <p className="admin-empty">No hay precio de envío.</p>
         )}
       </div>
     </div>

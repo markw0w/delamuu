@@ -1,6 +1,5 @@
 import express from "express";
 import sequelize from "../db/cnn.js";
-//import { QueryTypes } from "sequelize";
 
 const router = express.Router();
 
@@ -9,7 +8,7 @@ router.get("/get-delivery", async (req, res) => {
     const [results] = await sequelize.query(
       "SELECT price FROM delivery LIMIT 1"
     );
-    res.json([results[0]]);
+    res.json(results[0]);
   } catch (error) {
     console.error("❌ Error al obtener el costo de envío:", error);
     res.status(500).json({ error: error.message });
