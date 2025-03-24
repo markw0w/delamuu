@@ -19,13 +19,42 @@ router.post("/add-gramaje", async (req, res) => {
     return res.status(400).json({ error: "El nombre es obligatorio" });
   }
 
+  const transaction = await sequelize.transaction();
   try {
-    await sequelize.query("INSERT INTO envases (nombre) VALUES (:nombre)", {
-      replacements: { nombre },
-      type: QueryTypes.INSERT,
-    });
+    const [result] = await sequelize.query(
+      "INSERT INTO envases (nombre) VALUES (:nombre)",
+      {
+        replacements: { nombre },
+        type: QueryTypes.INSERT,
+        transaction,
+      }
+    );
+    console.log("Resultado de inserción:", result);
+    const envaseId =
+      typeof result === "number"
+        ? result
+        : result.insertId || (Array.isArray(result) ? result[0] : null);
+    if (!envaseId) {
+      throw new Error("No se pudo obtener el id del envase insertado");
+    }
+
+    const [products] = await sequelize.query("SELECT id FROM productos", { transaction });
+    
+    for (let product of products) {
+      await sequelize.query(
+        "INSERT INTO envases_productos (envase_id, producto_id, precio) VALUES (:envaseId, :productoId, :precio)",
+        {
+          replacements: { envaseId, productoId: product.id, precio: 0 },
+          type: QueryTypes.INSERT,
+          transaction,
+        }
+      );
+    }
+
+    await transaction.commit();
     res.status(201).json({ message: "✅ Gramaje agregado con éxito" });
   } catch (error) {
+    await transaction.rollback();
     console.error("❌ Error al agregar el gramaje:", error);
     res.status(500).json({ error: error.message });
   }
