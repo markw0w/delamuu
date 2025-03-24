@@ -12,6 +12,14 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
     setDelivery((prev) => (prev === value ? "" : value));
   };
 
+  const handleConfirm = () => {
+    if (delivery === "Retiro en local") {
+      onConfirm(name, "", delivery, "");
+    } else {
+      onConfirm(name, address, delivery, payment);
+    }
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal-content">
@@ -23,14 +31,6 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Ej: Juan Pérez"
-        />
-
-        <label>Dirección:</label>
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          placeholder="Ej: Avenida República 999, Junin"
         />
 
         <div className="delivery-options">
@@ -58,22 +58,38 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
           </div>
         </div>
 
-        <div className="payment-option">
-          <label>Forma de pago:</label>
-          <select
-            value={payment}
-            onChange={(e) => setPayment(e.target.value)}
-          >
-            <option value="Pago contraentrega">Pago contraentrega</option>
-            <option value="Pago virtual">Pago virtual</option>
-          </select>
-        </div>
+        {delivery === "Entregar en domicilio" && (
+          <>
+            <label>Dirección:</label>
+            <input
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Ej: Avenida República 999, Junin"
+            />
+
+            <div className="payment-option">
+              <label>Forma de pago:</label>
+              <select
+                value={payment}
+                onChange={(e) => setPayment(e.target.value)}
+              >
+                <option value="Pago contraentrega">Pago contraentrega</option>
+                <option value="Pago virtual">Pago virtual</option>
+              </select>
+            </div>
+          </>
+        )}
 
         <div className="modal-buttons">
           <button
             className="confirm"
-            onClick={() => onConfirm(name, address, delivery, payment)}
-            disabled={!name || !address || !delivery}
+            onClick={handleConfirm}
+            disabled={
+              !name ||
+              !delivery ||
+              (delivery === "Entregar en domicilio" && (!address || !payment))
+            }
           >
             Confirmar
           </button>

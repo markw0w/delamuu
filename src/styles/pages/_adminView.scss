@@ -32,7 +32,7 @@
         padding: 5px;
 
         ul{
-            @include sizes($height:200px);
+            @include sizes($height:auto);
             @include displayFlex($flexDirection:row);
             align-items: flex-start;
             gap: 10px;
@@ -49,7 +49,7 @@
         }
     }
 
-    // TOOPINGS, SALSAS, FRUTAS & OTROS FORMS
+    // TOOPINGS, SALSAS, FRUTAS & PRECIOS
     .admin-detail-container {
         max-width: 600px;
         margin: 30px auto;
@@ -131,6 +131,80 @@
         .admin-empty {
           font-style: italic;
           color: #777;
+        }
+        .admin-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 1rem;
+        }
+        
+        .admin-table th,
+        .admin-table td {
+          padding: 0.75rem;
+          text-align: left;
+          border: 1px solid #ddd;
+        }
+        
+        .admin-table th {
+          background-color: #f2f2f2;
+          font-weight: bold;
+        }
+        
+        .detalle-item {
+          margin-bottom: 0.5rem;
+          padding: 0.5rem;
+          background-color: $brandColor;
+          color: $lightFontColor;
+          border-radius: 5px;
+        }
+        
+        .detalle-item div {
+          margin-bottom: 0.25rem;
+        }
+        
+        @media screen and (max-width: 600px) {
+          .admin-table thead {
+            display: none;
+          }
+          
+          .admin-table, 
+          .admin-table tbody, 
+          .admin-table tr, 
+          .admin-table td {
+            display: block;
+            width: 100%;
+            font-size: 11px;
+          }
+          
+          .admin-table tr {
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ddd;
+          }
+          
+          .admin-table td {
+            text-align: right;
+            padding-left: 50%;
+            position: relative;
+          }
+          
+          .admin-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 45%;
+            padding-left: 0.75rem;
+            font-weight: bold;
+            text-align: left;
+          }
+          .pagination{
+            @include displayFlex($flexDirection:row);
+            gap: 5px;
+            justify-content: flex-start;
+
+            button{
+              @include buttonDesign($width:15px, $height:20px);
+            }
+          }
         }
       }
 }

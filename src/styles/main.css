@@ -1411,7 +1411,7 @@ header .rightNavContainer #burguerMenuIcon {
 }
 .adminContainer .actionsContainer ul {
   width: 100%;
-  height: 200px;
+  height: auto;
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -1513,6 +1513,86 @@ header .rightNavContainer #burguerMenuIcon {
 .adminContainer .admin-detail-container .admin-empty {
   font-style: italic;
   color: #777;
+}
+.adminContainer .admin-detail-container .admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+.adminContainer .admin-detail-container .admin-table th,
+.adminContainer .admin-detail-container .admin-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+.adminContainer .admin-detail-container .admin-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.adminContainer .admin-detail-container .detalle-item {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #92a6d8;
+  color: #f1f1f1;
+  border-radius: 5px;
+}
+.adminContainer .admin-detail-container .detalle-item div {
+  margin-bottom: 0.25rem;
+}
+@media screen and (max-width: 600px) {
+  .adminContainer .admin-detail-container .admin-table thead {
+    display: none;
+  }
+  .adminContainer .admin-detail-container .admin-table,
+  .adminContainer .admin-detail-container .admin-table tbody,
+  .adminContainer .admin-detail-container .admin-table tr,
+  .adminContainer .admin-detail-container .admin-table td {
+    display: block;
+    width: 100%;
+    font-size: 11px;
+  }
+  .adminContainer .admin-detail-container .admin-table tr {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+  }
+  .adminContainer .admin-detail-container .admin-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+  .adminContainer .admin-detail-container .admin-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 0.75rem;
+    font-weight: bold;
+    text-align: left;
+  }
+  .adminContainer .admin-detail-container .pagination {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    justify-content: flex-start;
+  }
+  .adminContainer .admin-detail-container .pagination button {
+    border: 0px;
+    padding: 5px;
+    border-radius: 20px;
+    background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+    width: 15px;
+    height: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: #f1f1f1;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 main {

@@ -21,7 +21,9 @@ const Cart = () => {
       .then((data) => {
         setDeliveryCost(Number(data.price) || 0);
       })
-      .catch((error) => console.error("Error al obtener costo de envío:", error));
+      .catch((error) =>
+        console.error("Error al obtener costo de envío:", error)
+      );
   }, []);
 
   const toggleCart = () => {
@@ -44,35 +46,41 @@ const Cart = () => {
     return total + price;
   }, 0);
 
-  const saveOrderDatabase = async (name, address, delivery, payment, finalTotal) => {
+  const saveOrderDatabase = async (
+    name,
+    address,
+    delivery,
+    payment,
+    finalTotal
+  ) => {
     if (cartItems.length === 0) {
       alert("El carrito está vacío.");
       return;
     }
-  
+
     const pedido = {
       nombre_cliente: name,
       direccion: address,
-      pedidos: cartItems.map(item => ({
+      pedidos: cartItems.map((item) => ({
         gramaje: item.gramaje,
-        producto: item.producto, 
+        producto: item.producto,
         toppings: item.toppings,
         salsas: item.sauces,
         frutas: item.fruits,
-        precio: Number(item.prices)
+        precio: Number(item.prices),
       })),
       total: finalTotal,
-      forma_retiro: delivery, 
-      forma_pago: payment,        
+      forma_retiro: delivery,
+      forma_pago: payment,
     };
-  
+
     try {
       const response = await fetch(API_URL, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(pedido)
+        body: JSON.stringify(pedido),
       });
     } catch (error) {
       console.error("Error:", error);
@@ -80,9 +88,10 @@ const Cart = () => {
   };
 
   const sendOrderToWhatsApp = async (name, address, delivery, payment) => {
-    const shippingCost = delivery === "Entregar en domicilio" ? deliveryCost : 0;
+    const shippingCost =
+      delivery === "Entregar en domicilio" ? deliveryCost : 0;
     const finalTotal = totalCart + shippingCost;
-    
+
     await saveOrderDatabase(name, address, delivery, payment, finalTotal);
 
     if (cartItems.length === 0) {
@@ -93,9 +102,13 @@ const Cart = () => {
     let message = `🛒 *Pedido Nuevo* 🛒\n`;
     message += `¡Hola! Quisiera solicitar el siguiente pedido:\n\n`;
     message += `👤 *Cliente:* ${name}\n`;
-    message += `📍 *Dirección:* ${address}\n`;
-    message += `🚦 *Entrega:* ${delivery}\n`;
-    message += `💳 *Forma de pago:* ${payment}\n\n`;
+
+    if (delivery === "Entregar en domicilio") {
+      message += `📍 *Dirección:* ${address}\n`;
+      message += `💳 *Forma de pago:* ${payment}\n`;
+    }
+
+    message += `🚦 *Entrega:* ${delivery}\n\n`;
 
     cartItems.forEach((item, index) => {
       message += `*Pedido N°:${index + 1}*\n`;
@@ -103,7 +116,7 @@ const Cart = () => {
       if (item.toppings?.length)
         message += `🍒 *Toppings:* ${item.toppings.join(", ")}\n`;
       if (item.sauces?.length)
-        message += `🍯  *Salsas:* ${item.sauces.join(", ")}\n`;
+        message += `🍯 *Salsas:* ${item.sauces.join(", ")}\n`;
       if (item.fruits?.length)
         message += `🍓 *Frutas:* ${item.fruits.join(", ")}\n`;
       message += `💰 *Precio:* $${Number(item.prices).toLocaleString(
@@ -112,12 +125,22 @@ const Cart = () => {
     });
 
     if (shippingCost > 0) {
-      message += `🚚 *Costo de envío:* $${shippingCost.toLocaleString("es-ES")}\n`;
+      message += `🚚 *Costo de envío:* $${shippingCost.toLocaleString(
+        "es-ES"
+      )}\n`;
     }
 
-    //const total = cartItems.reduce((sum, item) => sum + Number(item.prices), 0);
     message += `💰 *Total a pagar:* $${finalTotal.toLocaleString("es-ES")}\n\n`;
     message += `📅 Fecha: ${new Date().toLocaleDateString("es-ES")}\n\n`;
+
+    if (payment === 'Pago virtual') {
+      message += `🧾 Como tu forma de pago es *'${payment}'*, te compartimos la información requerida para realizar el pago:\n`;
+      message += `• *CBU*: 123456789\n`;
+      message += `• *ALIAS*: Delamuu2025\n`;
+      message += `• *Otra información*: Notificar informacion\n\n`;
+      message += `Despacharemos tu pedido una vez nos envíes el comprobante de pago. Puedes enviarlo por este medio.\n\n`;
+    }
+    
     message += `🛻 ¡Gracias por tu compra!`;
 
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
@@ -224,7 +247,7 @@ const Cart = () => {
         isOpen={isModalOpen}
         onClose={closeOrderModal}
         onConfirm={sendOrderToWhatsApp}
-        deliveryPrice={deliveryCost} 
+        deliveryPrice={deliveryCost}
       />
     </>
   );
