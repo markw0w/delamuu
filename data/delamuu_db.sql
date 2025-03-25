@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-03-2025 a las 02:44:19
+-- Tiempo de generación: 25-03-2025 a las 01:44:53
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -25,12 +25,30 @@ DELIMITER $$
 --
 -- Procedimientos
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insert_order` (IN `p_nombre_cliente` VARCHAR(100), IN `p_direccion` VARCHAR(255), IN `p_detalles` JSON, IN `p_total` DECIMAL(10,2))   BEGIN
-    INSERT INTO orders (nombre_cliente, direccion, detalles, total)
-    VALUES (p_nombre_cliente, p_direccion, p_detalles, p_total);
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_insert_order` (IN `p_nombre_cliente` VARCHAR(100), IN `p_direccion` VARCHAR(200), IN `p_detalles` TEXT, IN `p_total` DECIMAL(10,2), IN `p_forma_pago` VARCHAR(50), IN `p_forma_retiro` VARCHAR(50))   BEGIN
+  INSERT INTO orders(nombre_cliente, direccion, detalles, total, forma_pago, forma_retiro)
+  VALUES(p_nombre_cliente, p_direccion, p_detalles, p_total, p_forma_pago, p_forma_retiro);
 END$$
 
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `delivery`
+--
+
+CREATE TABLE `delivery` (
+  `delivery_price_id` int(11) NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `delivery`
+--
+
+INSERT INTO `delivery` (`delivery_price_id`, `price`) VALUES
+(1, 20000);
 
 -- --------------------------------------------------------
 
@@ -51,7 +69,7 @@ INSERT INTO `envases` (`id`, `nombre`) VALUES
 (2, '1/2 kg'),
 (3, '3/4 kg'),
 (4, '1 kg'),
-(5, '1/4 kg');
+(11, '1/4 kg');
 
 -- --------------------------------------------------------
 
@@ -71,7 +89,7 @@ CREATE TABLE `envases_productos` (
 --
 
 INSERT INTO `envases_productos` (`id`, `envase_id`, `producto_id`, `precio`) VALUES
-(6, 2, 2, 22000.00),
+(6, 2, 2, 1000.00),
 (7, 3, 2, 32000.00),
 (8, 4, 2, 42000.00),
 (10, 2, 3, 25000.00),
@@ -79,7 +97,15 @@ INSERT INTO `envases_productos` (`id`, `envase_id`, `producto_id`, `precio`) VAL
 (12, 4, 3, 45000.00),
 (14, 2, 4, 28000.00),
 (15, 3, 4, 38000.00),
-(16, 4, 4, 48000.00);
+(16, 4, 4, 48000.00),
+(17, 11, 2, 0.00),
+(18, 11, 3, 0.00),
+(19, 11, 4, 25000.00),
+(20, 11, 5, 0.00),
+(21, 2, 6, 0.00),
+(22, 3, 6, 0.00),
+(23, 4, 6, 0.00),
+(24, 11, 6, 10000.00);
 
 -- --------------------------------------------------------
 
@@ -123,17 +149,17 @@ CREATE TABLE `orders` (
   `precio` decimal(10,2) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   `detalles` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`detalles`)),
-  `total` decimal(10,2) NOT NULL
+  `total` decimal(10,2) NOT NULL,
+  `forma_pago` varchar(50) DEFAULT NULL,
+  `forma_retiro` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `orders`
 --
 
-INSERT INTO `orders` (`id`, `nombre_cliente`, `direccion`, `precio`, `fecha`, `detalles`, `total`) VALUES
-(1, 'esta', '123', 0.00, '2025-03-22 07:58:08', '[{\"gramaje\":\"1/2 kg\",\"toppings\":[\"Chips Chocolate\"],\"salsas\":[],\"frutas\":[],\"precio\":20000}]', 20000.00),
-(2, 'esta', '123', 0.00, '2025-03-22 08:00:42', '[{\"gramaje\":\"1/2 kg\",\"toppings\":[\"Chips Chocolate\"],\"salsas\":[],\"frutas\":[],\"precio\":20000}]', 20000.00),
-(3, 'esta', '123', 0.00, '2025-03-23 00:15:49', '[{\"gramaje\":\"1 kg\",\"toppings\":[\"Chips Chocolate\",\"Bananitas\"],\"salsas\":[\"Dulce de leche\",\"Dulce de leche granizado\"],\"frutas\":[\"Durazno\"],\"precio\":40000}]', 40000.00);
+INSERT INTO `orders` (`id`, `nombre_cliente`, `direccion`, `precio`, `fecha`, `detalles`, `total`, `forma_pago`, `forma_retiro`) VALUES
+(16, 'Estanis', '123', 0.00, '2025-03-24 21:47:12', '[{\"gramaje\":\"1/2 kg\",\"toppings\":[\"Alfajor\",\"Anillitos\"],\"salsas\":[],\"frutas\":[],\"precio\":20000}]', 40000.00, 'Pago contraentrega', 'Entregar en domicilio');
 
 -- --------------------------------------------------------
 
@@ -154,7 +180,8 @@ INSERT INTO `productos` (`id`, `nombre`) VALUES
 (2, 'Helado'),
 (3, 'Candy'),
 (4, 'Azai'),
-(5, 'Yogur');
+(5, 'Yogur'),
+(6, 'Milanesa');
 
 -- --------------------------------------------------------
 
@@ -229,6 +256,12 @@ INSERT INTO `users` (`id_user`, `userName`, `password`) VALUES
 --
 
 --
+-- Indices de la tabla `delivery`
+--
+ALTER TABLE `delivery`
+  ADD PRIMARY KEY (`delivery_price_id`);
+
+--
 -- Indices de la tabla `envases`
 --
 ALTER TABLE `envases`
@@ -286,16 +319,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `delivery`
+--
+ALTER TABLE `delivery`
+  MODIFY `delivery_price_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `envases`
 --
 ALTER TABLE `envases`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `envases_productos`
 --
 ALTER TABLE `envases_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `frutas`
@@ -307,13 +346,13 @@ ALTER TABLE `frutas`
 -- AUTO_INCREMENT de la tabla `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `salsas`
