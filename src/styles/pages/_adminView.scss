@@ -206,5 +206,31 @@
             }
           }
         }
+        .admin-product-prices{
+          @include displayFlex();
+          width: 100%;
+
+          ul{
+            @include sizes();
+            @include displayFlex();
+            gap: 10px;
+
+            li{
+              @include displayFlex($flexDirection:row, $justifyContent: space-between);
+              @include sizes($height: 30px);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.397);
+              list-style: none;
+
+              span{
+                @include sizes();
+                @include displayFlex();
+              }
+
+              button{
+                @include buttonDesign($width: auto, $height: 80%);
+              }
+            }
+          }
+        }
       }
 }

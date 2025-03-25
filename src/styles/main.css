@@ -1594,6 +1594,56 @@ header .rightNavContainer #burguerMenuIcon {
     align-items: center;
   }
 }
+.adminContainer .admin-detail-container .admin-product-prices {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.adminContainer .admin-detail-container .admin-product-prices ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.adminContainer .admin-detail-container .admin-product-prices ul li {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.397);
+  list-style: none;
+}
+.adminContainer .admin-detail-container .admin-product-prices ul li span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.adminContainer .admin-detail-container .admin-product-prices ul li button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  width: auto;
+  height: 80%;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 
 main {
   width: 100%;
