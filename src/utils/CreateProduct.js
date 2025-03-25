@@ -20,28 +20,28 @@ const CreateProduct = forwardRef(
     const [selectedFruits, setSelectedFruits] = useState(currentFruits || []);
     const [isOpen, setIsOpen] = useState(false);
 
-    const handleSelection = (type, item) => {
+    const handleSelection = (type, itemNombre) => {
       const currentTotal = selectedToppings.length + selectedSauces.length + selectedFruits.length;
       let newTotal = currentTotal;
       let newSelection;
 
       switch (type) {
         case "topping":
-          newSelection = selectedToppings.includes(item)
-            ? selectedToppings.filter(t => t !== item)
-            : [...selectedToppings, item];
+          newSelection = selectedToppings.includes(itemNombre)
+            ? selectedToppings.filter(t => t !== itemNombre)
+            : [...selectedToppings, itemNombre];
           newTotal = newSelection.length + selectedSauces.length + selectedFruits.length;
           break;
         case "sauce":
-          newSelection = selectedSauces.includes(item)
-            ? selectedSauces.filter(s => s !== item)
-            : [...selectedSauces, item];
+          newSelection = selectedSauces.includes(itemNombre)
+            ? selectedSauces.filter(s => s !== itemNombre)
+            : [...selectedSauces, itemNombre];
           newTotal = selectedToppings.length + newSelection.length + selectedFruits.length;
           break;
         case "fruit":
-          newSelection = selectedFruits.includes(item)
-            ? selectedFruits.filter(f => f !== item)
-            : [...selectedFruits, item];
+          newSelection = selectedFruits.includes(itemNombre)
+            ? selectedFruits.filter(f => f !== itemNombre)
+            : [...selectedFruits, itemNombre];
           newTotal = selectedToppings.length + selectedSauces.length + newSelection.length;
           break;
         default:
@@ -102,13 +102,13 @@ const CreateProduct = forwardRef(
               <div className="categorySection toppingsCategory">
                 <h4>Toppings</h4>
                 {toppingOptions.map((option) => (
-                  <label key={option.topping}>
+                  <label key={option.id}>
                     <input
                       type="checkbox"
-                      checked={selectedToppings.includes(option.topping)}
-                      onChange={() => handleSelection("topping", option.topping)}
+                      checked={selectedToppings.includes(option.nombre)}
+                      onChange={() => handleSelection("topping", option.nombre)}
                     />
-                    {option.topping}
+                    {option.nombre}
                   </label>
                 ))}
               </div>
@@ -116,13 +116,13 @@ const CreateProduct = forwardRef(
               <div className="categorySection saucesCategory">
                 <h4>Salsas</h4>
                 {sauceOptions.map((option) => (
-                  <label key={option.sauce}>
+                  <label key={option.id}>
                     <input
                       type="checkbox"
-                      checked={selectedSauces.includes(option.sauce)}
-                      onChange={() => handleSelection("sauce", option.sauce)}
+                      checked={selectedSauces.includes(option.nombre)}
+                      onChange={() => handleSelection("sauce", option.nombre)}
                     />
-                    {option.sauce}
+                    {option.nombre}
                   </label>
                 ))}
               </div>
@@ -130,13 +130,13 @@ const CreateProduct = forwardRef(
               <div className="categorySection fruitsCategory">
                 <h4>Frutas</h4>
                 {fruitOptions.map((option) => (
-                  <label key={option.fruit}>
+                  <label key={option.id}>
                     <input
                       type="checkbox"
-                      checked={selectedFruits.includes(option.fruit)}
-                      onChange={() => handleSelection("fruit", option.fruit)}
+                      checked={selectedFruits.includes(option.nombre)}
+                      onChange={() => handleSelection("fruit", option.nombre)}
                     />
-                    {option.fruit}
+                    {option.nombre}
                   </label>
                 ))}
               </div>

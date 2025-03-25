@@ -364,11 +364,11 @@ function FormComponent() {
 
   const API_URL_GET_GRAMAJE = "http://localhost:3001/gramajes/get-gramajes";
   const API_URL_GET_PRICES = "http://localhost:3001/products/get-prices";
-  const API_URL_GET_TOPPINGS_OPTIONS = "http://localhost:3001/toppings/get-toppings";
+  const API_URL_GET_TOPPINGS_OPTIONS =
+    "http://localhost:3001/toppings/get-toppings";
   const API_URL_GET_SAUCES_OPTIONS = "http://localhost:3001/sauces/get-sauces";
   const API_URL_GET_FRUITS_OPTIONS = "http://localhost:3001/fruits/get-fruits";
 
-  // Fetch data from APIs
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -503,15 +503,19 @@ function FormComponent() {
       <h2 id="titleForm">1. Elige el envase</h2>
       <ChoosePackage
         ref={packageRef}
-        options={gramajes}
+        options={gramajes} 
         onGramajeChange={handleGramajeChange}
         onPriceChange={handlePriceChange}
         selectedGramaje={currentOrder.gramaje}
         selectedPrice={currentOrder.prices}
-        packagePrices={prices}
+        packagePrices={prices} 
+        product="Yogur" 
       />
       <hr />
-      <h2 id="titleForm" className="titleStep-2">
+      <h2
+        id="titleForm"
+        className="titleStep-2"
+      >
         2. ¡Ármalo!
       </h2>
       <CreateProduct
@@ -527,7 +531,11 @@ function FormComponent() {
         onSave={handleSelectionChange}
       />
       <hr />
-      <button type="button" onClick={handleAddOrder} className="addOrderButton">
+      <button
+        type="button"
+        onClick={handleAddOrder}
+        className="addOrderButton"
+      >
         Agregar al carrito
       </button>
 
