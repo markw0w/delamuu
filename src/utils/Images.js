@@ -5,7 +5,7 @@
 
 // Imports: Local
 import Local1 from '../assets/store/2.jpg' 
-import Local2 from '../assets/store/local.jpg' 
+import Local2 from '../assets/store/local_delamuu.jpg' 
 
 // Imports: LOGO & Delamuu
 import LogoShortLight from '../assets/delamuu-logos/logo-short-light.png';

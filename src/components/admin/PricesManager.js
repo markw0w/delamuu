@@ -76,7 +76,10 @@ function PricesManager() {
   const updateProductPrice = async (newPrice) => {
     if (!selectedProduct) return;
     try {
-      await axios.post(`${API_URL_UPDATE_PRODUCT_PRICE}/${selectedProduct.id}`, { newPrice });
+      await axios.post(
+        `${API_URL_UPDATE_PRODUCT_PRICE}/${selectedProduct.id}`,
+        { newPrice }
+      );
       closeModal();
       fetchProductPrices();
     } catch (error) {
@@ -96,10 +99,7 @@ function PricesManager() {
             onChange={(e) => setNewDeliveryPrice(e.target.value)}
             className="admin-input"
           />
-          <button
-            onClick={updateDeliveryPrice}
-            className="admin-add-btn"
-          >
+          <button onClick={updateDeliveryPrice} className="admin-add-btn">
             <PlusCircle size={18} /> Editar
           </button>
         </div>
@@ -117,10 +117,7 @@ function PricesManager() {
         </div>
       </article>
 
-      <article
-        className="admin-product-prices"
-        style={{ marginTop: "2rem" }}
-      >
+      <article className="admin-product-prices" style={{ marginTop: "2rem" }}>
         <h2 className="admin-detail-title">Precios de productos</h2>
         {productPrices && productPrices.length > 0 ? (
           <ul className="admin-list-products">
@@ -129,13 +126,16 @@ function PricesManager() {
                 <span className="envase">{item.envaseNombre}</span>
                 <span className="producto">{item.productoNombre}</span>
                 <span className="precio">
-                  ${Number(item.precio).toLocaleString("es-ES", {
+                  $
+                  {Number(item.precio).toLocaleString("es-ES", {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })}
                 </span>
                 <span className="acciones">
-                  <button onClick={() => startEditingProduct(item)}>Editar</button>
+                  <button onClick={() => startEditingProduct(item)}>
+                    Editar
+                  </button>
                 </span>
               </li>
             ))}
@@ -147,7 +147,11 @@ function PricesManager() {
 
       <EditPriceModal
         isOpen={isModalOpen}
-        productName={selectedProduct ? `${selectedProduct.envaseNombre} - ${selectedProduct.productoNombre}` : ""}
+        productName={
+          selectedProduct
+            ? `${selectedProduct.envaseNombre} - ${selectedProduct.productoNombre}`
+            : ""
+        }
         initialPrice={selectedProduct ? selectedProduct.precio : ""}
         onClose={closeModal}
         onSave={updateProductPrice}
