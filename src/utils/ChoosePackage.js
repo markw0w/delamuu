@@ -6,7 +6,7 @@ const ChoosePackage = forwardRef(
     const [priceSelected, setSelectedPrice] = useState(
       selectedPrice || "N/A"
     );
-
+        
     useEffect(() => {
       const foundPrice =
         packagePrices

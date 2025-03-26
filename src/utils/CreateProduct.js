@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 const CreateProduct = forwardRef(
   (
     {
+      product,
       toppingOptions,
       sauceOptions,
       fruitOptions,

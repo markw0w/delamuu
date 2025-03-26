@@ -62,6 +62,7 @@ const Cart = () => {
       nombre_cliente: name,
       direccion: address,
       pedidos: cartItems.map((item) => ({
+        product: item.product,
         gramaje: item.gramaje,
         producto: item.producto,
         toppings: item.toppings,
@@ -111,7 +112,7 @@ const Cart = () => {
     message += `🚦 *Entrega:* ${delivery}\n\n`;
 
     cartItems.forEach((item, index) => {
-      message += `*Pedido N°:${index + 1}*\n`;
+      message += `*Pedido N°:${index + 1}*: ${item.product}\n`;
       message += `🍦 *Envase:* ${item.gramaje}\n`;
       if (item.toppings?.length)
         message += `🍒 *Toppings:* ${item.toppings.join(", ")}\n`;
@@ -195,6 +196,7 @@ const Cart = () => {
                       </button>
                     </span>
                     <div className="order-summary">
+                      <p><strong>Producto: {order.product} </strong></p>
                       <p>
                         <strong>Envase:</strong> {order.gramaje}
                       </p>

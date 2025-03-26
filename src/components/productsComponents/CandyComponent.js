@@ -4,8 +4,8 @@ import CarouselComponent from "../CarouselComponent";
 import FormComponent from "../form/FormComponent";
 import { ChevronsDown } from "lucide-react";
 
-function HeladoComponent() { 
-    const productName = "Helado"
+function CandyComponent() { 
+    const productName = "Candy"
 
     const images = [
         products.yogur5,
@@ -15,7 +15,7 @@ function HeladoComponent() {
 
     return (
         <section className="productComponent yogur" id="yogur">
-            <h2>Helado</h2>
+            <h2>Candy</h2>
             <CarouselComponent images={images} />
             <h3>
                 <ChevronsDown size={35}/>
@@ -27,4 +27,4 @@ function HeladoComponent() {
     );
 }
 
-export default HeladoComponent;
+export default CandyComponent;

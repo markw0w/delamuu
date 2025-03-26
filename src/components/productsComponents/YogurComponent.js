@@ -5,6 +5,8 @@ import FormComponent from "../form/FormComponent";
 import { ChevronsDown } from "lucide-react";
 
 function YogurComponent() { 
+    const productName = "Yogur"
+
     const images = [
         products.yogur5,
         products.yogur1,
@@ -20,7 +22,7 @@ function YogurComponent() {
                 Desliza para comenzar
             </h3>
 
-            <FormComponent/>     
+            <FormComponent product={productName}/>     
         </section>
     );
 }
