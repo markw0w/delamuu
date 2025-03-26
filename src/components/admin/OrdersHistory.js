@@ -25,11 +25,7 @@ function OrdersHistory() {
   const reversedOrders = [...orders].reverse();
   const indexOfLastOrder = currentPage * ordersPerPage;
   const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
-  const currentOrders = reversedOrders.slice(
-    indexOfFirstOrder,
-    indexOfLastOrder
-  );
-
+  const currentOrders = reversedOrders.slice(indexOfFirstOrder, indexOfLastOrder);
   const totalPages = Math.ceil(orders.length / ordersPerPage);
 
   const paginate = (pageNumber) => {
@@ -71,36 +67,44 @@ function OrdersHistory() {
                       try {
                         const details = JSON.parse(order.detalles);
                         return details.map((item, index) => (
-                          <div
-                            key={index}
-                            className="detalle-item"
-                          >
+                          <div key={index} className="detalle-item">
                             <div>
                               <strong>Envase:</strong> {item.gramaje}
                             </div>
-                            {item.producto && (
+                            {item.product && (
                               <div>
-                                <strong>Producto:</strong> {item.producto}
+                                <strong>Producto:</strong> {item.product}
                               </div>
                             )}
-                            <div>
-                              <strong>Toppings:</strong>{" "}
-                              {item.toppings && item.toppings.length > 0
-                                ? item.toppings.join(", ")
-                                : "Sin toppings"}
-                            </div>
-                            <div>
-                              <strong>Salsas:</strong>{" "}
-                              {item.salsas && item.salsas.length > 0
-                                ? item.salsas.join(", ")
-                                : "Sin salsas"}
-                            </div>
-                            <div>
-                              <strong>Frutas:</strong>{" "}
-                              {item.frutas && item.frutas.length > 0
-                                ? item.frutas.join(", ")
-                                : "Sin frutas"}
-                            </div>
+                            {item.product === "Helado" ? (
+                              <div>
+                                <strong>Sabores:</strong>{" "}
+                                {item.sabores && item.sabores.length > 0
+                                  ? item.sabores.join(", ")
+                                  : "Sin sabores"}
+                              </div>
+                            ) : (
+                              <>
+                                <div>
+                                  <strong>Toppings:</strong>{" "}
+                                  {item.toppings && item.toppings.length > 0
+                                    ? item.toppings.join(", ")
+                                    : "Sin toppings"}
+                                </div>
+                                <div>
+                                  <strong>Salsas:</strong>{" "}
+                                  {item.salsas && item.salsas.length > 0
+                                    ? item.salsas.join(", ")
+                                    : "Sin salsas"}
+                                </div>
+                                <div>
+                                  <strong>Frutas:</strong>{" "}
+                                  {item.frutas && item.frutas.length > 0
+                                    ? item.frutas.join(", ")
+                                    : "Sin frutas"}
+                                </div>
+                              </>
+                            )}
                             <div>
                               <strong>Precio:</strong> $
                               {Number(item.precio).toLocaleString("es-ES")}
@@ -113,7 +117,9 @@ function OrdersHistory() {
                       }
                     })()}
                   </td>
-                  <td data-label="Total">${Number(order.total).toLocaleString("es-ES")}</td>
+                  <td data-label="Total">
+                    ${Number(order.total).toLocaleString("es-ES")}
+                  </td>
                   <td data-label="Forma de Pago">{order.forma_pago}</td>
                   <td data-label="Forma de Retiro">{order.forma_retiro}</td>
                 </tr>
@@ -121,7 +127,6 @@ function OrdersHistory() {
             </tbody>
           </table>
 
-          {/* Pagination */}
           <div className="pagination">
             {Array.from({ length: totalPages }, (_, index) => (
               <button

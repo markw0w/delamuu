@@ -4,77 +4,89 @@ import { Check } from "lucide-react";
 const CreateProduct = forwardRef(
   (
     {
-      product,
       toppingOptions,
       sauceOptions,
       fruitOptions,
+      flavorOptions, 
       maxSelections,
       currentToppings,
       currentSauces,
       currentFruits,
+      currentFlavors,
       onSave,
+      isIcreCream, 
     },
     ref
   ) => {
+    const [selectedFlavors, setSelectedFlavors] = useState(currentFlavors || []);
     const [selectedToppings, setSelectedToppings] = useState(currentToppings || []);
     const [selectedSauces, setSelectedSauces] = useState(currentSauces || []);
     const [selectedFruits, setSelectedFruits] = useState(currentFruits || []);
     const [isOpen, setIsOpen] = useState(false);
 
+    const handleFlavorSelection = (itemNombre) => {
+      const newSelection = selectedFlavors.includes(itemNombre)
+        ? selectedFlavors.filter((f) => f !== itemNombre)
+        : [...selectedFlavors, itemNombre];
+
+      if (newSelection.length > maxSelections) {
+        alert(`Máximo permitido: ${maxSelections} selecciones`);
+        return;
+      }
+      setSelectedFlavors(newSelection);
+    };
+
     const handleSelection = (type, itemNombre) => {
-      const currentTotal = selectedToppings.length + selectedSauces.length + selectedFruits.length;
-      let newTotal = currentTotal;
       let newSelection;
+      let currentTotal =
+        selectedToppings.length + selectedSauces.length + selectedFruits.length;
 
       switch (type) {
         case "topping":
           newSelection = selectedToppings.includes(itemNombre)
-            ? selectedToppings.filter(t => t !== itemNombre)
+            ? selectedToppings.filter((t) => t !== itemNombre)
             : [...selectedToppings, itemNombre];
-          newTotal = newSelection.length + selectedSauces.length + selectedFruits.length;
+          currentTotal = newSelection.length + selectedSauces.length + selectedFruits.length;
+          if (currentTotal > maxSelections) {
+            alert(`Máximo permitido: ${maxSelections} selecciones`);
+            return;
+          }
+          setSelectedToppings(newSelection);
           break;
         case "sauce":
           newSelection = selectedSauces.includes(itemNombre)
-            ? selectedSauces.filter(s => s !== itemNombre)
+            ? selectedSauces.filter((s) => s !== itemNombre)
             : [...selectedSauces, itemNombre];
-          newTotal = selectedToppings.length + newSelection.length + selectedFruits.length;
-          break;
-        case "fruit":
-          newSelection = selectedFruits.includes(itemNombre)
-            ? selectedFruits.filter(f => f !== itemNombre)
-            : [...selectedFruits, itemNombre];
-          newTotal = selectedToppings.length + selectedSauces.length + newSelection.length;
-          break;
-        default:
-          return;
-      }
-
-      if (newTotal > maxSelections) {
-        alert(`Máximo permitido: ${maxSelections} selecciones`);
-        return;
-      }
-
-      switch (type) {
-        case "topping":
-          setSelectedToppings(newSelection);
-          break;
-        case "sauce":
+          currentTotal = selectedToppings.length + newSelection.length + selectedFruits.length;
+          if (currentTotal > maxSelections) {
+            alert(`Máximo permitido: ${maxSelections} selecciones`);
+            return;
+          }
           setSelectedSauces(newSelection);
           break;
         case "fruit":
+          newSelection = selectedFruits.includes(itemNombre)
+            ? selectedFruits.filter((f) => f !== itemNombre)
+            : [...selectedFruits, itemNombre];
+          currentTotal = selectedToppings.length + selectedSauces.length + newSelection.length;
+          if (currentTotal > maxSelections) {
+            alert(`Máximo permitido: ${maxSelections} selecciones`);
+            return;
+          }
           setSelectedFruits(newSelection);
           break;
         default:
-          setSelectedToppings(newSelection);
+          return;
       }
     };
 
     useImperativeHandle(ref, () => ({
       resetSelection: () => {
+        setSelectedFlavors([]);
         setSelectedToppings([]);
         setSelectedSauces([]);
         setSelectedFruits([]);
-      }
+      },
     }));
 
     return (
@@ -83,10 +95,20 @@ const CreateProduct = forwardRef(
           type="button"
           onClick={() => setIsOpen(true)}
           className={`openOptions ${
-            (selectedToppings.length + selectedSauces.length + selectedFruits.length) > 0 ? "selected" : ""
+            (isIcreCream === "1"
+              ? selectedFlavors.length
+              : selectedToppings.length +
+                selectedSauces.length +
+                selectedFruits.length) > 0
+              ? "selected"
+              : ""
           }`}
         >
-          {(selectedToppings.length + selectedSauces.length + selectedFruits.length) > 0 ? (
+          {(isIcreCream === "1"
+            ? selectedFlavors.length
+            : selectedToppings.length +
+              selectedSauces.length +
+              selectedFruits.length) > 0 ? (
             <>
               <Check className="icon" /> Armado
             </>
@@ -99,58 +121,86 @@ const CreateProduct = forwardRef(
           <div className="optionsModal">
             <div className="optionsContent">
               <h4>Selecciona hasta {maxSelections} opciones en total</h4>
-              
-              <div className="categorySection toppingsCategory">
-                <h4>Toppings</h4>
-                {toppingOptions.map((option) => (
-                  <label key={option.id}>
-                    <input
-                      type="checkbox"
-                      checked={selectedToppings.includes(option.nombre)}
-                      onChange={() => handleSelection("topping", option.nombre)}
-                    />
-                    {option.nombre}
-                  </label>
-                ))}
-              </div>
 
-              <div className="categorySection saucesCategory">
-                <h4>Salsas</h4>
-                {sauceOptions.map((option) => (
-                  <label key={option.id}>
-                    <input
-                      type="checkbox"
-                      checked={selectedSauces.includes(option.nombre)}
-                      onChange={() => handleSelection("sauce", option.nombre)}
-                    />
-                    {option.nombre}
-                  </label>
-                ))}
-              </div>
+              {isIcreCream === "1" ? (
+                <div className="categorySection flavorsCategory">
+                  <h4>Sabores</h4>
+                  {flavorOptions.map((option) => (
+                    <label key={option.id}>
+                      <input
+                        type="checkbox"
+                        checked={selectedFlavors.includes(option.nombre)}
+                        onChange={() => handleFlavorSelection(option.nombre)}
+                      />
+                      {option.nombre}
+                    </label>
+                  ))}
+                </div>
+              ) : (
+                <>
+                  <div className="categorySection toppingsCategory">
+                    <h4>Toppings</h4>
+                    {toppingOptions.map((option) => (
+                      <label key={option.id}>
+                        <input
+                          type="checkbox"
+                          checked={selectedToppings.includes(option.nombre)}
+                          onChange={() => handleSelection("topping", option.nombre)}
+                        />
+                        {option.nombre}
+                      </label>
+                    ))}
+                  </div>
 
-              <div className="categorySection fruitsCategory">
-                <h4>Frutas</h4>
-                {fruitOptions.map((option) => (
-                  <label key={option.id}>
-                    <input
-                      type="checkbox"
-                      checked={selectedFruits.includes(option.nombre)}
-                      onChange={() => handleSelection("fruit", option.nombre)}
-                    />
-                    {option.nombre}
-                  </label>
-                ))}
-              </div>
+                  <div className="categorySection saucesCategory">
+                    <h4>Salsas</h4>
+                    {sauceOptions.map((option) => (
+                      <label key={option.id}>
+                        <input
+                          type="checkbox"
+                          checked={selectedSauces.includes(option.nombre)}
+                          onChange={() => handleSelection("sauce", option.nombre)}
+                        />
+                        {option.nombre}
+                      </label>
+                    ))}
+                  </div>
+
+                  <div className="categorySection fruitsCategory">
+                    <h4>Frutas</h4>
+                    {fruitOptions.map((option) => (
+                      <label key={option.id}>
+                        <input
+                          type="checkbox"
+                          checked={selectedFruits.includes(option.nombre)}
+                          onChange={() => handleSelection("fruit", option.nombre)}
+                        />
+                        {option.nombre}
+                      </label>
+                    ))}
+                  </div>
+                </>
+              )}
 
               <div className="selectionCounter">
-                Selecciones: {selectedToppings.length + selectedSauces.length + selectedFruits.length}/{maxSelections}
+                Selecciones:{" "}
+                {isIcreCream === "1"
+                  ? selectedFlavors.length
+                  : selectedToppings.length +
+                    selectedSauces.length +
+                    selectedFruits.length}
+                /{maxSelections}
               </div>
 
               <button
                 className="saveBtn"
                 type="button"
                 onClick={() => {
-                  onSave(selectedToppings, selectedSauces, selectedFruits);
+                  if (isIcreCream === "1") {
+                    onSave([], [], [], selectedFlavors);
+                  } else {
+                    onSave(selectedToppings, selectedSauces, selectedFruits);
+                  }
                   setIsOpen(false);
                 }}
               >

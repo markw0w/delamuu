@@ -1,12 +1,10 @@
 import React from "react";
 import { products } from "../../utils/Images"; 
 import CarouselComponent from "../CarouselComponent";
-import FormComponent from "../form/FormComponent";
+import IceCreamFormComponent from "../form/IceCreamFormComponent";
 import { ChevronsDown } from "lucide-react";
 
 function HeladoComponent() { 
-    const productName = "Helado"
-
     const images = [
         products.yogur5,
         products.yogur1,
@@ -22,7 +20,7 @@ function HeladoComponent() {
                 Desliza para comenzar
             </h3>
 
-            <FormComponent product={productName} />     
+            <IceCreamFormComponent/>     
         </section>
     );
 }

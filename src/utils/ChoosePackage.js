@@ -3,9 +3,7 @@ import React, { forwardRef, useImperativeHandle, useState, useEffect } from "rea
 const ChoosePackage = forwardRef(
   ({ options, onGramajeChange, onPriceChange, selectedGramaje, selectedPrice, packagePrices, product }, ref) => {
     const [selected, setSelected] = useState(selectedGramaje || "1/4 kg");
-    const [priceSelected, setSelectedPrice] = useState(
-      selectedPrice || "N/A"
-    );
+    const [priceSelected, setSelectedPrice] = useState(selectedPrice || "N/A");
         
     useEffect(() => {
       const foundPrice =
@@ -20,13 +18,16 @@ const ChoosePackage = forwardRef(
     }, [selectedGramaje, packagePrices, product]);
 
     const handleChange = (newGramaje) => {
+      if ((product === "Candy" || product === "Yogurt") && newGramaje === "3/4 kg") {
+        return;
+      }
       setSelected(newGramaje);
       const foundPackage = packagePrices
         ?.filter(pkg => pkg.productoNombre === product)
         .find((pkg) => pkg.envaseNombre === newGramaje);
       const newPrice = foundPackage ? foundPackage.precio : "N/A";
       setSelectedPrice(newPrice);
-      onGramajeChange(newGramaje);
+      onGramajeChange(newGramaje, newPrice);
       onPriceChange(newPrice);
     };
 
@@ -46,13 +47,21 @@ const ChoosePackage = forwardRef(
             packagePrices
               ?.filter(pkg => pkg.productoNombre === product)
               .find((pkg) => pkg.envaseNombre === option.nombre)?.precio || "N/A";
+          
+          const isDisabled = (product === "Candy" || product === "Yogur") && option.nombre === "3/4 kg";
+          
           return (
             <label
               key={`${option.nombre}-${index}`}
-              className={`packageOption ${selected === option.nombre ? "selected" : ""}`}
-              onClick={() => handleChange(option.nombre)}
+              className={`packageOption ${selected === option.nombre ? "selected" : ""} ${isDisabled ? "disabled" : ""}`}
+              onClick={() => { if (!isDisabled) handleChange(option.nombre); }}
             >
-              <input type="checkbox" checked={selected === option.nombre} readOnly />
+              <input
+                type="checkbox"
+                disabled={isDisabled}
+                checked={selected === option.nombre}
+                readOnly
+              />
               {option.nombre}
               <span className="packagePrice">${currentPrice}</span>
             </label>
@@ -64,4 +73,3 @@ const ChoosePackage = forwardRef(
 );
 
 export default ChoosePackage;
-

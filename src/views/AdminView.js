@@ -6,6 +6,7 @@ import GramajeManager from "../components/admin/GramajeManager";
 import ProductsManager from "../components/admin/ProductsManager";
 import PricesManager from "../components/admin/PricesManager";
 import OrdersHistory from "../components/admin/OrdersHistory";
+import FlavorsManager from "../components/admin/FlavorsManager";
 
 function AdminView() {
   const [activeSection, setActiveSection] = useState(null);
@@ -25,6 +26,7 @@ function AdminView() {
           <button onClick={() => setActiveSection("productos")}>Productos</button>
           <button onClick={() => setActiveSection("precios")}>Precios</button>
           <button onClick={() => setActiveSection("ordenes")}>Ordenes</button>
+          <button onClick={() => setActiveSection("sabores")}>Sabores</button>
         </ul>
       </section>
 
@@ -36,6 +38,7 @@ function AdminView() {
         {activeSection === "productos" && <ProductsManager />}
         {activeSection === "precios" && <PricesManager />}
         {activeSection === "ordenes" && <OrdersHistory />}
+        {activeSection === "sabores" && <FlavorsManager />}
       </section>
     </section>
   );

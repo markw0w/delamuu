@@ -42,17 +42,10 @@ const Cart = () => {
     let price = Array.isArray(order.prices)
       ? order.prices.reduce((acc, val) => acc + (parseFloat(val) || 0), 0)
       : parseFloat(order.prices) || 0;
-
     return total + price;
   }, 0);
 
-  const saveOrderDatabase = async (
-    name,
-    address,
-    delivery,
-    payment,
-    finalTotal
-  ) => {
+  const saveOrderDatabase = async (name, address, delivery, payment, finalTotal) => {
     if (cartItems.length === 0) {
       alert("El carrito está vacío.");
       return;
@@ -64,10 +57,13 @@ const Cart = () => {
       pedidos: cartItems.map((item) => ({
         product: item.product,
         gramaje: item.gramaje,
-        producto: item.producto,
-        toppings: item.toppings,
-        salsas: item.sauces,
-        frutas: item.fruits,
+        ...(item.product === "Helado"
+          ? { sabores: item.flavors }
+          : {
+              toppings: item.toppings,
+              salsas: item.sauces,
+              frutas: item.fruits,
+            }),
         precio: Number(item.prices),
       })),
       total: finalTotal,
@@ -76,7 +72,7 @@ const Cart = () => {
     };
 
     try {
-      const response = await fetch(API_URL, {
+      await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -89,8 +85,7 @@ const Cart = () => {
   };
 
   const sendOrderToWhatsApp = async (name, address, delivery, payment) => {
-    const shippingCost =
-      delivery === "Entregar en domicilio" ? deliveryCost : 0;
+    const shippingCost = delivery === "Entregar en domicilio" ? deliveryCost : 0;
     const finalTotal = totalCart + shippingCost;
 
     await saveOrderDatabase(name, address, delivery, payment, finalTotal);
@@ -114,39 +109,45 @@ const Cart = () => {
     cartItems.forEach((item, index) => {
       message += `*Pedido N°:${index + 1}*: ${item.product}\n`;
       message += `🍦 *Envase:* ${item.gramaje}\n`;
-      if (item.toppings?.length)
-        message += `🍒 *Toppings:* ${item.toppings.join(", ")}\n`;
-      if (item.sauces?.length)
-        message += `🍯 *Salsas:* ${item.sauces.join(", ")}\n`;
-      if (item.fruits?.length)
-        message += `🍓 *Frutas:* ${item.fruits.join(", ")}\n`;
-      message += `💰 *Precio:* $${Number(item.prices).toLocaleString(
-        "es-ES"
-      )}\n\n`;
+      if (item.product === "Helado") {
+        // Agregamos sabores si es helado
+        if (item.flavors && item.flavors.length > 0) {
+          message += `🍨 *Sabores:* ${item.flavors.join(", ")}\n`;
+        } else {
+          message += `🍨 *Sabores:* Sin sabores\n`;
+        }
+      } else {
+        if (item.toppings?.length)
+          message += `🍒 *Toppings:* ${item.toppings.join(", ")}\n`;
+        if (item.sauces?.length)
+          message += `🍯 *Salsas:* ${item.sauces.join(", ")}\n`;
+        if (item.fruits?.length)
+          message += `🍓 *Frutas:* ${item.fruits.join(", ")}\n`;
+      }
+      message += `💰 *Precio:* $${Number(item.prices).toLocaleString("es-ES", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}\n\n`;
     });
 
     if (shippingCost > 0) {
-      message += `🚚 *Costo de envío:* $${shippingCost.toLocaleString(
-        "es-ES"
-      )}\n`;
+      message += `🚚 *Costo de envío:* $${shippingCost.toLocaleString("es-ES")}\n`;
     }
 
     message += `💰 *Total a pagar:* $${finalTotal.toLocaleString("es-ES")}\n\n`;
     message += `📅 Fecha: ${new Date().toLocaleDateString("es-ES")}\n\n`;
 
-    if (payment === 'Pago virtual') {
+    if (payment === "Pago virtual") {
       message += `🧾 Como tu forma de pago es *'${payment}'*, te compartimos la información requerida para realizar el pago:\n`;
       message += `• *CBU*: 123456789\n`;
       message += `• *ALIAS*: Delamuu2025\n`;
       message += `• *Otra información*: Notificar informacion\n\n`;
       message += `Despacharemos tu pedido una vez nos envíes el comprobante de pago. Puedes enviarlo por este medio.\n\n`;
     }
-    
+
     message += `🛻 ¡Gracias por tu compra!`;
 
-    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
-      message
-    )}`;
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
 
     closeOrderModal();
@@ -154,15 +155,8 @@ const Cart = () => {
 
   return (
     <>
-      <div
-        className="cart"
-        onClick={toggleCart}
-        style={{ cursor: "pointer" }}
-      >
-        <ShoppingCart
-          size={40}
-          color="#fff"
-        />
+      <div className="cart" onClick={toggleCart} style={{ cursor: "pointer" }}>
+        <ShoppingCart size={40} color="#fff" />
         {cartItems.length > 0 && (
           <span className="cart-count">{cartItems.length}</span>
         )}
@@ -171,10 +165,7 @@ const Cart = () => {
       {isCartOpen && (
         <div className="cart-modal">
           <div className="cart-content">
-            <button
-              className="close-button"
-              onClick={toggleCart}
-            >
+            <button className="close-button" onClick={toggleCart}>
               <X size={24} />
             </button>
             <h2>Tu Carrito</h2>
@@ -188,36 +179,46 @@ const Cart = () => {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
-                      <button
-                        className="sendOrder"
-                        onClick={openOrderModal}
-                      >
+                      <button className="sendOrder" onClick={openOrderModal}>
                         <MessageCircleHeart size={20} /> Enviar Pedido
                       </button>
                     </span>
                     <div className="order-summary">
-                      <p><strong>Producto: {order.product} </strong></p>
+                      <p>
+                        <strong>Producto: {order.product}</strong>
+                      </p>
                       <p>
                         <strong>Envase:</strong> {order.gramaje}
                       </p>
-                      <p>
-                        <strong>Toppings:</strong>{" "}
-                        {order.toppings.length > 0
-                          ? order.toppings.join(", ")
-                          : "Sin toppings"}
-                      </p>
-                      <p>
-                        <strong>Salsas:</strong>{" "}
-                        {order.sauces.length > 0
-                          ? order.sauces.join(", ")
-                          : "Sin salsas"}
-                      </p>
-                      <p>
-                        <strong>Frutas:</strong>{" "}
-                        {order.fruits.length > 0
-                          ? order.fruits.join(", ")
-                          : "Sin frutas"}
-                      </p>
+                      {order.product === "Helado" ? (
+                        <p>
+                          <strong>Sabores:</strong>{" "}
+                          {order.flavors.length > 0
+                            ? order.flavors.join(", ")
+                            : "Sin sabores"}
+                        </p>
+                      ) : (
+                        <>
+                          <p>
+                            <strong>Toppings:</strong>{" "}
+                            {order.toppings.length > 0
+                              ? order.toppings.join(", ")
+                              : "Sin toppings"}
+                          </p>
+                          <p>
+                            <strong>Salsas:</strong>{" "}
+                            {order.sauces.length > 0
+                              ? order.sauces.join(", ")
+                              : "Sin salsas"}
+                          </p>
+                          <p>
+                            <strong>Frutas:</strong>{" "}
+                            {order.fruits.length > 0
+                              ? order.fruits.join(", ")
+                              : "Sin frutas"}
+                          </p>
+                        </>
+                      )}
                       <p>
                         <strong>Precio:</strong> $
                         {Number(order.prices).toLocaleString("es-ES", {
@@ -226,14 +227,8 @@ const Cart = () => {
                         })}
                       </p>
                     </div>
-                    <button
-                      onClick={() => removeOrder(index)}
-                      className="delete-button"
-                    >
-                      <Trash2
-                        size={25}
-                        color="red"
-                      />
+                    <button onClick={() => removeOrder(index)} className="delete-button">
+                      <Trash2 size={25} color="red" />
                     </button>
                   </li>
                 ))}

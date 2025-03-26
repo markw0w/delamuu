@@ -64,6 +64,10 @@
                 padding: 3px;
             }
         }
+        .packageOption.disabled {
+            opacity: 0.2; 
+            pointer-events: none;
+        }
     }
     button{
         @include buttonDesign($width: 50%);

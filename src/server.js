@@ -11,6 +11,7 @@ import fruitRoutes from "./routes/fruits.js";
 import productRoutes from "./routes/products.js";
 import gramajeRoutes from "./routes/gramajes.js";
 import deliveryRoutes from "./routes/delivery.js";
+import flavorRoutes from "./routes/flavors.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,6 +39,7 @@ app.use("/fruits", fruitRoutes);
 app.use("/products", productRoutes);
 app.use("/gramajes", gramajeRoutes);
 app.use("/delivery", deliveryRoutes);
+app.use("/flavors", flavorRoutes);
 
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "../", "index.html"));

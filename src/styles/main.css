@@ -468,6 +468,10 @@ header .rightNavContainer #burguerMenuIcon {
   color: #f1f1f1;
   padding: 3px;
 }
+.formComponentContainer .choosePackageContainer .packageOption.disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
 .formComponentContainer button {
   border: 0px;
   padding: 5px;
