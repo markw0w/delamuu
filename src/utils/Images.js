@@ -14,9 +14,17 @@ import LogoLongTransparent from '../assets/delamuu-logos/logo-long-transparent.p
 
 // Imports: Productos
 import Yogur5 from '../assets/products/yogur-5.jpg';
-import Yogur4 from '../assets/products/yogur-4.jpg';
+import Yogur4 from '../assets/products/yogurt_4.jpg';
 import Yogur1 from '../assets/products/yogur-1.jpg';
-import Yogur6 from '../assets/products/yogur-6.jpg';
+import Yogur6 from '../assets/products/yogurt_1.jpg';
+import Helado1 from '../assets/products/helado_1.jpg';
+import Helado2 from '../assets/products/helado_2.jpg';
+import Helado3 from '../assets/products/helado_3.jpg';
+import Candy1 from '../assets/products/candy1.jpg';
+import Candy2 from '../assets/products/candy2.jpg';
+import acai1 from '../assets/products/acaí_1.jpg';
+import acai2 from '../assets/products/acaí_2.jpg';
+import acai from '../assets/products/acaí_3.jpg';
 
 // Imports: Efectos fondo
 import ArandanosEffect from '../assets/others/strawberries.png';
@@ -48,6 +56,14 @@ export const products = {
     yogur4: Yogur4,
     yogur1: Yogur1,
     yogur6: Yogur6,
+    Helado1: Helado1,
+    Helado2: Helado2,
+    Helado3: Helado3,
+    Candy1: Candy1,
+    Candy2: Candy2,
+    acai1: acai1,
+    acai2: acai2,
+    acai: acai,
 }
 
 // Efectos fondo

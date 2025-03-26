@@ -6,9 +6,9 @@ import { ChevronsDown } from "lucide-react";
 
 function HeladoComponent() { 
     const images = [
-        products.yogur5,
-        products.yogur1,
-        products.yogur4,
+        products.Helado1,
+        products.Helado2,
+        products.Helado3,
     ];
 
     return (

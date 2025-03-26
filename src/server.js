@@ -13,6 +13,7 @@ import gramajeRoutes from "./routes/gramajes.js";
 import deliveryRoutes from "./routes/delivery.js";
 import flavorRoutes from "./routes/flavors.js";
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -22,7 +23,6 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
-
 sequelize.authenticate()
   .then(() => console.log("✅ Conexión con la base de datos establecida."))
   .catch((error) => console.error("❌ Error al conectar a la base de datos:", error));

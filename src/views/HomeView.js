@@ -81,7 +81,7 @@ function HomeView() {
                     <article className="productContainer">
                         <h2>Açaí</h2>
                         <img className="principalIceCream" src={products.yogur1} alt="Helado Principal" />
-                        <Link className="productLink" to="/order/azai">
+                        <Link className="productLink" to="/order/acai">
                             <button>Quiero pedir</button>
                         </Link>
                     </article>

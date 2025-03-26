@@ -8,9 +8,9 @@ function CandyComponent() {
     const productName = "Candy"
 
     const images = [
-        products.yogur5,
-        products.yogur1,
-        products.yogur4,
+        products.Candy1,
+        products.Candy2,
+        
     ];
 
     return (
