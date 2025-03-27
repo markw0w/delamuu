@@ -45,21 +45,14 @@
 // EFFECTS ENTRIES
 // Img Entry Effect
 @keyframes animatedImg1{
-    0%{transform: translateX(-1300px) translateY(-400px) rotate(120deg);}
-    100%{transform: translateX(140px) translateY(0px) rotate(-5deg);}
-}
-@keyframes animatedImg2{
-    0%{transform: translateX(1300px) translateY(-400px) rotate(-120deg);}
-    100%{transform: translateX(0px) translateY(-50px) rotate(0deg);}
+    0%{transform: translateY(1300px);}
+    100%{transform: translateY(90px) rotate(-15deg);}
 }
 @keyframes animatedImg3{
-    0%{transform: translateX(-1300px) translateY(-400px) rotate(120deg);}
-    100%{transform: translateX(-80px) translateY(70px) rotate(0deg);}
+    0%{transform: translateY(1300px);}
+    100%{transform:  translateY(-30px) rotate(15deg);}
 }
-@keyframes animatedImg4{
-    0%{transform: translateX(1300px) translateY(-400px) rotate(-120deg);}
-    100%{transform: translateX(-200px) translateY(-40px) rotate(-10deg);}
-}
+
 
 // H2 Text Entry
 @keyframes text-entry{

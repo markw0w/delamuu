@@ -206,34 +206,18 @@ header .rightNavContainer #burguerMenuIcon {
 }
 @keyframes animatedImg1 {
   0% {
-    transform: translateX(-1300px) translateY(-400px) rotate(120deg);
+    transform: translateY(1300px);
   }
   100% {
-    transform: translateX(140px) translateY(0px) rotate(-5deg);
-  }
-}
-@keyframes animatedImg2 {
-  0% {
-    transform: translateX(1300px) translateY(-400px) rotate(-120deg);
-  }
-  100% {
-    transform: translateX(0px) translateY(-50px) rotate(0deg);
+    transform: translateY(90px) rotate(-15deg);
   }
 }
 @keyframes animatedImg3 {
   0% {
-    transform: translateX(-1300px) translateY(-400px) rotate(120deg);
+    transform: translateY(1300px);
   }
   100% {
-    transform: translateX(-80px) translateY(70px) rotate(0deg);
-  }
-}
-@keyframes animatedImg4 {
-  0% {
-    transform: translateX(1300px) translateY(-400px) rotate(-120deg);
-  }
-  100% {
-    transform: translateX(-200px) translateY(-40px) rotate(-10deg);
+    transform: translateY(-30px) rotate(15deg);
   }
 }
 @keyframes text-entry {
@@ -1072,47 +1056,6 @@ header .rightNavContainer #burguerMenuIcon {
   height: 100%;
 }
 
-.animatedImgContainer {
-  width: 100%;
-  height: 250px;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  align-items: center;
-}
-.animatedImgContainer .animatedImg {
-  view-timeline-name: --imgEntry;
-  view-timeline-axis: block;
-  animation-timeline: --imgEntry;
-  animation-range: entry 5% cover 50%;
-  animation-fill-mode: both;
-  filter: drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.384));
-}
-.animatedImgContainer .animatedImg4 {
-  width: auto;
-  height: 70%;
-  animation-name: animatedImg4;
-  z-index: 9999;
-}
-.animatedImgContainer .animatedImg3 {
-  width: auto;
-  height: 60%;
-  animation-name: animatedImg3;
-  z-index: 10000;
-}
-.animatedImgContainer .animatedImg2 {
-  width: auto;
-  height: 80%;
-  animation-name: animatedImg2;
-  z-index: 9999;
-}
-.animatedImgContainer .animatedImg1 {
-  width: auto;
-  height: 150%;
-  animation-name: animatedImg1;
-  z-index: 10000;
-}
-
 .presentationContainer {
   width: 100%;
   height: 100%;
@@ -1122,9 +1065,33 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
   position: relative;
 }
+.presentationContainer .animatedImg {
+  position: absolute;
+  view-timeline-name: --imgEntry;
+  view-timeline-axis: block;
+  animation-timeline: --imgEntry;
+  animation-range: entry 20% cover 50%;
+  animation-fill-mode: both;
+  filter: drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.384));
+  filter: blur(2px);
+}
+.presentationContainer .animatedImg3 {
+  width: auto;
+  height: 100px;
+  animation-name: animatedImg3;
+  z-index: 10000;
+  left: 0px;
+}
+.presentationContainer .animatedImg1 {
+  width: auto;
+  height: 200px;
+  animation-name: animatedImg1;
+  z-index: 10000;
+  right: -10px;
+}
 .presentationContainer .informationContainer {
   width: 100%;
-  height: 250px;
+  height: 350px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -1145,7 +1112,7 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
 }
 .presentationContainer .informationContainer .titleInformation h2 {
-  font-weight: 800;
+  font-weight: 900;
   font-size: 24px;
   color: #4b57f5;
   width: 95%;
@@ -1155,13 +1122,12 @@ header .rightNavContainer #burguerMenuIcon {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  z-index: 10001;
   view-timeline-name: --txtEntry;
   view-timeline-axis: block;
   animation-timeline: --txtEntry;
-  animation-range: entry 0% cover 40% once;
-  animation-fill-mode: none;
+  animation-range: entry 20% cover 50%;
   animation-name: text-entry;
-  animation-play-state: running;
 }
 @media (min-width: 1024px) {
   .presentationContainer .informationContainer .titleInformation h2 {

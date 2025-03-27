@@ -20,15 +20,11 @@ function HomeView() {
                     <h1>Helados artesanales, yogures, açaí (azaí) y helados combinados en Junín, Buenos Aires</h1>
                     <h2><img src={logos.shortDark} alt="Helado Principal" />Delamuu</h2>
             </section>
-            
-            <section className="animatedImgContainer">
-                <img className="animatedImg animatedImg1" src={effects.yogur} alt="Img1"/>
-                <img className="animatedImg animatedImg2" src={effects.iceCream} alt="Img1"/>
-                <img className="animatedImg animatedImg3" src={effects.azai} alt="Img1"/>
-                <img className="animatedImg animatedImg4" src={effects.candy} alt="Img1"/>
-            </section>
 
             <section className="presentationContainer">
+                <img className="animatedImg animatedImg1" src={effects.yogur} alt="Img1"/>
+                <img className="animatedImg animatedImg3" src={effects.azai} alt="Img1"/>
+
                 <article className="informationContainer">
                     <div className="titleInformation">
                         <h2>Helados, yogures, candy y açaí <br></br> Sabores artesanales únicos e irresistibles.</h2>

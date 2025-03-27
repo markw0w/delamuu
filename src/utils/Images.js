@@ -1,8 +1,4 @@
-// Todas las imagenes las incorporamos acá
-// Luego las llamamos desde el JSON
 // Importamos
-// Imports: UI Icons
-
 // Imports: Local
 import Local1 from '../assets/store/2.jpg' 
 import Local2 from '../assets/store/local_delamuu.jpg' 
@@ -34,15 +30,7 @@ import AzaiEffect from '../assets/others/azai.png';
 import IceCreamEffect from '../assets/others/iceCream.png';
 import CandyEffect from '../assets/others/candy.png';
 
-// Imports: Social Media
-import InstagramLogo from '../assets/social-media/ig.png'
-import WhatsappLogo from '../assets/social-media/wp.png'
-import FacebookLogo from '../assets/social-media/fb.png'
-
-// JSON a exportar
-// UI Icons
-
-
+// A exportar
 // Logos
 export const logos = {
     shortLight: LogoShortLight,
@@ -74,13 +62,6 @@ export const effects = {
     candy: CandyEffect,
     iceCream: IceCreamEffect,
     azai: AzaiEffect,
-}
-
-// Redes sociales
-export const socialMedia = {
-    fb: FacebookLogo,
-    ig: InstagramLogo,
-    wp: WhatsappLogo,
 }
 
 // Local
