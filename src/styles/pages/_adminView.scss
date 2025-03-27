@@ -64,6 +64,24 @@
           font-weight: bold;
           margin-bottom: 10px;
         }
+        .filter-container{
+          @include sizes($height: 30px);
+          @include displayFlex($flexDirection:row);
+          gap: 10px;
+
+          input{
+            @include sizes(90%,90%);
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.349);
+            outline: none;
+            font-family: $montserratFont;
+            padding: 5px;
+          }
+          button{
+            @include buttonDesign($width:100px, $height: 90%);
+
+          }
+        }
         
         .admin-input-container {
           display: flex;

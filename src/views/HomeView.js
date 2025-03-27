@@ -91,8 +91,6 @@ function HomeView() {
                     </article>
                 </div>
 
-
-                {/* PARALLAX FONDO */}
                 <img
                     className="backgroundEffect backgroundEffect-1"
                     src={logos.shortDark}

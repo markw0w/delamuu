@@ -41,4 +41,18 @@ router.post("/add-order", async (req, res) => {
     }
 });
 
+router.get("/filter-orders", async (req,res) => {
+  const {date} = req.query;
+  try {
+    const [results] = await sequelize.query(
+      "SELECT * FROM orders WHERE DATE(fecha) = STR_TO_DATE(:date, '%Y-%m-%d')",
+      { replacements: { date } }
+    );
+    res.json(results);
+  } catch (error) {
+    console.error("❌ Error al obtener las ordenes:", error);
+    res.status(500).json({ error: error.message });
+  }
+})
+
 export default router;
