@@ -21,26 +21,26 @@ function App() {
   return (
     <CartProvider>
       <Router>
-        <ScrollToTop/>
-        <HeaderComponent />
-        <Cart/>
-          <main>
-            <Routes id="routes">
-              <Route id="route" path="/" element={<HomeView/>}/>
-              <Route path="/order/:product" element={<OrderView />} />
-              
-              <Route path="/auth/delamuu" element={<LoginView />} />
-              <Route path="/admin/delamuu" element={<ProtectedRoute><AdminView/></ProtectedRoute>}/>
-              
-              <Route path="/admin/toppings" element={<ToppingsManager />} />
-              <Route path="/admin/frutas" element={<FruitsManager />} />
-              <Route path="/admin/gramaje" element={<GramajeManager />} />
-              <Route path="/admin/productos" element={<ProductsManager />} />
-              <Route path="/admin/salsas" element={<SaucesManager />} />
-              <Route path="/admin/precios" element={<PricesManager />} />
-            </Routes>
-          </main>
-        <FooterComponent />
+          <ScrollToTop/>
+          <HeaderComponent />
+          <Cart/>
+            <main>
+              <Routes id="routes">
+                <Route id="route" path="/" element={<HomeView/>}/>
+                <Route path="/order/:product" element={<OrderView />} />
+                
+                <Route path="/auth/delamuu" element={<LoginView />} />
+                <Route path="/admin/delamuu" element={<ProtectedRoute><AdminView/></ProtectedRoute>}/>
+                
+                <Route path="/admin/toppings" element={<ToppingsManager />} />
+                <Route path="/admin/frutas" element={<FruitsManager />} />
+                <Route path="/admin/gramaje" element={<GramajeManager />} />
+                <Route path="/admin/productos" element={<ProductsManager />} />
+                <Route path="/admin/salsas" element={<SaucesManager />} />
+                <Route path="/admin/precios" element={<PricesManager />} />
+              </Routes>
+            </main>
+          <FooterComponent />
       </Router>
     </CartProvider>
   );

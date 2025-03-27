@@ -3,17 +3,28 @@
 @use '../utils/mixins' as *;
 @use '../utils/animations' as *;
 @use '../utils/typography' as *;
+@use '../utils/breakpoints' as *;
 
+.productComponentContainer{
+    background-image: url('../assets/backgrounds/product-background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .productComponent{
-    margin-top: 70px;
     @include sizes();
     @include displayFlex();
+
+    @include breakpoint(medium){
+        width: 30%;
+        margin: auto;
+    }
 
     h2{
         margin-bottom: 10px;
         font-weight: $superBold;
         font-size: $extraLg;
-        color: $brandColor;
+        color: $lightFontColor;
     }
     h3{
         margin-top: 10px;
@@ -34,5 +45,9 @@
         position: relative;
         overflow: hidden;
         margin-bottom: 25px;
+
+        @include breakpoint(medium){
+            display: none;
+        }
     }
 }

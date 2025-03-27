@@ -964,8 +964,14 @@ header .rightNavContainer #burguerMenuIcon {
   background: rgb(255, 113, 113);
 }
 
+.productComponentContainer {
+  background-image: url("../assets/backgrounds/product-background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .productComponent {
-  margin-top: 70px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -973,11 +979,17 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: column;
   align-items: center;
 }
+@media (min-width: 1024px) {
+  .productComponent {
+    width: 30%;
+    margin: auto;
+  }
+}
 .productComponent h2 {
   margin-bottom: 10px;
   font-weight: 800;
   font-size: 45px;
-  color: #92a6d8;
+  color: #f1f1f1;
 }
 .productComponent h3 {
   margin-top: 10px;
@@ -1004,6 +1016,11 @@ header .rightNavContainer #burguerMenuIcon {
   position: relative;
   overflow: hidden;
   margin-bottom: 25px;
+}
+@media (min-width: 1024px) {
+  .productComponent h3 {
+    display: none;
+  }
 }
 
 .introductionContainer {
@@ -1693,4 +1710,8 @@ main .fatherContainer {
 
 .cart.visible {
   display: block;
+}
+
+#tsparticles {
+  z-index: -1;
 }/*# sourceMappingURL=main.css.map */

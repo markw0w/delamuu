@@ -27,8 +27,17 @@ import ArandanosEffect from '../assets/others/strawberries.png';
 import StrawberriesEffect from '../assets/others/frutillas.png';
 import YogurEffect from '../assets/others/helado-principal.png';
 import AzaiEffect from '../assets/others/azai.png';
-import IceCreamEffect from '../assets/others/iceCream.png';
-import CandyEffect from '../assets/others/candy.png';
+
+// Imports: Particulas
+import ParticleYogur1       from      '../assets/particles/yogur-particle-1.png';
+import ParticleYogur2       from      '../assets/particles/yogur-particle-2.png';
+import ParticleCandy1       from      '../assets/particles/candy-particle-1.png';
+import ParticleCandy2       from      '../assets/particles/candy-particle-2.png';
+import ParticleAcai1        from       '../assets/particles/acai-particle-1.webp';
+import ParticleAcai2        from       '../assets/particles/acai-particle-2.png';
+import ParticleIceCream1        from   '../assets/particles/ice-cream-particle-1.png';
+import ParticleIceCream2    from   '../assets/particles/ice-cream-particle-2.png';
+import ParticleIceCream3    from   '../assets/particles/ice-cream-particle-3.png';
 
 // A exportar
 // Logos
@@ -59,8 +68,6 @@ export const effects = {
     arandanos: ArandanosEffect,
     strawberries: StrawberriesEffect,
     yogur: YogurEffect,
-    candy: CandyEffect,
-    iceCream: IceCreamEffect,
     azai: AzaiEffect,
 }
 
@@ -68,5 +75,18 @@ export const effects = {
 export const local = {
     local1: Local1,
     local2: Local2,
+}
+
+// Particulas
+export const particles = {
+    ParticleYogur1: ParticleYogur1,   
+    ParticleYogur2: ParticleYogur2,   
+    ParticleCandy1: ParticleCandy1,  
+    ParticleCandy2: ParticleCandy2,  
+    ParticleAcai1: ParticleAcai1,   
+    ParticleAcai2: ParticleAcai2,   
+    ParticleIceCream1: ParticleIceCream1,
+    ParticleIceCream2: ParticleIceCream2,
+    ParticleIceCream3: ParticleIceCream3,
 }
 
