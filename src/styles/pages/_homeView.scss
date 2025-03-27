@@ -14,7 +14,6 @@
     width: 100%;
     min-height: 100vh;
     @include displayFlex();
-    //justify-content: flex-end;
 
     h1 {
         position: absolute;
@@ -50,47 +49,36 @@
     }
 }
 
-.animatedImgContainer{
-    @include sizes($height: 250px);
-    @include displayFlex($flexDirection:row);
-    
-    .animatedImg{
-        view-timeline-name: --imgEntry;
-        view-timeline-axis: block;
-        animation-timeline: --imgEntry;
-        animation-range: entry 5% cover 50%;
-        animation-fill-mode: both;
-        filter: drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.384));
-    }
-    .animatedImg4{
-        @include sizes(auto,70%);
-        animation-name: animatedImg4;
-        z-index: 9999;
-    }
-    .animatedImg3{
-        @include sizes(auto,60%);
-        animation-name: animatedImg3;
-        z-index: 10000;
-    }
-    .animatedImg2{
-        @include sizes(auto,80%);
-        animation-name: animatedImg2;
-        z-index: 9999;
-    }
-    .animatedImg1{
-        @include sizes(auto,150%);
-        animation-name: animatedImg1;
-        z-index: 10000;
-    }
-}
-
 .presentationContainer{
     @include sizes();
     @include displayFlex($justifyContent: flex-start);
     position: relative;
 
+    .animatedImg{
+        position: absolute;
+        view-timeline-name: --imgEntry;
+        view-timeline-axis: block;
+        animation-timeline: --imgEntry;
+        animation-range: entry 20% cover 50%;
+        animation-fill-mode: both;
+        filter: drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.384));
+        filter: blur(2px)
+    }
+    .animatedImg3{
+        @include sizes(auto,100px);
+        animation-name: animatedImg3;
+        z-index: 10000;
+        left: 0px;
+    }
+    .animatedImg1{
+        @include sizes(auto,200px);
+        animation-name: animatedImg1;
+        z-index: 10000;
+        right: -10px;
+    }
+
     .informationContainer{
-        @include sizes(100%, 250px);
+        @include sizes(100%, 350px);
         @include displayFlex();
 
         @include breakpoint(medium){
@@ -102,20 +90,22 @@
             @include displayFlex();
             
             h2{
-                font-weight: $superBold;
+                font-weight: 900;
                 font-size: 24px;
                 color: #4b57f5;
                 @include sizes(95%,150px);
                 text-align: center;
                 @include displayFlex();
+                z-index: 10001;
 
                 view-timeline-name: --txtEntry;
                 view-timeline-axis: block;
                 animation-timeline: --txtEntry;
-                animation-range: entry 0% cover 40% once;
-                animation-fill-mode:none;
+                animation-range: entry 20% cover 50%;
+                //animation-fill-mode: forwards;
+                //animation-iteration-count: 0;
                 animation-name: text-entry;
-                animation-play-state: running;
+                //animation-play-state: running;
 
                 @include breakpoint(medium){
                     font-size: $extraLg;

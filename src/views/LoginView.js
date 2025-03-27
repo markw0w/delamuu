@@ -5,7 +5,6 @@ function LoginView() {
   const [password, setPassword] = useState("");
 
   const API_URL = "http://localhost:3001/api/auth";
-
   const authLogin = async (e) => {
     e.preventDefault();
 
@@ -24,8 +23,11 @@ function LoginView() {
       const data = await response.json();
 
       if (response.ok) {
+        sessionStorage.setItem("token", data.token);
+        sessionStorage.setItem("isAdmin", true);
+
         alert(data.message || "Inicio de sesión exitoso");
-        window.location.href = "/admin/delamuu"
+        window.location.href = "/admin/delamuu"; 
       } else {
         alert(data.message || "Error al iniciar sesión");
       }
@@ -34,6 +36,7 @@ function LoginView() {
       alert("Hubo un problema al conectar con el servidor.");
     }
   };
+
   return (
     <section className="loginViewContainer">
       <form className="loginContent">
@@ -43,15 +46,15 @@ function LoginView() {
         <input
           type="text"
           value={user}
-          onChange={(e) => setUser(e.target.value)} 
+          onChange={(e) => setUser(e.target.value)}
           placeholder="Tu usuario aquí"
         />
 
         <label>Contraseña:</label>
         <input
-          type="text"
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           placeholder="Tu contraseña aquí"
         />
 

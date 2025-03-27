@@ -159,7 +159,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `nombre_cliente`, `direccion`, `precio`, `fecha`, `detalles`, `total`, `forma_pago`, `forma_retiro`) VALUES
-(22, 'Estanis', 'Av123', 0.00, '2025-03-26 05:40:23', '[{\"product\":\"Yogur\",\"gramaje\":\"1/4 kg\",\"toppings\":[],\"salsas\":[],\"frutas\":[\"Zapallo en almíbar\",\"Uva\",\"Sandía\"],\"precio\":6500},{\"product\":\"Helado\",\"gramaje\":\"1/2 kg\",\"sabores\":[\"Almendrado\",\"Americana\",\"Ananá\"],\"precio\":10900},{\"product\":\"Azai\",\"gramaje\":\"3/4 kg\",\"toppings\":[\"Alfajor\",\"Almendras\",\"Almohaditas\",\"Anillitos\"],\"salsas\":[],\"frutas\":[],\"precio\":22900},{\"product\":\"Candy\",\"gramaje\":\"1 kg\",\"toppings\":[\"Pasas de uva con choco\",\"Ópera\",\"Moritas\"],\"salsas\":[\"Frutos del bosque\",\"Frutilla\"],\"frutas\":[],\"precio\":17500}]', 59800.00, 'Pago contraentrega', 'Entregar en domicilio');
+(22, 'Estanis', 'Av123', 0.00, '2025-03-26 05:40:23', '[{\"product\":\"Yogur\",\"gramaje\":\"1/4 kg\",\"toppings\":[],\"salsas\":[],\"frutas\":[\"Zapallo en almíbar\",\"Uva\",\"Sandía\"],\"precio\":6500},{\"product\":\"Helado\",\"gramaje\":\"1/2 kg\",\"sabores\":[\"Almendrado\",\"Americana\",\"Ananá\"],\"precio\":10900},{\"product\":\"Acai\",\"gramaje\":\"3/4 kg\",\"toppings\":[\"Alfajor\",\"Almendras\",\"Almohaditas\",\"Anillitos\"],\"salsas\":[],\"frutas\":[],\"precio\":22900},{\"product\":\"Candy\",\"gramaje\":\"1 kg\",\"toppings\":[\"Pasas de uva con choco\",\"Ópera\",\"Moritas\"],\"salsas\":[\"Frutos del bosque\",\"Frutilla\"],\"frutas\":[],\"precio\":17500}]', 59800.00, 'Pago contraentrega', 'Entregar en domicilio');
 
 -- --------------------------------------------------------
 
@@ -179,7 +179,7 @@ CREATE TABLE `productos` (
 INSERT INTO `productos` (`id`, `nombre`) VALUES
 (2, 'Helado'),
 (3, 'Candy'),
-(4, 'Azai'),
+(4, 'Acai'),
 (5, 'Yogur');
 
 -- --------------------------------------------------------

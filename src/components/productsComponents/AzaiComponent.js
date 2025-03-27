@@ -4,18 +4,18 @@ import CarouselComponent from "../CarouselComponent";
 import FormComponent from "../form/FormComponent";
 import { ChevronsDown } from "lucide-react";
 
-function AzaiComponent() { 
-    const productName = "Azai"
+function AcaiComponent() { 
+    const productName = "Acai"
 
     const images = [
-        products.yogur5,
-        products.yogur1,
-        products.yogur4,
+        products.acai,
+        products.acai2,
+        products.acai1,
     ];
 
     return (
-        <section className="productComponent yogur" id="azai">
-            <h2>Azaí</h2>
+        <section className="productComponent yogur" id="acai">
+            <h2>Açaí</h2>
             <CarouselComponent images={images} />
             <h3>
                 <ChevronsDown size={35}/>
@@ -27,4 +27,4 @@ function AzaiComponent() {
     );
 }
 
-export default AzaiComponent;
+export default AcaiComponent;

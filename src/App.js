@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { CartProvider } from "./utils/CartContext";
+import ProtectedRoute from "./routes/ProtectedRoutes";
 import HomeView from './views/HomeView';
 import OrderView from './views/OrderView';
 import AdminView from './views/AdminView';
@@ -29,8 +30,8 @@ function App() {
               <Route path="/order/:product" element={<OrderView />} />
               
               <Route path="/auth/delamuu" element={<LoginView />} />
-
-              <Route path="/admin/delamuu" element={<AdminView />} />
+              <Route path="/admin/delamuu" element={<ProtectedRoute><AdminView/></ProtectedRoute>}/>
+              
               <Route path="/admin/toppings" element={<ToppingsManager />} />
               <Route path="/admin/frutas" element={<FruitsManager />} />
               <Route path="/admin/gramaje" element={<GramajeManager />} />
