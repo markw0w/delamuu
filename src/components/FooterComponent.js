@@ -1,7 +1,6 @@
 import React from "react";
 import { logos } from "../utils/Images";
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
-//import { Link } from 'react-router-dom';
 
 function FooterComponent(){
     return(

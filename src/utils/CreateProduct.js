@@ -1,5 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Check } from "lucide-react";
+import AlertComponent from "../components/alerts/AlertComponent";
 
 const CreateProduct = forwardRef(
   (
@@ -7,22 +8,34 @@ const CreateProduct = forwardRef(
       toppingOptions,
       sauceOptions,
       fruitOptions,
-      flavorOptions, 
+      flavorOptions,
       maxSelections,
       currentToppings,
       currentSauces,
       currentFruits,
       currentFlavors,
       onSave,
-      isIcreCream, 
+      isIcreCream,
     },
     ref
   ) => {
-    const [selectedFlavors, setSelectedFlavors] = useState(currentFlavors || []);
-    const [selectedToppings, setSelectedToppings] = useState(currentToppings || []);
+    const [selectedFlavors, setSelectedFlavors] = useState(
+      currentFlavors || []
+    );
+    const [selectedToppings, setSelectedToppings] = useState(
+      currentToppings || []
+    );
     const [selectedSauces, setSelectedSauces] = useState(currentSauces || []);
     const [selectedFruits, setSelectedFruits] = useState(currentFruits || []);
     const [isOpen, setIsOpen] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
+    const [message, setMessage] = useState("");
+
+    const showAlertMessage = (msg, type = "success") => {
+      setMessage({ text: msg, type });
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false), 3000);
+    };
 
     const handleFlavorSelection = (itemNombre) => {
       const newSelection = selectedFlavors.includes(itemNombre)
@@ -30,7 +43,10 @@ const CreateProduct = forwardRef(
         : [...selectedFlavors, itemNombre];
 
       if (newSelection.length > maxSelections) {
-        alert(`Máximo permitido: ${maxSelections} selecciones`);
+        showAlertMessage(
+          `Máximo permitido: ${maxSelections} selecciones`,
+          "error"
+        );
         return;
       }
       setSelectedFlavors(newSelection);
@@ -46,9 +62,13 @@ const CreateProduct = forwardRef(
           newSelection = selectedToppings.includes(itemNombre)
             ? selectedToppings.filter((t) => t !== itemNombre)
             : [...selectedToppings, itemNombre];
-          currentTotal = newSelection.length + selectedSauces.length + selectedFruits.length;
+          currentTotal =
+            newSelection.length + selectedSauces.length + selectedFruits.length;
           if (currentTotal > maxSelections) {
-            alert(`Máximo permitido: ${maxSelections} selecciones`);
+            showAlertMessage(
+              `Máximo permitido: ${maxSelections} selecciones`,
+              "error"
+            );
             return;
           }
           setSelectedToppings(newSelection);
@@ -57,9 +77,15 @@ const CreateProduct = forwardRef(
           newSelection = selectedSauces.includes(itemNombre)
             ? selectedSauces.filter((s) => s !== itemNombre)
             : [...selectedSauces, itemNombre];
-          currentTotal = selectedToppings.length + newSelection.length + selectedFruits.length;
+          currentTotal =
+            selectedToppings.length +
+            newSelection.length +
+            selectedFruits.length;
           if (currentTotal > maxSelections) {
-            alert(`Máximo permitido: ${maxSelections} selecciones`);
+            showAlertMessage(
+              `Máximo permitido: ${maxSelections} selecciones`,
+              "error"
+            );
             return;
           }
           setSelectedSauces(newSelection);
@@ -68,9 +94,15 @@ const CreateProduct = forwardRef(
           newSelection = selectedFruits.includes(itemNombre)
             ? selectedFruits.filter((f) => f !== itemNombre)
             : [...selectedFruits, itemNombre];
-          currentTotal = selectedToppings.length + selectedSauces.length + newSelection.length;
+          currentTotal =
+            selectedToppings.length +
+            selectedSauces.length +
+            newSelection.length;
           if (currentTotal > maxSelections) {
-            alert(`Máximo permitido: ${maxSelections} selecciones`);
+            showAlertMessage(
+              `Máximo permitido: ${maxSelections} selecciones`,
+              "error"
+            );
             return;
           }
           setSelectedFruits(newSelection);
@@ -145,7 +177,9 @@ const CreateProduct = forwardRef(
                         <input
                           type="checkbox"
                           checked={selectedToppings.includes(option.nombre)}
-                          onChange={() => handleSelection("topping", option.nombre)}
+                          onChange={() =>
+                            handleSelection("topping", option.nombre)
+                          }
                         />
                         {option.nombre}
                       </label>
@@ -159,7 +193,9 @@ const CreateProduct = forwardRef(
                         <input
                           type="checkbox"
                           checked={selectedSauces.includes(option.nombre)}
-                          onChange={() => handleSelection("sauce", option.nombre)}
+                          onChange={() =>
+                            handleSelection("sauce", option.nombre)
+                          }
                         />
                         {option.nombre}
                       </label>
@@ -173,7 +209,9 @@ const CreateProduct = forwardRef(
                         <input
                           type="checkbox"
                           checked={selectedFruits.includes(option.nombre)}
-                          onChange={() => handleSelection("fruit", option.nombre)}
+                          onChange={() =>
+                            handleSelection("fruit", option.nombre)
+                          }
                         />
                         {option.nombre}
                       </label>
@@ -209,6 +247,7 @@ const CreateProduct = forwardRef(
             </div>
           </div>
         )}
+        {showAlert && <AlertComponent message={message} />}
       </section>
     );
   }

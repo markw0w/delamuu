@@ -3,7 +3,7 @@
 @use '../utils/typography' as *;
 
 footer {
-    @include sizes($height: 150px);
+    @include sizes($height: 300px);
     @include displayFlex();
     padding: 10px;
     background-color: #fff;

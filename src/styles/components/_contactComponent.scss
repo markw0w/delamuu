@@ -1,0 +1,79 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/animations' as *;
+@use '../utils/breakpoints' as *;
+
+.contactContainer{
+    @include sizes($height: 400px);
+    @include displayFlex();
+    gap: 25px;
+
+    h2{
+        @include sizes(95%,20%);
+        @include displayFlex($flexDirection:row);
+        font-size: 25px;
+        font-weight: $superBold;
+        text-align: center;
+        border-radius: 10px;
+        z-index: 10005;
+        padding: 10px;
+        color: $lightFontColor;
+        background-color: $brandColor;
+        z-index: 10003;
+        top: 0px;
+
+        @include breakpoint(xsmall){
+            font-size: 30px;
+        }
+        @include breakpoint(small){
+            width: 100%;
+            font-size: 35px;
+        }
+    }
+    .informationContact{
+        @include sizes($height:40px);
+        @include displayFlex($flexDirection:row);
+        gap: 10px;
+        
+        span{
+            @include sizes(50%);
+            @include displayFlex($flexDirection:row);
+            gap: 10px;
+            justify-content: flex-start;
+            margin-right: 25px;
+            margin-left: 25px;
+            font-size: 12px;
+
+            @include breakpoint(xsmall){
+                font-size: 17px;
+            }
+            @include breakpoint(small){
+                justify-content: center;
+            }
+        }
+        .whatsappContact{
+            width: 50%;
+
+            @include breakpoint(small){
+                width: 50%;
+            }
+        }
+    }
+    .map{
+        @include sizes(90%,300px);
+        border: none;
+        box-shadow: $shadow;
+        border-radius: 20px;
+        margin-bottom: -60px;
+        z-index: 10000000;
+
+        @include breakpoint(small){
+            width: 100%;
+        }
+    }
+
+    @include breakpoint(small){
+        width: 80%;
+    }
+}

@@ -1,10 +1,15 @@
 @use '../utils/vars' as *;       
 @use '../utils/mixins' as *;
 @use '../utils/typography' as *;
+@use '../utils/breakpoints' as *;
 
 .carousel {
     @include sizes(95%); 
     position: relative;
+
+    @include breakpoint(small){
+        width: 30%;
+    }
 
     .carousel-wrapper {
         @include sizes();

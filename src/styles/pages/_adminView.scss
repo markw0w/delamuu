@@ -11,6 +11,10 @@
     gap: 20px;
     padding: 10px;
 
+    @include breakpoint(small){
+      width: 50%;
+    }
+
     h1{
         @include sizes($height: 20px);
         font-size: $lg;
@@ -51,13 +55,17 @@
 
     // TOOPINGS, SALSAS, FRUTAS & PRECIOS
     .admin-detail-container {
-        max-width: 600px;
+        max-width: 900px;
         margin: 30px auto;
         padding: 20px;
         text-align: center;
         background: #fff;
         border-radius: 10px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        @include breakpoint(small){
+          width: 900px;
+        }
 
         .admin-detail-title {
           font-size: $lg;
@@ -178,6 +186,16 @@
         
         .detalle-item div {
           margin-bottom: 0.25rem;
+        }
+
+        .pagination{
+          @include displayFlex($flexDirection:row);
+          gap: 5px;
+          justify-content: flex-start;
+
+          button{
+            @include buttonDesign($width:15px, $height:20px);
+          }
         }
         
         @media screen and (max-width: 600px) {

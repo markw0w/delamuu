@@ -15,11 +15,12 @@ html, body, #root {
 html {
   overflow-x: hidden;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 footer {
   width: 100%;
-  height: 150px;
+  height: 300px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -319,10 +320,205 @@ header .rightNavContainer #burguerMenuIcon {
   display: none;
 }
 
+.degradeBackgroundContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../assets/backgrounds/deg-background.png");
+  gap: 50px;
+}
+
+.aboutUsContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 70vh;
+  position: relative;
+  z-index: 10000;
+  overflow: hidden;
+}
+.aboutUsContainer h2 {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+  z-index: 10004;
+  padding: 10px;
+  color: #f1f1f1;
+  background-color: #92a6d8;
+  z-index: 10003;
+  position: absolute;
+  top: 0px;
+}
+@media (min-width: 768px) {
+  .aboutUsContainer h2 {
+    width: 100%;
+  }
+}
+.aboutUsContainer .blurBackground {
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/store/local-outside.jpg");
+  z-index: 10001;
+  position: absolute;
+  filter: blur(4px);
+}
+.aboutUsContainer .titleAboutUs {
+  width: 90%;
+  height: 80%;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  position: absolute;
+  z-index: 10002;
+  background-color: rgba(171, 196, 243, 0.5411764706);
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+}
+.aboutUsContainer .titleAboutUs p {
+  font-weight: 600;
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #2c2c2c;
+}
+@media (min-width: 768px) {
+  .aboutUsContainer .titleAboutUs p {
+    font-size: 22px;
+  }
+}
+@media (min-width: 768px) {
+  .aboutUsContainer .titleAboutUs {
+    width: 50%;
+  }
+}
+@media (min-width: 768px) {
+  .aboutUsContainer {
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  }
+}
+
+.contactContainer {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+.contactContainer h2 {
+  width: 95%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 800;
+  text-align: center;
+  border-radius: 10px;
+  z-index: 10005;
+  padding: 10px;
+  color: #f1f1f1;
+  background-color: #92a6d8;
+  z-index: 10003;
+  top: 0px;
+}
+@media (min-width: 400px) {
+  .contactContainer h2 {
+    font-size: 30px;
+  }
+}
+@media (min-width: 768px) {
+  .contactContainer h2 {
+    width: 100%;
+    font-size: 35px;
+  }
+}
+.contactContainer .informationContact {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.contactContainer .informationContact span {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
+  margin-right: 25px;
+  margin-left: 25px;
+  font-size: 12px;
+}
+@media (min-width: 400px) {
+  .contactContainer .informationContact span {
+    font-size: 17px;
+  }
+}
+@media (min-width: 768px) {
+  .contactContainer .informationContact span {
+    justify-content: center;
+  }
+}
+.contactContainer .informationContact .whatsappContact {
+  width: 50%;
+}
+@media (min-width: 768px) {
+  .contactContainer .informationContact .whatsappContact {
+    width: 50%;
+  }
+}
+.contactContainer .map {
+  width: 90%;
+  height: 300px;
+  border: none;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  border-radius: 20px;
+  margin-bottom: -60px;
+  z-index: 10000000;
+}
+@media (min-width: 768px) {
+  .contactContainer .map {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .contactContainer {
+    width: 80%;
+  }
+}
+
 .carousel {
   width: 95%;
   height: 100%;
   position: relative;
+}
+@media (min-width: 768px) {
+  .carousel {
+    width: 30%;
+  }
 }
 .carousel .carousel-wrapper {
   width: 100%;
@@ -819,6 +1015,7 @@ header .rightNavContainer #burguerMenuIcon {
   transform: translate(-50%, -50%);
   font-weight: 600;
   animation: alert-slide-in 0.6s ease forwards;
+  z-index: 9999999;
 }
 
 .modal-overlay {
@@ -964,6 +1161,24 @@ header .rightNavContainer #burguerMenuIcon {
   background: rgb(255, 113, 113);
 }
 
+.fatherProductContainer {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding-top: 50px;
+}
+.fatherProductContainer h2 {
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 60px;
+  color: #f1f1f1;
+}
+
 .productComponentContainer {
   background-image: url("../assets/backgrounds/product-background.png");
   background-position: center;
@@ -984,12 +1199,6 @@ header .rightNavContainer #burguerMenuIcon {
     width: 30%;
     margin: auto;
   }
-}
-.productComponent h2 {
-  margin-bottom: 10px;
-  font-weight: 800;
-  font-size: 45px;
-  color: #f1f1f1;
 }
 .productComponent h3 {
   margin-top: 10px;
@@ -1024,7 +1233,7 @@ header .rightNavContainer #burguerMenuIcon {
 }
 
 .introductionContainer {
-  background: url("../assets/store/local_delamuu.jpg");
+  background: url("../assets/store/local.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1097,14 +1306,14 @@ header .rightNavContainer #burguerMenuIcon {
   height: 100px;
   animation-name: animatedImg3;
   z-index: 10000;
-  left: 0px;
+  left: 80px;
 }
 .presentationContainer .animatedImg1 {
   width: auto;
   height: 200px;
   animation-name: animatedImg1;
   z-index: 10000;
-  right: -10px;
+  right: 80px;
 }
 .presentationContainer .informationContainer {
   width: 100%;
@@ -1130,7 +1339,8 @@ header .rightNavContainer #burguerMenuIcon {
 }
 .presentationContainer .informationContainer .titleInformation h2 {
   font-weight: 900;
-  font-size: 24px;
+  font-size: 26px;
+  font-family: "Montserrat Alternates", sans-serif;
   color: #4b57f5;
   width: 95%;
   height: 150px;
@@ -1146,6 +1356,11 @@ header .rightNavContainer #burguerMenuIcon {
   animation-range: entry 20% cover 50%;
   animation-name: text-entry;
 }
+@media (min-width: 400px) {
+  .presentationContainer .informationContainer .titleInformation h2 {
+    font-size: 32px;
+  }
+}
 @media (min-width: 1024px) {
   .presentationContainer .informationContainer .titleInformation h2 {
     font-size: 45px;
@@ -1153,16 +1368,18 @@ header .rightNavContainer #burguerMenuIcon {
   }
 }
 .presentationContainer .informationContainer .cardsContainer {
-  width: 90%;
+  width: 100%;
   height: 50%;
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: 25px;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: -50px;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .presentationContainer .informationContainer .cardsContainer {
     width: 50%;
     height: 100px;
@@ -1189,9 +1406,24 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: flex-start;
   color: #2c2c2c;
 }
+@media (min-width: 768px) {
+  .presentationContainer .informationContainer .cardsContainer div span {
+    font-size: 30px;
+  }
+}
 .presentationContainer .informationContainer .cardsContainer div span:first-child {
   color: #92a6d8;
   font-size: 45px;
+}
+@media (min-width: 768px) {
+  .presentationContainer .informationContainer .cardsContainer div span:first-child {
+    font-size: 70px;
+  }
+}
+@media (min-width: 400px) {
+  .presentationContainer .informationContainer .cardsContainer div {
+    gap: 10px;
+  }
 }
 .presentationContainer .allProductsContainer {
   width: 100%;
@@ -1202,6 +1434,12 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
   flex-wrap: wrap;
   gap: 25px;
+  margin-top: 50px;
+}
+@media (min-width: 768px) {
+  .presentationContainer .allProductsContainer {
+    margin-top: 150px;
+  }
 }
 .presentationContainer .allProductsContainer .productContainer {
   view-timeline-name: --effect;
@@ -1371,6 +1609,11 @@ header .rightNavContainer #burguerMenuIcon {
   gap: 20px;
   padding: 10px;
 }
+@media (min-width: 768px) {
+  .adminContainer {
+    width: 50%;
+  }
+}
 .adminContainer h1 {
   width: 100%;
   height: 20px;
@@ -1429,13 +1672,18 @@ header .rightNavContainer #burguerMenuIcon {
   opacity: 80%;
 }
 .adminContainer .admin-detail-container {
-  max-width: 600px;
+  max-width: 900px;
   margin: 30px auto;
   padding: 20px;
   text-align: center;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 768px) {
+  .adminContainer .admin-detail-container {
+    width: 900px;
+  }
 }
 .adminContainer .admin-detail-container .admin-detail-title {
   font-size: 22px;
@@ -1559,6 +1807,30 @@ header .rightNavContainer #burguerMenuIcon {
 }
 .adminContainer .admin-detail-container .detalle-item div {
   margin-bottom: 0.25rem;
+}
+.adminContainer .admin-detail-container .pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-start;
+}
+.adminContainer .admin-detail-container .pagination button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  width: 15px;
+  height: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 @media screen and (max-width: 600px) {
   .adminContainer .admin-detail-container .admin-table thead {

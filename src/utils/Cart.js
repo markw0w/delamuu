@@ -4,16 +4,25 @@ import { ShoppingCart, X, Trash2, MessageCircleHeart } from "lucide-react";
 import { useCart } from "./CartContext";
 import { useLocation } from "react-router-dom";
 import OrderModal from "../components/form/OrderModal";
+import AlertComponent from "../components/alerts/AlertComponent";
 
 const Cart = () => {
   const { cartItems, removeOrder } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [deliveryCost, setDeliveryCost] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState("");
   const location = useLocation();
 
   const API_URL = "http://localhost:3001/api/add-order";
   const API_URL_GET_DELIVERY = "http://localhost:3001/delivery/get-delivery";
+
+  const showAlertMessage = (msg, type = "success") => {
+    setMessage({ text: msg, type });
+    setShowAlert(true);
+    setTimeout(() => setShowAlert(false), 3000);
+  };
 
   useEffect(() => {
     fetch(API_URL_GET_DELIVERY)
@@ -45,9 +54,15 @@ const Cart = () => {
     return total + price;
   }, 0);
 
-  const saveOrderDatabase = async (name, address, delivery, payment, finalTotal) => {
+  const saveOrderDatabase = async (
+    name,
+    address,
+    delivery,
+    payment,
+    finalTotal
+  ) => {
     if (cartItems.length === 0) {
-      alert("El carrito está vacío.");
+      showAlertMessage("El carrito está vacío", "error");
       return;
     }
 
@@ -85,13 +100,14 @@ const Cart = () => {
   };
 
   const sendOrderToWhatsApp = async (name, address, delivery, payment) => {
-    const shippingCost = delivery === "Entregar en domicilio" ? deliveryCost : 0;
+    const shippingCost =
+      delivery === "Entregar en domicilio" ? deliveryCost : 0;
     const finalTotal = totalCart + shippingCost;
 
     await saveOrderDatabase(name, address, delivery, payment, finalTotal);
 
     if (cartItems.length === 0) {
-      alert("El carrito está vacío.");
+      showAlertMessage("El carrito está vacío", "error");
       return;
     }
     const phoneNumber = "5492364595877";
@@ -131,7 +147,9 @@ const Cart = () => {
     });
 
     if (shippingCost > 0) {
-      message += `🚚 *Costo de envío:* $${shippingCost.toLocaleString("es-ES")}\n`;
+      message += `🚚 *Costo de envío:* $${shippingCost.toLocaleString(
+        "es-ES"
+      )}\n`;
     }
 
     message += `💰 *Total a pagar:* $${finalTotal.toLocaleString("es-ES")}\n\n`;
@@ -147,7 +165,9 @@ const Cart = () => {
 
     message += `🛻 ¡Gracias por tu compra!`;
 
-    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
+      message
+    )}`;
     window.open(url, "_blank");
 
     closeOrderModal();
@@ -155,8 +175,15 @@ const Cart = () => {
 
   return (
     <>
-      <div className="cart" onClick={toggleCart} style={{ cursor: "pointer" }}>
-        <ShoppingCart size={40} color="#fff" />
+      <div
+        className="cart"
+        onClick={toggleCart}
+        style={{ cursor: "pointer" }}
+      >
+        <ShoppingCart
+          size={40}
+          color="#fff"
+        />
         {cartItems.length > 0 && (
           <span className="cart-count">{cartItems.length}</span>
         )}
@@ -165,7 +192,10 @@ const Cart = () => {
       {isCartOpen && (
         <div className="cart-modal">
           <div className="cart-content">
-            <button className="close-button" onClick={toggleCart}>
+            <button
+              className="close-button"
+              onClick={toggleCart}
+            >
               <X size={24} />
             </button>
             <h2>Tu Carrito</h2>
@@ -179,7 +209,10 @@ const Cart = () => {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
                       })}
-                      <button className="sendOrder" onClick={openOrderModal}>
+                      <button
+                        className="sendOrder"
+                        onClick={openOrderModal}
+                      >
                         <MessageCircleHeart size={20} /> Enviar Pedido
                       </button>
                     </span>
@@ -227,8 +260,14 @@ const Cart = () => {
                         })}
                       </p>
                     </div>
-                    <button onClick={() => removeOrder(index)} className="delete-button">
-                      <Trash2 size={25} color="red" />
+                    <button
+                      onClick={() => removeOrder(index)}
+                      className="delete-button"
+                    >
+                      <Trash2
+                        size={25}
+                        color="red"
+                      />
                     </button>
                   </li>
                 ))}
@@ -239,7 +278,7 @@ const Cart = () => {
           </div>
         </div>
       )}
-
+      {showAlert && <AlertComponent message={message} />}
       <OrderModal
         isOpen={isModalOpen}
         onClose={closeOrderModal}

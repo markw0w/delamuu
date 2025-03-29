@@ -22,15 +22,6 @@ function MenuBurguer({ isOpen }) {
             className="navLinks"
             to="/"
           >
-            Nosotros
-          </Link>
-        </li>
-
-        <li>
-          <Link
-            className="navLinks"
-            to="/"
-          >
             Hacer pedido
           </Link>
         </li>

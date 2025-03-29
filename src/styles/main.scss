@@ -10,6 +10,8 @@
 @use './components/footerComponent';
 @use './components/headerComponent';
 @use './components/menuBurguerComponent';
+@use './components/aboutUsComponent';
+@use './components/contactComponent';
 @use './components/products/yogurComponent';
 @use './components/carouselComponent';
 @use './components/form/formComponent';
@@ -54,6 +56,7 @@ main {
     right: 10px;
     z-index: 20000;
     cursor: pointer;
+    //display: none;
 }
 .cart.hidden {
     display: none; 

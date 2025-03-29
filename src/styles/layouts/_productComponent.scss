@@ -5,6 +5,21 @@
 @use '../utils/typography' as *;
 @use '../utils/breakpoints' as *;
 
+
+.fatherProductContainer{
+    border: 1px solid black;
+    @include sizes();
+    @include displayFlex();
+    gap: 25px;
+    padding-top: 50px;
+
+    h2{
+        margin-bottom: 10px;
+        font-weight: $superBold;
+        font-size: 60px;
+        color: $lightFontColor;
+    }
+}
 .productComponentContainer{
     background-image: url('../assets/backgrounds/product-background.png');
     background-position: center;
@@ -20,12 +35,6 @@
         margin: auto;
     }
 
-    h2{
-        margin-bottom: 10px;
-        font-weight: $superBold;
-        font-size: $extraLg;
-        color: $lightFontColor;
-    }
     h3{
         margin-top: 10px;
         font-size: $lg;
