@@ -7,7 +7,15 @@ import { ChevronsDown } from "lucide-react";
 function YogurComponent() {
   const productName = "Yogur";
 
-  const images = [products.yogur1, products.yogur2, products.yogur3];
+  const images = [
+    products.yogur1,
+    products.yogur2,
+    products.yogur4,
+    products.yogur5,
+    products.yogur6,
+    products.yogurStrawberries,
+    products.handYogur,
+  ];
 
   return (
     <section className="fatherProductContainer">
