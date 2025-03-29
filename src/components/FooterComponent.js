@@ -8,7 +8,6 @@ function FooterComponent(){
             <div className="topFooterContainer">
                 <ul>
                     <li>Inicio</li>
-                    <li>Nosotros</li>
                     <li>Quiero pedir</li>
                 </ul>
                 <img src={logos.logoLogTrans} alt="Logo Cuadrado Delamuu"/>
