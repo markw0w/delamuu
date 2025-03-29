@@ -1,0 +1,272 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/animations' as *;
+@use '../utils/breakpoints' as *;
+
+.adminContainer{
+    @include sizes();
+    @include displayFlex($justifyContent: flex-start);
+    min-height: 100vh;
+    gap: 20px;
+    padding: 10px;
+
+    @include breakpoint(small){
+      width: 50%;
+    }
+
+    h1{
+        @include sizes($height: 20px);
+        font-size: $lg;
+        text-align: center;
+        margin-top: 10px;
+    }
+    span{
+        @include sizes($height:20px);
+        font-size: $sm;
+        text-align: center;
+    }
+
+    .actionsContainer{
+        @include sizes();
+        border-radius: 20px;
+        box-shadow: $shadow;
+        @include displayFlex();
+        gap: 20px;
+        padding: 5px;
+
+        ul{
+            @include sizes($height:auto);
+            @include displayFlex($flexDirection:row);
+            align-items: flex-start;
+            gap: 10px;
+            flex-wrap: wrap;
+
+            button{
+                @include buttonDesign($width: 100px, $height: 80px);
+                border-radius: 10px;
+                font-size: 13px;
+            }
+            button:hover{
+                opacity: 80%;
+            }
+        }
+    }
+
+    // TOOPINGS, SALSAS, FRUTAS & PRECIOS
+    .admin-detail-container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+        text-align: center;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        @include breakpoint(small){
+          width: 900px;
+        }
+
+        .admin-detail-title {
+          font-size: $lg;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        .filter-container{
+          @include sizes($height: 30px);
+          @include displayFlex($flexDirection:row);
+          gap: 10px;
+
+          input{
+            @include sizes(90%,90%);
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.349);
+            outline: none;
+            font-family: $montserratFont;
+            padding: 5px;
+          }
+          button{
+            @include buttonDesign($width:100px, $height: 90%);
+
+          }
+        }
+        
+        .admin-input-container {
+          display: flex;
+          gap: 10px;
+          margin-bottom: 10px;
+        }
+        
+        .admin-input {
+          flex: 1;
+          outline: none;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-family: $montserratFont;
+        }
+        
+        .admin-add-btn {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background-color: #4CAF50;
+          color: white;
+          padding: 10px 15px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-family: $montserratFont;
+        }
+        
+        .admin-add-btn:hover {
+          background-color: #45a049;
+        }
+        
+        .admin-list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          max-height: 400px; 
+          overflow-y: auto;  
+        }
+        
+        .admin-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 12px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          background-color: #f9f9f9;
+        }
+        
+        .admin-delete-btn {
+          background-color: red;
+          color: white;
+          border: none;
+          padding: 6px 10px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        
+        .admin-delete-btn:hover {
+          background-color: darkred;
+        }
+        
+        .admin-empty {
+          font-style: italic;
+          color: #777;
+        }
+        .admin-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 1rem;
+        }
+        
+        .admin-table th,
+        .admin-table td {
+          padding: 0.75rem;
+          text-align: left;
+          border: 1px solid #ddd;
+        }
+        
+        .admin-table th {
+          background-color: #f2f2f2;
+          font-weight: bold;
+        }
+        
+        .detalle-item {
+          margin-bottom: 0.5rem;
+          padding: 0.5rem;
+          background-color: $brandColor;
+          color: $lightFontColor;
+          border-radius: 5px;
+        }
+        
+        .detalle-item div {
+          margin-bottom: 0.25rem;
+        }
+
+        .pagination{
+          @include displayFlex($flexDirection:row);
+          gap: 5px;
+          justify-content: flex-start;
+
+          button{
+            @include buttonDesign($width:15px, $height:20px);
+          }
+        }
+        
+        @media screen and (max-width: 600px) {
+          .admin-table thead {
+            display: none;
+          }
+          
+          .admin-table, 
+          .admin-table tbody, 
+          .admin-table tr, 
+          .admin-table td {
+            display: block;
+            width: 100%;
+            font-size: 11px;
+          }
+          
+          .admin-table tr {
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ddd;
+          }
+          
+          .admin-table td {
+            text-align: right;
+            padding-left: 50%;
+            position: relative;
+          }
+          
+          .admin-table td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 45%;
+            padding-left: 0.75rem;
+            font-weight: bold;
+            text-align: left;
+          }
+          .pagination{
+            @include displayFlex($flexDirection:row);
+            gap: 5px;
+            justify-content: flex-start;
+
+            button{
+              @include buttonDesign($width:15px, $height:20px);
+            }
+          }
+        }
+        .admin-product-prices{
+          @include displayFlex();
+          width: 100%;
+
+          ul{
+            @include sizes();
+            @include displayFlex();
+            gap: 10px;
+
+            li{
+              @include displayFlex($flexDirection:row, $justifyContent: space-between);
+              @include sizes($height: 30px);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.397);
+              list-style: none;
+
+              span{
+                @include sizes();
+                @include displayFlex();
+              }
+
+              button{
+                @include buttonDesign($width: auto, $height: 80%);
+              }
+            }
+          }
+        }
+      }
+}

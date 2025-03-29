@@ -1,0 +1,61 @@
+// Es el layout de todos los productos componentes
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/animations' as *;
+@use '../utils/typography' as *;
+@use '../utils/breakpoints' as *;
+
+
+.fatherProductContainer{
+    @include sizes();
+    @include displayFlex();
+    gap: 25px;
+    padding-top: 50px;
+
+    h2{
+        margin-bottom: 10px;
+        font-weight: $superBold;
+        font-size: 60px;
+        color: $lightFontColor;
+    }
+}
+.productComponentContainer{
+    background-image: url('../assets/backgrounds/product-background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.productComponent{
+    @include sizes();
+    @include displayFlex();
+
+    @include breakpoint(medium){
+        width: 30%;
+        margin: auto;
+    }
+
+    h3{
+        margin-top: 10px;
+        font-size: $lg;
+        color: $brandColor;
+        padding: 5px;
+        border-radius: 5px;
+        @include displayFlex();
+
+        view-timeline-name: --effect;
+        view-timeline-axis: block;
+        animation-timeline: --effect;
+        animation-name: zoomContent-out;
+        animation-range: entry 0% cover 100%;
+        animation-fill-mode: both;
+        @include sizes(95%);
+        @include displayFlex();
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 25px;
+
+        @include breakpoint(medium){
+            display: none;
+        }
+    }
+}

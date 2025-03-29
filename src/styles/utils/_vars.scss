@@ -1,0 +1,41 @@
+// Variables: variables de colores, sombras, degrades, para utilizarlos en cada archivo de estilos
+// Página donde saco los colores en degrade: https://webgradients.com
+// Background Gradiant Colors
+$primary-Normal-BackgroundImage: linear-gradient(to top, #bccdf8 0%, #7e94ce 100%);
+$primary-Strong-BackgroundImage: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+$light-BackgroundImage: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+$toppings-BackgroundImage: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+$sauces-BackgroundImage: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+$fruits-BackgroundImage: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+
+// Container Gradiant Colors
+// From blue to blue (Dark to Light & viceverse)
+$deg-v1-BlueToBlue: linear-gradient(135deg, #0E07D9 0%, #0785D9 100%); 
+$deg-v2-BlueToBlue: linear-gradient(135deg, #0785D9 0%, #0E07D9 100%); 
+// From purple to purple (Dark to Light & viceverse)
+$deg-v1-PurpleToPurple: linear-gradient(135deg, #5207D9 0%, #9707D9 100%); 
+$deg-v2-PurpleToPurple: linear-gradient(135deg, #9707D9 0%, #5207D9 100%); 
+// From blue to purple (Dark - Medium - Light)
+$deg-Dark-BlueToPurple: linear-gradient(135deg, #0E07D9 0%, #5207D9 100%); 
+$deg-Medium-BlueToPurple: linear-gradient(135deg, #0742D9 0%, #5A56DB 100%); 
+$deg-Light-BlueToPurple: linear-gradient(135deg, #0785D9 0%, #9707D9 100%); 
+// From purple to blue (Dark - Medium - Light)
+$deg-Dark-PurpleToBlue: linear-gradient(135deg, #0E07D9 0%, #5207D9 100%); 
+$deg-Medium-PurpleToBlue: linear-gradient(135deg, #0E07D9 0%, #5207D9 100%); 
+$deg-Light-PurpleToBlue: linear-gradient(135deg, #0E07D9 0%, #5207D9 100%); 
+
+// Primary Colors
+// Blue
+$darkBlue: #0E07D9;
+$mediumBlue: #0742D9;
+$lightBlue: #0785D9;
+// Purple
+$darkPurple: #5207D9;
+$mediumPurple: #5A56DB;
+$lightPurple: #9707D9;
+
+// Buttons & Inputs
+$secondary-Normal-BackgroundImage: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+
+// Shadow
+$shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);

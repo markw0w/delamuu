@@ -1,0 +1,73 @@
+// IMPORTAMOS TODOS LOS SCSS
+// Se importa con @use 'buscas la carpeta' y ';'
+// Variables, mixins y bases
+@use './utils/vars' as *;       
+@use './utils/mixins' as *;
+@use './utils/typography' as *;
+@use './base/base';
+
+// Componentes
+@use './components/footerComponent';
+@use './components/headerComponent';
+@use './components/menuBurguerComponent';
+@use './components/aboutUsComponent';
+@use './components/contactComponent';
+@use './components/wantOrderComponent';
+@use './components/products/yogurComponent';
+@use './components/carouselComponent';
+@use './components/form/formComponent';
+@use './components/form/createProduct';
+@use './components/cart';
+@use './components/alert';
+@use './components/form/orderModal';
+
+// Layouts
+@use './layouts/productComponent';
+
+// Vistas
+@use './pages/homeView';
+@use './pages/loginView';
+@use './pages/adminView';
+
+main {
+    width: 100%;
+    min-height: 100%;
+    flex-grow: 1;
+    margin-top: 65px;
+    @include displayFlex($justifyContent: flex-start);
+  
+    .fatherContainer {
+      width: 100%; 
+      flex-grow: 1;
+      @include displayFlex($justifyContent: flex-start);
+      gap: 25px;
+    }
+}
+
+// Cart
+.cart{
+    background-image: $secondary-Normal-BackgroundImage;
+    border-radius: 50%;
+    padding: 10px;
+    @include displayFlex();
+    @include sizes(60px,60px);
+    box-shadow: $shadow;
+    position: fixed !important;
+    bottom: 20px;
+    right: 10px;
+    z-index: 20000;
+    cursor: pointer;
+    //display: none;
+}
+.cart.hidden {
+    display: none; 
+}
+
+.cart.visible {
+    display: block; 
+}
+
+// Particles
+#tsparticles{
+    z-index: -1;
+}

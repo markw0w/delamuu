@@ -1,0 +1,33 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+
+header {
+    @include displayFlex($flexDirection:row, $justifyContent:space-between);
+    @include sizes($height: 70px);
+    padding: 10px;
+    padding-left: 25px;
+    z-index: 50000;
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    background-image: $light-BackgroundImage;
+
+    img{
+        @include imgAsButtons($w: 40px, $h: auto);
+    }
+    .rightNavContainer{
+        @include sizes(60%);
+        @include displayFlex($justifyContent: flex-end, $flexDirection:row);
+        gap: 25px;
+        padding-right: 25px;
+
+        button{
+            @include buttonDesign($height: 30px);
+        }
+        #burguerMenuIcon{
+            @include imgAsButtons($w: 30px, $h: auto);
+        }
+    }
+}
+
+

@@ -1,0 +1,71 @@
+// Imports
+@use './vars' as *;
+@use './typography' as *;
+
+//Mixins
+@mixin sizes($width: 100%, $height: 100%){
+    width: $width;
+    height: $height;
+}
+@mixin displayFlex($justifyContent: center, $flexDirection: column){
+    display: flex;
+    justify-content: $justifyContent;
+    flex-direction: $flexDirection;
+    align-items: center;
+}
+@mixin fontConfig($textAlign: center, $fontSize: $sm, $fontWeight: $noBold, $fontColor: $darkFontColor){
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+    color: $fontColor;
+    text-align: $textAlign;
+}
+@mixin buttonDesign($p: 5px, $width: 100px, $height: 40px, $bR: 20px){
+    border: 0px;
+    padding: $p;
+    border-radius: $bR;
+    background-image: $secondary-Normal-BackgroundImage;
+    width: $width;
+    height: $height;
+    font-family: $montserratFont;
+    color: $lightFontColor;
+    font-weight: $bold;
+    cursor: pointer;
+    @include displayFlex();
+}
+@mixin imgAsButtons($w: 30px, $h: 30px){
+    width: $w;
+    height: $h;
+    cursor: pointer;
+    background-color: transparent;
+    background-image: none;
+}
+@mixin inputCheckbox() {
+    input[type="checkbox"] {
+      @include sizes(15px, 15px);
+      border: none;
+      outline: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: #fff;
+      cursor: pointer;
+      position: relative;
+      
+      border: 1px solid #ccc;
+      
+      &:checked {
+        background-color: rgb(157, 241, 124);
+        &::after {
+          content: '';
+          position: absolute;
+          top: 3px;
+          left: 7px;
+          width: 3px;
+          height: 8px;
+          border: solid $darkFontColor;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+    }
+}

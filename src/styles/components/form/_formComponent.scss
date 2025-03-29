@@ -1,0 +1,86 @@
+@use '../../utils/vars' as *;       
+@use '../../utils/mixins' as *;
+@use '../../utils/animations' as *;
+@use '../../utils/breakpoints' as *;
+@use '../../utils/typography' as *;
+
+.formComponentContainer{
+    box-shadow: $shadow;
+    @include sizes();
+    @include displayFlex();
+    border-radius: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-image: $secondary-Normal-BackgroundImage;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 25px;
+
+    #titleForm{
+        @include sizes($height:30px);
+        @include displayFlex();
+        font-size: 35px;
+        color: $lightFontColor;
+        padding: 5px;
+    }
+    hr{
+        border: 1px dashed $lightFontColor;
+        @include sizes();
+        margin-top: 50px;
+        margin-bottom: 25px;
+    }
+
+    .choosePackageContainer{
+        @include displayFlex($flexDirection:row);
+        @include sizes();
+        flex-wrap: wrap;
+        gap: 5px;
+
+        .packageOption{
+            @include sizes(35%,150px);
+            padding: 10px;
+            border-radius: 5px;
+            background-color: $lightFontColor; 
+            cursor: pointer;
+            @include displayFlex($justifyContent:space-between); 
+            transition: background-color 0.3s ease; 
+            font-weight: $superBold;
+            font-family: $montserratAlternateFont;
+            font-size: 38px;
+            color: $brandColor;
+            text-shadow: 0px 3px 1px rgba(0, 0, 0, 0.781);
+
+            @include breakpoint(small){
+                font-size: 50px;
+            }
+
+            &.selected {
+            background-color: #0b285c;
+            }
+
+            input {
+            display: none; 
+            }
+
+            span{
+                font-size: $lg;
+                background-image: $secondary-Normal-BackgroundImage;
+                border-radius: 5px;
+                color: $lightFontColor;
+                padding: 3px;
+            }
+        }
+        .packageOption.disabled {
+            opacity: 0.2; 
+            pointer-events: none;
+        }
+    }
+    button{
+        @include buttonDesign($width: 50%);
+        background-image: none;
+        background-color: $brandColor;
+        font-weight: $bold;
+        font-size: 18px;
+    }
+}

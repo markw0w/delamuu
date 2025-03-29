@@ -1,0 +1,77 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/animations' as *;
+@use '../utils/breakpoints' as *;
+
+.degradeBackgroundContainer{
+    @include sizes();
+    @include displayFlex();
+    background-image: url('../assets/backgrounds/deg-background.png');
+    gap: 50px;
+}
+.aboutUsContainer{
+    @include displayFlex();
+    width: 100%;
+    min-height: 70vh;
+    position: relative;
+    z-index: 10000;
+    overflow: hidden;
+    
+    h2{
+        @include sizes(100%,10%);
+        @include displayFlex($flexDirection:row);
+        font-size: 40px;
+        font-weight: $superBold;
+        text-align: center;
+        z-index: 10004;
+        padding: 10px;
+        color: $lightFontColor;
+        background-color: $brandColor;
+        z-index: 10003;
+        position: absolute;
+        top: 0px;
+
+        @include breakpoint(small){
+            width: 100%;
+        }
+    }
+    .blurBackground{
+        @include sizes();
+        background-image: url('../assets/store/local-outside.jpg');
+        z-index: 10001;
+        position: absolute;
+        filter: blur(4px);
+    }
+    .titleAboutUs{
+        @include sizes(90%,80%);
+        margin-top: 40px;
+        @include displayFlex();
+        gap: 25px;
+        position: absolute;
+        z-index: 10002;
+        background-color: #abc4f38a;
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: $shadow;
+
+        p{
+            font-weight: $bold;
+            font-family: $montserratAlternateFont;
+            color: $darkFontColor;
+
+            @include breakpoint(small){
+                font-size: $lg;
+            }
+        }
+
+        @include breakpoint(small){
+            width: 50%;
+        }
+    }
+    @include breakpoint(small){
+        width: 80%;
+        border-radius: 20px;
+        box-shadow: $shadow;
+    }
+}

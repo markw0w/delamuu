@@ -1,0 +1,63 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+
+footer {
+    @include sizes($height: 300px);
+    @include displayFlex();
+    padding: 10px;
+    background-color: #fff;
+    z-index: 10000;
+    background-image: $primary-Normal-BackgroundImage;
+
+    .topFooterContainer{
+        @include sizes();
+        @include displayFlex($flexDirection: row, $justifyContent: space-between);
+
+        ul{
+            @include displayFlex();
+            align-items: flex-start;
+            @include sizes();
+            gap: 2px;
+            padding: 10px;
+
+            li{
+                list-style: none;
+                cursor: pointer;
+                color: $lightFontColor;
+                font-size: $sm;
+                font-weight: $bold;
+                padding: 3px;
+                transition: all 0.5s ease;
+                border-radius: 5px;
+            }
+            li:hover{
+                background-image: $secondary-Normal-BackgroundImage;
+            }
+        }
+        img{
+            @include sizes(60px,auto);
+        }
+        .socialMedia{
+            @include sizes();
+            @include displayFlex($flexDirection:row);
+            gap: 5px;
+            padding: 10px;
+
+            li{
+                img{
+                    @include sizes(40px,auto);
+                }
+            }
+            li:hover{
+                background-image: none;
+                transform: scale(1.1);
+            }
+        }
+    }
+    span{
+        font-size: 10px;
+        font-weight: $superBold;
+        color: #375aca;
+    }
+}

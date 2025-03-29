@@ -1,0 +1,140 @@
+@use '../../utils/vars' as *;       
+@use '../../utils/mixins' as *;
+@use '../../utils/typography' as *;
+
+.optionsContainer{
+    @include sizes();
+    @include displayFlex();
+    gap: 10px;
+
+    // BOTON ARMADO 
+    .openOptions {
+        background-color: #f0f0f0;
+        color: #333;
+        border: none;
+        border-radius: 5px;
+        font-size: $md;
+        cursor: pointer;
+        @include displayFlex();
+        margin-top: 10px;
+        gap: 8px;
+        @include displayFlex($flexDirection:row);
+    }
+    .openOptions.selected {
+        background-color: #53e658; 
+        color: white;
+    }
+    .openOptions .icon {
+        @include sizes(27px,auto);
+    }
+
+    // TITULO CANTIDAD MÁXIMA
+    h4{
+        @include sizes($height:30px);
+        font-size: $md;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: $lightFontColor;
+    }
+
+    // CONTENEDORES PADRES DE OPCIONES
+    .optionsModal{
+        @include sizes();
+        @include displayFlex();
+
+        .optionsContent{
+            @include sizes();
+            @include displayFlex($flexDirection:row);
+            flex-wrap: wrap;
+
+            .categorySection{
+                @include sizes();
+                @include displayFlex();
+                gap: 3px;
+                padding: 25px;
+                border-top-left-radius: 60px;
+                border-top-right-radius: 60px;
+                box-shadow: $shadow;
+                padding-bottom: 80px;
+
+                h4{
+                    font-size: $extraLg;
+                    @include sizes($height:40px);
+                    @include displayFlex();
+                    align-items: flex-start;
+                    color: $lightFontColor;
+                    padding: 5px;
+                }
+            }
+            .toppingsCategory{
+                background-image: $toppings-BackgroundImage;
+                z-index: 10000;
+            }
+            .saucesCategory{
+                background-image: $sauces-BackgroundImage;
+                z-index: 10001;
+                margin-top: -50px;
+            }
+            .fruitsCategory{
+                background-image: $fruits-BackgroundImage;
+                z-index: 10002;
+                margin-top: -50px;
+                border-bottom-left-radius: 60px;
+                border-bottom-right-radius: 60px;
+            }
+            label{
+                @include sizes(100%,$height: 60px);
+                @include displayFlex($flexDirection:row);
+                justify-content: flex-start;
+                text-align: left;
+                background-image: $light-BackgroundImage;
+                padding: 5px;
+                border-radius: 5px;
+                gap: 10px;
+                font-size: $md;
+                font-weight: $superBold;
+                color: $brandColor;
+            }
+            input[type="checkbox"] {
+                appearance: none; 
+                -webkit-appearance: none; 
+                -moz-appearance: none; 
+                @include sizes(25px,25px);
+                border: 2px solid $brandColor; 
+                border-radius: 4px;
+                background-color: $lightFontColor; 
+                position: relative; 
+                cursor: pointer; 
+                transition: background-color 0.3s ease, border-color 0.3s ease;
+            }
+            input[type="checkbox"]:checked {
+                background-color: #4CAF50; 
+                border-color: #4CAF50; 
+            }
+            input[type="checkbox"]:checked::after {
+                content: ''; 
+                position: absolute;
+                top: 0px;
+                left: 5px; 
+                @include sizes(6px,12px);
+                border: solid $lightFontColor;
+                border-width: 0 3px 3px 0;
+                transform: rotate(45deg); 
+            }
+            
+            .selectionCounter{
+                padding: 5px;
+                border-radius: 5px;
+                background-image: $light-BackgroundImage;
+                font-weight: $superBold;
+                @include displayFlex();
+                color: #4b57f5;
+                margin-top: 15px;
+            }
+            .saveBtn{
+                margin-top: 15px;
+            }
+        }
+    }
+}

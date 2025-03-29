@@ -1,0 +1,241 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/animations' as *;
+@use '../utils/breakpoints' as *;
+
+
+.introductionContainer{
+    background: url('../assets/store/local.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    min-height: 100vh;
+    @include displayFlex();
+
+    h1 {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+    }
+
+    h2{
+        @include sizes(80%,$height: 100px);
+        @include displayFlex($flexDirection:row);
+        font-size: 40px;
+        font-weight: $superBold;
+        text-align: center;
+        z-index: 1000;
+        animation: slide-in-text 3s ease forwards;
+        border-radius: 10px;
+        background-image: $light-BackgroundImage;
+        padding: 10px;
+        margin-bottom: 100px;
+        color: $brandColor;
+        gap: 10px;
+
+        @include breakpoint(small){
+            width: 20%;
+        }
+
+        img{
+            @include sizes(auto,100%);
+        }
+    }
+}
+
+.presentationContainer{
+    @include sizes();
+    @include displayFlex($justifyContent: flex-start);
+    position: relative;
+
+    .animatedImg{
+        position: absolute;
+        view-timeline-name: --imgEntry;
+        view-timeline-axis: block;
+        animation-timeline: --imgEntry;
+        animation-range: entry 20% cover 50%;
+        animation-fill-mode: both;
+        filter: drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.384));
+        filter: blur(2px);
+        //display: none;
+    }
+    .animatedImg3{
+        @include sizes(auto,100px);
+        animation-name: animatedImg3;
+        z-index: 10000;
+        left: 80px;
+    }
+    .animatedImg1{
+        @include sizes(auto,200px);
+        animation-name: animatedImg1;
+        z-index: 10000;
+        right: 80px;
+    }
+
+    .informationContainer{
+        @include sizes(100%, 350px);
+        @include displayFlex();
+
+        @include breakpoint(medium){
+            @include sizes(90%, 250px);
+        }
+
+        .titleInformation{
+            @include sizes();
+            @include displayFlex();
+            
+            h2{
+                font-weight: 900;
+                font-size: 26px;
+                font-family: $montserratAlternateFont;
+                color: #4b57f5;
+                @include sizes(95%,150px);
+                text-align: center;
+                @include displayFlex();
+                z-index: 10001;
+
+                view-timeline-name: --txtEntry;
+                view-timeline-axis: block;
+                animation-timeline: --txtEntry;
+                animation-range: entry 20% cover 50%;
+                animation-name: text-entry;
+
+                @include breakpoint(xsmall){
+                    font-size: 32px;
+                }
+                @include breakpoint(medium){
+                    font-size: $extraLg;
+                    width: 80%;
+                }
+            }
+        }
+        
+        .cardsContainer{
+            @include sizes(100%, 50%);
+            @include displayFlex($flexDirection:row);
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+            margin-bottom: -50px;
+
+            @include breakpoint(small){
+                @include sizes(50%, 100px);
+                justify-content: space-between;
+            }
+
+            div{
+                @include sizes(100px);
+                @include displayFlex();
+
+                span{
+                    @include sizes($height: 30px);
+                    @include displayFlex();
+                    gap: 5px;
+                    font-weight: $superBold;
+                    align-items: flex-start;
+                    color: $darkFontColor;
+
+                    @include breakpoint(small){
+                        font-size: 30px;
+                    }
+                }
+                span:first-child{
+                    color: $brandColor;
+                    font-size: $extraLg;
+
+                    @include breakpoint(small){
+                        font-size: 70px;
+                    }
+                }
+
+                @include breakpoint(xsmall){
+                    gap: 10px;
+                }
+            }
+
+        }
+    }
+
+    .allProductsContainer{
+        @include sizes();
+        @include displayFlex($flexDirection:row);
+        flex-wrap: wrap;
+        gap: 25px;
+        margin-top: 50px;
+
+        @include breakpoint(small){
+            margin-top: 150px;
+        }
+    
+        .productContainer{
+            view-timeline-name: --effect;
+            view-timeline-axis: block;
+            background-color: azure;
+            animation-timeline: --effect;
+            animation-name: zoomContent;
+            animation-range: entry 25% cover 50%;
+            animation-fill-mode: both;
+            @include sizes(350px,400px);
+            @include displayFlex();
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: $shadow;
+            margin-bottom: 25px;
+        
+            h2{
+                z-index: 1000;
+                background-image: $light-BackgroundImage;
+                padding: 5px;
+                border-radius: 5px;
+                font-size: $lg;
+                font-weight: $superBold;
+                color: $brandColor;
+                position: absolute;
+                top: 25px;
+            }
+            img{
+                position: absolute;
+                @include sizes();
+                z-index: 999;
+            }
+            .productLink{
+                z-index: 1000;
+                text-decoration: none;
+                position: absolute;
+                bottom: 10px;
+                @include sizes($height: 100px);
+                @include displayFlex();
+        
+                button{
+                    @include buttonDesign($width: 50%);
+                    font-size: $lg;
+                }
+            }
+        }
+    }
+
+    .backgroundEffect {
+        position: absolute;
+        width: 70px; 
+        height: auto;
+        transition: transform 0.1s ease-out;
+        pointer-events: none;
+    }
+    .backgroundEffect-1 { top: 10%; left: 5%; }
+    .backgroundEffect-6 { top: 80%; right: 5%; }
+}
+
+
+// Parallax en scroll
+@media (prefers-reduced-motion: no-preference) {
+    .backgroundEffect {
+        transform: translateY(calc(var(--scroll, 0) * 10px));
+    }
+}
