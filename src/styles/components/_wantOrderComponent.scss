@@ -1,0 +1,108 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/breakpoints' as *;
+
+.fatherWantOrderContainer{
+    @include sizes($height: 0px);
+    @include displayFlex($flexDirection:row);
+    flex-wrap: wrap;
+    gap: 5px;
+    position: fixed;
+    top: 70px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.329);
+    z-index: 200000;
+    overflow: hidden;
+
+    @include breakpoint(small){
+        flex-direction: row;
+        gap: 25px;
+        flex-wrap: nowrap;
+    }
+
+    .productContainer{
+            background-color: azure;
+            @include sizes(150px,150px);
+            @include displayFlex();
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: $shadow;
+            
+            @include breakpoint(small){
+                @include sizes(250px,300px);
+            }
+            @include breakpoint(medium){
+                @include sizes(350px,400px);
+            }
+        
+            h2{
+                z-index: 1000;
+                background-image: $light-BackgroundImage;
+                padding: 5px;
+                border-radius: 5px;
+                font-size: 12px;
+                font-weight: $superBold;
+                color: $brandColor;
+                position: absolute;
+                top: 5px;
+
+                @include breakpoint(small){
+                    top: 25px;
+                    font-size: $lg;
+                }
+            }
+            img{
+                position: absolute;
+                @include sizes();
+                z-index: 999;
+            }
+            .productLink{
+                z-index: 1000;
+                text-decoration: none;
+                position: absolute;
+                bottom: 10px;
+                @include sizes($height: 40px);
+                @include displayFlex();
+
+                @include breakpoint(small){
+                    height: 100px;
+                }
+        
+                button{
+                    @include buttonDesign($width: 90%, $height: 25px);
+                    font-size: $sm;
+
+                    @include breakpoint(medium){
+                        @include sizes(50%,40px);
+                        font-size: $md;
+                    }
+                }
+            }
+        }
+    }
+
+
+.openModal{
+    display: flex;
+    animation: open-order-modal 0.4s ease forwards;
+}
+.closeModal{
+    display: none;
+}
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 199999; 
+}

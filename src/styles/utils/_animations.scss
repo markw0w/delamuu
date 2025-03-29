@@ -30,6 +30,12 @@
     100%{height: 30%;}
 }
 
+// Order modal animación
+@keyframes open-order-modal {
+    0%{height: 0%;}
+    100%{height: 50%;}
+}
+
 // Cart animacion
 @keyframes cart-slide-in {
     0%{height: 0%;}

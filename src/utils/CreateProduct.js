@@ -1,5 +1,5 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { Check } from "lucide-react";
+import { Check, Pointer } from "lucide-react";
 import AlertComponent from "../components/alerts/AlertComponent";
 
 const CreateProduct = forwardRef(
@@ -136,6 +136,7 @@ const CreateProduct = forwardRef(
               : ""
           }`}
         >
+          <Pointer size={20}/>
           {(isIcreCream === "1"
             ? selectedFlavors.length
             : selectedToppings.length +
