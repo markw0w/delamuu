@@ -7,7 +7,6 @@
 
 
 .fatherProductContainer{
-    border: 1px solid black;
     @include sizes();
     @include displayFlex();
     gap: 25px;

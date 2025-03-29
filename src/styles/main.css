@@ -870,6 +870,12 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
   animation: cart-slide-in 1s ease forwards;
 }
+@media (min-width: 768px) {
+  .cart-modal {
+    width: 30%;
+    right: 0px;
+  }
+}
 .cart-modal .cart-content {
   width: 100%;
   height: 100%;
@@ -918,6 +924,7 @@ header .rightNavContainer #burguerMenuIcon {
   display: block;
   position: relative;
   padding-bottom: 60px;
+  scrollbar-width: none;
 }
 .cart-modal .cart-content ul li {
   list-style: none;
@@ -973,8 +980,12 @@ header .rightNavContainer #burguerMenuIcon {
   padding-left: 25px;
   position: fixed;
   bottom: 0px;
-  left: 0px;
-  right: 0px;
+}
+@media (min-width: 768px) {
+  .cart-modal .totalCart {
+    width: 30%;
+    right: 0px;
+  }
 }
 .cart-modal .totalCart .sendOrder {
   border: 0px;
@@ -1042,6 +1053,11 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: column;
   align-items: center;
   gap: 5px;
+}
+@media (min-width: 768px) {
+  .modal-overlay .modal-content {
+    width: 40%;
+  }
 }
 .modal-overlay .modal-content h2 {
   font-size: 18px;
@@ -1162,7 +1178,6 @@ header .rightNavContainer #burguerMenuIcon {
 }
 
 .fatherProductContainer {
-  border: 1px solid black;
   width: 100%;
   height: 100%;
   display: flex;

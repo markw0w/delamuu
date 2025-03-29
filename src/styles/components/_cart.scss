@@ -1,6 +1,7 @@
 @use '../utils/vars' as *;       
 @use '../utils/mixins' as *;
 @use '../utils/typography' as *;
+@use '../utils/breakpoints' as *;
 
 .cart{
     .cart-count {
@@ -28,6 +29,10 @@
     @include displayFlex();
     animation: cart-slide-in 1s ease forwards;
 
+    @include breakpoint(small){
+        width: 30%;
+        right: 0px;
+    }
     .cart-content{
         @include sizes();
         @include displayFlex();
@@ -55,6 +60,7 @@
             display: block;
             position: relative;
             padding-bottom: 60px;
+            scrollbar-width: none;
 
             li{
                 list-style: none;
@@ -88,8 +94,11 @@
         padding-left: 25px;
         position: fixed;
         bottom: 0px;
-        left: 0px;
-        right: 0px;
+
+        @include breakpoint(small){
+            width: 30%;
+            right: 0px;
+        }
 
         .sendOrder{
             @include buttonDesign($width: 40%, $height: 30px);
