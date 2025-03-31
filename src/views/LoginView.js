@@ -8,7 +8,7 @@ function LoginView() {
   const [showAlert, setShowAlert] = useState(false);
   const [message, setMessage] = useState("");
 
-  const API_URL = "http://localhost:3001/api/auth";
+  const API_URL = "https://delamuu.com/api/auth";
 
   const showAlertMessage = (msg, type = "success") => {
     setMessage({ text: msg, type });
@@ -20,7 +20,7 @@ function LoginView() {
     e.preventDefault();
 
     if (!user || !password) {
-      showAlertMessage("Campos incompletso", "error")
+      showAlertMessage("Campos incompletso", "error");
       return;
     }
 
@@ -37,14 +37,14 @@ function LoginView() {
         sessionStorage.setItem("token", data.token);
         sessionStorage.setItem("isAdmin", true);
 
-        showAlertMessage("Inicio de sesión exitoso")
-        window.location.href = "/admin/delamuu"; 
+        showAlertMessage("Inicio de sesión exitoso");
+        window.location.href = "/admin/delamuu";
       } else {
-        showAlertMessage("Error al iniciar sesión", "error")
+        showAlertMessage("Error al iniciar sesión", "error");
       }
     } catch (error) {
       console.error("Error al iniciar sesión:", error);
-      showAlertMessage("Error al iniciar sesión")
+      showAlertMessage("Error al iniciar sesión");
     }
   };
 

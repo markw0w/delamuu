@@ -28,9 +28,9 @@ function IceCreamFormComponent() {
     prices: "10000",
   });
 
-  const API_URL_GET_GRAMAJE = "http://localhost:3001/gramajes/get-gramajes";
-  const API_URL_GET_PRICES = "http://localhost:3001/products/get-prices";
-  const API_URL_GET_FLAVORS = "http://localhost:3001/flavors/get-flavors";
+  const API_URL_GET_GRAMAJE = "https://delamuu.com/gramajes/get-gramajes";
+  const API_URL_GET_PRICES = "https://delamuu.com/products/get-prices";
+  const API_URL_GET_FLAVORS = "https://delamuu.com/flavors/get-flavors";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -177,7 +177,11 @@ function IceCreamFormComponent() {
       />
       <hr />
       {orderReady && (
-        <button type="button" onClick={handleAddOrder} className="addOrderButton">
+        <button
+          type="button"
+          onClick={handleAddOrder}
+          className="addOrderButton"
+        >
           Agregar al carrito
         </button>
       )}

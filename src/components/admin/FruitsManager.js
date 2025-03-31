@@ -6,9 +6,9 @@ function FruitsManager() {
   const [fruits, setFruits] = useState([]);
   const [newFruit, setNewFruit] = useState("");
 
-  const API_URL_GET_FRUITS = "http://localhost:3001/fruits/get-fruits";
-  const API_URL_ADD_FRUITS = "http://localhost:3001/fruits/add-fruit";
-  const API_URL_DEL_FRUITS = "http://localhost:3001/fruits/delete-fruit";
+  const API_URL_GET_FRUITS = "https://delamuu.com/fruits/get-fruits";
+  const API_URL_ADD_FRUITS = "https://delamuu.com/fruits/add-fruit";
+  const API_URL_DEL_FRUITS = "https://delamuu.com/fruits/delete-fruit";
 
   useEffect(() => {
     fetchFruits();
@@ -41,7 +41,7 @@ function FruitsManager() {
     } catch (error) {
       console.error("Error al eliminar la fruta:", error);
     }
-};
+  };
 
   return (
     <div className="admin-detail-container">
@@ -55,7 +55,10 @@ function FruitsManager() {
           onChange={(e) => setNewFruit(e.target.value)}
           className="admin-input"
         />
-        <button onClick={addFruit} className="admin-add-btn">
+        <button
+          onClick={addFruit}
+          className="admin-add-btn"
+        >
           <PlusCircle size={18} /> Agregar
         </button>
       </div>
@@ -65,9 +68,15 @@ function FruitsManager() {
           <p className="admin-empty">No hay frutas aún.</p>
         ) : (
           fruits.map((fruit) => (
-            <div key={fruit.id} className="admin-item">
+            <div
+              key={fruit.id}
+              className="admin-item"
+            >
               <span>{fruit.nombre}</span>
-              <button onClick={() => deleteFruit(fruit.id)} className="admin-delete-btn">
+              <button
+                onClick={() => deleteFruit(fruit.id)}
+                className="admin-delete-btn"
+              >
                 <Trash2 size={18} />
               </button>
             </div>

@@ -8,8 +8,8 @@ function OrdersHistory() {
   const ordersPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const API_URL_GET_ORDERS = "http://localhost:3001/api/get-orders";
-  const API_URL_FILTER_ORDERS = "http://localhost:3001/api/filter-orders";
+  const API_URL_GET_ORDERS = "https://delamuu.com/api/get-orders";
+  const API_URL_FILTER_ORDERS = "https://delamuu.com/api/filter-orders";
 
   useEffect(() => {
     fetchOrders();
@@ -25,7 +25,7 @@ function OrdersHistory() {
   };
 
   const handleFilter = async () => {
-    if (!filterDate) return; 
+    if (!filterDate) return;
     try {
       const response = await axios.get(API_URL_FILTER_ORDERS, {
         params: { date: filterDate },
@@ -42,7 +42,10 @@ function OrdersHistory() {
   const reversedOrders = [...ordersToDisplay].reverse();
   const indexOfLastOrder = currentPage * ordersPerPage;
   const indexOfFirstOrder = indexOfLastOrder - ordersPerPage;
-  const currentOrders = reversedOrders.slice(indexOfFirstOrder, indexOfLastOrder);
+  const currentOrders = reversedOrders.slice(
+    indexOfFirstOrder,
+    indexOfLastOrder
+  );
   const totalPages = Math.ceil(ordersToDisplay.length / ordersPerPage);
 
   const paginate = (pageNumber) => {
@@ -52,7 +55,7 @@ function OrdersHistory() {
   return (
     <section className="admin-detail-container">
       <h2 className="admin-detail-title">Historial de Órdenes</h2>
-      
+
       <div className="filter-container">
         <input
           type="date"
@@ -94,7 +97,10 @@ function OrdersHistory() {
                       try {
                         const details = JSON.parse(order.detalles);
                         return details.map((item, index) => (
-                          <div key={index} className="detalle-item">
+                          <div
+                            key={index}
+                            className="detalle-item"
+                          >
                             <div>
                               <strong>Envase:</strong> {item.gramaje}
                             </div>

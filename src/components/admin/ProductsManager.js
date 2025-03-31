@@ -6,9 +6,9 @@ function ProductsManager() {
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState("");
 
-  const API_URL_GET_PRODUCTS = "http://localhost:3001/products/get-products";
-  const API_URL_ADD_PRODUCTS = "http://localhost:3001/products/add-product";
-  const API_URL_DEL_PRODUCTS = "http://localhost:3001/products/delete-product";
+  const API_URL_GET_PRODUCTS = "https://delamuu.com/products/get-products";
+  const API_URL_ADD_PRODUCTS = "https://delamuu.com/products/add-product";
+  const API_URL_DEL_PRODUCTS = "https://delamuu.com/products/delete-product";
 
   useEffect(() => {
     fetchProducts();
@@ -41,7 +41,7 @@ function ProductsManager() {
     } catch (error) {
       console.error("Error al eliminar la producto:", error);
     }
-};
+  };
 
   return (
     <div className="admin-detail-container">
@@ -55,7 +55,10 @@ function ProductsManager() {
           onChange={(e) => setNewProduct(e.target.value)}
           className="admin-input"
         />
-        <button onClick={addProduct} className="admin-add-btn">
+        <button
+          onClick={addProduct}
+          className="admin-add-btn"
+        >
           <PlusCircle size={18} /> Agregar
         </button>
       </div>
@@ -65,9 +68,15 @@ function ProductsManager() {
           <p className="admin-empty">No hay productos aún.</p>
         ) : (
           products.map((product) => (
-            <div key={product.id} className="admin-item">
+            <div
+              key={product.id}
+              className="admin-item"
+            >
               <span>{product.nombre}</span>
-              <button onClick={() => deleteProduct(product.id)} className="admin-delete-btn">
+              <button
+                onClick={() => deleteProduct(product.id)}
+                className="admin-delete-btn"
+              >
                 <Trash2 size={18} />
               </button>
             </div>

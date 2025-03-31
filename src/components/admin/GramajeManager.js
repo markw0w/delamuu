@@ -6,9 +6,9 @@ function GramajesManager() {
   const [gramajes, setGramajes] = useState([]);
   const [newGramaje, setNewGramaje] = useState("");
 
-  const API_URL_GET_GRAMAJES = "http://localhost:3001/gramajes/get-gramajes";
-  const API_URL_ADD_GRAMAJES = "http://localhost:3001/gramajes/add-gramaje";
-  const API_URL_DEL_GRAMAJES = "http://localhost:3001/gramajes/delete-gramaje";
+  const API_URL_GET_GRAMAJES = "https://delamuu.com/gramajes/get-gramajes";
+  const API_URL_ADD_GRAMAJES = "https://delamuu.com/gramajes/add-gramaje";
+  const API_URL_DEL_GRAMAJES = "https://delamuu.com/gramajes/delete-gramaje";
 
   useEffect(() => {
     fetchGramajes();
@@ -41,7 +41,7 @@ function GramajesManager() {
     } catch (error) {
       console.error("Error al eliminar la gramaje:", error);
     }
-};
+  };
 
   return (
     <div className="admin-detail-container">
@@ -55,7 +55,10 @@ function GramajesManager() {
           onChange={(e) => setNewGramaje(e.target.value)}
           className="admin-input"
         />
-        <button onClick={addGramaje} className="admin-add-btn">
+        <button
+          onClick={addGramaje}
+          className="admin-add-btn"
+        >
           <PlusCircle size={18} /> Agregar
         </button>
       </div>
@@ -65,9 +68,15 @@ function GramajesManager() {
           <p className="admin-empty">No hay gramajes aún.</p>
         ) : (
           gramajes.map((gramaje) => (
-            <div key={gramaje.id} className="admin-item">
+            <div
+              key={gramaje.id}
+              className="admin-item"
+            >
               <span>{gramaje.nombre}</span>
-              <button onClick={() => deleteGramaje(gramaje.id)} className="admin-delete-btn">
+              <button
+                onClick={() => deleteGramaje(gramaje.id)}
+                className="admin-delete-btn"
+              >
                 <Trash2 size={18} />
               </button>
             </div>

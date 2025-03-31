@@ -15,8 +15,8 @@ const Cart = () => {
   const [message, setMessage] = useState("");
   const location = useLocation();
 
-  const API_URL = "http://localhost:3001/api/add-order";
-  const API_URL_GET_DELIVERY = "http://localhost:3001/delivery/get-delivery";
+  const API_URL = "https://delamuu.com/api/add-order";
+  const API_URL_GET_DELIVERY = "https://delamuu.com/delivery/get-delivery";
 
   const showAlertMessage = (msg, type = "success") => {
     setMessage({ text: msg, type });

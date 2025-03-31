@@ -6,9 +6,9 @@ function ToppingsManager() {
   const [toppings, setToppings] = useState([]);
   const [newTopping, setNewTopping] = useState("");
 
-  const API_URL_GET_TOPPINGS = "http://localhost:3001/toppings/get-toppings";
-  const API_URL_ADD_TOPPINGS = "http://localhost:3001/toppings/add-topping";
-  const API_URL_DEL_TOPPINGS = "http://localhost:3001/toppings/delete-topping";
+  const API_URL_GET_TOPPINGS = "https://delamuu.com/toppings/get-toppings";
+  const API_URL_ADD_TOPPINGS = "https://delamuu.com/toppings/add-topping";
+  const API_URL_DEL_TOPPINGS = "https://delamuu.com/toppings/delete-topping";
 
   useEffect(() => {
     fetchToppings();
@@ -41,7 +41,7 @@ function ToppingsManager() {
     } catch (error) {
       console.error("Error al eliminar topping:", error);
     }
-};
+  };
 
   return (
     <div className="admin-detail-container">
@@ -55,7 +55,10 @@ function ToppingsManager() {
           onChange={(e) => setNewTopping(e.target.value)}
           className="admin-input"
         />
-        <button onClick={addTopping} className="admin-add-btn">
+        <button
+          onClick={addTopping}
+          className="admin-add-btn"
+        >
           <PlusCircle size={18} /> Agregar
         </button>
       </div>
@@ -65,9 +68,15 @@ function ToppingsManager() {
           <p className="admin-empty">No hay toppings aún.</p>
         ) : (
           toppings.map((topping) => (
-            <div key={topping.id} className="admin-item">
+            <div
+              key={topping.id}
+              className="admin-item"
+            >
               <span>{topping.nombre}</span>
-              <button onClick={() => deleteTopping(topping.id)} className="admin-delete-btn">
+              <button
+                onClick={() => deleteTopping(topping.id)}
+                className="admin-delete-btn"
+              >
                 <Trash2 size={18} />
               </button>
             </div>

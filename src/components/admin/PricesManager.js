@@ -14,13 +14,12 @@ function PricesManager() {
 
   // Endpoints
   const API_URL_GET_DELIVERY_PRICE =
-    "http://localhost:3001/delivery/get-delivery";
+    "https://delamuu.com/delivery/get-delivery";
   const API_URL_UPDATE_DELIVERY_PRICE =
-    "http://localhost:3001/delivery/update-price";
-  const API_URL_GET_PRODUCT_PRICES =
-    "http://localhost:3001/products/get-prices";
+    "https://delamuu.com/delivery/update-price";
+  const API_URL_GET_PRODUCT_PRICES = "https://delamuu.com/products/get-prices";
   const API_URL_UPDATE_PRODUCT_PRICE =
-    "http://localhost:3001/products/update-price";
+    "https://delamuu.com/products/update-price";
 
   const fetchDeliveryPrice = async () => {
     try {
@@ -99,7 +98,10 @@ function PricesManager() {
             onChange={(e) => setNewDeliveryPrice(e.target.value)}
             className="admin-input"
           />
-          <button onClick={updateDeliveryPrice} className="admin-add-btn">
+          <button
+            onClick={updateDeliveryPrice}
+            className="admin-add-btn"
+          >
             <PlusCircle size={18} /> Editar
           </button>
         </div>
@@ -117,12 +119,18 @@ function PricesManager() {
         </div>
       </article>
 
-      <article className="admin-product-prices" style={{ marginTop: "2rem" }}>
+      <article
+        className="admin-product-prices"
+        style={{ marginTop: "2rem" }}
+      >
         <h2 className="admin-detail-title">Precios de productos</h2>
         {productPrices && productPrices.length > 0 ? (
           <ul className="admin-list-products">
             {productPrices.map((item) => (
-              <li key={item.id} className="admin-item-product">
+              <li
+                key={item.id}
+                className="admin-item-product"
+              >
                 <span className="envase">{item.envaseNombre}</span>
                 <span className="producto">{item.productoNombre}</span>
                 <span className="precio">

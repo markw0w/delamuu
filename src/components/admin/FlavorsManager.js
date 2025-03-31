@@ -6,9 +6,9 @@ function FlavorsManager() {
   const [flavors, setFlavors] = useState([]);
   const [newFlavor, setNewFlavor] = useState("");
 
-  const API_URL_GET_FLAVORS = "http://localhost:3001/flavors/get-flavors";
-  const API_URL_ADD_FLAVORS = "http://localhost:3001/flavors/add-flavor";
-  const API_URL_DEL_FLAVORS = "http://localhost:3001/flavors/delete-flavor";
+  const API_URL_GET_FLAVORS = "https://delamuu.com/flavors/get-flavors";
+  const API_URL_ADD_FLAVORS = "https://delamuu.com/flavors/add-flavor";
+  const API_URL_DEL_FLAVORS = "https://delamuu.com/flavors/delete-flavor";
 
   useEffect(() => {
     fetchFlavors();
