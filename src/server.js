@@ -57,6 +57,6 @@ https.createServer(options, app).listen(3001, () => {
   console.log("🚀 Servidor HTTPS corriendo en https://delamuu.com");
 });
 
-app.listen(80, () => {
+app.listen(3002, () => {
   console.log("🔄 Redirigiendo tráfico HTTP a HTTPS...");
 });
