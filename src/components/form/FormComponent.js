@@ -31,12 +31,14 @@ function FormComponent( {product} ) {
     prices: "10000",
   });
 
-  const API_URL_GET_GRAMAJE = "http://localhost:3001/gramajes/get-gramajes";
-  const API_URL_GET_PRICES = "http://localhost:3001/products/get-prices";
+  //const API_BASE_URL = "http://delamuu.com";
+
+  const API_URL_GET_GRAMAJE = "http://delamuu.com/gramajes/get-gramajes";
+  const API_URL_GET_PRICES = "http://delamuu.com/products/get-prices";
   const API_URL_GET_TOPPINGS_OPTIONS =
-    "http://localhost:3001/toppings/get-toppings";
-  const API_URL_GET_SAUCES_OPTIONS = "http://localhost:3001/sauces/get-sauces";
-  const API_URL_GET_FRUITS_OPTIONS = "http://localhost:3001/fruits/get-fruits";
+    "http://delamuu.com/toppings/get-toppings";
+  const API_URL_GET_SAUCES_OPTIONS = "http://delamuu.com/sauces/get-sauces";
+  const API_URL_GET_FRUITS_OPTIONS = "http://delamuu.com/fruits/get-fruits";
 
   useEffect(() => {
     const fetchData = async () => {
