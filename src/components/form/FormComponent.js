@@ -31,7 +31,6 @@ function FormComponent( {product} ) {
     prices: "10000",
   });
 
-  //const API_BASE_URL = "http://delamuu.com";
 
   const API_URL_GET_GRAMAJE = "https://delamuu.com/gramajes/get-gramajes";
   const API_URL_GET_PRICES = "https://delamuu.com/products/get-prices";
