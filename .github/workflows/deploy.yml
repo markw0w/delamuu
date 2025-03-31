@@ -25,5 +25,5 @@ jobs:
             git pull origin main
             npm install
             npm run build
-            pm2 start /var/www/delamuu/src/server.js --name delamuu || pm2 restart delamuu
+            pm2 start src/server.js --name delamuu || pm2 restart delamuu
           EOF
