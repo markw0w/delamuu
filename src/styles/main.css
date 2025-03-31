@@ -404,7 +404,7 @@ header .rightNavContainer #burguerMenuIcon {
 }
 @media (min-width: 768px) {
   .aboutUsContainer .titleAboutUs p {
-    font-size: 22px;
+    font-size: 1rem;
   }
 }
 @media (min-width: 768px) {
