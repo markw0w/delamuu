@@ -14,8 +14,6 @@ import productRoutes from "./routes/products.js";
 import gramajeRoutes from "./routes/gramajes.js";
 import deliveryRoutes from "./routes/delivery.js";
 import flavorRoutes from "./routes/flavors.js";
-//const https = require('https');
-//const fs = require('fs');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,7 +25,9 @@ const options = {
   cert: fs.readFileSync("/etc/letsencrypt/live/delamuu.com/fullchain.pem"),
 };
 
-app.use(cors());
+app.use(cors({
+  origin: "https://delamuu.com"
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 sequelize.authenticate()
@@ -55,7 +55,3 @@ app.get("/", (_, res) => {
 https.createServer(options, app).listen(3001, () => {
   console.log("🚀 Servidor HTTPS corriendo en https://delamuu.com");
 });
-
-/* app.listen(3002, () => {
-  console.log("🔄 Redirigiendo tráfico HTTP a HTTPS...");
-}); */
