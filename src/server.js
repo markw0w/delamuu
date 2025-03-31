@@ -53,7 +53,7 @@ app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "../", "index.html"));
 });
 
-https.createServer(options, app).listen(443, () => {
+https.createServer(options, app).listen(3001, () => {
   console.log("🚀 Servidor HTTPS corriendo en https://delamuu.com");
 });
 
