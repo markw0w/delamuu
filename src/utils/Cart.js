@@ -266,7 +266,7 @@ const Cart = () => {
                     >
                       <Trash2
                         size={25}
-                        color="red"
+                        color="white"
                       />
                     </button>
                   </li>

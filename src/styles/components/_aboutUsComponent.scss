@@ -61,7 +61,7 @@
             color: $darkFontColor;
 
             @include breakpoint(small){
-                font-size: $lg;
+                font-size: 1rem;
             }
         }
 

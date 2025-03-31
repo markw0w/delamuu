@@ -15,6 +15,7 @@ function FormComponent( {product} ) {
   const fruitsRef = useRef(null);
   const priceRef = useRef(null);
 
+  const [orderReady, setOrderReady] = useState(false);
   const [gramajes, setGramajes] = useState([]);
   const [toppings, setToppings] = useState([]);
   const [sauces, setSauces] = useState([]);
@@ -77,6 +78,7 @@ function FormComponent( {product} ) {
       sauces: [],
       fruits: [],
     }));
+    setOrderReady(false);
 
     if (toppingsRef.current) toppingsRef.current.resetSelection();
     if (saucesRef.current) saucesRef.current.resetSelection();
@@ -109,6 +111,7 @@ function FormComponent( {product} ) {
       sauces: newSauces,
       fruits: newFruits,
     }));
+    setOrderReady(true);
     return true;
   };
 
@@ -155,6 +158,7 @@ function FormComponent( {product} ) {
 
     localStorage.setItem("currentOrder", JSON.stringify(updatedOrder));
     setCurrentOrder(updatedOrder);
+    setOrderReady(false);
 
     if (packageRef.current) packageRef.current.resetSelection();
     if (toppingsRef.current) toppingsRef.current.resetSelection();
@@ -201,13 +205,11 @@ function FormComponent( {product} ) {
         onSave={handleSelectionChange}
       />
       <hr />
-      <button
-        type="button"
-        onClick={handleAddOrder}
-        className="addOrderButton"
-      >
-        Agregar al carrito
-      </button>
+      {orderReady && (
+        <button type="button" onClick={handleAddOrder} className="addOrderButton">
+          Agregar al carrito
+        </button>
+      )}
 
       {showAlert && <AlertComponent message={message} />}
     </form>

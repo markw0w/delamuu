@@ -59,9 +59,6 @@ footer .topFooterContainer ul li {
   transition: all 0.5s ease;
   border-radius: 5px;
 }
-footer .topFooterContainer ul li:hover {
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
-}
 footer .topFooterContainer img {
   width: 60px;
   height: auto;
@@ -126,7 +123,7 @@ header .rightNavContainer button {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 100px;
   height: 30px;
   font-family: "Montserrat", sans-serif;
@@ -404,7 +401,7 @@ header .rightNavContainer #burguerMenuIcon {
 }
 @media (min-width: 768px) {
   .aboutUsContainer .titleAboutUs p {
-    font-size: 22px;
+    font-size: 1rem;
   }
 }
 @media (min-width: 768px) {
@@ -610,7 +607,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 90%;
   height: 25px;
   font-family: "Montserrat", sans-serif;
@@ -700,7 +697,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
   border-radius: 50%;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   color: #f1f1f1;
   position: absolute;
   top: 50%;
@@ -810,7 +807,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 50%;
   height: 40px;
   font-family: "Montserrat", sans-serif;
@@ -887,6 +884,7 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
+  gap: 10px;
 }
 .optionsContainer .optionsModal .optionsContent .categorySection {
   width: 100%;
@@ -988,6 +986,20 @@ header .rightNavContainer #burguerMenuIcon {
   margin-top: 15px;
 }
 .optionsContainer .optionsModal .optionsContent .saveBtn {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 150px;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 15px;
 }
 
@@ -1043,7 +1055,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 40px;
   height: 40px;
   font-family: "Montserrat", sans-serif;
@@ -1103,7 +1115,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 40px;
   height: 40px;
   font-family: "Montserrat", sans-serif;
@@ -1145,7 +1157,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 40%;
   height: 30px;
   font-family: "Montserrat", sans-serif;
@@ -1429,7 +1441,7 @@ header .rightNavContainer #burguerMenuIcon {
   justify-content: center;
   flex-direction: row;
   align-items: center;
-  font-size: 40px;
+  font-size: 63px;
   font-weight: 800;
   text-align: center;
   z-index: 1000;
@@ -1440,10 +1452,16 @@ header .rightNavContainer #burguerMenuIcon {
   margin-bottom: 100px;
   color: #92a6d8;
   gap: 10px;
+  font-family: "Chennai W00 Black";
 }
 @media (min-width: 768px) {
   .introductionContainer h2 {
-    width: 20%;
+    font-size: 63px;
+  }
+}
+@media (min-width: 1024px) {
+  .introductionContainer h2 {
+    width: 30%;
   }
 }
 .introductionContainer h2 img {
@@ -1510,7 +1528,7 @@ header .rightNavContainer #burguerMenuIcon {
   font-weight: 900;
   font-size: 26px;
   font-family: "Montserrat Alternates", sans-serif;
-  color: #4b57f5;
+  color: #ff4e4b;
   width: 95%;
   height: 150px;
   text-align: center;
@@ -1663,7 +1681,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 50%;
   height: 40px;
   font-family: "Montserrat", sans-serif;
@@ -1823,7 +1841,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 100px;
   height: 80px;
   font-family: "Montserrat", sans-serif;
@@ -1881,7 +1899,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 100px;
   height: 90%;
   font-family: "Montserrat", sans-serif;
@@ -1989,7 +2007,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: 15px;
   height: 20px;
   font-family: "Montserrat", sans-serif;
@@ -2043,7 +2061,7 @@ header .rightNavContainer #burguerMenuIcon {
     border: 0px;
     padding: 5px;
     border-radius: 20px;
-    background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+    background-color: #ff4e4b;
     width: 15px;
     height: 20px;
     font-family: "Montserrat", sans-serif;
@@ -2094,7 +2112,7 @@ header .rightNavContainer #burguerMenuIcon {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-color: #ff4e4b;
   width: auto;
   height: 80%;
   font-family: "Montserrat", sans-serif;

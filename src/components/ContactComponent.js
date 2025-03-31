@@ -26,9 +26,9 @@ function ContactComponent() {
         width="400"
         height="300"
         className="map"
-        allowfullscreen=""
+        allowFullScreen
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
+        referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
     </section>
   );

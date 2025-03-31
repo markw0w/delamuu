@@ -9,6 +9,7 @@ function IceCreamFormComponent() {
   const { addOrder } = useCart();
   const [showAlert, setShowAlert] = useState(false);
   const [message, setMessage] = useState("");
+  const [orderReady, setOrderReady] = useState(false);
 
   const packageRef = useRef(null);
   const flavorRef = useRef(null);
@@ -63,7 +64,7 @@ function IceCreamFormComponent() {
       prices: newPrice,
       flavors: [],
     }));
-
+    setOrderReady(false);
     if (flavorRef.current) flavorRef.current.resetSelection();
   };
 
@@ -82,6 +83,7 @@ function IceCreamFormComponent() {
   ) => {
     const flavorsArray = newFlavors !== undefined ? newFlavors : newToppings;
     const maxSelections = flavorsLimits[currentOrder.gramaje];
+
     if (flavorsArray.length > maxSelections) {
       showAlertMessage(
         `Límite: ${maxSelections} selecciones totales de sabores`,
@@ -93,6 +95,7 @@ function IceCreamFormComponent() {
       ...prev,
       flavors: flavorsArray,
     }));
+    setOrderReady(true);
     return true;
   };
 
@@ -110,6 +113,7 @@ function IceCreamFormComponent() {
       showAlertMessage("Debes seleccionar un gramaje.", "error");
       return;
     }
+
     if (currentOrder.flavors.length === 0) {
       showAlertMessage("Debes seleccionar al menos un sabor", "error");
       return;
@@ -125,13 +129,14 @@ function IceCreamFormComponent() {
       gramaje: "1/4 kg",
       prices: prices[0]?.price || "10000",
       flavors: [],
-      toppings: [],  
-      sauces: [],    
-      fruits: [],  
+      toppings: [],
+      sauces: [],
+      fruits: [],
     };
 
     localStorage.setItem("currentOrder", JSON.stringify(updatedOrder));
     setCurrentOrder(updatedOrder);
+    setOrderReady(false);
 
     if (packageRef.current) packageRef.current.resetSelection();
     if (flavorRef.current) flavorRef.current.resetSelection();
@@ -163,7 +168,7 @@ function IceCreamFormComponent() {
       </h2>
       <CreateProduct
         ref={flavorRef}
-        flavorOptions={flavors} 
+        flavorOptions={flavors}
         isIcreCream="1"
         gramaje={currentOrder.gramaje}
         maxSelections={flavorsLimits[currentOrder.gramaje]}
@@ -171,13 +176,11 @@ function IceCreamFormComponent() {
         onSave={handleSelectionChange}
       />
       <hr />
-      <button
-        type="button"
-        onClick={handleAddOrder}
-        className="addOrderButton"
-      >
-        Agregar al carrito
-      </button>
+      {orderReady && (
+        <button type="button" onClick={handleAddOrder} className="addOrderButton">
+          Agregar al carrito
+        </button>
+      )}
       {showAlert && <AlertComponent message={message} />}
     </form>
   );
