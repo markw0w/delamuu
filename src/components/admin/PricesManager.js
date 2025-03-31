@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PlusCircle } from "lucide-react";
 import axios from "axios";
-import EditPriceModal from "../form/EditPriceModal";
+import EditPriceModal from "../form/EditPriceModal.js";
 
 function PricesManager() {
   const [deliveryPrice, setDeliveryPrice] = useState(null);

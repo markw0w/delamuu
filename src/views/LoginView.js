@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AlertComponent from "../components/alerts/AlertComponent";
+import AlertComponent from "../components/alerts/AlertComponent.js";
 
 function LoginView() {
   const [user, setUser] = useState("");

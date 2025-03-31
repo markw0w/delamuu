@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { logos } from "../utils/Images";
+import { logos } from "../utils/Images.js";
 import { Link } from "react-router-dom";
 import { Menu, X, LogOut } from "lucide-react";
-import MenuBurguer from "../components/BurguerMenuComponent";
-import WantOrderModal from "./WantOderModal";
+import MenuBurguer from "../components/BurguerMenuComponent.js";
+import WantOrderModal from "./WantOderModal.js";
 
 function HeaderComponent() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import ToppingsManager from "../components/admin/ToppingsManager";
-import SaucesManager from "../components/admin/SaucesManager";
-import FruitsManager from "../components/admin/FruitsManager";
-import GramajeManager from "../components/admin/GramajeManager";
-import ProductsManager from "../components/admin/ProductsManager";
-import PricesManager from "../components/admin/PricesManager";
-import OrdersHistory from "../components/admin/OrdersHistory";
-import FlavorsManager from "../components/admin/FlavorsManager";
+import ToppingsManager from "../components/admin/ToppingsManager.js";
+import SaucesManager from "../components/admin/SaucesManager.js";
+import FruitsManager from "../components/admin/FruitsManager.js";
+import GramajeManager from "../components/admin/GramajeManager.js";
+import ProductsManager from "../components/admin/ProductsManager.js";
+import PricesManager from "../components/admin/PricesManager.js";
+import OrdersHistory from "../components/admin/OrdersHistory.js";
+import FlavorsManager from "../components/admin/FlavorsManager.js";
 
 function AdminView() {
   const [activeSection, setActiveSection] = useState(null);

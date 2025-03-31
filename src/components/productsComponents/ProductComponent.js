@@ -1,8 +1,8 @@
 import React from "react";
-import YogurComponent from './YogurComponent'
-import HeladoComponent from './HeladoComponent'
-import AcaiComponent from './AzaiComponent'
-import CandyComponent from './CandyComponent'
+import YogurComponent from './YogurComponent.js'
+import HeladoComponent from './HeladoComponent.js'
+import AcaiComponent from './AzaiComponent.js'
+import CandyComponent from './CandyComponent.js'
 
 function ProductComponent({ activeModal, setActiveModal }){
     return(

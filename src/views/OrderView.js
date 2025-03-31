@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ProductComponent from "../components/productsComponents/ProductComponent";
+import ProductComponent from "../components/productsComponents/ProductComponent.js";
 
 function OrderView() {
     const { product } = useParams();

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { products } from "../utils/Images";
+import { products } from "../utils/Images.js";
 
 function WantOrderModal( {modalOpen} ) {
   return (

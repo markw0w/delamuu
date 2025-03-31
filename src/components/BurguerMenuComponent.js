@@ -1,5 +1,5 @@
 import React from "react";
-import { logos } from "../utils/Images";
+import { logos } from "../utils/Images.js";
 import { Link } from "react-router-dom";
 
 function MenuBurguer({ isOpen }) {

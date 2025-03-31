@@ -1,7 +1,7 @@
 import React from "react";
-import { products } from "../../utils/Images";
-import CarouselComponent from "../CarouselComponent";
-import IceCreamFormComponent from "../form/IceCreamFormComponent";
+import { products } from "../../utils/Images.js";
+import CarouselComponent from "../CarouselComponent.js";
+import IceCreamFormComponent from "../form/IceCreamFormComponent.js";
 import { ChevronsDown } from "lucide-react";
 
 function HeladoComponent() {

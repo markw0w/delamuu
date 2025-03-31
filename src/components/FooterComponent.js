@@ -1,5 +1,5 @@
 import React from "react";
-import { logos } from "../utils/Images";
+import { logos } from "../utils/Images.js";
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
 
 function FooterComponent(){

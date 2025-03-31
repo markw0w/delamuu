@@ -1,10 +1,10 @@
 // Cart.js
 import React, { useState, useEffect } from "react";
 import { ShoppingCart, X, Trash2, MessageCircleHeart } from "lucide-react";
-import { useCart } from "./CartContext";
+import { useCart } from "./CartContext.js";
 import { useLocation } from "react-router-dom";
-import OrderModal from "../components/form/OrderModal";
-import AlertComponent from "../components/alerts/AlertComponent";
+import OrderModal from "../components/form/OrderModal.js";
+import AlertComponent from "../components/alerts/AlertComponent.js";
 
 const Cart = () => {
   const { cartItems, removeOrder } = useCart();

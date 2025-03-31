@@ -1,21 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { CartProvider } from "./utils/CartContext";
-import ProtectedRoute from "./routes/ProtectedRoutes";
-import HomeView from './views/HomeView';
-import OrderView from './views/OrderView';
-import AdminView from './views/AdminView';
-import LoginView from './views/LoginView';
-import ScrollToTop from "./utils/ScrollToTop";
-import HeaderComponent from './components/HeaderComponent';
-import FooterComponent from './components/FooterComponent';
-import ToppingsManager from './components/admin/ToppingsManager';
-import FruitsManager from './components/admin/FruitsManager';
-import GramajeManager from './components/admin/GramajeManager';
-import ProductsManager from './components/admin/ProductsManager';
-import SaucesManager from './components/admin/SaucesManager';
-import PricesManager from './components/admin/PricesManager';
-import Cart from "./utils/Cart";
+import { CartProvider } from "./utils/CartContext.js";
+import ProtectedRoute from "./routes/ProtectedRoutes.js";
+import HomeView from './views/HomeView.js';
+import OrderView from './views/OrderView.js';
+import AdminView from './views/AdminView.js';
+import LoginView from './views/LoginView.js';
+import ScrollToTop from "./utils/ScrollToTop.js";
+import HeaderComponent from './components/HeaderComponent.js';
+import FooterComponent from './components/FooterComponent.js';
+import ToppingsManager from './components/admin/ToppingsManager.js';
+import FruitsManager from './components/admin/FruitsManager.js';
+import GramajeManager from './components/admin/GramajeManager.js';
+import ProductsManager from './components/admin/ProductsManager.js';
+import SaucesManager from './components/admin/SaucesManager.js';
+import PricesManager from './components/admin/PricesManager.js';
+import Cart from "./utils/Cart.js";
 
 function App() {
   return (

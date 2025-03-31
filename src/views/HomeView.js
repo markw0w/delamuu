@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { products, logos, effects } from "../utils/Images";
-import AboutUsComponent from "../components/AboutUsComponent";
-import CarouselComponent from "../components/CarouselComponent";
-import ContactComponent from "../components/ContactComponent";
+import { products, logos, effects } from "../utils/Images.js";
+import AboutUsComponent from "../components/AboutUsComponent.js";
+import CarouselComponent from "../components/CarouselComponent.js";
+import ContactComponent from "../components/ContactComponent.js";
 
 function HomeView() {
   const [scrollY, setScrollY] = useState(0);

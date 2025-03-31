@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useCart } from "../../utils/CartContext";
-import ChoosePackage from "../../utils/ChoosePackage";
-import CreateProduct from "../../utils/CreateProduct";
-import AlertComponent from "../alerts/AlertComponent";
+import { useCart } from "../../utils/CartContext.js";
+import ChoosePackage from "../../utils/ChoosePackage.js";
+import CreateProduct from "../../utils/CreateProduct.js";
+import AlertComponent from "../alerts/AlertComponent.js";
 import axios from "axios";
 
 function FormComponent( {product} ) {

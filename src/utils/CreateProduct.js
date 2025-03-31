@@ -1,6 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
 import { Check, Pointer } from "lucide-react";
-import AlertComponent from "../components/alerts/AlertComponent";
+import AlertComponent from "../components/alerts/AlertComponent.js";
 
 const CreateProduct = forwardRef(
   (
