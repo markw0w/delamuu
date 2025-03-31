@@ -2,7 +2,7 @@ import React from "react";
 import { products } from "../../utils/Images.js";
 import CarouselComponent from "../CarouselComponent.js";
 import FormComponent from "../form/FormComponent.js";
-import { ChevronsDown } from "lucide-react.js";
+import { ChevronsDown } from "lucide-react";
 
 function YogurComponent() {
   const productName = "Yogur";
