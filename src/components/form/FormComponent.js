@@ -33,12 +33,12 @@ function FormComponent( {product} ) {
 
   //const API_BASE_URL = "http://delamuu.com";
 
-  const API_URL_GET_GRAMAJE = "http://delamuu.com/gramajes/get-gramajes";
-  const API_URL_GET_PRICES = "http://delamuu.com/products/get-prices";
+  const API_URL_GET_GRAMAJE = "https://delamuu.com/gramajes/get-gramajes";
+  const API_URL_GET_PRICES = "https://delamuu.com/products/get-prices";
   const API_URL_GET_TOPPINGS_OPTIONS =
-    "http://delamuu.com/toppings/get-toppings";
-  const API_URL_GET_SAUCES_OPTIONS = "http://delamuu.com/sauces/get-sauces";
-  const API_URL_GET_FRUITS_OPTIONS = "http://delamuu.com/fruits/get-fruits";
+    "https://delamuu.com/toppings/get-toppings";
+  const API_URL_GET_SAUCES_OPTIONS = "https://delamuu.com/sauces/get-sauces";
+  const API_URL_GET_FRUITS_OPTIONS = "https://delamuu.com/fruits/get-fruits";
 
   useEffect(() => {
     const fetchData = async () => {
