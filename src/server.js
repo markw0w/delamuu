@@ -1,3 +1,5 @@
+import https from 'https';
+import fs from 'fs';
 import express from "express";
 import path from "path";
 import cors from "cors";
@@ -12,8 +14,8 @@ import productRoutes from "./routes/products.js";
 import gramajeRoutes from "./routes/gramajes.js";
 import deliveryRoutes from "./routes/delivery.js";
 import flavorRoutes from "./routes/flavors.js";
-const https = require('https');
-const fs = require('fs');
+//const https = require('https');
+//const fs = require('fs');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
