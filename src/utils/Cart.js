@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { ShoppingCart, X, Trash2, MessageCircleHeart } from "lucide-react";
 import { useCart } from "./CartContext.js";
-import { useLocation } from "react-router-dom";
 import OrderModal from "../components/form/OrderModal.js";
 import AlertComponent from "../components/alerts/AlertComponent.js";
 
@@ -13,7 +12,6 @@ const Cart = () => {
   const [deliveryCost, setDeliveryCost] = useState(0);
   const [showAlert, setShowAlert] = useState(false);
   const [message, setMessage] = useState("");
-  const location = useLocation();
 
   const API_URL = "https://delamuu.com/api/add-order";
   const API_URL_GET_DELIVERY = "https://delamuu.com/delivery/get-delivery";
