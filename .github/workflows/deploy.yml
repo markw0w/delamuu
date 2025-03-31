@@ -1,0 +1,29 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets[github.actor == 'markw0w' && 'VPS_SSH_KEY_MARCOS' || 'VPS_SSH_KEY_ESTANIS'] }}
+
+      - name: Deploy to VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_IP }} << 'EOF'
+            cd /var/www/delamuu
+            git pull origin main
+            npm install
+            npm run build
+            pm2 restart delamuu || pm2 start server.js --name delamuu
+          EOF
