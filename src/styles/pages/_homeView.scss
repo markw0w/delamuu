@@ -25,9 +25,9 @@
     }
 
     h2{
-        @include sizes(80%,$height: 100px);
+        @include sizes(80%, $height: 100px);
         @include displayFlex($flexDirection:row);
-        font-size: 40px;
+        font-size: 63px;
         font-weight: $superBold;
         text-align: center;
         z-index: 1000;
@@ -38,9 +38,13 @@
         margin-bottom: 100px;
         color: $brandColor;
         gap: 10px;
+        font-family: $chennaiFont;
 
         @include breakpoint(small){
-            width: 20%;
+            font-size: 63px;
+        }
+        @include breakpoint(medium){
+            width: 30%;
         }
 
         img{
@@ -94,7 +98,7 @@
                 font-weight: 900;
                 font-size: 26px;
                 font-family: $montserratAlternateFont;
-                color: #4b57f5;
+                color: $secondaryFontColor;
                 @include sizes(95%,150px);
                 text-align: center;
                 @include displayFlex();

@@ -136,7 +136,7 @@ const CreateProduct = forwardRef(
               : ""
           }`}
         >
-          <Pointer size={20}/>
+          <Pointer size={20} />
           {(isIcreCream === "1"
             ? selectedFlavors.length
             : selectedToppings.length +
@@ -236,9 +236,28 @@ const CreateProduct = forwardRef(
                 type="button"
                 onClick={() => {
                   if (isIcreCream === "1") {
-                    onSave([], [], [], selectedFlavors);
+                    if (selectedFlavors.length === 0) {
+                      showAlertMessage(
+                        "Debes seleccionar al menos un sabor",
+                        "error"
+                      );
+                      return;
+                    }
+                    onSave && onSave([], [], [], selectedFlavors);
                   } else {
-                    onSave(selectedToppings, selectedSauces, selectedFruits);
+                    const totalSelection =
+                      selectedToppings.length +
+                      selectedSauces.length +
+                      selectedFruits.length;
+                    if (totalSelection === 0) {
+                      showAlertMessage(
+                        "Debes seleccionar al menos una opción",
+                        "error"
+                      );
+                      return;
+                    }
+                    onSave &&
+                      onSave(selectedToppings, selectedSauces, selectedFruits);
                   }
                   setIsOpen(false);
                 }}

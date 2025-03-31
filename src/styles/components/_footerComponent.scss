@@ -31,9 +31,6 @@ footer {
                 transition: all 0.5s ease;
                 border-radius: 5px;
             }
-            li:hover{
-                background-image: $secondary-Normal-BackgroundImage;
-            }
         }
         img{
             @include sizes(60px,auto);

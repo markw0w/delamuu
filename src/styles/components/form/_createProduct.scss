@@ -47,6 +47,7 @@
             @include sizes();
             @include displayFlex($flexDirection:row);
             flex-wrap: wrap;
+            gap: 10px;
 
             .categorySection{
                 @include sizes();
@@ -133,6 +134,7 @@
                 margin-top: 15px;
             }
             .saveBtn{
+                @include buttonDesign($width: 150px);
                 margin-top: 15px;
             }
         }

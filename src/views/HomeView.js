@@ -42,7 +42,7 @@ function HomeView() {
             src={logos.shortDark}
             alt="Helado Principal"
           />
-          Delamuu
+          delamuu
         </h2>
       </section>
 
