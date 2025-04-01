@@ -17,7 +17,7 @@ function BriefcaseManager() {
 
   const fetchBriefcase = async () => {
     try {
-      const response = await axios.get(`${API_URL_GET_BRIEFCASE}/1`);
+      const response = await axios.get(API_URL_GET_BRIEFCASE);
       setBriefcase(response.data);
     } catch (error) {
       console.error("Error al obtener la carta:", error);
