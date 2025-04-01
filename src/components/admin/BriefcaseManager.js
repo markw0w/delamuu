@@ -9,8 +9,7 @@ function BriefcaseManager() {
 
   const API_URL_GET_BRIEFCASE = "https://delamuu.com/briefcase/get-briefcase";
   const API_URL_ADD_BRIEFCASE = "https://delamuu.com/briefcase/add-briefcase";
-  const API_URL_DEL_BRIEFCASE =
-    "https://delamuu.com/briefcase/delete-briefcase";
+  const API_URL_DEL_BRIEFCASE = "https://delamuu.com/briefcase/delete-briefcase";
 
   useEffect(() => {
     fetchBriefcase();
@@ -19,16 +18,16 @@ function BriefcaseManager() {
   const fetchBriefcase = async () => {
     try {
       const response = await axios.get(API_URL_GET_BRIEFCASE);
-      console.log("Respuesta de la API:", response.data); // <-- Verifica qué devuelve
+      console.log("Respuesta de la API:", response.data);
       if (Array.isArray(response.data)) {
         setBriefcase(response.data);
       } else {
-        setBriefcase([]); // <-- Si no es un array, evita el error
+        setBriefcase([]);
         console.error("La API no devolvió un array:", response.data);
       }
     } catch (error) {
       console.error("Error al obtener la carta:", error);
-      setBriefcase([]); // <-- Evita que se rompa el .map()
+      setBriefcase([]);
     }
   };
 
@@ -85,11 +84,8 @@ function BriefcaseManager() {
           className="admin-input"
         />
 
-        {/* Input de archivo */}
-        <label
-          className="custom-file-label"
-          htmlFor="file"
-        >
+        {/* Input de archivo, aceptando solo PDFs */}
+        <label className="custom-file-label" htmlFor="file">
           Subir archivo
         </label>
         <input
@@ -103,25 +99,16 @@ function BriefcaseManager() {
           className="input-file"
         />
 
-        <button
-          onClick={addBriefcase}
-          className="admin-add-btn"
-        >
+        <button onClick={addBriefcase} className="admin-add-btn">
           <PlusCircle size={18} /> Agregar
         </button>
       </div>
       <div className="admin-list">
         {Array.isArray(briefcase) && briefcase.length > 0 ? (
           briefcase.map((briefc) => (
-            <div
-              key={briefc.id}
-              className="admin-item"
-            >
+            <div key={briefc.id} className="admin-item">
               <span>{briefc.nombre}</span>
-              <button
-                onClick={() => deleteBriefcase(briefc.id)}
-                className="admin-delete-btn"
-              >
+              <button onClick={() => deleteBriefcase(briefc.id)} className="admin-delete-btn">
                 <Trash2 size={18} />
               </button>
             </div>
