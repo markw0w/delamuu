@@ -6,26 +6,21 @@ import multer from 'multer';
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
-  limits: { fileSize: 10 * 1024 * 1024 }  // 10 MB
+  limits: { fileSize: 20 * 1024 * 1024 }  // 20 MB
 });
 
 const router = Router();
 
-router.get("/get-briefcase/:id", async (req, res) => {
+router.get("/get-briefcase", async (req, res) => {
   try {
-    const { id } = req.params;
+    // Selecciona todos los registros de la tabla 'briefcases'
     const [rows] = await sequelize.query(
-      "SELECT file_data FROM briefcases WHERE id = ?",
-      { replacements: [id], type: QueryTypes.SELECT }
+      "SELECT id, nombre, file_data FROM briefcases",
+      { type: QueryTypes.SELECT }
     );
-    if (rows.length === 0 || !rows[0].file_data) {
-      return res.status(404).json({ message: "Archivo no encontrado" });
-    }
-    // Ajusta el Content-Type al que corresponda; en este caso, asumiremos PDF
-    res.setHeader("Content-Type", "application/pdf");
-    res.send(rows[0].file_data);
+    res.json(rows);
   } catch (error) {
-    console.error("Error al obtener el archivo:", error);
+    console.error("Error al obtener archivos:", error);
     res.status(500).json({ error: "Error en el servidor" });
   }
 });
