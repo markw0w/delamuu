@@ -5,10 +5,12 @@ import { Trash2, PlusCircle } from "lucide-react";
 function BriefcaseManager() {
   const [briefcase, setBriefcase] = useState([]);
   const [newBriefcase, setNewBriefcase] = useState("");
+  const [selectedFile, setSelectedFile] = useState("");
 
   const API_URL_GET_BRIEFCASE = "https://delamuu.com/briefcase/get-briefcase";
   const API_URL_ADD_BRIEFCASE = "https://delamuu.com/briefcase/add-briefcase";
-  const API_URL_DEL_BRIEFCASE = "https://delamuu.com/briefcase/delete-briefcase";
+  const API_URL_DEL_BRIEFCASE =
+    "https://delamuu.com/briefcase/delete-briefcase";
 
   useEffect(() => {
     fetchBriefcase();
@@ -23,14 +25,24 @@ function BriefcaseManager() {
     }
   };
 
-  const addBriefcase = async () => {
-    if (!newBriefcase.trim()) return;
+  const addBriefcase = async (event) => {
+    event.preventDefault();
+    if (!newBriefcase.trim() || !selectedFile) return;
+
+    const formData = new FormData();
+    formData.append("nombre", newBriefcase);
+    formData.append("file", selectedFile); // Enviar el archivo
+
     try {
-      await axios.post(API_URL_ADD_BRIEFCASE, { nombre: newBriefcase, file_path: "/ruta/a/archivo.pdf" });
+      await axios.post(API_URL_ADD_BRIEFCASE, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
       setNewBriefcase("");
+      setSelectedFile(null);
       fetchBriefcase();
     } catch (error) {
-      console.error("Error al agregar la carta:", error);
+      console.error("Error al agregar el archivo:", error);
     }
   };
 
@@ -47,18 +59,20 @@ function BriefcaseManager() {
     <div className="admin-detail-container">
       <h2 className="admin-detail-title">Administrar Carta</h2>
       <div className="admin-input-container">
-        <label className="custom-file-label" htmlFor="file">
+        <label
+          className="custom-file-label"
+          htmlFor="file"
+        >
           Subir archivo
         </label>
         <input
           type="file"
-          id="file"
-          placeholder="Nueva carta..."
-          value={newBriefcase}
-          onChange={(e) => setNewBriefcase(e.target.value)}
-          className="admin-input input-file"
+          onChange={(e) => setSelectedFile(e.target.files[0])}
         />
-        <button onClick={addBriefcase} className="admin-add-btn">
+        <button
+          onClick={addBriefcase}
+          className="admin-add-btn"
+        >
           <PlusCircle size={18} /> Agregar
         </button>
       </div>
@@ -67,9 +81,15 @@ function BriefcaseManager() {
           <p className="admin-empty">No hay alguna carta aún.</p>
         ) : (
           briefcase.map((briefc) => (
-            <div key={briefc.id} className="admin-item">
+            <div
+              key={briefc.id}
+              className="admin-item"
+            >
               <span>{briefc.nombre}</span>
-              <button onClick={() => deleteBriefcase(briefc.id)} className="admin-delete-btn">
+              <button
+                onClick={() => deleteBriefcase(briefc.id)}
+                className="admin-delete-btn"
+              >
                 <Trash2 size={18} />
               </button>
             </div>

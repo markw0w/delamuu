@@ -18,7 +18,6 @@ import briefcaseRoutes from "./routes/briefcase.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 const app = express();
 
 const options = {
@@ -29,8 +28,11 @@ const options = {
 app.use(cors({
   origin: "https://delamuu.com"
 }));
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 sequelize.authenticate()
   .then(() => console.log("✅ Conexión con la base de datos establecida."))
   .catch((error) => console.error("❌ Error al conectar a la base de datos:", error));
@@ -39,7 +41,6 @@ sequelize.sync({ force: false })
   .then(() => console.log("🔄 Modelos sincronizados con la base de datos."))
   .catch(error => console.error("❌ Error sincronizando modelos:", error));
 
-app.use('/uploads', express.static('uploads'));
 app.use("/api", loginRoutes);
 app.use("/api", orderRoutes);
 app.use("/toppings", toppingRoutes);

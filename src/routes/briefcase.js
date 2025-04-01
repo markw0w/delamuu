@@ -1,33 +1,42 @@
 import { Router } from "express";
 import sequelize from "../db/cnn.js"; 
 import { QueryTypes } from "sequelize";
+import multer from 'multer';
+import path from 'path';
 
+const storage = multer.diskStorage({
+  destination: "uploads/", // Carpeta donde se guardan los archivos
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Nombre único
+  },
+});
+const upload = multer({ storage });
 const router = Router();
 
 router.get("/get-briefcase", async (req, res) => {
   try {
-    const briefcase = await sequelize.query(
-      "SELECT * FROM briefcases",
-      { type: QueryTypes.SELECT }
-    );
-    res.json(briefcase);
+    const [rows] = await sequelize.query("SELECT id, nombre, file_path FROM briefcases");
+    res.json(rows);
   } catch (error) {
-    console.error("❌ Error al obtener la carta:", error);
-    res.status(500).json({ message: error.message });
+    console.error("Error al obtener archivos:", error);
+    res.status(500).json({ error: "Error en el servidor" });
   }
 });
 
-router.post("/add-briefcase", async (req, res) => {
-  const { nombre, file_path } = req.body;
+router.post("/add-briefcase", upload.single("file"), async (req, res) => {
   try {
-    await sequelize.query(
-      "INSERT INTO briefcases (nombre, file_path) VALUES (:nombre, :file_path)",
-      { replacements: { nombre, file_path }, type: QueryTypes.INSERT }
-    );
-    res.status(200).json({ message: "Carta agregada exitosamente" });
+    const { nombre } = req.body;
+    const filePath = `/uploads/${req.file.filename}`; // Ruta del archivo
+
+    await sequelize.query("INSERT INTO briefcases (nombre, file_path) VALUES (?, ?)", [
+      nombre,
+      filePath,
+    ]);
+
+    res.json({ message: "Archivo subido con éxito", file_path: filePath });
   } catch (error) {
-    console.error("❌ Error al agregar la carta:", error);
-    res.status(500).json({ message: error.message });
+    console.error("Error al subir el archivo:", error);
+    res.status(500).json({ error: "Error en el servidor" });
   }
 });
 
