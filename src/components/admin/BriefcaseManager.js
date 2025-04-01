@@ -30,7 +30,7 @@ function BriefcaseManager() {
   });
 
   // Endpoints base
-  const API_CATEGORIES = "https://delamuu.com/briefcase-categories";
+  const API_CATEGORIES = "https://delamuu.com/briefcase-categories/";
   const API_PRODUCTS = "https://delamuu.com/briefcase-products";
 
   // Funciones para cargar datos

@@ -4,6 +4,19 @@ import { QueryTypes } from "sequelize";
 
 const router = Router();
 
+// Obtener todos los productos
+router.get("/", async (req, res) => {
+  try {
+    const products = await sequelize.query(
+      "SELECT * FROM briefcase_products",
+      { type: QueryTypes.SELECT }
+    );
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Obtener productos de una categoría específica
 router.get("/category/:categoryId", async (req, res) => {
   const { categoryId } = req.params;

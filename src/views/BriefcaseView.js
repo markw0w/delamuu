@@ -8,7 +8,7 @@ function BriefcaseView() {
     async function fetchData() {
       try {
         // Traer categorías
-        const catRes = await fetch("https://delamuu.com/briefcase-categories");
+        const catRes = await fetch("https://delamuu.com/briefcase-categories/");
         const categoriesData = await catRes.json();
 
         // Para cada categoría, traemos sus productos
