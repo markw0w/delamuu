@@ -21,6 +21,9 @@ header {
         gap: 25px;
         padding-right: 25px;
 
+        .navLinks{
+            text-decoration: none;
+        }
         button{
             @include buttonDesign($height: 30px);
         }

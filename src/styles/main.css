@@ -115,6 +115,9 @@ header .rightNavContainer {
   gap: 25px;
   padding-right: 25px;
 }
+header .rightNavContainer .navLinks {
+  text-decoration: none;
+}
 header .rightNavContainer button {
   border: 0px;
   padding: 5px;
@@ -1978,6 +1981,24 @@ header .rightNavContainer #burguerMenuIcon {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-family: "Montserrat", sans-serif;
+}
+.adminContainer .admin-detail-container .input-file {
+  display: none;
+}
+.adminContainer .admin-detail-container .custom-file-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.adminContainer .admin-detail-container .custom-file-label:hover {
+  background-color: #e64a19;
 }
 .adminContainer .admin-detail-container .admin-add-btn {
   display: flex;

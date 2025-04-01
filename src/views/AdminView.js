@@ -7,6 +7,7 @@ import ProductsManager from "../components/admin/ProductsManager.js";
 import PricesManager from "../components/admin/PricesManager.js";
 import OrdersHistory from "../components/admin/OrdersHistory.js";
 import FlavorsManager from "../components/admin/FlavorsManager.js";
+import BriefcaseManager from "../components/admin/BriefcaseManager.js";
 
 function AdminView() {
   const [activeSection, setActiveSection] = useState(null);
@@ -27,6 +28,7 @@ function AdminView() {
           <button onClick={() => setActiveSection("precios")}>Precios</button>
           <button onClick={() => setActiveSection("ordenes")}>Ordenes</button>
           <button onClick={() => setActiveSection("sabores")}>Sabores</button>
+          <button onClick={() => setActiveSection("carta")}>Carta</button>
         </ul>
       </section>
 
@@ -39,6 +41,7 @@ function AdminView() {
         {activeSection === "precios" && <PricesManager />}
         {activeSection === "ordenes" && <OrdersHistory />}
         {activeSection === "sabores" && <FlavorsManager />}
+        {activeSection === "carta" && <BriefcaseManager />}
       </section>
     </section>
   );

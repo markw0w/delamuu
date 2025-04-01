@@ -14,6 +14,7 @@ import productRoutes from "./routes/products.js";
 import gramajeRoutes from "./routes/gramajes.js";
 import deliveryRoutes from "./routes/delivery.js";
 import flavorRoutes from "./routes/flavors.js";
+import briefcaseRoutes from "./routes/briefcase.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,6 +39,7 @@ sequelize.sync({ force: false })
   .then(() => console.log("🔄 Modelos sincronizados con la base de datos."))
   .catch(error => console.error("❌ Error sincronizando modelos:", error));
 
+app.use('/uploads', express.static('uploads'));
 app.use("/api", loginRoutes);
 app.use("/api", orderRoutes);
 app.use("/toppings", toppingRoutes);
@@ -47,6 +49,7 @@ app.use("/products", productRoutes);
 app.use("/gramajes", gramajeRoutes);
 app.use("/delivery", deliveryRoutes);
 app.use("/flavors", flavorRoutes);
+app.use("/briefcase", briefcaseRoutes);
 
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "../", "index.html"));

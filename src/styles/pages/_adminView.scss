@@ -105,6 +105,26 @@
           border-radius: 5px;
           font-family: $montserratFont;
         }
+
+        .input-file{
+          display: none;
+        }
+
+        .custom-file-label{
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 10px 20px;
+          background-color: #ff5722;
+          color: white;
+          font-weight: bold;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        .custom-file-label:hover {
+          background-color: #e64a19;
+        }
         
         .admin-add-btn {
           display: flex;

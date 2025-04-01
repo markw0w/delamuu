@@ -20,9 +20,9 @@ function MenuBurguer({ isOpen }) {
         <li>
           <Link
             className="navLinks"
-            to="/"
+            to="/carta"
           >
-            Hacer pedido
+            Nuestra carta
           </Link>
         </li>
         <img

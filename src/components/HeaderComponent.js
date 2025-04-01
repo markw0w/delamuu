@@ -45,6 +45,12 @@ function HeaderComponent() {
         </div>
       ) : (
         <div className="rightNavContainer">
+          <Link
+            className="navLinks"
+            to="/carta"
+          >
+            <button>Carta</button>
+          </Link>
           <button
             onClick={() => setModalOpen(!modalOpen)}
             id="toOrderBtn"

@@ -6,6 +6,7 @@ import HomeView from './views/HomeView.js';
 import OrderView from './views/OrderView.js';
 import AdminView from './views/AdminView.js';
 import LoginView from './views/LoginView.js';
+import BriefcaseView from './views/BriefcaseView.js';
 import ScrollToTop from "./utils/ScrollToTop.js";
 import HeaderComponent from './components/HeaderComponent.js';
 import FooterComponent from './components/FooterComponent.js';
@@ -28,7 +29,8 @@ function App() {
               <Routes id="routes">
                 <Route id="route" path="/" element={<HomeView/>}/>
                 <Route path="/order/:product" element={<OrderView />} />
-                
+                <Route path="/carta" element={<BriefcaseView />} />
+
                 <Route path="/auth/delamuu" element={<LoginView />} />
                 <Route path="/admin/delamuu" element={<ProtectedRoute><AdminView/></ProtectedRoute>}/>
                 
