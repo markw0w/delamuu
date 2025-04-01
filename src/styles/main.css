@@ -49,16 +49,6 @@ footer .topFooterContainer ul {
   gap: 2px;
   padding: 10px;
 }
-footer .topFooterContainer ul li {
-  list-style: none;
-  cursor: pointer;
-  color: #f1f1f1;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 3px;
-  transition: all 0.5s ease;
-  border-radius: 5px;
-}
 footer .topFooterContainer img {
   width: 60px;
   height: auto;
@@ -73,7 +63,13 @@ footer .topFooterContainer .socialMedia {
   gap: 5px;
   padding: 10px;
 }
-footer .topFooterContainer .socialMedia li img {
+footer .topFooterContainer .socialMedia li {
+  list-style: none;
+}
+footer .topFooterContainer .socialMedia li .socialLink {
+  text-decoration: none;
+}
+footer .topFooterContainer .socialMedia li .socialLink img {
   width: 40px;
   height: auto;
 }
@@ -228,10 +224,10 @@ header .rightNavContainer #burguerMenuIcon {
 }
 @keyframes text-entry {
   0% {
-    transform: translateX(1300px);
+    opacity: 0;
   }
   100% {
-    transform: translateX(0px);
+    opacity: 1;
   }
 }
 @keyframes zoomContent {
@@ -784,6 +780,16 @@ header .rightNavContainer #burguerMenuIcon {
 @media (min-width: 768px) {
   .formComponentContainer .choosePackageContainer .packageOption {
     font-size: 50px;
+  }
+}
+@media (min-width: 1024px) {
+  .formComponentContainer .choosePackageContainer .packageOption {
+    font-size: 30px;
+  }
+}
+@media (min-width: 1280px) {
+  .formComponentContainer .choosePackageContainer .packageOption {
+    font-size: 40px;
   }
 }
 .formComponentContainer .choosePackageContainer .packageOption.selected {
@@ -1343,6 +1349,61 @@ header .rightNavContainer #burguerMenuIcon {
   background: rgb(255, 113, 113);
 }
 
+.productComponentContainer {
+  position: relative;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.productComponentContainer .backgroundEffect {
+  width: 500px;
+  height: auto;
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.315));
+  animation: floating 10s ease infinite;
+}
+.productComponentContainer .fx2 {
+  top: 600px;
+  right: 50px;
+  width: 250px;
+  height: auto;
+  animation-duration: 5s;
+}
+.productComponentContainer .fx3 {
+  top: 400px;
+  right: 250px;
+  width: 350px;
+  height: auto;
+  animation-duration: 15s;
+}
+.productComponentContainer .fx4 {
+  top: 400px;
+  left: 250px;
+  width: 350px;
+  height: auto;
+  animation-duration: 15s;
+}
+.productComponentContainer .fx5 {
+  top: 600px;
+  left: 50px;
+  width: 250px;
+  height: auto;
+  animation-duration: 5s;
+}
+.productComponentContainer .fx6 {
+  top: 0px;
+  left: 0px;
+  width: 500px;
+  height: auto;
+  animation-duration: 10s;
+}
+
 .fatherProductContainer {
   width: 100%;
   height: 100%;
@@ -1352,19 +1413,13 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
   gap: 25px;
   padding-top: 50px;
+  background-color: #92a6d8;
 }
 .fatherProductContainer h2 {
   margin-bottom: 10px;
   font-weight: 800;
   font-size: 60px;
   color: #f1f1f1;
-}
-
-.productComponentContainer {
-  background-image: url("../assets/backgrounds/product-background.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .productComponent {
@@ -1540,7 +1595,7 @@ header .rightNavContainer #burguerMenuIcon {
   view-timeline-name: --txtEntry;
   view-timeline-axis: block;
   animation-timeline: --txtEntry;
-  animation-range: entry 20% cover 50%;
+  animation-range: entry 10% cover 50%;
   animation-name: text-entry;
 }
 @media (min-width: 400px) {

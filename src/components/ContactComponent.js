@@ -9,7 +9,7 @@ function ContactComponent() {
       <article className="informationContact">
         <span className="whatsappContact">
             <MessageCircle size={24} color="green"/>
-            +542364512745
+            2364 512745
         </span>
         <span className="address">
           <MapPin

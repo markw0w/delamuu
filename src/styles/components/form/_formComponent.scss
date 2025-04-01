@@ -54,6 +54,12 @@
             @include breakpoint(small){
                 font-size: 50px;
             }
+            @include breakpoint(medium){
+                font-size: 30px;
+            }
+            @include breakpoint(large){
+                font-size: 40px;
+            }
 
             &.selected {
             background-color: #0b285c;

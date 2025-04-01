@@ -62,8 +62,8 @@
 
 // H2 Text Entry
 @keyframes text-entry{
-    0%{transform: translateX(1300px);}
-    100%{transform: translateX(0px);}
+    0%{opacity: 0;}
+    100%{opacity: 1;}
 }
 
 // Zoom contenido

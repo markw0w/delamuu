@@ -66,7 +66,6 @@
     animation-fill-mode: both;
     filter: drop-shadow(0px 20px 20px rgba(0, 0, 0, 0.384));
     filter: blur(2px);
-    //display: none;
   }
   .animatedImg3 {
     @include sizes(auto, 100px);
@@ -106,7 +105,7 @@
         view-timeline-name: --txtEntry;
         view-timeline-axis: block;
         animation-timeline: --txtEntry;
-        animation-range: entry 20% cover 50%;
+        animation-range: entry 10% cover 50%;
         animation-name: text-entry;
 
         @include breakpoint(xsmall) {
