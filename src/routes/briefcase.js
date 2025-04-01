@@ -13,7 +13,7 @@ const router = Router();
 router.get("/get-briefcase-user", async (req, res) => {
   try {
     const connection = await sequelize.getConnection();
-    const [rows] = await connection.query("SELECT archivo FROM briefcases ORDER BY id DESC LIMIT 1"); // Trae el último PDF
+    const [rows] = await connection.query("SELECT file_data FROM briefcases ORDER BY id DESC LIMIT 1"); // Trae el último PDF
     connection.release();
 
     if (rows.length === 0) {
