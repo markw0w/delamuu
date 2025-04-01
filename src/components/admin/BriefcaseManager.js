@@ -6,9 +6,9 @@ function BriefcaseManager() {
   const [briefcase, setBriefcase] = useState([]);
   const [newBriefcase, setNewBriefcase] = useState("");
 
-  const API_URL_GET_BRIEFCASE = "https://tu-dominio.com/briefcase/get-briefcase";
-  const API_URL_ADD_BRIEFCASE = "https://tu-dominio.com/briefcase/add-briefcase";
-  const API_URL_DEL_BRIEFCASE = "https://tu-dominio.com/briefcase/delete-briefcase";
+  const API_URL_GET_BRIEFCASE = "https://delamuu.com/briefcase/get-briefcase";
+  const API_URL_ADD_BRIEFCASE = "https://delamuu.com/briefcase/add-briefcase";
+  const API_URL_DEL_BRIEFCASE = "https://delamuu.com/briefcase/delete-briefcase";
 
   useEffect(() => {
     fetchBriefcase();
