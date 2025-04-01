@@ -11,23 +11,15 @@ const upload = multer({
 const router = Router();
 
 
-router.get("/get-briefcase/:id", async (req, res) => {
+router.get("/get-briefcase", async (req, res) => {
   try {
-    const { id } = req.params;
     const [rows] = await sequelize.query(
-      "SELECT file_data FROM briefcases WHERE id = ?",
-      { replacements: [id], type: QueryTypes.SELECT }
+      "SELECT id, nombre FROM briefcases",
+      { type: QueryTypes.SELECT }
     );
-    if (!rows || rows.length === 0 || !rows[0].file_data) {
-      return res.status(404).json({ message: "Archivo no encontrado" });
-    }
-    const pdfBuffer = Buffer.isBuffer(rows[0].file_data)
-      ? rows[0].file_data
-      : Buffer.from(rows[0].file_data);
-    res.setHeader("Content-Type", "application/pdf");
-    res.send(pdfBuffer);
+    res.json(rows);
   } catch (error) {
-    console.error("Error al obtener el archivo:", error);
+    console.error("Error al obtener los archivos:", error);
     res.status(500).json({ error: "Error en el servidor" });
   }
 });
