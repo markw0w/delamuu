@@ -2,44 +2,53 @@ import { Router } from "express";
 import sequelize from "../db/cnn.js"; 
 import { QueryTypes } from "sequelize";
 import multer from 'multer';
-import path from 'path';
 
-const storage = multer.diskStorage({
-  destination: "uploads/", // Carpeta donde se guardan los archivos
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + path.extname(file.originalname)); // Nombre único
-  },
-});
+const storage = multer.memoryStorage();
 const upload = multer({
   storage,
   limits: { fileSize: 10 * 1024 * 1024 }  // 10 MB
 });
+
 const router = Router();
 
-router.get("/get-briefcase", async (req, res) => {
+router.get("/get-briefcase/:id", async (req, res) => {
   try {
-    const [rows] = await sequelize.query("SELECT id, nombre, file_path FROM briefcases");
-    res.json(rows);
+    const { id } = req.params;
+    const [rows] = await sequelize.query(
+      "SELECT file_data FROM briefcases WHERE id = ?",
+      { replacements: [id], type: QueryTypes.SELECT }
+    );
+    if (rows.length === 0 || !rows[0].file_data) {
+      return res.status(404).json({ message: "Archivo no encontrado" });
+    }
+    // Ajusta el Content-Type al que corresponda; en este caso, asumiremos PDF
+    res.setHeader("Content-Type", "application/pdf");
+    res.send(rows[0].file_data);
   } catch (error) {
-    console.error("Error al obtener archivos:", error);
+    console.error("Error al obtener el archivo:", error);
     res.status(500).json({ error: "Error en el servidor" });
   }
 });
 
 router.post("/add-briefcase", upload.single("file"), async (req, res) => {
-  console.log('intentando obtener carta')
+  console.log('Intentando subir la carta');
   try {
     const { nombre } = req.body;
-    const filePath = `/uploads/${req.file.filename}`; // Ruta del archivo
+    if (!req.file) {
+      return res.status(400).json({ message: "No se recibió ningún archivo" });
+    }
+    const fileBuffer = req.file.buffer;
 
-    
-    await sequelize.query("INSERT INTO briefcases (nombre, file_path) VALUES (?, ?)", [
-      nombre,
-      filePath,
-    ]);
+    // Insertar en la base de datos, guardando el buffer en file_data
+    await sequelize.query(
+      "INSERT INTO briefcases (nombre, file_data) VALUES (?, ?)",
+      {
+        replacements: [nombre, fileBuffer],
+        type: QueryTypes.INSERT
+      }
+    );
 
-    res.json({ message: "Archivo subido con éxito", file_path: filePath });
-    console.log(res)
+    res.json({ message: "Archivo subido con éxito" });
   } catch (error) {
     console.error("Error al subir el archivo:", error);
     res.status(500).json({ error: "Error en el servidor" });

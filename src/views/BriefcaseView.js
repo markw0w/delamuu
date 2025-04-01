@@ -8,7 +8,7 @@ function BriefcaseView() {
     fetch("https://delamuu.com/briefcase/get-briefcase")
       .then((response) => response.json())
       .then((data) => {
-        console.log("data",data)
+        console.log("data", data);
         setBriefcases(data);
         setLoading(false);
       });
@@ -21,7 +21,7 @@ function BriefcaseView() {
     <section className="briefcaseFatherContainer">
       {briefcases.map((briefcaseItem, index) => (
         <iframe
-          src={`https://delamuu.com${briefcaseItem.file_path}`}
+          src="https://delamuu.com/briefcase/get-briefcase/1"
           width="100%"
           height="600px"
           title="Carta PDF"
