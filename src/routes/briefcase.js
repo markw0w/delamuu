@@ -13,7 +13,7 @@ const router = Router();
 
 router.get("/get-briefcase", async (req, res) => {
   try {
-    const [rows] = await sequelize.query(
+    const rows = await sequelize.query(
       "SELECT id, nombre FROM briefcases",
       { type: QueryTypes.SELECT }
     );
