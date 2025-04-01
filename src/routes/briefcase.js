@@ -22,6 +22,7 @@ router.get("/get-briefcase-user", async (req, res) => {
 
     const pdfBuffer = rows[0].archivo; // Asegúrate de que 'archivo' es un BLOB
     res.setHeader("Content-Type", "application/pdf");
+    res.setHeader("Content-Disposition", 'inline; filename="documento.pdf"');
     res.send(pdfBuffer);
   } catch (error) {
     console.error("❌ Error al obtener el PDF:", error);
