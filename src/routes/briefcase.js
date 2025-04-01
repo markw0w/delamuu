@@ -10,7 +10,10 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname)); // Nombre único
   },
 });
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  limits: { fileSize: 10 * 1024 * 1024 }  // 10 MB
+});
 const router = Router();
 
 router.get("/get-briefcase", async (req, res) => {
