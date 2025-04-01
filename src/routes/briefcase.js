@@ -18,7 +18,7 @@ router.get("/get-briefcase-user", async (req, res) => {
       return res.status(404).json({ error: "No hay archivos disponibles" });
     }
 
-    const pdfBuffer = rows[0].archivo; // Asegúrate de que 'archivo' es un BLOB
+    const pdfBuffer = rows[0].file_data; // Asegúrate de que 'archivo' es un BLOB
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Disposition", 'inline; filename="documento.pdf"');
     res.send(pdfBuffer);
