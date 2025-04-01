@@ -13,12 +13,13 @@ const router = Router();
 
 router.get("/get-briefcase", async (req, res) => {
   try {
-    // Selecciona todos los registros de la tabla 'briefcases'
-    const [rows] = await sequelize.query(
+    const rows = await sequelize.query(
       "SELECT id, nombre, file_data FROM briefcases",
       { type: QueryTypes.SELECT }
     );
-    res.json(rows);
+
+    // Aseguramos que siempre devuelva un array
+    res.json(rows.length > 0 ? rows : []);
   } catch (error) {
     console.error("Error al obtener archivos:", error);
     res.status(500).json({ error: "Error en el servidor" });
