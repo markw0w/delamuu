@@ -31,7 +31,6 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 sequelize.authenticate()
   .then(() => console.log("✅ Conexión con la base de datos establecida."))

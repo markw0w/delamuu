@@ -6,7 +6,6 @@ import multer from 'multer';
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
-  limits: { fileSize: 20 * 1024 * 1024 }  // 20 MB
 });
 
 const router = Router();
@@ -18,7 +17,6 @@ router.get("/get-briefcase", async (req, res) => {
       { type: QueryTypes.SELECT }
     );
 
-    // Aseguramos que siempre devuelva un array
     res.json(rows.length > 0 ? rows : []);
   } catch (error) {
     console.error("Error al obtener archivos:", error);
@@ -27,15 +25,18 @@ router.get("/get-briefcase", async (req, res) => {
 });
 
 router.post("/add-briefcase", upload.single("file"), async (req, res) => {
-  console.log('Intentando subir la carta');
   try {
     const { nombre } = req.body;
+
     if (!req.file) {
       return res.status(400).json({ message: "No se recibió ningún archivo" });
     }
+    if (req.file.mimetype !== "application/pdf") {
+      return res.status(400).json({ message: "Solo se permiten archivos PDF" });
+    }
+
     const fileBuffer = req.file.buffer;
 
-    // Insertar en la base de datos, guardando el buffer en file_data
     await sequelize.query(
       "INSERT INTO briefcases (nombre, file_data) VALUES (?, ?)",
       {

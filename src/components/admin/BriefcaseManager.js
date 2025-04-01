@@ -95,6 +95,7 @@ function BriefcaseManager() {
         <input
           type="file"
           id="file"
+          accept="application/pdf"
           onChange={(e) => {
             console.log("Archivo seleccionado:", e.target.files[0]);
             setSelectedFile(e.target.files[0]);
