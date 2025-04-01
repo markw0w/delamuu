@@ -1,36 +1,78 @@
 import React, { useState, useEffect } from "react";
 
 function BriefcaseView() {
-  const [pdfURL, setPdfURL] = useState(null);
-  const [isLoading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://delamuu.com/briefcase/get-briefcase-user")
-      .then((response) => response.blob()) // Convertimos la respuesta en un archivo
-      .then((blob) => {
-        const url = URL.createObjectURL(blob);
-        setPdfURL(url);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error al obtener el PDF:", error);
-        setLoading(false);
-      });
-  }, []);
+    async function fetchData() {
+      try {
+        // Traer categorías
+        const catRes = await fetch("https://delamuu.com/briefcase-categories");
+        const categoriesData = await catRes.json();
 
-  if (isLoading) return <p>Cargando PDF...</p>;
+        // Para cada categoría, traemos sus productos
+        const categoriesWithProducts = await Promise.all(
+          categoriesData.map(async (category) => {
+            const prodRes = await fetch(
+              `https://delamuu.com/briefcase-products/category/${category.id}`
+            );
+            const productsData = await prodRes.json();
+            return { ...category, products: productsData };
+          })
+        );
+        setCategories(categoriesWithProducts);
+      } catch (error) {
+        console.error("Error al cargar la carta:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <section className="briefcaseFatherContainer">
-      {pdfURL ? (
-        <iframe
-          src={pdfURL}
-          width="100%"
-          height="600px"
-          title="Carta PDF"
-        ></iframe>
+      <h1>Nuestra deliciosa carta</h1>
+      
+      {/* Datos del local */}
+      <ul>
+        <li>Dirección: Calle Falsa 123</li>
+        <li>Medio de Pago: Efectivo, Tarjeta</li>
+        <li>Teléfono: 123-456-7890</li>
+      </ul>
+
+      {loading ? (
+        <p>Cargando...</p>
       ) : (
-        <p>No se encontró ningún PDF.</p>
+        categories.map((category) => (
+          <div key={category.id} className="categoryContainer">
+            <h2>{category.name}</h2>
+            {category.products && category.products.length > 0 ? (
+              category.products.map((product) => (
+                <div
+                  key={product.id}
+                  className="productContainer"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  <div>
+                    <h3>{product.name}</h3>
+                    <p>{product.description}</p>
+                  </div>
+                  <div style={{ alignSelf: "center" }}>
+                    <strong>${product.price}</strong>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No hay productos para esta categoría.</p>
+            )}
+          </div>
+        ))
       )}
     </section>
   );

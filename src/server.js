@@ -14,7 +14,8 @@ import productRoutes from "./routes/products.js";
 import gramajeRoutes from "./routes/gramajes.js";
 import deliveryRoutes from "./routes/delivery.js";
 import flavorRoutes from "./routes/flavors.js";
-import briefcaseRoutes from "./routes/briefcase.js";
+import briefcaseProductsRoutes from "./routes/briefcaseProducts.js";
+import briefcaseCategoriesRoutes from "./routes/briefcaseCategories.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -49,7 +50,8 @@ app.use("/products", productRoutes);
 app.use("/gramajes", gramajeRoutes);
 app.use("/delivery", deliveryRoutes);
 app.use("/flavors", flavorRoutes);
-app.use("/briefcase", briefcaseRoutes);
+app.use("/briefcase-products", briefcaseProductsRoutes);
+app.use("/briefcase-categories", briefcaseCategoriesRoutes);
 
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "../", "index.html"));
