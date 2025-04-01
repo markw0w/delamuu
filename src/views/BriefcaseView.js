@@ -21,7 +21,7 @@ function BriefcaseView() {
     <section className="briefcaseFatherContainer">
       {briefcases.map((briefcaseItem, index) => (
         <iframe
-          src="https://delamuu.com/briefcase/get-briefcase/1"
+          src="https://delamuu.com/briefcase/get-briefcase"
           width="100%"
           height="600px"
           title="Carta PDF"
