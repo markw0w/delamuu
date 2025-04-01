@@ -5,7 +5,7 @@ import { Trash2, PlusCircle } from "lucide-react";
 function BriefcaseManager() {
   const [briefcase, setBriefcase] = useState([]);
   const [newBriefcase, setNewBriefcase] = useState("");
-  const [selectedFile, setSelectedFile] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const API_URL_GET_BRIEFCASE = "https://delamuu.com/briefcase/get-briefcase";
   const API_URL_ADD_BRIEFCASE = "https://delamuu.com/briefcase/add-briefcase";
@@ -29,7 +29,12 @@ function BriefcaseManager() {
     event.preventDefault();
 
     console.log('Boton addBriefcase apretado')
-    if (!newBriefcase.trim() || !selectedFile) return;
+    console.log("selectedFile antes del if:", selectedFile);
+
+    if (!newBriefcase.trim() || !selectedFile) {
+        console.log("Falta el nombre o el archivo no ha sido seleccionado");
+        return;
+    }
 
     console.log('hay archivo')
 
@@ -79,7 +84,10 @@ function BriefcaseManager() {
         <input
           type="file"
           id="file"
-          onChange={(e) => setSelectedFile(e.target.files[0])}
+          onChange={(e) => {
+            console.log("Archivo seleccionado:", e.target.files[0]);
+            setSelectedFile(e.target.files[0])}
+          }
         />
         <button
           onClick={addBriefcase}
