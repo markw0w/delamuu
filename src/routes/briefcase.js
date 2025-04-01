@@ -10,7 +10,32 @@ const upload = multer({
 
 const router = Router();
 
+
 router.get("/get-briefcase", async (req, res) => {
+  try {
+    // Se selecciona el primer registro de la tabla
+    const [row] = await sequelize.query(
+      "SELECT file_data FROM briefcases ORDER BY id ASC LIMIT 1",
+      { type: QueryTypes.SELECT }
+    );
+    
+    if (!row || !row.file_data) {
+      return res.status(404).json({ message: "Archivo no encontrado" });
+    }
+    
+    // Aseguramos que file_data es un Buffer
+    const pdfBuffer = Buffer.isBuffer(row.file_data)
+      ? row.file_data
+      : Buffer.from(row.file_data);
+      
+    res.setHeader("Content-Type", "application/pdf");
+    res.send(pdfBuffer);
+  } catch (error) {
+    console.error("Error al obtener el archivo:", error);
+    res.status(500).json({ error: "Error en el servidor" });
+  }
+});
+/* router.get("/get-briefcase", async (req, res) => {
   try {
     const rows = await sequelize.query(
       "SELECT id, nombre, file_data FROM briefcases",
@@ -22,7 +47,7 @@ router.get("/get-briefcase", async (req, res) => {
     console.error("Error al obtener archivos:", error);
     res.status(500).json({ error: "Error en el servidor" });
   }
-});
+}); */
 
 router.post("/add-briefcase", upload.single("file"), async (req, res) => {
   try {
