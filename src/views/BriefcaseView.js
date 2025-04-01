@@ -8,6 +8,7 @@ function BriefcaseView() {
     fetch("https://delamuu.com/briefcase/get-briefcase")
       .then((response) => response.json())
       .then((data) => {
+        console.log("data",data)
         setBriefcases(data);
         setLoading(false);
       });

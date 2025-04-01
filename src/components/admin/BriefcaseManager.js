@@ -27,13 +27,23 @@ function BriefcaseManager() {
 
   const addBriefcase = async (event) => {
     event.preventDefault();
+
+    console.log('Boton addBriefcase apretado')
     if (!newBriefcase.trim() || !selectedFile) return;
 
+    console.log('hay archivo')
+
+
     const formData = new FormData();
+
+    console.log(formData)
+
     formData.append("nombre", newBriefcase);
     formData.append("file", selectedFile); // Enviar el archivo
 
+    console.log(formData)
     try {
+        console.log('intentamos enviarlo')
       await axios.post(API_URL_ADD_BRIEFCASE, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
@@ -41,6 +51,7 @@ function BriefcaseManager() {
       setNewBriefcase("");
       setSelectedFile(null);
       fetchBriefcase();
+      console.log('enviado')
     } catch (error) {
       console.error("Error al agregar el archivo:", error);
     }
@@ -67,6 +78,7 @@ function BriefcaseManager() {
         </label>
         <input
           type="file"
+          id="file"
           onChange={(e) => setSelectedFile(e.target.files[0])}
         />
         <button
