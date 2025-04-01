@@ -10,6 +10,24 @@ const upload = multer({
 
 const router = Router();
 
+router.get("/get-briefcase-user", async (req, res) => {
+  try {
+    const connection = await sequelize.getConnection();
+    const [rows] = await connection.query("SELECT archivo FROM briefcases ORDER BY id DESC LIMIT 1"); // Trae el último PDF
+    connection.release();
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: "No hay archivos disponibles" });
+    }
+
+    const pdfBuffer = rows[0].archivo; // Asegúrate de que 'archivo' es un BLOB
+    res.setHeader("Content-Type", "application/pdf");
+    res.send(pdfBuffer);
+  } catch (error) {
+    console.error("❌ Error al obtener el PDF:", error);
+    res.status(500).json({ error: "No se pudo obtener el PDF" });
+  }
+});
 
 router.get("/get-briefcase", async (req, res) => {
   try {
@@ -23,19 +41,6 @@ router.get("/get-briefcase", async (req, res) => {
     res.status(500).json({ error: "Error en el servidor" });
   }
 });
-/* router.get("/get-briefcase", async (req, res) => {
-  try {
-    const rows = await sequelize.query(
-      "SELECT id, nombre, file_data FROM briefcases",
-      { type: QueryTypes.SELECT }
-    );
-
-    res.json(rows.length > 0 ? rows : []);
-  } catch (error) {
-    console.error("Error al obtener archivos:", error);
-    res.status(500).json({ error: "Error en el servidor" });
-  }
-}); */
 
 router.post("/add-briefcase", upload.single("file"), async (req, res) => {
   try {
