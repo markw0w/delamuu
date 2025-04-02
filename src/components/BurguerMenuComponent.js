@@ -30,7 +30,7 @@ function MenuBurguer({ isOpen }) {
           alt="Logo Delamuu"
         />
       </ul>
-      <span>Web creada por Marcos Escandar</span>
+      <span>Web creada por <Link className="socialLink" to="https://www.linkedin.com/in/marcos-damian-escandar-6b5a57196/">Marcos Escandar</Link> & <Link className="socialLink" to="https://www.linkedin.com/in/estanislaosprevite/">Estanis Salinas</Link></span>
     </section>
   );
 }
