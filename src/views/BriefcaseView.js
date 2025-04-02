@@ -8,14 +8,14 @@ function BriefcaseView() {
     async function fetchData() {
       try {
         // Traer categorías
-        const catRes = await fetch("https://delamuu.com/briefcase-categories/");
+        const catRes = await fetch("https://delamuu.com:3001/briefcase-categories/");
         const categoriesData = await catRes.json();
 
         // Para cada categoría, traemos sus productos
         const categoriesWithProducts = await Promise.all(
           categoriesData.map(async (category) => {
             const prodRes = await fetch(
-              `https://delamuu.com/briefcase-products/category/${category.id}`
+              `https://delamuu.com:3001/briefcase-products/category/${category.id}`
             );
             const productsData = await prodRes.json();
             return { ...category, products: productsData };
