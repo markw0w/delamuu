@@ -16,7 +16,7 @@ header {
         @include imgAsButtons($w: 40px, $h: auto);
     }
     .rightNavContainer{
-        @include sizes(60%);
+        @include sizes(80%);
         @include displayFlex($justifyContent: flex-end, $flexDirection:row);
         gap: 25px;
         padding-right: 25px;
@@ -25,7 +25,7 @@ header {
             text-decoration: none;
         }
         button{
-            @include buttonDesign($height: 30px);
+            @include buttonDesign($width: 100px,$height: 30px);
         }
         #burguerMenuIcon{
             @include imgAsButtons($w: 30px, $h: auto);

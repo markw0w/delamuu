@@ -18,6 +18,12 @@
         top: 0px;
         filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.315));
         animation: floating 10s ease infinite;
+        display: none;
+
+        @include breakpoint(medium){
+            display: block;
+            z-index: 100;
+        }
     }
     .fx2{
         top: 600px;

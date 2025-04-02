@@ -6,6 +6,7 @@
 .carousel {
     @include sizes(95%); 
     position: relative;
+    z-index: 101;
 
     @include breakpoint(small){
         width: 30%;

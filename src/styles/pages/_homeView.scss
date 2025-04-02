@@ -101,6 +101,7 @@
         text-align: center;
         @include displayFlex();
         z-index: 10001;
+        opacity: 0;
 
         view-timeline-name: --txtEntry;
         view-timeline-axis: block;
