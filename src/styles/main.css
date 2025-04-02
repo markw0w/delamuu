@@ -2214,8 +2214,8 @@ header .rightNavContainer #burguerMenuIcon {
 }
 .briefcaseFatherContainer h1 {
   width: 100%;
-  height: 150px;
-  font-size: 70px;
+  height: 70px;
+  font-size: 30px;
   font-family: "Chennai W00 Black";
   display: flex;
   justify-content: center;
@@ -2226,30 +2226,47 @@ header .rightNavContainer #burguerMenuIcon {
   border-bottom-left-radius: 100px;
   border-bottom-right-radius: 100px;
 }
+@media (min-width: 1024px) {
+  .briefcaseFatherContainer h1 {
+    font-size: 70px;
+    height: 150px;
+  }
+}
 .briefcaseFatherContainer ul {
-  width: 50%;
-  height: 50px;
+  width: 95%;
+  height: 90px;
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  gap: 25px;
   box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
   border-radius: 60px;
   background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
+@media (min-width: 1024px) {
+  .briefcaseFatherContainer ul {
+    width: 50%;
+    gap: 25px;
+    flex-direction: row;
+  }
+}
 .briefcaseFatherContainer ul li {
   width: 100%;
-  height: 100%;
+  height: 30px;
   list-style: none;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  font-size: 16px;
+  font-size: 14px;
   color: #92a6d8;
   font-weight: 800;
   padding: 5px;
+}
+@media (min-width: 1024px) {
+  .briefcaseFatherContainer ul li {
+    width: 50%;
+  }
 }
 .briefcaseFatherContainer p {
   width: 100%;
@@ -2261,7 +2278,7 @@ header .rightNavContainer #burguerMenuIcon {
   font-size: 80px;
 }
 .briefcaseFatherContainer div {
-  width: 50%;
+  width: 95%;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -2269,10 +2286,15 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
   gap: 10px;
 }
+@media (min-width: 1024px) {
+  .briefcaseFatherContainer div {
+    width: 50%;
+  }
+}
 .briefcaseFatherContainer div h2 {
-  font-size: 50px;
+  font-size: 30px;
   width: 100%;
-  height: 70px;
+  height: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -2281,6 +2303,12 @@ header .rightNavContainer #burguerMenuIcon {
   border-radius: 60px;
   box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
   color: #f1f1f1;
+}
+@media (min-width: 1024px) {
+  .briefcaseFatherContainer div h2 {
+    height: 70px;
+    font-size: 50px;
+  }
 }
 .briefcaseFatherContainer div .productContainer {
   width: 100%;
@@ -2323,10 +2351,27 @@ header .rightNavContainer #burguerMenuIcon {
   width: 30%;
 }
 .briefcaseFatherContainer div .productContainer .rightProductContainer strong {
-  font-size: 22px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 1024px) {
+  .briefcaseFatherContainer div .productContainer .rightProductContainer strong {
+    font-size: 22px;
+  }
 }
 .briefcaseFatherContainer .noProductsInCategory {
-  font-size: 22px;
+  font-size: 16px;
+}
+@media (min-width: 1024px) {
+  .briefcaseFatherContainer .noProductsInCategory {
+    font-size: 22px;
+  }
 }
 
 .admin-briefcase-panel {
@@ -2334,8 +2379,13 @@ header .rightNavContainer #burguerMenuIcon {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  width: 95%;
   height: 200px;
+}
+@media (min-width: 1024px) {
+  .admin-briefcase-panel {
+    width: 500px;
+  }
 }
 .admin-briefcase-panel .admin-buttons {
   width: 100%;
@@ -2362,17 +2412,51 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: column;
   align-items: center;
 }
-
-.modal-content div {
+.admin-briefcase-panel .modal-briefcase {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase {
+  background: #fff;
+  padding: 5px;
+  border-radius: 8px;
+  max-width: 300px;
+  max-height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 1024px) {
+  .admin-briefcase-panel .modal-briefcase .modal-content-briefcase {
+    max-width: 500px;
+    max-height: 600px;
+  }
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase div {
+  width: 100%;
+  height: 100px;
   display: flex;
   justify-content: center;
   flex-direction: row;
   align-items: center;
   gap: 10px;
 }
-.modal-content div input {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase div input {
   border: 1px solid #2c2c2c;
   padding: 5px;
   border-radius: 5px;
@@ -2381,10 +2465,10 @@ header .rightNavContainer #burguerMenuIcon {
   color: #2c2c2c;
   font-size: 14px;
   width: 75%;
-  height: 100%;
+  height: 40px;
   outline: none;
 }
-.modal-content div button {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase div button {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
@@ -2402,11 +2486,12 @@ header .rightNavContainer #burguerMenuIcon {
   flex-direction: row;
   gap: 5px;
 }
-.modal-content .briefcase-createProduct {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-createProduct {
   flex-wrap: wrap;
   padding: 5px;
+  height: 400px;
 }
-.modal-content .briefcase-createProduct select {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-createProduct select {
   border: none;
   width: 75%;
   height: 30px;
@@ -2418,28 +2503,30 @@ header .rightNavContainer #burguerMenuIcon {
   font-weight: 600;
   padding: 5px;
 }
-.modal-content .briefcase-createProduct select input {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-createProduct select input {
   width: 100%;
+  height: 30px;
 }
-.modal-content .briefcase-createProduct button {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-createProduct button {
   width: 75%;
 }
-.modal-content ul {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
   padding: 5px;
 }
-.modal-content ul li {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul li {
   list-style: none;
   width: 100%;
-  height: 100%;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -2448,18 +2535,18 @@ header .rightNavContainer #burguerMenuIcon {
   padding: 3px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.322);
 }
-.modal-content ul li input {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul li input {
   border: 1px dashed black;
   background-color: transparent;
   width: 100%;
-  height: 100%;
+  height: 40px;
   outline: none;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
 }
-.modal-content ul li span {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul li span {
   width: 100%;
-  height: 100%;
+  height: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -2467,7 +2554,7 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: flex-start;
   font-size: 16px;
 }
-.modal-content ul li button {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul li button {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
@@ -2484,21 +2571,23 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
   border-radius: 3px;
 }
-.modal-content .briefcase-productUl li {
-  flex-wrap: wrap;
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li {
+  height: 150px;
+  border: 1px solid rgba(0, 0, 0, 0.473);
+  border-radius: 5px;
+  padding: 10px;
 }
-.modal-content .briefcase-productUl li div {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li div {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  width: 80%;
-  height: 100%;
-}
-.modal-content .briefcase-productUl li div strong, .modal-content .briefcase-productUl li div p, .modal-content .briefcase-productUl li div span {
   width: 100%;
   height: 100%;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li div strong, .admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li div p, .admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li div span {
+  width: 100%;
+  height: 30px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -2506,7 +2595,7 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: flex-start;
   font-size: 14px;
 }
-.modal-content button {
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase button {
   border: 0px;
   padding: 5px;
   border-radius: 20px;
@@ -2521,6 +2610,9 @@ header .rightNavContainer #burguerMenuIcon {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+.admin-briefcase-panel .modal-briefcase .product-content-briefcase {
+  max-height: 80%;
 }
 
 main {

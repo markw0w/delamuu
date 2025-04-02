@@ -12,32 +12,46 @@
     gap: 10px;
 
     h1{
-        @include sizes($height: 150px);
-        font-size: 70px;
+        @include sizes($height: 70px);
+        font-size: 30px;
         font-family: $chennaiFont;
         @include displayFlex();
         background-image: $light-BackgroundImage;
         color: $brandColor;
         border-bottom-left-radius: 100px;
         border-bottom-right-radius: 100px;
+
+        @include breakpoint(medium){
+            font-size: 70px;
+            height: 150px;
+        }
     }
 
     ul{
-        @include sizes(50%,$height: 50px);
-        @include displayFlex($flexDirection:row);
-        gap: 25px;
+        @include sizes(95%, 90px);
+        @include displayFlex();
         box-shadow: $shadow;
         border-radius: 60px;
         background-image: $light-BackgroundImage;
 
+        @include breakpoint(medium){
+            width: 50%;
+            gap: 25px;
+            flex-direction: row;
+        }
+
         li{
-            @include sizes();
+            @include sizes($height:30px);
             list-style: none;
             @include displayFlex();
-            font-size: $md;
+            font-size: $sm;
             color: $brandColor;
             font-weight: $superBold;
             padding: 5px;
+
+            @include breakpoint(medium){
+                width: 50%;
+            }
         }
     }
 
@@ -48,18 +62,27 @@
     }
 
     div{
-        @include sizes(50%);
+        @include sizes(95%);
         @include displayFlex();
         gap: 10px;
 
+        @include breakpoint(medium){
+            width: 50%;
+        }
+
         h2{
-            font-size: 50px;
-            @include sizes($height: 70px);
+            font-size: 30px;
+            @include sizes($height: 40px);
             @include displayFlex();
             background-color: $secondaryFontColor;
             border-radius: 60px;
             box-shadow: $shadow;
             color: $lightFontColor;
+
+            @include breakpoint(medium){
+                height: 70px;
+                font-size: 50px;
+            }
         }
         .productContainer{
             @include sizes();
@@ -90,13 +113,24 @@
                 width: 30%;
 
                 strong{
-                    font-size: $lg;
+                    font-size: $sm;
+                    @include displayFlex();
+                    align-items: flex-end;
+                    @include sizes();
+
+                    @include breakpoint(medium){
+                        font-size: $lg;
+                    }
                 }
             }
             
         }
     }
     .noProductsInCategory{
-        font-size: $lg;
+        font-size: $md;
+
+        @include breakpoint(medium){
+            font-size: $lg;
+        }
     }
 }

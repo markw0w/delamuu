@@ -115,8 +115,8 @@ function BriefcaseManager() {
   };
 
   const renderCategoryModal = () => (
-    <div className="modal" style={modalStyle}>
-      <div className="modal-content" style={modalContentStyle}>
+    <div className="modal-briefcase">
+      <div className="modal-content-briefcase">
         <h2>Administrar Categorías</h2>
         <div>
           <input
@@ -169,8 +169,8 @@ function BriefcaseManager() {
   );
 
   const renderProductModal = () => (
-    <div className="modal" style={modalStyle}>
-      <div className="modal-content" style={modalContentStyle}>
+    <div className="modal-briefcase">
+      <div className="modal-content-briefcase product-content-briefcase">
         <h2>Administrar Productos</h2>
         <div className="briefcase-createProduct">
           <select
@@ -290,26 +290,6 @@ function BriefcaseManager() {
       </div>
     </div>
   );
-
-  const modalStyle = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    background: "rgba(0,0,0,0.5)",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center"
-  };
-
-  const modalContentStyle = {
-    background: "#fff",
-    padding: "2rem",
-    borderRadius: "8px",
-    maxWidth: "500px",
-    width: "100%"
-  };
 
   return (
     <div className="admin-briefcase-panel">
