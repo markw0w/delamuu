@@ -27,7 +27,7 @@ const options = {
 };
 
 app.use(cors({
-  origin: "https://delamuu.com"
+  origin: ["https://delamuu.com", "http://localhost:3000"]
 }));
 
 app.use(express.json());
