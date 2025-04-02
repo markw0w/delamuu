@@ -4,7 +4,6 @@ import { QueryTypes } from "sequelize";
 
 const router = Router();
 
-// Obtener todos los productos
 router.get("/", async (req, res) => {
   try {
     const products = await sequelize.query(
@@ -17,7 +16,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Obtener productos de una categoría específica
 router.get("/category/:categoryId", async (req, res) => {
   const { categoryId } = req.params;
   try {
@@ -34,7 +32,6 @@ router.get("/category/:categoryId", async (req, res) => {
   }
 });
 
-// Crear un nuevo producto dentro de una categoría
 router.post("/category/:categoryId", async (req, res) => {
   const { categoryId } = req.params;
   const { name, description, price } = req.body;
@@ -52,7 +49,6 @@ router.post("/category/:categoryId", async (req, res) => {
   }
 });
 
-// Actualizar un producto
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name, description, price } = req.body;
@@ -70,7 +66,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Eliminar un producto
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

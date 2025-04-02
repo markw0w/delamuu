@@ -7,11 +7,9 @@ function BriefcaseView() {
   useEffect(() => {
     async function fetchData() {
       try {
-        // Traer categorías
         const catRes = await fetch("https://delamuu.com:3001/briefcase-categories/");
         const categoriesData = await catRes.json();
 
-        // Para cada categoría, traemos sus productos
         const categoriesWithProducts = await Promise.all(
           categoriesData.map(async (category) => {
             const prodRes = await fetch(
@@ -33,13 +31,12 @@ function BriefcaseView() {
 
   return (
     <section className="briefcaseFatherContainer">
-      <h1>Nuestra deliciosa carta</h1>
+      <h1>nuestra deliciosa carta</h1>
       
-      {/* Datos del local */}
       <ul>
-        <li>Dirección: Calle Falsa 123</li>
-        <li>Medio de Pago: Efectivo, Tarjeta</li>
-        <li>Teléfono: 123-456-7890</li>
+        <li>📍 Av. Roque Sáenz Peña 192</li>
+        <li>💳 Efectivo & Tarjeta</li>
+        <li>📞 123-456-7890</li>
       </ul>
 
       {loading ? (
@@ -59,17 +56,17 @@ function BriefcaseView() {
                     marginBottom: "1rem",
                   }}
                 >
-                  <div>
+                  <div className="leftProductContainer">
                     <h3>{product.name}</h3>
-                    <p>{product.description}</p>
+                    <span>{product.description}</span>
                   </div>
-                  <div style={{ alignSelf: "center" }}>
+                  <div className="rightProductContainer" style={{ alignSelf: "center" }}>
                     <strong>${product.price}</strong>
                   </div>
                 </div>
               ))
             ) : (
-              <p>No hay productos para esta categoría.</p>
+              <p className="noProductsInCategory">No hay productos para esta categoría.</p>
             )}
           </div>
         ))

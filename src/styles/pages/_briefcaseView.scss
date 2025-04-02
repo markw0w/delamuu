@@ -1,0 +1,102 @@
+@use '../utils/vars' as *;       
+@use '../utils/mixins' as *;
+@use '../utils/typography' as *;
+@use '../utils/animations' as *;
+@use '../utils/breakpoints' as *;
+
+.briefcaseFatherContainer{
+    @include sizes();
+    @include displayFlex($justifyContent:space-between);
+    min-height: 100vh;
+    background-image: $primary-Normal-BackgroundImage;
+    gap: 10px;
+
+    h1{
+        @include sizes($height: 150px);
+        font-size: 70px;
+        font-family: $chennaiFont;
+        @include displayFlex();
+        background-image: $light-BackgroundImage;
+        color: $brandColor;
+        border-bottom-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+    }
+
+    ul{
+        @include sizes(50%,$height: 50px);
+        @include displayFlex($flexDirection:row);
+        gap: 25px;
+        box-shadow: $shadow;
+        border-radius: 60px;
+        background-image: $light-BackgroundImage;
+
+        li{
+            @include sizes();
+            list-style: none;
+            @include displayFlex();
+            font-size: $md;
+            color: $brandColor;
+            font-weight: $superBold;
+            padding: 5px;
+        }
+    }
+
+    p{
+        @include sizes();
+        @include displayFlex();
+        font-size: 80px;
+    }
+
+    div{
+        @include sizes(50%);
+        @include displayFlex();
+        gap: 10px;
+
+        h2{
+            font-size: 50px;
+            @include sizes($height: 70px);
+            @include displayFlex();
+            background-color: $secondaryFontColor;
+            border-radius: 60px;
+            box-shadow: $shadow;
+            color: $lightFontColor;
+        }
+        .productContainer{
+            @include sizes();
+            @include displayFlex($flexDirection:row, $justifyContent:space-between);
+            gap: 10px;
+
+            .leftProductContainer{
+                @include sizes(70%);
+                @include displayFlex();
+                align-items: flex-start;
+
+                h3{
+                    font-weight: $superBold;
+                    @include sizes();
+                    color: $darkFontColor;
+                }
+                span{
+                    @include sizes();
+                    @include displayFlex();
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    color: $lightFontColor;
+                    font-weight: $superBold;
+                    border-bottom: 1px dashed rgba(255, 255, 255, 0.61);
+                }
+            }
+            .rightProductContainer{
+                width: 30%;
+
+                strong{
+                    font-size: $lg;
+                }
+            }
+            
+        }
+    }
+    .noProductsInCategory{
+        font-size: $lg;
+    }
+}

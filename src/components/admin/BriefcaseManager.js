@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Trash2, Edit2, PlusCircle } from "lucide-react";
+import { Trash2, Edit2, PlusCircle, ThumbsUp } from "lucide-react";
 
 function BriefcaseManager() {
-  // Control del panel activo: null, 'categories' o 'products'
   const [activePanel, setActivePanel] = useState(null);
-  // Datos de categorías y productos
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
 
-  // Estados para agregar/editar categorías
   const [newCategory, setNewCategory] = useState("");
   const [editingCategoryId, setEditingCategoryId] = useState(null);
   const [editingCategoryName, setEditingCategoryName] = useState("");
 
-  // Estados para agregar/editar productos
   const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
@@ -29,11 +25,9 @@ function BriefcaseManager() {
     categoryId: ""
   });
 
-  // Endpoints base
   const API_CATEGORIES = "https://delamuu.com:3001/briefcase-categories/";
   const API_PRODUCTS = "https://delamuu.com:3001/briefcase-products";
 
-  // Funciones para cargar datos
   const fetchCategories = async () => {
     try {
       const res = await axios.get(API_CATEGORIES);
@@ -43,8 +37,6 @@ function BriefcaseManager() {
     }
   };
 
-  // Suponemos que tienes un endpoint que devuelve todos los productos,
-  // sino podrías hacer un fetch por cada categoría.
   const fetchProducts = async () => {
     try {
       const res = await axios.get(API_PRODUCTS);
@@ -59,7 +51,6 @@ function BriefcaseManager() {
     fetchProducts();
   }, []);
 
-  // === Categorías ===
   const addCategory = async () => {
     if (!newCategory.trim()) return;
     try {
@@ -89,12 +80,10 @@ function BriefcaseManager() {
     }
   };
 
-  // === Productos ===
   const addProduct = async () => {
     const { name, description, price, categoryId } = newProduct;
     if (!name.trim() || !categoryId) return;
     try {
-      // Usamos el endpoint que agrega producto en una categoría específica
       await axios.post(`${API_PRODUCTS}/category/${categoryId}`, {
         name,
         description,
@@ -125,7 +114,6 @@ function BriefcaseManager() {
     }
   };
 
-  // === Render de Modals ===
   const renderCategoryModal = () => (
     <div className="modal" style={modalStyle}>
       <div className="modal-content" style={modalContentStyle}>
@@ -138,7 +126,7 @@ function BriefcaseManager() {
             onChange={(e) => setNewCategory(e.target.value)}
           />
           <button onClick={addCategory}>
-            <PlusCircle size={18} /> Agregar Categoría
+            <PlusCircle size={18} /> Agregar
           </button>
         </div>
         <ul>
@@ -184,7 +172,7 @@ function BriefcaseManager() {
     <div className="modal" style={modalStyle}>
       <div className="modal-content" style={modalContentStyle}>
         <h2>Administrar Productos</h2>
-        <div>
+        <div className="briefcase-createProduct">
           <select
             value={newProduct.categoryId}
             onChange={(e) =>
@@ -216,17 +204,17 @@ function BriefcaseManager() {
           />
           <input
             type="number"
-            placeholder="Precio..."
+            placeholder="$ Precio..."
             value={newProduct.price}
             onChange={(e) =>
               setNewProduct({ ...newProduct, price: e.target.value })
             }
           />
           <button onClick={addProduct}>
-            <PlusCircle size={18} /> Agregar Producto
+            <PlusCircle size={18} /> Agregar a la carta
           </button>
         </div>
-        <ul>
+        <ul className="briefcase-productUl">
           {products.map((prod) => (
             <li key={prod.id} style={{ marginBottom: "0.5rem" }}>
               {editingProductId === prod.id ? (
@@ -267,7 +255,7 @@ function BriefcaseManager() {
                       setEditingProductId(null);
                     }}
                   >
-                    Guardar
+                    <ThumbsUp size={25}/>
                   </button>
                 </>
               ) : (
@@ -303,7 +291,6 @@ function BriefcaseManager() {
     </div>
   );
 
-  // Estilos inline básicos para el modal (puedes moverlos a tu CSS)
   const modalStyle = {
     position: "fixed",
     top: 0,
@@ -325,8 +312,8 @@ function BriefcaseManager() {
   };
 
   return (
-    <div className="admin-panel">
-      <h2>Panel Administrativo</h2>
+    <div className="admin-briefcase-panel">
+      <h2>¿Qué deseas hacer?</h2>
       <div className="admin-buttons">
         <button onClick={() => setActivePanel("categories")}>
           Categorías

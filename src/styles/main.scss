@@ -28,6 +28,10 @@
 @use './pages/homeView';
 @use './pages/loginView';
 @use './pages/adminView';
+@use './pages/briefcaseView';
+
+// Admin
+@use './components/admin/briefcaseManager';
 
 main {
     width: 100%;

@@ -2201,6 +2201,328 @@ header .rightNavContainer #burguerMenuIcon {
   align-items: center;
 }
 
+.briefcaseFatherContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-image: linear-gradient(to top, #bccdf8 0%, #7e94ce 100%);
+  gap: 10px;
+}
+.briefcaseFatherContainer h1 {
+  width: 100%;
+  height: 150px;
+  font-size: 70px;
+  font-family: "Chennai W00 Black";
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  color: #92a6d8;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+.briefcaseFatherContainer ul {
+  width: 50%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  border-radius: 60px;
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
+.briefcaseFatherContainer ul li {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: #92a6d8;
+  font-weight: 800;
+  padding: 5px;
+}
+.briefcaseFatherContainer p {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 80px;
+}
+.briefcaseFatherContainer div {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.briefcaseFatherContainer div h2 {
+  font-size: 50px;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ff4e4b;
+  border-radius: 60px;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  color: #f1f1f1;
+}
+.briefcaseFatherContainer div .productContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.briefcaseFatherContainer div .productContainer .leftProductContainer {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+}
+.briefcaseFatherContainer div .productContainer .leftProductContainer h3 {
+  font-weight: 800;
+  width: 100%;
+  height: 100%;
+  color: #2c2c2c;
+}
+.briefcaseFatherContainer div .productContainer .leftProductContainer span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: #f1f1f1;
+  font-weight: 800;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.61);
+}
+.briefcaseFatherContainer div .productContainer .rightProductContainer {
+  width: 30%;
+}
+.briefcaseFatherContainer div .productContainer .rightProductContainer strong {
+  font-size: 22px;
+}
+.briefcaseFatherContainer .noProductsInCategory {
+  font-size: 22px;
+}
+
+.admin-briefcase-panel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  height: 200px;
+}
+.admin-briefcase-panel .admin-buttons {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.admin-briefcase-panel .admin-buttons button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 300px;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-content div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.modal-content div input {
+  border: 1px solid #2c2c2c;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  background-color: transparent;
+  color: #2c2c2c;
+  font-size: 14px;
+  width: 75%;
+  height: 100%;
+  outline: none;
+}
+.modal-content div button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 100px;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+}
+.modal-content .briefcase-createProduct {
+  flex-wrap: wrap;
+  padding: 5px;
+}
+.modal-content .briefcase-createProduct select {
+  border: none;
+  width: 75%;
+  height: 30px;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  outline: none;
+  background-color: #92a6d8;
+  color: #f1f1f1;
+  font-weight: 600;
+  padding: 5px;
+}
+.modal-content .briefcase-createProduct select input {
+  width: 100%;
+}
+.modal-content .briefcase-createProduct button {
+  width: 75%;
+}
+.modal-content ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding: 5px;
+}
+.modal-content ul li {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 3px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.322);
+}
+.modal-content ul li input {
+  border: 1px dashed black;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+.modal-content ul li span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  font-size: 16px;
+}
+.modal-content ul li button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 25px;
+  height: 25px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+}
+.modal-content .briefcase-productUl li {
+  flex-wrap: wrap;
+}
+.modal-content .briefcase-productUl li div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  height: 100%;
+}
+.modal-content .briefcase-productUl li div strong, .modal-content .briefcase-productUl li div p, .modal-content .briefcase-productUl li div span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  font-size: 14px;
+}
+.modal-content button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 100px;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
 main {
   width: 100%;
   min-height: 100%;

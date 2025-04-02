@@ -4,7 +4,6 @@ import { QueryTypes } from "sequelize";
 
 const router = Router();
 
-// Obtener todas las categorías de la carta
 router.get("/", async (req, res) => {
   try {
     const categories = await sequelize.query(
@@ -17,7 +16,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Crear una nueva categoría
 router.post("/", async (req, res) => {
   const { name } = req.body;
   try {
@@ -34,7 +32,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Actualizar una categoría
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
@@ -52,7 +49,6 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-// Eliminar una categoría
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {

@@ -1,0 +1,124 @@
+@use '../../utils/vars' as *;       
+@use '../../utils/mixins' as *;
+@use '../../utils/typography' as *;
+@use '../../utils/breakpoints' as *;
+
+.admin-briefcase-panel{
+    @include displayFlex();
+    @include sizes(500px,200px);
+
+    .admin-buttons{
+        @include sizes();
+        @include displayFlex();
+        gap: 10px;
+
+        button{
+            @include buttonDesign($width: 300px);
+        }
+    }
+}
+
+// Categorias
+.modal-content{
+    div{
+        @include sizes();
+        @include displayFlex($flexDirection:row);
+        gap: 10px;
+
+        input{
+            border: 1px solid $darkFontColor;
+            padding: 5px;
+            border-radius: 5px;
+            font-family: $montserratFont;
+            background-color: transparent;
+            color: $darkFontColor;
+            font-size: $sm;
+            @include sizes(75%);
+            outline: none;
+        }
+        button{
+            @include buttonDesign();
+            flex-direction: row;
+            gap: 5px;
+        }
+    }
+    .briefcase-createProduct{
+        flex-wrap: wrap;
+        padding: 5px;
+
+        select{
+            border: none;
+            @include sizes(75%,$height:30px);
+            border-radius: 5px;
+            font-family: $montserratFont;
+            outline: none;
+            background-color: $brandColor;
+            color: $lightFontColor;
+            font-weight: $bold;
+            padding: 5px;
+
+            input{
+                width: 100%;
+            }
+        }
+        button{
+            width: 75%;
+        }
+    }
+    ul{
+        @include sizes();
+        @include displayFlex();
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        padding: 5px;
+
+        li{
+            list-style: none;
+            @include sizes();
+            @include displayFlex($flexDirection:row, $justifyContent: space-between);
+            gap: 5px;
+            padding: 3px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.322);
+            
+            input{
+                border: 1px dashed black;
+                background-color: transparent;
+                @include sizes();
+                outline: none;
+                font-family: $montserratFont;
+                font-size: $md;
+            }
+            span{
+                @include sizes();
+                @include displayFlex();
+                align-items: flex-start;
+                font-size: $md;
+            }
+            button{
+                @include buttonDesign($width: 25px, $height: 25px);
+                border-radius: 3px;
+            }
+        }
+    }
+    .briefcase-productUl{
+        li{
+            flex-wrap: wrap;
+            div{
+                @include displayFlex($flexDirection:row, $justifyContent: space-between);
+                flex-wrap: wrap;
+                @include sizes(80%);
+
+                strong,p,span{
+                    @include sizes();
+                    @include displayFlex();
+                    align-items: flex-start;
+                    font-size: $sm;
+                }
+            }
+        }
+    }
+    button{
+        @include buttonDesign();
+    }
+}
