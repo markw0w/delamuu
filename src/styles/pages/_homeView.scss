@@ -108,6 +108,7 @@
         animation-timeline: --txtEntry;
         animation-range: entry 10% cover 50%;
         animation-name: text-entry;
+        animation-fill-mode: both;
 
         @include breakpoint(xsmall) {
           font-size: 32px;

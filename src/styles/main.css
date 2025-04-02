@@ -1610,6 +1610,7 @@ header .rightNavContainer #burguerMenuIcon {
   animation-timeline: --txtEntry;
   animation-range: entry 10% cover 50%;
   animation-name: text-entry;
+  animation-fill-mode: both;
 }
 @media (min-width: 400px) {
   .presentationContainer .informationContainer .titleInformation h2 {
