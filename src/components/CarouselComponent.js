@@ -32,7 +32,7 @@ const CarouselComponent = ({ images }) => {
             <img
               key={index}
               src={src}
-              alt="La imagen es de referencia"
+              alt="Productos de Delamuu: Helados, yogures, azaí y candy. Las imagenes son de referencia"
               className="carousel-image"
             />
           ))}

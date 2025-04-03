@@ -16,10 +16,10 @@ header {
         @include imgAsButtons($w: 40px, $h: auto);
     }
     .rightNavContainer{
-        @include sizes(80%);
+        @include sizes(95%);
         @include displayFlex($justifyContent: flex-end, $flexDirection:row);
-        gap: 25px;
-        padding-right: 25px;
+        gap: 10px;
+        padding-right: 15px;
 
         .navLinks{
             text-decoration: none;

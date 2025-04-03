@@ -1,4 +1,3 @@
-// Cart.js
 import React, { useState, useEffect } from "react";
 import { ShoppingCart, X, Trash2, MessageCircleHeart } from "lucide-react";
 import { useCart } from "./CartContext.js";
@@ -124,7 +123,6 @@ const Cart = () => {
       message += `*Pedido N°:${index + 1}*: ${item.product}\n`;
       message += `🍦 *Envase:* ${item.gramaje}\n`;
       if (item.product === "Helado") {
-        // Agregamos sabores si es helado
         if (item.flavors && item.flavors.length > 0) {
           message += `🍨 *Sabores:* ${item.flavors.join(", ")}\n`;
         } else {

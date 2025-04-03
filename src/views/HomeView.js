@@ -40,7 +40,7 @@ function HomeView() {
         <h2>
           <img
             src={logos.shortDark}
-            alt="Helado Principal"
+            alt="Logo marca Delamuu"
           />
           delamuu
         </h2>
@@ -50,12 +50,12 @@ function HomeView() {
         <img
           className="animatedImg animatedImg1"
           src={effects.yogur}
-          alt="Img1"
+          alt="Imagen de Yogur"
         />
         <img
           className="animatedImg animatedImg3"
           src={effects.azai}
-          alt="Img1"
+          alt="Imagen de Azaí en Bowl"
         />
 
         <article className="informationContainer">
@@ -86,8 +86,8 @@ function HomeView() {
             <h2>Yogures</h2>
             <img
               className="principalIceCream"
-              src={products.yogur5}
-              alt="Helado Principal"
+              src={products.yogur2}
+              alt="Producto: Yogur"
             />
             <Link
               className="productLink"
@@ -101,8 +101,8 @@ function HomeView() {
             <h2>Helados Artesanales</h2>
             <img
               className="principalIceCream"
-              src={products.yogur4}
-              alt="Helado Principal"
+              src={products.Helado1}
+              alt="Producto: Helado artesanal"
             />
             <Link
               className="productLink"
@@ -116,8 +116,8 @@ function HomeView() {
             <h2>Açaí</h2>
             <img
               className="principalIceCream"
-              src={products.yogur1}
-              alt="Helado Principal"
+              src={products.acai1}
+              alt="Producto: Azaí"
             />
             <Link
               className="productLink"
@@ -131,8 +131,8 @@ function HomeView() {
             <h2>Candy</h2>
             <img
               className="principalIceCream"
-              src={products.yogur6}
-              alt="Helado Principal"
+              src={products.Candy2}
+              alt="Producto: Candy"
             />
             <Link
               className="productLink"

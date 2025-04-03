@@ -1,3 +1,7 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /auth/
+Disallow: /admin/
+Allow: /
+Allow: /carta
+Allow: /order/
+Sitemap: https://tusitio.com/sitemap.xml

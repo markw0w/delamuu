@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <link
-      rel="icon"
-      href="%PUBLIC_URL%/favicon.ico"
+    <!--SEO-->
+    <title>Delamuu | Yogurtería & Heladería Artesanal en Junín</title>
+    <meta charset="utf-8"/>
+    <meta
+      name="description"
+      content="Ofrecemos sabores artesanales únicos e irresistibles. Arma tu pedido como prefieras. ¡Ingresa y arma tu pedido online 100% personalizado!"
     />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1"
     />
-    <meta
-      name="theme-color"
-      content="#000000"
-    />
-    <!--==============SEO: Para mejorar la aparición en motores de búsquedas==============-->
-    <meta
-      name="description"
-      content="Delamuu es una tienda.....*DESCRIPCIÓN*"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="%PUBLIC_URL%/logo192.webp"
-    />
-    <link
-      rel="manifest"
-      href="%PUBLIC_URL%/manifest.json"
-    />
-    <title>Delamuu | Yogurtería</title>
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!--FAVICON-->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#92a6d8">
+    
+    <!--MANIFEST-->
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!--FONTS-->
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -49,6 +49,54 @@
       href="https://db.onlinewebfonts.com/c/cc13032c6f788beadfb8519e4dc55d73?family=Chennai+W00+Black"
       rel="stylesheet"
     />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Tienda de Heladería & Yogurtería",
+        "name": "Delamuu - Heladería & Yogurtería",
+        "image": "https://delamuu.com/logo.png",
+        "url": "https://delamuu.com",
+        "telephone": "+54 2364 512745",
+        "address": {
+          "@type": "Ubicación",
+          "streetAddress": "Av. Roque Sáenz Peña 192",
+          "addressLocality": "Junín",
+          "addressRegion": "Buenos Aires",
+          "postalCode": "6000",
+          "addressCountry": "ARG"
+        },
+        "openingHours": "Lu-Do 10:00-00:00",
+        "menu": "https://delamuu.com/carta",
+        "servesCuisine": "Helados, yogures, candy, açaí",
+        "priceRange": "$",
+        "sameAs": [
+          "https://www.instagram.com/delamuuok/",
+          "https://www.facebook.com/people/Delamuu/61569838131209/"
+        ],
+        "hasMenu": {
+          "@type": "Carta",
+          "name": "Nuestra deliciosa carta",
+          "url": "https://delamuu.com/carta",
+        },
+        "potentialAction": {
+          "@type": "Pedidos",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://api.whatsapp.com/send?phone=+5492364512745&text=¡Hola!,%20vi%20su%20sitio%20web%20y%20quiero%20pedir",
+            "actionPlatform": [
+              "http://schema.org/DesktopWebPlatform",
+              "http://schema.org/MobileWebPlatform"
+            ]
+          },
+          "deliveryMethod": "https://schema.org/DeliveryModePickup",
+          "expectsAcceptanceOf": {
+            "@type": "Offer",
+            "priceCurrency": "Argentina",
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

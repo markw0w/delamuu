@@ -43,7 +43,7 @@ router.delete("/delete-topping/:id", async (req, res) => {
       }
     );
 
-    console.log("Filas afectadas:", affectedRows); // 🔍 Debugging
+    console.log("Filas afectadas:", affectedRows); 
 
     if (affectedRows === 0) {
       return res.status(404).json({ error: "Topping no encontrado" });

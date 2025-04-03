@@ -9,8 +9,8 @@ function WantOrderModal( {modalOpen} ) {
         <h2>Yogures</h2>
         <img
           className="principalIceCream"
-          src={products.yogur5}
-          alt="Helado Principal"
+          src={products.yogur2}
+          alt="Producto: Yogur"
         />
         <Link
           className="productLink"
@@ -24,8 +24,8 @@ function WantOrderModal( {modalOpen} ) {
         <h2>Helados Artesanales</h2>
         <img
           className="principalIceCream"
-          src={products.yogur4}
-          alt="Helado Principal"
+          src={products.Helado1}
+          alt="Producto: Helado artesanal"
         />
         <Link
           className="productLink"
@@ -39,8 +39,8 @@ function WantOrderModal( {modalOpen} ) {
         <h2>Açaí</h2>
         <img
           className="principalIceCream"
-          src={products.yogur1}
-          alt="Helado Principal"
+          src={products.acai1}
+          alt="Producto: Azaí"
         />
         <Link
           className="productLink"
@@ -54,8 +54,8 @@ function WantOrderModal( {modalOpen} ) {
         <h2>Candy</h2>
         <img
           className="principalIceCream"
-          src={products.yogur6}
-          alt="Helado Principal"
+          src={products.Candy2}
+          alt="Producto: Candy"
         />
         <Link
           className="productLink"
