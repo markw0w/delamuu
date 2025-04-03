@@ -107,7 +107,7 @@ const Cart = () => {
       showAlertMessage("El carrito está vacío", "error");
       return;
     }
-    const phoneNumber = "5492364595877";
+    const phoneNumber = "5492364512745";
     let message = `🛒 *Pedido Nuevo* 🛒\n`;
     message += `¡Hola! Quisiera solicitar el siguiente pedido:\n\n`;
     message += `👤 *Cliente:* ${name}\n`;
