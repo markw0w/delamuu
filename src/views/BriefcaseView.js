@@ -40,7 +40,7 @@ function BriefcaseView() {
       </ul>
 
       {loading ? (
-        <p>Cargando...</p>
+        <p>Cargando....</p>
       ) : (
         categories.map((category) => (
           <div key={category.id} className="categoryContainer">
