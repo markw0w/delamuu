@@ -36,7 +36,7 @@ function BriefcaseView() {
       <ul>
         <li>📍 Av. Roque Sáenz Peña 192</li>
         <li>💳 Efectivo & Tarjeta</li>
-        <li>📞 2364 512745</li>
+        <li>📞 2364-512745</li>
       </ul>
 
       {loading ? (
