@@ -36,7 +36,7 @@ function HomeView() {
   return (
     <section className="fatherContainer">
       <section className="introductionContainer">
-        <img className="introductionBgImage" src={local.local1} alt="Local Delamuu en funcionamiento" loading="eager"/>
+        <img fetchpriority="high" className="introductionBgImage" src={local.local1} alt="Local Delamuu en funcionamiento" loading="eager"/>
         <h1>
           Helados artesanales, yogures, açaí (azaí) y helados combinados en
           Junín, Buenos Aires
