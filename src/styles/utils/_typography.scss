@@ -1,7 +1,14 @@
+@font-face {
+    font-family: "Chennai W00 Black";
+    src: url("../../public/assets/fonts/cc13032c6f788beadfb8519e4dc55d73.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 // Fonts
 $montserratFont: "Montserrat", sans-serif;
 $nunitoFont: "Nunito", sans-serif;
-$montserratAlternateFont: "Montserrat Alternates", sans-serif;
 $chennaiFont: "Chennai W00 Black";
 
 // Font Sizes

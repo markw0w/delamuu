@@ -57,7 +57,7 @@
 
     p {
       font-weight: $bold;
-      font-family: $montserratAlternateFont;
+      font-family: $montserratFont;
       color: $darkFontColor;
 
       @include breakpoint(small) {

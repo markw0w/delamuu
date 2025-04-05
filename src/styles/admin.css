@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Chennai W00 Black";
+  src: url("../../public/assets/fonts/cc13032c6f788beadfb8519e4dc55d73.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 .admin-briefcase-panel {
   display: flex;
   justify-content: center;

@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Chennai W00 Black";
+  src: url("../../public/assets/fonts/cc13032c6f788beadfb8519e4dc55d73.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 .optionsContainer {
   width: 100%;
   height: 100%;
@@ -347,7 +354,7 @@
   align-items: center;
   transition: background-color 0.3s ease;
   font-weight: 800;
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Chennai W00 Black";
   font-size: 38px;
   color: #92a6d8;
   text-shadow: 0px 3px 1px rgba(0, 0, 0, 0.781);

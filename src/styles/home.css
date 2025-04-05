@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Chennai W00 Black";
+  src: url("../../public/assets/fonts/cc13032c6f788beadfb8519e4dc55d73.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 @keyframes floating {
   0% {
     transform: translateY(0px);
@@ -223,7 +230,6 @@
 .presentationContainer .informationContainer .titleInformation h2 {
   font-weight: 900;
   font-size: 26px;
-  font-family: "Montserrat Alternates", sans-serif;
   color: #ff4e4b;
   width: 95%;
   height: 150px;
@@ -484,7 +490,7 @@
 }
 .aboutUsContainer .titleAboutUs p {
   font-weight: 600;
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #2c2c2c;
 }
 @media (min-width: 768px) {
