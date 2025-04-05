@@ -1,9 +1,6 @@
 // Importamos
 // Imports: Local
 import Local1 from "../assets/store/local.webp";
-import Local2 from "../assets/store/local2.webp";
-import Local3 from "../assets/store/local3.webp";
-import Local4 from "../assets/store/local-detail.webp";
 import Local5 from "../assets/store/local-outside.webp";
 
 // Imports: LOGO & Delamuu
@@ -101,9 +98,6 @@ export const effects = {
 // Local
 export const local = {
   local1: Local1,
-  local2: Local2,
-  local3: Local3,
-  local4: Local4,
   local5: Local5,
 };
 
