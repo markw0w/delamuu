@@ -96,6 +96,7 @@ function HomeView() {
               className="principalIceCream"
               src={products.yogur2}
               alt="Producto: Yogur"
+              loading="lazy"
             />
             <Link
               className="productLink"
@@ -111,6 +112,7 @@ function HomeView() {
               className="principalIceCream"
               src={products.Helado1}
               alt="Producto: Helado artesanal"
+              loading="lazy"
             />
             <Link
               className="productLink"
@@ -126,6 +128,7 @@ function HomeView() {
               className="principalIceCream"
               src={products.acai1}
               alt="Producto: Azaí"
+              loading="lazy"
             />
             <Link
               className="productLink"
@@ -141,6 +144,7 @@ function HomeView() {
               className="principalIceCream"
               src={products.Candy2}
               alt="Producto: Candy"
+              loading="lazy"
             />
             <Link
               className="productLink"
@@ -156,6 +160,7 @@ function HomeView() {
           src={logos.shortDark}
           alt="Logo Delamuu"
           style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+          loading="lazy"
         />
 
         <img
@@ -163,6 +168,7 @@ function HomeView() {
           src={logos.shortDark}
           alt="Logo Delamuu"
           style={{ transform: `translateY(-${scrollY * 0.7}px)` }}
+          loading="lazy"
         />
       </section>
       <div className="degradeBackgroundContainer">
