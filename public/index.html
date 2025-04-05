@@ -15,15 +15,43 @@
     <meta name="robots" content="index, follow">
     <meta name="googlebot" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      #root,
+      body,
+      html {
+        display: flex;
+        flex-direction: column;
+        font-family: Montserrat, sans-serif;
+        min-height: 100%;
+        width: 100%;
+      }
+      html {
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+      }
+      @font-face {
+        font-display: swap;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 700;
+        src: url(/static/media/Montserrat-VariableFont_wght.4df14eb5e72bf55c4497.ttf)
+          format("truetype");
+      }
+    </style>
+
     <!--GTM-->
-    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-TRV2LW58');
     </script>
-    <!-- End Google Tag Manager -->
 
     <!--FAVICON-->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -36,23 +64,25 @@
     
     <!--MANIFEST-->
     <link rel="manifest" href="/site.webmanifest">
+
+    <!-- JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Tienda de Heladería & Yogurtería",
+        "@type": "Store",
         "name": "Delamuu - Heladería & Yogurtería",
         "image": "https://delamuu.com/logo.png",
         "url": "https://delamuu.com",
         "telephone": "+54 2364 512745",
         "address": {
-          "@type": "Ubicación",
+          "@type": "PostalAddress",
           "streetAddress": "Av. Roque Sáenz Peña 192",
           "addressLocality": "Junín",
           "addressRegion": "Buenos Aires",
           "postalCode": "6000",
-          "addressCountry": "ARG"
+          "addressCountry": "AR"
         },
-        "openingHours": "Lu-Do 10:00-00:00",
+        "openingHours": "Mo-Su 10:00-00:00",
         "menu": "https://delamuu.com/carta",
         "servesCuisine": "Helados, yogures, candy, açaí",
         "priceRange": "$",
@@ -61,12 +91,12 @@
           "https://www.facebook.com/people/Delamuu/61569838131209/"
         ],
         "hasMenu": {
-          "@type": "Carta",
+          "@type": "Menu",
           "name": "Nuestra deliciosa carta",
-          "url": "https://delamuu.com/carta",
+          "url": "https://delamuu.com/carta"
         },
         "potentialAction": {
-          "@type": "Pedidos",
+          "@type": "OrderAction",
           "target": {
             "@type": "EntryPoint",
             "urlTemplate": "https://api.whatsapp.com/send?phone=+5492364512745&text=¡Hola!,%20vi%20su%20sitio%20web%20y%20quiero%20pedir",
@@ -78,7 +108,7 @@
           "deliveryMethod": "https://schema.org/DeliveryModePickup",
           "expectsAcceptanceOf": {
             "@type": "Offer",
-            "priceCurrency": "Argentina",
+            "priceCurrency": "ARS"
           }
         }
       }
@@ -92,6 +122,7 @@
       </iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <div id="root"></div>
   </body>
 </html>
