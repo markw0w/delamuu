@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { products, logos, effects } from "../utils/Images.js";
+import { products, logos, effects, local } from "../utils/Images.js";
 import AboutUsComponent from "../components/AboutUsComponent.js";
 import CarouselComponent from "../components/CarouselComponent.js";
 import ContactComponent from "../components/ContactComponent.js";
@@ -36,6 +36,7 @@ function HomeView() {
   return (
     <section className="fatherContainer">
       <section className="introductionContainer">
+        <img className="introductionBgImage" src={local.local1} alt="Local Delamuu en funcionamiento" loading="eager"/>
         <h1>
           Helados artesanales, yogures, açaí (azaí) y helados combinados en
           Junín, Buenos Aires
@@ -54,11 +55,13 @@ function HomeView() {
           className="animatedImg animatedImg1"
           src={effects.yogur}
           alt="Imagen de Yogur"
+          loading="lazy"
         />
         <img
           className="animatedImg animatedImg3"
           src={effects.azai}
           alt="Imagen de Azaí en Bowl"
+          loading="lazy"
         />
 
         <article className="informationContainer">

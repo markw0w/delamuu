@@ -5,15 +5,16 @@
 @use "../utils/breakpoints" as *;
 
 .introductionContainer {
-  background: url("../assets/store/local.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   width: 100%;
   min-height: 100vh;
+  position: relative;
   @include displayFlex();
 
+  .introductionBgImage{
+    position: absolute;
+    @include sizes();
+    object-fit: cover;
+  }
   h1 {
     position: absolute;
     width: 1px;
@@ -240,7 +241,6 @@
   }
 }
 
-// Parallax en scroll
 @media (prefers-reduced-motion: no-preference) {
   .backgroundEffect {
     transform: translateY(calc(var(--scroll, 0) * 10px));
