@@ -5,10 +5,16 @@
     font-style: normal;
     font-display: swap;
 }
+@font-face {
+    font-family: "Montserrat";
+    src: url("../../public/assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
 
 // Fonts
 $montserratFont: "Montserrat", sans-serif;
-$nunitoFont: "Nunito", sans-serif;
 $chennaiFont: "Chennai W00 Black";
 
 // Font Sizes
