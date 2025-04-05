@@ -13,7 +13,7 @@
 @use './components/aboutUsComponent';
 @use './components/contactComponent';
 @use './components/wantOrderComponent';
-@use './components/products/yogurComponent';
+@use './components/productInfoComponent';
 @use './components/carouselComponent';
 @use './components/form/formComponent';
 @use './components/form/createProduct';
@@ -61,7 +61,6 @@ main {
     right: 10px;
     z-index: 20000;
     cursor: pointer;
-    //display: none;
 }
 .cart.hidden {
     display: none; 
@@ -69,9 +68,4 @@ main {
 
 .cart.visible {
     display: block; 
-}
-
-// Particles
-#tsparticles{
-    z-index: -1;
 }

@@ -47,6 +47,9 @@ import StrawberriesEffect from "../assets/others/frutillas.webp";
 import YogurEffect from "../assets/others/helado-principal.webp";
 import AzaiEffect from "../assets/others/azai.webp";
 
+// Otros
+import AllProducts from '../assets/others/general-products.webp';
+
 // A exportar
 // Logos
 export const logos = {
@@ -103,3 +106,8 @@ export const local = {
   local4: Local4,
   local5: Local5,
 };
+
+// Others
+export const others = {
+  allProducts: AllProducts,
+}

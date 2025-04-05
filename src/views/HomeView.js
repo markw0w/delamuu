@@ -4,6 +4,7 @@ import { products, logos, effects } from "../utils/Images.js";
 import AboutUsComponent from "../components/AboutUsComponent.js";
 import CarouselComponent from "../components/CarouselComponent.js";
 import ContactComponent from "../components/ContactComponent.js";
+import ProductInfoComponent from "../components/ProductInfoComponent.js";
 
 function HomeView() {
   const [scrollY, setScrollY] = useState(0);
@@ -81,6 +82,8 @@ function HomeView() {
           </div>
         </article>
 
+        <ProductInfoComponent/>
+        
         <div className="allProductsContainer">
           <article className="productContainer">
             <h2>Yogures</h2>
