@@ -197,48 +197,150 @@
   margin-right: 20px;
 }
 
-main {
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  min-height: 100%;
-  flex-grow: 1;
-  margin-top: 65px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.829);
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999;
+}
+.modal-overlay .modal-content {
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
+  width: 95%;
+  height: 400px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
+  gap: 5px;
 }
-main .fatherContainer {
+@media (min-width: 768px) {
+  .modal-overlay .modal-content {
+    width: 40%;
+  }
+}
+.modal-overlay .modal-content h2 {
+  font-size: 18px;
+}
+.modal-overlay .modal-content label {
   width: 100%;
-  flex-grow: 1;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-}
-
-.cart {
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
-  border-radius: 50%;
-  padding: 10px;
+  height: 20px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 60px;
-  height: 60px;
-  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
-  position: fixed !important;
-  bottom: 20px;
-  right: 10px;
-  z-index: 20000;
+  align-items: flex-start;
+}
+.modal-overlay .modal-content .delivery-options, .modal-overlay .modal-content .payment-option {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  gap: 5px;
+  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  border-radius: 5px;
+  padding: 5px;
+  color: #f1f1f1;
+}
+.modal-overlay .modal-content .delivery-options label, .modal-overlay .modal-content .payment-option label {
+  font-size: 16px;
+  font-weight: 800;
+}
+.modal-overlay .modal-content .delivery-options div, .modal-overlay .modal-content .payment-option div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.modal-overlay .modal-content .delivery-options div input[type=checkbox], .modal-overlay .modal-content .payment-option div input[type=checkbox] {
+  width: 15px;
+  height: 15px;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid #ccc;
+}
+.modal-overlay .modal-content .delivery-options div input[type=checkbox]:checked, .modal-overlay .modal-content .payment-option div input[type=checkbox]:checked {
+  background-color: rgb(157, 241, 124);
+}
+.modal-overlay .modal-content .delivery-options div input[type=checkbox]:checked::after, .modal-overlay .modal-content .payment-option div input[type=checkbox]:checked::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 7px;
+  width: 3px;
+  height: 8px;
+  border: solid #2c2c2c;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.modal-overlay .modal-content .delivery-options div span, .modal-overlay .modal-content .payment-option div span {
+  font-size: 14px;
+}
+.modal-overlay .modal-content .payment-option {
+  height: 40px;
+  flex-direction: row;
+}
+.modal-overlay .modal-content .payment-option select {
+  border: none;
+  background-color: #f1f1f1;
+  padding: 5px;
+  width: auto;
+  height: 95%;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  border-radius: 5px;
+}
+.modal-overlay .modal-content input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid black;
+  outline: none;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+.modal-overlay .modal-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+.modal-overlay .confirm, .modal-overlay .cancel {
+  background: rgb(107, 204, 107);
+  color: white;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
   cursor: pointer;
 }
-
-.cart.hidden {
-  display: none;
+.modal-overlay .confirm:disabled, .modal-overlay .cancel:disabled {
+  background-color: rgb(117, 117, 117);
+  cursor: not-allowed;
 }
-
-.cart.visible {
-  display: block;
-}/*# sourceMappingURL=main.css.map */
+.modal-overlay .cancel {
+  background: rgb(255, 113, 113);
+}/*# sourceMappingURL=cart.css.map */

@@ -5,6 +5,8 @@ import AboutUsComponent from "../components/AboutUsComponent.js";
 import CarouselComponent from "../components/CarouselComponent.js";
 import ContactComponent from "../components/ContactComponent.js";
 import ProductInfoComponent from "../components/ProductInfoComponent.js";
+import '../styles/home.css'
+import '../styles/cart.css'
 
 function HomeView() {
   const [scrollY, setScrollY] = useState(0);

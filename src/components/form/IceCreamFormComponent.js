@@ -54,7 +54,7 @@ function IceCreamFormComponent() {
     "1/4 kg": 3,
     "1/2 kg": 3,
     "3/4 kg": 4,
-    "1 kg": 5,
+    "1 kg": 4,
   };
 
   const handleGramajeChange = (newGramaje, newPrice) => {

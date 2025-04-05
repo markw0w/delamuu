@@ -1,0 +1,709 @@
+.admin-briefcase-panel {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  height: 200px;
+}
+@media (min-width: 1024px) {
+  .admin-briefcase-panel {
+    width: 500px;
+  }
+}
+.admin-briefcase-panel .admin-buttons {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.admin-briefcase-panel .admin-buttons button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 300px;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.admin-briefcase-panel .modal-briefcase {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase {
+  background: #fff;
+  padding: 5px;
+  border-radius: 8px;
+  max-width: 300px;
+  max-height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 1024px) {
+  .admin-briefcase-panel .modal-briefcase .modal-content-briefcase {
+    max-width: 500px;
+    max-height: 600px;
+  }
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase div {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase div input {
+  border: 1px solid #2c2c2c;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  background-color: transparent;
+  color: #2c2c2c;
+  font-size: 14px;
+  width: 75%;
+  height: 40px;
+  outline: none;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase div button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 100px;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-createProduct {
+  flex-wrap: wrap;
+  padding: 5px;
+  height: 400px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-createProduct select {
+  border: none;
+  width: 75%;
+  height: 30px;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  outline: none;
+  background-color: #92a6d8;
+  color: #f1f1f1;
+  font-weight: 600;
+  padding: 5px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-createProduct select input {
+  width: 100%;
+  height: 30px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-createProduct button {
+  width: 75%;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding: 5px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul li {
+  list-style: none;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 3px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.322);
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul li input {
+  border: 1px dashed black;
+  background-color: transparent;
+  width: 100%;
+  height: 40px;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul li span {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  font-size: 16px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase ul li button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 25px;
+  height: 25px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 3px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li {
+  height: 150px;
+  border: 1px solid rgba(0, 0, 0, 0.473);
+  border-radius: 5px;
+  padding: 10px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li div strong, .admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li div p, .admin-briefcase-panel .modal-briefcase .modal-content-briefcase .briefcase-productUl li div span {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-start;
+  font-size: 14px;
+}
+.admin-briefcase-panel .modal-briefcase .modal-content-briefcase button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 100px;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.admin-briefcase-panel .modal-briefcase .product-content-briefcase {
+  max-height: 80%;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes slide-in-image {
+  0% {
+    transform: rotate(-55deg) translateX(-1500px);
+  }
+  100% {
+    transform: rotate(0deg) translateX(0px);
+  }
+}
+@keyframes slide-in-text {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes background-effect {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(2750px);
+  }
+}
+@keyframes open-burguer-menu {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 30%;
+  }
+}
+@keyframes open-order-modal {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 50%;
+  }
+}
+@keyframes cart-slide-in {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 50%;
+  }
+}
+@keyframes alert-slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes animatedImg1 {
+  0% {
+    transform: translateY(1300px);
+  }
+  100% {
+    transform: translateY(90px) rotate(-15deg);
+  }
+}
+@keyframes animatedImg3 {
+  0% {
+    transform: translateY(1300px);
+  }
+  100% {
+    transform: translateY(-30px) rotate(15deg);
+  }
+}
+@keyframes text-entry {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes zoomContent {
+  0% {
+    opacity: 0;
+    scale: 25%;
+  }
+  100% {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+@keyframes zoomContent-out {
+  0% {
+    opacity: 1;
+    scale: 100%;
+  }
+  100% {
+    opacity: 0.7;
+    scale: 0%;
+  }
+}
+.adminContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  gap: 20px;
+  padding: 10px;
+}
+@media (min-width: 768px) {
+  .adminContainer {
+    width: 50%;
+  }
+}
+.adminContainer h1 {
+  width: 100%;
+  height: 20px;
+  font-size: 22px;
+  text-align: center;
+  margin-top: 10px;
+}
+.adminContainer span {
+  width: 100%;
+  height: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+.adminContainer .actionsContainer {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 1px rgba(58, 58, 58, 0.315);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 5px;
+}
+.adminContainer .actionsContainer ul {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.adminContainer .actionsContainer ul button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 100px;
+  height: 80px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 13px;
+}
+.adminContainer .actionsContainer ul button:hover {
+  opacity: 80%;
+}
+.adminContainer .admin-detail-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 768px) {
+  .adminContainer .admin-detail-container {
+    width: 900px;
+  }
+}
+.adminContainer .admin-detail-container .admin-detail-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.adminContainer .admin-detail-container .filter-container {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.adminContainer .admin-detail-container .filter-container input {
+  width: 90%;
+  height: 90%;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.349);
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+  padding: 5px;
+}
+.adminContainer .admin-detail-container .filter-container button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 100px;
+  height: 90%;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.adminContainer .admin-detail-container .admin-input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.adminContainer .admin-detail-container .admin-input {
+  flex: 1;
+  outline: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+}
+.adminContainer .admin-detail-container .input-file {
+  display: none;
+}
+.adminContainer .admin-detail-container .custom-file-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: #ff5722;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.adminContainer .admin-detail-container .custom-file-label:hover {
+  background-color: #e64a19;
+}
+.adminContainer .admin-detail-container .admin-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+.adminContainer .admin-detail-container .admin-add-btn:hover {
+  background-color: #45a049;
+}
+.adminContainer .admin-detail-container .admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.adminContainer .admin-detail-container .admin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+.adminContainer .admin-detail-container .admin-delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.adminContainer .admin-detail-container .admin-delete-btn:hover {
+  background-color: darkred;
+}
+.adminContainer .admin-detail-container .admin-empty {
+  font-style: italic;
+  color: #777;
+}
+.adminContainer .admin-detail-container .admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+.adminContainer .admin-detail-container .admin-table th,
+.adminContainer .admin-detail-container .admin-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+.adminContainer .admin-detail-container .admin-table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+.adminContainer .admin-detail-container .detalle-item {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #92a6d8;
+  color: #f1f1f1;
+  border-radius: 5px;
+}
+.adminContainer .admin-detail-container .detalle-item div {
+  margin-bottom: 0.25rem;
+}
+.adminContainer .admin-detail-container .pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  justify-content: flex-start;
+}
+.adminContainer .admin-detail-container .pagination button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: 15px;
+  height: 20px;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+@media screen and (max-width: 600px) {
+  .adminContainer .admin-detail-container .admin-table thead {
+    display: none;
+  }
+  .adminContainer .admin-detail-container .admin-table,
+  .adminContainer .admin-detail-container .admin-table tbody,
+  .adminContainer .admin-detail-container .admin-table tr,
+  .adminContainer .admin-detail-container .admin-table td {
+    display: block;
+    width: 100%;
+    font-size: 11px;
+  }
+  .adminContainer .admin-detail-container .admin-table tr {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+  }
+  .adminContainer .admin-detail-container .admin-table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+  .adminContainer .admin-detail-container .admin-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 0.75rem;
+    font-weight: bold;
+    text-align: left;
+  }
+  .adminContainer .admin-detail-container .pagination {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    justify-content: flex-start;
+  }
+  .adminContainer .admin-detail-container .pagination button {
+    border: 0px;
+    padding: 5px;
+    border-radius: 20px;
+    background-color: #ff4e4b;
+    width: 15px;
+    height: 20px;
+    font-family: "Montserrat", sans-serif;
+    color: #f1f1f1;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.adminContainer .admin-detail-container .admin-product-prices {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.adminContainer .admin-detail-container .admin-product-prices ul {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.adminContainer .admin-detail-container .admin-product-prices ul li {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.397);
+  list-style: none;
+}
+.adminContainer .admin-detail-container .admin-product-prices ul li span {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.adminContainer .admin-detail-container .admin-product-prices ul li button {
+  border: 0px;
+  padding: 5px;
+  border-radius: 20px;
+  background-color: #ff4e4b;
+  width: auto;
+  height: 80%;
+  font-family: "Montserrat", sans-serif;
+  color: #f1f1f1;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}/*# sourceMappingURL=admin.css.map */

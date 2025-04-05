@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, LogOut } from "lucide-react";
 import MenuBurguer from "../components/BurguerMenuComponent.js";
 import WantOrderModal from "./WantOderModal.js";
+import '../styles/nav.css'
 
 function HeaderComponent() {
   const [isOpen, setIsOpen] = useState(false);

@@ -4,6 +4,18 @@
 @use '../utils/breakpoints' as *;
 
 .cart{
+    background-image: $secondary-Normal-BackgroundImage;
+    border-radius: 50%;
+    padding: 10px;
+    @include displayFlex();
+    @include sizes(60px,60px);
+    box-shadow: $shadow;
+    position: fixed !important;
+    bottom: 20px;
+    right: 10px;
+    z-index: 999999;
+    cursor: pointer;
+
     .cart-count {
         position: absolute;
         top: -5px;
@@ -16,6 +28,13 @@
         @include displayFlex();
         font-size: $sm;
       }
+}
+.cart.hidden {
+    display: none; 
+}
+
+.cart.visible {
+    display: block; 
 }
 .cart-modal{
     position: fixed;

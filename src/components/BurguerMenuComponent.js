@@ -1,6 +1,7 @@
 import React from "react";
 import { logos } from "../utils/Images.js";
 import { Link } from "react-router-dom";
+import '../styles/burguerMenu.css'
 
 function MenuBurguer({ isOpen }) {
   return (

@@ -1,21 +1,16 @@
-@use '../utils/vars' as *;       
-@use '../utils/mixins' as *;  
-@use '../utils/typography' as *;  
+@use './utils/typography' as *;  
 
-// General
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
-// Padres
 html, body, #root {
     width: 100%;
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    font-family: $montserratFont;
+    font-family: $montserratFont; 
 }
 html{
     overflow-x: hidden;

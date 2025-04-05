@@ -8,6 +8,8 @@ import PricesManager from "../components/admin/PricesManager.js";
 import OrdersHistory from "../components/admin/OrdersHistory.js";
 import FlavorsManager from "../components/admin/FlavorsManager.js";
 import BriefcaseManager from "../components/admin/BriefcaseManager.js";
+import '../styles/admin.css'
+import '../styles/alert.css';
 
 function AdminView() {
   const [activeSection, setActiveSection] = useState(null);

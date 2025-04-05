@@ -1,37 +1,6 @@
-// IMPORTAMOS TODOS LOS SCSS
-// Se importa con @use 'buscas la carpeta' y ';'
-// Variables, mixins y bases
 @use './utils/vars' as *;       
 @use './utils/mixins' as *;
-@use './utils/typography' as *;
-@use './base/base';
-
-// Componentes
-@use './components/footerComponent';
-@use './components/headerComponent';
-@use './components/menuBurguerComponent';
-@use './components/aboutUsComponent';
-@use './components/contactComponent';
-@use './components/wantOrderComponent';
-@use './components/productInfoComponent';
-@use './components/carouselComponent';
-@use './components/form/formComponent';
-@use './components/form/createProduct';
 @use './components/cart';
-@use './components/alert';
-@use './components/form/orderModal';
-
-// Layouts
-@use './layouts/productComponent';
-
-// Vistas
-@use './pages/homeView';
-@use './pages/loginView';
-@use './pages/adminView';
-@use './pages/briefcaseView';
-
-// Admin
-@use './components/admin/briefcaseManager';
 
 main {
     width: 100%;
@@ -48,7 +17,6 @@ main {
     }
 }
 
-// Cart
 .cart{
     background-image: $secondary-Normal-BackgroundImage;
     border-radius: 50%;
