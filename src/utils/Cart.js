@@ -151,11 +151,10 @@ const Cart = () => {
     message += `💰 *Total a pagar:* $${finalTotal.toLocaleString("es-ES")}\n\n`;
     message += `📅 Fecha: ${new Date().toLocaleDateString("es-ES")}\n\n`;
 
-    if (payment === "Pago virtual") {
+    if (payment === "Pago Virtual") {
       message += `🧾 Como tu forma de pago es *'${payment}'*, te compartimos la información requerida para realizar el pago:\n`;
-      message += `• *CBU*: 123456789\n`;
-      message += `• *ALIAS*: Delamuu2025\n`;
-      message += `• *Otra información*: Notificar informacion\n\n`;
+      message += `• *CBU*: 0140312901665605356904\n`;
+      message += `• *ALIAS*: DELAMUUOK\n`;
       message += `Despacharemos tu pedido una vez nos envíes el comprobante de pago. Puedes enviarlo por este medio.\n\n`;
     }
 
