@@ -34,7 +34,7 @@
                 @include sizes(250px,300px);
             }
             @include breakpoint(medium){
-                @include sizes(350px,400px);
+                @include sizes(300px,300px);
             }
         
             h2{

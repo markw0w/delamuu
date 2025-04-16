@@ -7,10 +7,10 @@ function WantOrderModal( {modalOpen} ) {
   return (
     <section className={`fatherWantOrderContainer ${modalOpen ? "openModal" : "closeModal"}`}> 
       <article className="productContainer">
-        <h2>Yogures</h2>
+        {/* <h2>Yogures</h2> */}
         <img
           className="principalIceCream"
-          src={products.yogur2}
+          src={products.yogurBg}
           alt="Producto: Yogur"
         />
         <Link
@@ -22,10 +22,10 @@ function WantOrderModal( {modalOpen} ) {
       </article>
 
       <article className="productContainer">
-        <h2>Helados Artesanales</h2>
+        {/* <h2>Helados Artesanales</h2> */}
         <img
           className="principalIceCream"
-          src={products.Helado1}
+          src={products.HeladoBg}
           alt="Producto: Helado artesanal"
         />
         <Link
@@ -37,10 +37,10 @@ function WantOrderModal( {modalOpen} ) {
       </article>
 
       <article className="productContainer">
-        <h2>Açaí</h2>
+        {/* <h2>Açaí</h2> */}
         <img
           className="principalIceCream"
-          src={products.acai1}
+          src={products.acaiBg}
           alt="Producto: Azaí"
         />
         <Link
@@ -52,10 +52,10 @@ function WantOrderModal( {modalOpen} ) {
       </article>
 
       <article className="productContainer">
-        <h2>Candy</h2>
+        {/* <h2>Candy</h2> */}
         <img
           className="principalIceCream"
-          src={products.Candy2}
+          src={products.CandyBg}
           alt="Producto: Candy"
         />
         <Link
