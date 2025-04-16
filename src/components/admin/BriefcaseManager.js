@@ -10,6 +10,7 @@ function BriefcaseManager() {
   const [newCategory, setNewCategory] = useState("");
   const [editingCategoryId, setEditingCategoryId] = useState(null);
   const [editingCategoryName, setEditingCategoryName] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const [newProduct, setNewProduct] = useState({
     name: "",
@@ -45,6 +46,16 @@ function BriefcaseManager() {
       console.error("Error al obtener productos:", error);
     }
   };
+
+  useEffect(() => {
+    const loadAllProducts = async () => {
+      const res = await fetch(API_PRODUCTS);
+      const data = await res.json();
+      setFilteredProducts(data);
+    };
+  
+    loadAllProducts();
+  }, []);
 
   useEffect(() => {
     fetchCategories();
@@ -175,9 +186,22 @@ function BriefcaseManager() {
         <div className="briefcase-createProduct">
           <select
             value={newProduct.categoryId}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, categoryId: e.target.value })
-            }
+            onChange={async (e) => {
+              const categoryId = e.target.value;
+              setNewProduct({ ...newProduct, categoryId });
+            
+              if (categoryId) {
+                try {
+                  const res = await fetch(`${API_PRODUCTS}/category/${categoryId}`);
+                  const data = await res.json();
+                  setFilteredProducts(data);
+                } catch (error) {
+                  console.error("Error al cargar productos:", error);
+                }
+              } else {
+                setFilteredProducts([]);
+              }
+            }}
           >
             <option value="">Seleccione categoría</option>
             {categories.map((cat) => (
@@ -215,7 +239,7 @@ function BriefcaseManager() {
           </button>
         </div>
         <ul className="briefcase-productUl">
-          {products.map((prod) => (
+          {filteredProducts.map((prod) => (
             <li key={prod.id} style={{ marginBottom: "0.5rem" }}>
               {editingProductId === prod.id ? (
                 <>
