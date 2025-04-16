@@ -7,7 +7,7 @@
 | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/1200px-React.svg.webp" width="200"> | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1200px-Sass_Logo_Color.svg.webp" width="200"> | <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="200"> | <img src="https://www.ovhcloud.com/sites/default/files/styles/large_screens_1x/public/2021-09/ECX-1909_Hero_MySQL_600x400%402x-1.webp" width="200"> |
 
 ## PROJECT INSTALLATION
-
+Test readme
 ### 1. Clone the project
 
 ### 2. In the main folder of the project, open the terminal and then paste the following line:
