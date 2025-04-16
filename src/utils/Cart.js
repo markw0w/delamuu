@@ -215,7 +215,7 @@ const Cart = () => {
                         className="sendOrder"
                         onClick={openOrderModal}
                       >
-                        <MessageCircleHeart size={20} /> Enviar Pedido
+                        <MessageCircleHeart size={20} /> Finalizar Compra
                       </button>
                     </span>
                     <div className="order-summary">

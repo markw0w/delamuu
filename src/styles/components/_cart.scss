@@ -120,7 +120,7 @@
         }
 
         .sendOrder{
-            @include buttonDesign($width: 40%, $height: 30px);
+            @include buttonDesign($width: 50%, $height: 30px);
             @include displayFlex($flexDirection:row);
             background-image: $light-BackgroundImage;
             color: $darkFontColor;
