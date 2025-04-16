@@ -19,17 +19,17 @@ import Yogur6 from "../assets/products/yogur_6.webp";
 import YogurStrawberries from "../assets/products/yogur-strawberries.webp";
 import HandYogur from "../assets/products/hand-yogur.webp";
 import EnsaladaFrutas from "../assets/products/ensalada-frutas.webp";
-import YogurBg from '../assets/backgrounds/yogurt-bg.jpg'
+import YogurBg from '../assets/backgrounds/yogurt-bg.webp'
 
 // Helado
 import Helado1 from "../assets/products/helado_1.webp";
 import Helado2 from "../assets/products/helado_2.webp";
-import HeladoBg from '../assets/backgrounds/helado-bg.jpg'
+import HeladoBg from '../assets/backgrounds/helado-bg.webp'
 
 // Candy
 import Candy1 from "../assets/products/candy_1.webp";
 import Candy2 from "../assets/products/candy_2.webp";
-import CandyBg from "../assets/backgrounds/candy-bg.png";
+import CandyBg from "../assets/backgrounds/candy-bg.webp";
 
 // Acai
 import Acai1 from "../assets/products/acaí_1.webp";
@@ -40,7 +40,7 @@ import Acai5 from "../assets/products/acaí_5.webp";
 import Acai6 from "../assets/products/acaí_6.webp";
 import Acai7 from "../assets/products/acaí_7.webp";
 import AcaiBowl from "../assets/products/acaí_bowl.webp";
-import AcaiBg from '../assets/backgrounds/acai-bg.jpg';
+import AcaiBg from '../assets/backgrounds/acai-bg.webp';
 
 // Imports: Efectos fondo
 import ArandanosEffect from "../assets/others/strawberries.webp";
