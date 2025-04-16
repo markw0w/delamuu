@@ -192,6 +192,10 @@
       box-shadow: $shadow;
       margin-bottom: 25px;
 
+      @include breakpoint(medium){
+        height: 350px;
+      }
+
       h2 {
         z-index: 1000;
         background-image: $light-BackgroundImage;

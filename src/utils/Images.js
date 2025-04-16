@@ -19,14 +19,17 @@ import Yogur6 from "../assets/products/yogur_6.webp";
 import YogurStrawberries from "../assets/products/yogur-strawberries.webp";
 import HandYogur from "../assets/products/hand-yogur.webp";
 import EnsaladaFrutas from "../assets/products/ensalada-frutas.webp";
+import YogurBg from '../assets/backgrounds/yogurt-bg.jpg'
 
 // Helado
 import Helado1 from "../assets/products/helado_1.webp";
 import Helado2 from "../assets/products/helado_2.webp";
+import HeladoBg from '../assets/backgrounds/helado-bg.jpg'
 
 // Candy
 import Candy1 from "../assets/products/candy_1.webp";
 import Candy2 from "../assets/products/candy_2.webp";
+import CandyBg from "../assets/backgrounds/candy-bg.png";
 
 // Acai
 import Acai1 from "../assets/products/acaí_1.webp";
@@ -37,6 +40,7 @@ import Acai5 from "../assets/products/acaí_5.webp";
 import Acai6 from "../assets/products/acaí_6.webp";
 import Acai7 from "../assets/products/acaí_7.webp";
 import AcaiBowl from "../assets/products/acaí_bowl.webp";
+import AcaiBg from '../assets/backgrounds/acai-bg.jpg';
 
 // Imports: Efectos fondo
 import ArandanosEffect from "../assets/others/strawberries.webp";
@@ -64,6 +68,7 @@ export const products = {
   yogur4: Yogur4,
   yogur5: Yogur5,
   yogur6: Yogur6,
+  yogurBg: YogurBg,
   yogurStrawberries: YogurStrawberries,
   handYogur: HandYogur,
   ensaladaFrutas: EnsaladaFrutas,
@@ -71,10 +76,12 @@ export const products = {
   // Helado
   Helado1: Helado1,
   Helado2: Helado2,
+  HeladoBg: HeladoBg,
 
   // Candy
   Candy1: Candy1,
   Candy2: Candy2,
+  CandyBg: CandyBg,
 
   // Acai
   acai1: Acai1,
@@ -85,6 +92,7 @@ export const products = {
   acai6: Acai6,
   acai7: Acai7,
   acaiBowl: AcaiBowl,
+  acaiBg: AcaiBg,
 };
 
 // Efectos fondo

@@ -91,7 +91,7 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
               (delivery === "Entregar en domicilio" && (!address || !payment))
             }
           >
-            Confirmar
+            Enviar pedido
           </button>
           <button
             className="cancel"

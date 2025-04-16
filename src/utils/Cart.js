@@ -44,6 +44,13 @@ const Cart = () => {
     setIsModalOpen(false);
   };
 
+  const closeOrderModalAndReload = () => {
+    setIsModalOpen(false);
+    localStorage.clear();
+    // eslint-disable-next-line no-restricted-globals
+    location.reload();
+  };
+
   const totalCart = cartItems.reduce((total, order) => {
     let price = Array.isArray(order.prices)
       ? order.prices.reduce((acc, val) => acc + (parseFloat(val) || 0), 0)
@@ -165,7 +172,7 @@ const Cart = () => {
     )}`;
     window.open(url, "_blank");
 
-    closeOrderModal();
+    closeOrderModalAndReload();
   };
 
   return (
