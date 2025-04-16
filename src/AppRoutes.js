@@ -19,7 +19,7 @@ import PricesManager from './components/admin/PricesManager.js';
 
 export default function AppRoutes() {
   const location = useLocation();
-  const hideCart = ['/auth/delamuu', '/admin/delamuu'].includes(location.pathname);
+  const hideCart = ['/auth/delamuu', '/admin/delamuu', '/carta'].includes(location.pathname);
 
   return (
     <>
