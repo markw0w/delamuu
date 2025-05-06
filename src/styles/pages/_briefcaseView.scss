@@ -124,7 +124,7 @@
                         border-radius: 10px;
                         padding: 4px;
                         @include displayFlex();
-                        width: 35%;
+                        width: 38%;
                     }
                     @include breakpoint(small){
                         font-size: $sm;
