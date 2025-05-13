@@ -104,6 +104,8 @@ const Cart = () => {
   };
 
   const sendOrderToWhatsApp = async (name, address, delivery, payment) => {
+      console.log("🏷️ sendOrderToWhatsApp llamado con payment =", payment);
+
     const shippingCost =
       delivery === "Entregar en domicilio" ? deliveryCost : 0;
     const finalTotal = totalCart + shippingCost;
@@ -157,8 +159,9 @@ const Cart = () => {
 
     message += `💰 *Total a pagar:* $${finalTotal.toLocaleString("es-ES")}\n\n`;
     message += `📅 Fecha: ${new Date().toLocaleDateString("es-ES")}\n\n`;
-
+ 
     if (payment === "Pago Virtual") {
+      console.log("Entro en pago virtual");
       message += `🧾 Como tu forma de pago es *'${payment}'*, te compartimos la información requerida para realizar el pago:\n`;
       message += `• *CBU*: 0140312901665605356904\n`;
       message += `• *ALIAS*: DELAMUUOK\n`;
