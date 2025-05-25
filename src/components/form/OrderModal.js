@@ -5,6 +5,7 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
   const [address, setAddress] = useState("");
   const [delivery, setDelivery] = useState("");
   const [payment, setPayment] = useState("Pago contraentrega");
+  const deliveryPriceNumber = Number(deliveryPrice);
 
   if (!isOpen) return null;
 
@@ -24,7 +25,6 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
     <div className="modal-overlay">
       <div className="modal-content">
         <h2>Completa tu información</h2>
-
         <label>Nombre:</label>
         <input
           type="text"
@@ -32,7 +32,6 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
           onChange={(e) => setName(e.target.value)}
           placeholder="Ej: Juan Pérez"
         />
-
         <div className="delivery-options">
           <label>Forma de retiro:</label>
           <div>
@@ -41,10 +40,15 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
               checked={delivery === "Entregar en domicilio"}
               onChange={() => handleDeliveryChange("Entregar en domicilio")}
             />
+
             <span>
-              Entregar en domicilio{" "}
-              {deliveryPrice && (
-                <span>(${Number(deliveryPrice).toLocaleString("es-ES")})</span>
+              Entregar en domicilio: {" "}
+              {deliveryPrice !== undefined && (
+                <span>
+                  {Number(deliveryPrice) === 0
+                    ? "Envio Gratis"
+                    : `$${Number(deliveryPrice).toLocaleString("es-ES")}`}
+                </span>
               )}
             </span>
           </div>
@@ -57,7 +61,6 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
             <span>Retiro en local</span>
           </div>
         </div>
-
         {delivery === "Entregar en domicilio" && (
           <>
             <label>Dirección:</label>
@@ -80,7 +83,6 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
             </div>
           </>
         )}
-
         <div className="modal-buttons">
           <button
             className="confirm"
@@ -93,10 +95,7 @@ const OrderModal = ({ isOpen, onClose, onConfirm, deliveryPrice }) => {
           >
             Enviar pedido
           </button>
-          <button
-            className="cancel"
-            onClick={onClose}
-          >
+          <button className="cancel" onClick={onClose}>
             Seguir comprando
           </button>
         </div>

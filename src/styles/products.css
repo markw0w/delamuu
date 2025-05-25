@@ -101,16 +101,16 @@
   padding: 5px;
 }
 .optionsContainer .optionsModal .optionsContent .toppingsCategory {
-  background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  background-image: linear-gradient(to top, #7f7fd5, #86a8e7);
   z-index: 10000;
 }
 .optionsContainer .optionsModal .optionsContent .saucesCategory {
-  background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+  background-image: linear-gradient(to bottom, #7f7fd5, #86a8e7);
   z-index: 10001;
   margin-top: -50px;
 }
 .optionsContainer .optionsModal .optionsContent .fruitsCategory {
-  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  background-image: linear-gradient(to top,#7f7fd5, #86a8e7);
   z-index: 10002;
   margin-top: -50px;
   border-bottom-left-radius: 60px;
@@ -313,7 +313,7 @@
   border-radius: 20px;
   margin-top: 100px;
   margin-bottom: 100px;
-  background-image: linear-gradient(45deg, #4b57f5 0%, #375aca 99%, #2927b4 100%);
+  background-image: linear-gradient(354deg, #7f7fd5 100%, #92a6d8 100%);
   overflow: hidden;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -402,7 +402,6 @@
   border: 0px;
   padding: 5px;
   border-radius: 20px;
-  background-color: #ff4e4b;
   width: 50%;
   height: 40px;
   font-family: "Montserrat", sans-serif;
@@ -414,7 +413,7 @@
   flex-direction: column;
   align-items: center;
   background-image: none;
-  background-color: #92a6d8;
+  background-color: #ff4e4b;
   font-weight: 600;
   font-size: 18px;
 }
