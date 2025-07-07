@@ -8,13 +8,13 @@ function BriefcaseView() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const catRes = await fetch("https://delamuu.com:3001/briefcase-categories/");
+        const catRes = await fetch("/briefcase-categories/");
         const categoriesData = await catRes.json();
 
         const categoriesWithProducts = await Promise.all(
           categoriesData.map(async (category) => {
             const prodRes = await fetch(
-              `https://delamuu.com:3001/briefcase-products/category/${category.id}`
+              `/briefcase-products/category/${category.id}`
             );
             const productsData = await prodRes.json();
             return { ...category, products: productsData };
