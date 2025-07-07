@@ -26,8 +26,8 @@ function BriefcaseManager() {
     categoryId: ""
   });
 
-  const API_CATEGORIES = "/briefcase-categories";
-  const API_PRODUCTS = "/briefcase-products";
+  const API_CATEGORIES = "https://delamuu.com/briefcase-categories/";
+  const API_PRODUCTS = "https://delamuu.com/briefcase-products";
 
   const fetchCategories = async () => {
     try {
