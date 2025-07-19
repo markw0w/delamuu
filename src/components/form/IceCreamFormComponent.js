@@ -18,14 +18,15 @@ function IceCreamFormComponent() {
   const [prices, setPrices] = useState([]);
   const [flavors, setFlavors] = useState([]);
 
+  // Estado inicial vacío, luego se actualiza en useEffect con el primer gramaje y su precio real
   const [currentOrder, setCurrentOrder] = useState({
     product: "Helado",
-    gramaje: "1/4 kg",
+    gramaje: "",   // vacío para que se asigne después
     flavors: [],
     toppings: [],
     sauces: [],
     fruits: [],
-    prices: "10000",
+    prices: "",    // vacío para asignar el precio correcto
   });
 
   const API_URL_GET_GRAMAJE = "https://delamuu.com/gramajes/get-gramajes";
@@ -36,13 +37,29 @@ function IceCreamFormComponent() {
     const fetchData = async () => {
       try {
         const gramajesRes = await axios.get(API_URL_GET_GRAMAJE);
-        setGramajes(gramajesRes.data);
-
         const pricesRes = await axios.get(API_URL_GET_PRICES);
-        setPrices(pricesRes.data);
-
         const flavorsRes = await axios.get(API_URL_GET_FLAVORS);
+
+        setGramajes(gramajesRes.data);
+        setPrices(pricesRes.data);
         setFlavors(flavorsRes.data);
+
+        // Aquí asignamos el primer gramaje y su precio automáticamente
+        const firstGramaje = gramajesRes.data[0]?.nombre || "";
+        const firstPrice =
+          pricesRes.data.find(
+            (p) => p.productoNombre === "Helado" && p.envaseNombre === firstGramaje
+          )?.precio || "";
+
+        setCurrentOrder({
+          product: "Helado",
+          gramaje: firstGramaje,
+          prices: firstPrice,
+          flavors: [],
+          toppings: [],
+          sauces: [],
+          fruits: [],
+        });
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -82,7 +99,7 @@ function IceCreamFormComponent() {
     newFlavors
   ) => {
     const flavorsArray = newFlavors !== undefined ? newFlavors : newToppings;
-    const maxSelections = flavorsLimits[currentOrder.gramaje];
+    const maxSelections = flavorsLimits[currentOrder.gramaje] || 3;
 
     if (flavorsArray.length > maxSelections) {
       showAlertMessage(
@@ -95,7 +112,7 @@ function IceCreamFormComponent() {
       ...prev,
       flavors: flavorsArray,
     }));
-    setOrderReady(true);
+    setOrderReady(flavorsArray.length > 0);
     return true;
   };
 
@@ -126,8 +143,13 @@ function IceCreamFormComponent() {
 
     const updatedOrder = {
       product: "Helado",
-      gramaje: "1/4 kg",
-      prices: prices[0]?.price || "10000",
+      gramaje: gramajes[0]?.nombre || "",
+      prices:
+        prices.find(
+          (p) =>
+            p.productoNombre === "Helado" &&
+            p.envaseNombre === (gramajes[0]?.nombre || "")
+        )?.precio || "",
       flavors: [],
       toppings: [],
       sauces: [],
@@ -160,10 +182,7 @@ function IceCreamFormComponent() {
         product="Helado"
       />
       <hr />
-      <h2
-        id="titleForm"
-        className="titleStep-2"
-      >
+      <h2 id="titleForm" className="titleStep-2">
         2. ¡Ármalo!
       </h2>
       <CreateProduct
@@ -171,7 +190,7 @@ function IceCreamFormComponent() {
         flavorOptions={flavors}
         isIcreCream="1"
         gramaje={currentOrder.gramaje}
-        maxSelections={flavorsLimits[currentOrder.gramaje]}
+        maxSelections={flavorsLimits[currentOrder.gramaje] || 3}
         currentProduct={currentOrder.product}
         onSave={handleSelectionChange}
       />
