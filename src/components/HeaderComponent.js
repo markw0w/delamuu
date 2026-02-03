@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { logos } from "../utils/Images.js";
 import { Link } from "react-router-dom";
 import { Menu, X, LogOut } from "lucide-react";

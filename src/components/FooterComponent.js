@@ -1,4 +1,3 @@
-import React from "react";
 import { logos } from "../utils/Images.js";
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";

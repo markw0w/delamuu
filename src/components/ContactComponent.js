@@ -1,4 +1,3 @@
-import React from "react";
 import { MapPin, MessageCircle } from "lucide-react";
 
 function ContactComponent() {

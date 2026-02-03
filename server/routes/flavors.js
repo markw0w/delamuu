@@ -1,5 +1,5 @@
 import express from "express";
-import sequelize from "../db/cnn.js";
+import sequelize from "../../server/db/cnn.js";
 import { QueryTypes } from "sequelize";
 
 const router = express.Router();
@@ -40,7 +40,7 @@ router.delete("/delete-flavor/:id", async (req, res) => {
       {
         replacements: [id],
         type: QueryTypes.DELETE,
-      }
+      },
     );
 
     if (affectedRows === 0) {

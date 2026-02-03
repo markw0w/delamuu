@@ -1,5 +1,5 @@
 import express from "express";
-import sequelize from "../db/cnn.js";
+import sequelize from "../../server/db/cnn.js";
 import { QueryTypes } from "sequelize";
 
 const router = express.Router();
@@ -27,7 +27,7 @@ router.post("/add-gramaje", async (req, res) => {
         replacements: { nombre },
         type: QueryTypes.INSERT,
         transaction,
-      }
+      },
     );
     console.log("Resultado de inserción:", result);
     const envaseId =
@@ -38,8 +38,10 @@ router.post("/add-gramaje", async (req, res) => {
       throw new Error("No se pudo obtener el id del envase insertado");
     }
 
-    const [products] = await sequelize.query("SELECT id FROM productos", { transaction });
-    
+    const [products] = await sequelize.query("SELECT id FROM productos", {
+      transaction,
+    });
+
     for (let product of products) {
       await sequelize.query(
         "INSERT INTO envases_productos (envase_id, producto_id, precio) VALUES (:envaseId, :productoId, :precio)",
@@ -47,7 +49,7 @@ router.post("/add-gramaje", async (req, res) => {
           replacements: { envaseId, productoId: product.id, precio: 0 },
           type: QueryTypes.INSERT,
           transaction,
-        }
+        },
       );
     }
 
@@ -69,7 +71,7 @@ router.delete("/delete-gramaje/:id", async (req, res) => {
       {
         replacements: [id],
         type: QueryTypes.DELETE,
-      }
+      },
     );
 
     if (affectedRows === 0) {

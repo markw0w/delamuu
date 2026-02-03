@@ -1,5 +1,5 @@
 import express from "express";
-import sequelize from "../db/cnn.js";
+import sequelize from "../../server/db/cnn.js";
 import { QueryTypes } from "sequelize";
 
 const router = express.Router();
@@ -40,10 +40,10 @@ router.delete("/delete-topping/:id", async (req, res) => {
       {
         replacements: [id],
         type: QueryTypes.DELETE,
-      }
+      },
     );
 
-    console.log("Filas afectadas:", affectedRows); 
+    console.log("Filas afectadas:", affectedRows);
 
     if (affectedRows === 0) {
       return res.status(404).json({ error: "Topping no encontrado" });

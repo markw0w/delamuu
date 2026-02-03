@@ -1,5 +1,5 @@
 import { Router } from "express";
-import sequelize from "../db/cnn.js";
+import sequelize from "../../server/db/cnn.js";
 import { QueryTypes } from "sequelize";
 
 const router = Router();
@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
   try {
     const categories = await sequelize.query(
       "SELECT * FROM briefcase_categories",
-      { type: QueryTypes.SELECT }
+      { type: QueryTypes.SELECT },
     );
     res.json(categories);
   } catch (error) {
@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
       {
         replacements: [name],
         type: QueryTypes.INSERT,
-      }
+      },
     );
     res.json({ message: "Categoría creada", categoryId: result[0] });
   } catch (error) {
@@ -41,7 +41,7 @@ router.put("/:id", async (req, res) => {
       {
         replacements: [name, id],
         type: QueryTypes.UPDATE,
-      }
+      },
     );
     res.json({ message: "Categoría actualizada" });
   } catch (error) {
@@ -52,13 +52,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await sequelize.query(
-      "DELETE FROM briefcase_categories WHERE id = ?",
-      {
-        replacements: [id],
-        type: QueryTypes.DELETE,
-      }
-    );
+    await sequelize.query("DELETE FROM briefcase_categories WHERE id = ?", {
+      replacements: [id],
+      type: QueryTypes.DELETE,
+    });
     res.json({ message: "Categoría eliminada" });
   } catch (error) {
     res.status(500).json({ error: error.message });

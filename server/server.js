@@ -1,10 +1,11 @@
-import https from 'https';
-import fs from 'fs';
+import https from "https";
+import fs from "fs";
 import express from "express";
 import path from "path";
 import cors from "cors";
-import sequelize from "./db/cnn.js"; 
+import sequelize from "./db/cnn.js";
 import { fileURLToPath } from "url";
+
 import loginRoutes from "./routes/login.js";
 import orderRoutes from "./routes/saveOrder.js";
 import toppingRoutes from "./routes/toppings.js";
@@ -26,20 +27,26 @@ const options = {
   cert: fs.readFileSync("/etc/letsencrypt/live/delamuu.com/fullchain.pem"),
 };
 
-app.use(cors({
-  origin: ["https://delamuu.com", "http://localhost:3000"]
-}));
+app.use(
+  cors({
+    origin: ["https://delamuu.com", "http://localhost:3000"],
+  }),
+);
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
-sequelize.authenticate()
+sequelize
+  .authenticate()
   .then(() => console.log("✅ Conexión con la base de datos establecida."))
-  .catch((error) => console.error("❌ Error al conectar a la base de datos:", error));
+  .catch((error) => {
+    console.error("❌ Error al conectar a la base de datos:", error);
+  });
 
-sequelize.sync({ force: false })
+sequelize
+  .sync({ force: false })
   .then(() => console.log("🔄 Modelos sincronizados con la base de datos."))
-  .catch(error => console.error("❌ Error sincronizando modelos:", error));
+  .catch((error) => console.error("❌ Error sincronizando modelos:", error));
 
 app.use("/api", loginRoutes);
 app.use("/api", orderRoutes);

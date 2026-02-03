@@ -1,4 +1,3 @@
-import React from "react";
 import YogurComponent from './YogurComponent.js'
 import HeladoComponent from './HeladoComponent.js'
 import AcaiComponent from './AzaiComponent.js'

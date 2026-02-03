@@ -1,5 +1,5 @@
 import express from "express";
-import sequelize from "../db/cnn.js";
+import sequelize from "../../server/db/cnn.js";
 import { QueryTypes } from "sequelize";
 
 const router = express.Router();
@@ -12,7 +12,6 @@ router.get("/get-products", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
 
 router.post("/add-product", async (req, res) => {
   const { nombre } = req.body;
@@ -28,25 +27,32 @@ router.post("/add-product", async (req, res) => {
         replacements: { nombre },
         type: QueryTypes.INSERT,
         transaction,
-      }
+      },
     );
-    const productId = typeof result === "number"
-      ? result
-      : result.insertId || (Array.isArray(result) ? result[0] : null);
+    const productId =
+      typeof result === "number"
+        ? result
+        : result.insertId || (Array.isArray(result) ? result[0] : null);
     if (!productId) {
       throw new Error("No se pudo obtener el id del producto insertado");
     }
 
-    const [envases] = await sequelize.query("SELECT id FROM envases", { transaction });
-    
+    const [envases] = await sequelize.query("SELECT id FROM envases", {
+      transaction,
+    });
+
     for (let envase of envases) {
       await sequelize.query(
         "INSERT INTO envases_productos (envase_id, producto_id, precio) VALUES (:envaseId, :productoId, :precio)",
         {
-          replacements: { envaseId: envase.id, productoId: productId, precio: 0 },
+          replacements: {
+            envaseId: envase.id,
+            productoId: productId,
+            precio: 0,
+          },
           type: QueryTypes.INSERT,
           transaction,
-        }
+        },
       );
     }
 
@@ -68,7 +74,7 @@ router.delete("/delete-product/:id", async (req, res) => {
       {
         replacements: [id],
         type: QueryTypes.DELETE,
-      }
+      },
     );
 
     if (affectedRows === 0) {
@@ -91,7 +97,7 @@ router.post("/update-price/:id", async (req, res) => {
       {
         replacements: { newPrice, id },
         type: sequelize.QueryTypes.UPDATE,
-      }
+      },
     );
     res.status(200).json({ message: "Precio actualizado con éxito" });
   } catch (error) {

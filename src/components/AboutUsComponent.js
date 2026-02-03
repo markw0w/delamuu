@@ -1,5 +1,3 @@
-import React from "react";
-
 function AboutUsComponent() {
   return (
     <article className="aboutUsContainer" id="nosotros">

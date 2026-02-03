@@ -1,4 +1,3 @@
-import React from "react";
 import { others } from "../utils/Images.js";
 
 function ProductInfoComponent() {

@@ -1,15 +1,14 @@
 import { Router } from "express";
-import sequelize from "../db/cnn.js";
+import sequelize from "../../server/db/cnn.js";
 import { QueryTypes } from "sequelize";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const products = await sequelize.query(
-      "SELECT * FROM briefcase_products",
-      { type: QueryTypes.SELECT }
-    );
+    const products = await sequelize.query("SELECT * FROM briefcase_products", {
+      type: QueryTypes.SELECT,
+    });
     res.json(products);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -24,7 +23,7 @@ router.get("/category/:categoryId", async (req, res) => {
       {
         replacements: [categoryId],
         type: QueryTypes.SELECT,
-      }
+      },
     );
     res.json(products);
   } catch (error) {
@@ -41,7 +40,7 @@ router.post("/category/:categoryId", async (req, res) => {
       {
         replacements: [categoryId, name, description, price],
         type: QueryTypes.INSERT,
-      }
+      },
     );
     res.json({ message: "Producto creado", productId: result[0] });
   } catch (error) {
@@ -58,7 +57,7 @@ router.put("/:id", async (req, res) => {
       {
         replacements: [name, description, price, id],
         type: QueryTypes.UPDATE,
-      }
+      },
     );
     res.json({ message: "Producto actualizado" });
   } catch (error) {
@@ -69,13 +68,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   try {
-    await sequelize.query(
-      "DELETE FROM briefcase_products WHERE id = ?",
-      {
-        replacements: [id],
-        type: QueryTypes.DELETE,
-      }
-    );
+    await sequelize.query("DELETE FROM briefcase_products WHERE id = ?", {
+      replacements: [id],
+      type: QueryTypes.DELETE,
+    });
     res.json({ message: "Producto eliminado" });
   } catch (error) {
     res.status(500).json({ error: error.message });
